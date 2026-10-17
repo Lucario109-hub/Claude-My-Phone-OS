@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>LucarioNet</title>
+<style>
+:root{--bg1:#0b1020;--bg2:#1b2a6b;--bg3:#00c2ff;--glass:rgba(255,255,255,.12);--txt:#fff;--acc:#4cc9ff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
+html,body{margin:0;height:100%;overflow:hidden;background:#000;font-family:-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--txt)}
+#phone{position:relative;width:100%;height:100%;max-width:480px;margin:0 auto;overflow:hidden;background:linear-gradient(160deg,var(--bg1),var(--bg2) 60%,var(--bg3));background-size:cover;background-position:center}
+#status{position:absolute;top:0;left:0;right:0;height:34px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font-size:14px;font-weight:600;z-index:50;pointer-events:none}
+#home{position:absolute;inset:0;padding:48px 18px 110px;display:flex;flex-direction:column}
+#clock{text-align:center;margin:18px 0 8px}
+#clock .t{font-size:68px;font-weight:200;letter-spacing:-2px}
+#clock .d{font-size:15px;opacity:.8}
+#search{margin:10px 0 18px;background:var(--glass);backdrop-filter:blur(14px);border-radius:20px;padding:12px 16px;font-size:15px;opacity:.9;border:1px solid rgba(255,255,255,.15)}
+#grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px 8px;align-content:start;flex:1;min-height:0;overflow:auto;padding-bottom:10px}
+.app{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;cursor:pointer}
+.app .ic{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.35);transition:transform .15s}
+.app:active .ic{transform:scale(.88)}
+.ic svg{width:36px;height:36px}
+#dock{position:absolute;left:14px;right:14px;bottom:30px;height:84px;background:var(--glass);backdrop-filter:blur(20px);border-radius:30px;display:flex;justify-content:space-around;align-items:center;border:1px solid rgba(255,255,255,.18);z-index:5}
+#nav{position:absolute;bottom:0;left:0;right:0;height:26px;display:flex;justify-content:center;align-items:center;z-index:60}
+#nav div{width:130px;height:5px;border-radius:3px;background:rgba(255,255,255,.85)}
+#win{position:absolute;inset:0;background:#10131f;z-index:40;display:none;flex-direction:column;padding-top:34px;padding-bottom:26px;transform:scale(.9);opacity:0;transition:.22s}
+#win.show{transform:none;opacity:1}
+#bar{height:48px;display:flex;align-items:center;padding:0 12px;gap:10px;font-weight:600}
+#bar button{background:var(--glass);border:0;color:#fff;border-radius:12px;padding:8px 12px;font-size:15px}
+#body{flex:1;overflow:auto;position:relative;display:flex;flex-direction:column;align-items:center}
+button.b{background:var(--acc);color:#04202e;border:0;border-radius:14px;padding:11px 18px;font-weight:700;font-size:15px}
+button.g{background:var(--glass);color:#fff;border:0;border-radius:14px;padding:11px 16px;font-size:15px}
+canvas{background:#0a0d18;border-radius:14px;touch-action:none;max-width:100%}
+.gh{display:flex;gap:24px;padding:8px;font-size:16px;font-weight:600}
+.pad{display:grid;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(2,56px);gap:6px;margin:10px;justify-content:center}
+.pad button{background:var(--glass);border:0;color:#fff;border-radius:14px;font-size:22px}
+.pad .u{grid-column:2}.pad .l{grid-row:2;grid-column:1}.pad .d{grid-row:2;grid-column:2}.pad .r{grid-row:2;grid-column:3}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px;background:#1c2236;border-radius:14px;width:min(92vw,360px)}
+.tile{aspect-ratio:1;border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:24px;background:#2a3250}
+.mem{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(92vw,360px);margin:14px}
+.card{aspect-ratio:1;border-radius:14px;background:#2a3250;display:grid;place-items:center;font-size:34px;cursor:pointer}
+.card.open{background:#4cc9ff}.card.done{background:#2ecc71}
+video{width:100%;flex:1;min-height:0;object-fit:cover;background:#000}
+.shutter{width:74px;height:74px;border-radius:50%;border:5px solid #fff;background:rgba(255,255,255,.3);margin:12px}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;width:100%;padding:3px}
+.photos img{width:100%;aspect-ratio:1;object-fit:cover}
+#viewer{position:absolute;inset:0;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:5}
+#viewer img{max-width:100%;max-height:75%}
+iframe{flex:1;width:100%;border:0;background:#fff}
+input[type=text]{flex:1;background:var(--glass);border:0;color:#fff;border-radius:14px;padding:10px 14px;font-size:15px;outline:0;min-width:0}
+.trk{display:flex;width:100%;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.08);gap:12px}
+.trk.on{color:var(--acc)}
+input[type=range]{width:90%}
+.cover{width:200px;height:200px;border-radius:26px;margin:20px;display:grid;place-items:center;background:linear-gradient(135deg,#7b2ff7,#00c2ff);font-size:70px}
+.set{width:90%;padding:14px;background:var(--glass);border-radius:16px;margin:8px}
+.sw{display:flex;gap:10px;margin-top:10px}.sw div{width:44px;height:44px;border-radius:12px}
+#boot{position:absolute;inset:0;background:#05070f;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .6s}
+#boot svg{width:110px;height:110px;animation:p 1.4s infinite}
+@keyframes p{50%{transform:scale(1.1);filter:drop-shadow(0 0 20px #4cc9ff)}}
+.vgrid{width:100%;padding:8px 12px;display:flex;flex-direction:column;gap:18px}
+.vc{cursor:pointer}.vc .th{width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;background:#222;display:block}
+.vc .meta{padding:8px 4px}
+video.pl{width:100%;aspect-ratio:16/9;background:#000;flex:none}
+.mrow{width:100%;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;gap:12px;align-items:center;cursor:pointer}
+.av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:linear-gradient(135deg,#7b2ff7,#00c2ff);flex:none}
+textarea,input.f{width:100%;background:var(--glass);border:0;color:#fff;border-radius:12px;padding:12px;font-size:15px;outline:0;margin:5px 0;font-family:inherit}
+.tabs{display:flex;gap:6px;padding:6px 10px;width:100%;overflow:auto}.tabs button{white-space:nowrap}
+.sc{display:flex;gap:12px;align-items:center;width:100%;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sc .ic{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;flex:none}
+.sc .ic svg{width:30px;height:30px}
+</style>
+</head>
+<body>
+<div id="phone">
+  <div id="boot">
+    <svg viewBox="0 0 100 100"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4cc9ff"/><stop offset="1" stop-color="#7b2ff7"/></linearGradient></defs><polygon points="50,4 91,27 91,73 50,96 9,73 9,27" fill="none" stroke="url(#lg)" stroke-width="5"/><path d="M36 28v40h30" fill="none" stroke="url(#lg)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 28l12 14" stroke="#4cc9ff" stroke-width="6" stroke-linecap="round"/></svg>
+    <div style="font-size:26px;font-weight:300;letter-spacing:4px">LucarioNet</div>
+  </div>
+  <div id="status"><span id="st">--:--</span><span id="bat">LucarioNet</span></div>
+  <div id="home">
+    <div id="clock"><div class="t" id="ct">--:--</div><div class="d" id="cd"></div></div>
+    <div id="search" onclick="openApp('browser')">🔍 Im Web suchen…</div>
+    <div id="grid"></div>
+  </div>
+  <div id="dock"></div>
+  <div id="win"><div id="bar"><button id="back">‹ Zurück</button><span id="title"></span></div><div id="body"></div></div>
+  <div id="nav"><div></div></div>
+</div>
+
+<script>
+/* ================= LucarioNet 1.0 ================= */
+const $=s=>document.querySelector(s);
+const ic=(p,extra='')=>`<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ${extra}>${p}</svg>`;
+
+/* ---------- IndexedDB (Fotos + Musik) ---------- */
+const DB=()=>new Promise((res,rej)=>{const r=indexedDB.open('lucarionet',2);r.onupgradeneeded=()=>{const d=r.result;['photos','music','videos','mails','walls'].forEach(n=>{if(!d.objectStoreNames.contains(n))d.createObjectStore(n,{keyPath:'id',autoIncrement:true})})};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function st(name,mode,fn){const d=await DB();return new Promise((res,rej)=>{const t=d.transaction(name,mode);const rq=fn(t.objectStore(name));t.oncomplete=()=>res(rq&&rq.result);t.onerror=()=>rej(t.error)})}
+
+/* ---------- Status & Uhr ---------- */
+function tick(){const n=new Date();const t=n.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});$('#st').textContent=t;$('#ct').textContent=t;$('#cd').textContent=n.toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'})}
+setInterval(tick,5000);tick();
+if(navigator.getBattery)navigator.getBattery().then(b=>{const u=()=>$('#bat').textContent='🔋 '+Math.round(b.level*100)+'%';u();b.onlevelchange=u});
+
+/* ---------- Hintergründe ---------- */
+const walls=[['#0b1020','#1b2a6b','#00c2ff'],['#1a0b2e','#6a1b9a','#ff6ec7'],['#04150f','#0b6b4a','#7dffb0'],['#1c0b0b','#8b2a1b','#ffb347']];
+function setWall(i){const w=walls[i];const s=$('#phone').style;s.backgroundImage='';s.setProperty('--bg1',w[0]);s.setProperty('--bg2',w[1]);s.setProperty('--bg3',w[2]);try{localStorage.wall=i;localStorage.removeItem('wallc')}catch(e){}}
+async function setCustom(id){try{const w=await st('walls','readonly',s=>s.get(id));if(!w)return;const u=URL.createObjectURL(w.blob);$('#phone').style.backgroundImage=`linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),url(${u})`;localStorage.wallc=id}catch(e){}}
+{const wc=localStorage.wallc;setWall(+(localStorage.wall||0));if(wc)setCustom(+wc)}
+
+/* ---------- App-Registry ---------- */
+const G=(a,b)=>`linear-gradient(135deg,${a},${b})`;
+const apps=[
+ {id:'snake',name:'Snake',bg:G('#2ecc71','#0b6b3a'),svg:ic('<path d="M4 18c0-6 6-4 8-8s-2-6 2-6 6 4 4 8-8 4-8 8"/><circle cx="17" cy="6" r="1" fill="#fff"/>')},
+ {id:'g2048',name:'2048',bg:G('#f39c12','#c0392b'),svg:ic('<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2" fill="#fff"/>')},
+ {id:'memory',name:'Memory',bg:G('#e056fd','#6c5ce7'),svg:ic('<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M12 8l1.5 3 3.3.5-2.4 2.3.6 3.2-3-1.6-3 1.6.6-3.2-2.4-2.3 3.3-.5z" fill="#fff"/>')},
+ {id:'pong',name:'Pong',bg:G('#00c2ff','#0652dd'),svg:ic('<path d="M5 4v6M19 14v6"/><circle cx="12" cy="12" r="2" fill="#fff"/>')},
+ {id:'flappy',name:'Lucario Jump',bg:G('#ffd32a','#ff6b6b'),svg:ic('<path d="M3 14c4-8 10-8 13-4l5 2-5 3c-3 4-9 4-13-1z"/><circle cx="15" cy="10" r="1" fill="#fff"/>')},
+ {id:'camera',name:'Kamera',bg:G('#636e72','#2d3436'),svg:ic('<path d="M3 8h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="13" r="4"/>')},
+ {id:'gallery',name:'Galerie',bg:G('#fd79a8','#e84393'),svg:ic('<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M3 18l6-5 4 3 3-3 5 5"/>')},
+ {id:'browser',name:'Browser',bg:G('#74b9ff','#0984e3'),svg:ic('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>')},
+ {id:'music',name:'Musik',bg:G('#a29bfe','#6c5ce7'),svg:ic('<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>')},
+ {id:'settings',name:'Einstellungen',bg:G('#b2bec3','#636e72'),svg:ic('<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>')},
+];
+apps.push(
+ {id:'tube',name:'LucarioTube',bg:G('#ff3b5c','#a3003a'),svg:ic('<rect x="3" y="5" width="18" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="#fff"/>')},
+ {id:'mail',name:'LucarioMail',bg:G('#38b6ff','#5e60ce'),svg:ic('<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 7 9-7"/>')},
+ {id:'store',name:'App Store',bg:G('#00e5a8','#0097a7'),svg:ic('<path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 016 0v2"/>')});
+/* Spiele im App Store */
+const SG=[
+ {id:'tetris',name:'Tetris',desc:'Der Klassiker mit fallenden Blöcken.',bg:G('#4cc9ff','#7b2ff7'),svg:ic('<path d="M5 4h6v12h8v4H5z"/>')},
+ {id:'mines',name:'Minesweeper',desc:'Finde alle Minen, ohne eine zu treffen.',bg:G('#95a5a6','#2c3e50'),svg:ic('<circle cx="12" cy="13" r="5"/><path d="M12 4v4M5 13H2M22 13h-3M7 8L5 6M17 8l2-2"/>')},
+ {id:'breakout',name:'Breakout',desc:'Zerstöre alle Steine mit dem Ball.',bg:G('#ff9f43','#ee5253'),svg:ic('<rect x="3" y="4" width="5" height="3"/><rect x="10" y="4" width="5" height="3"/><rect x="17" y="4" width="4" height="3"/><circle cx="12" cy="14" r="1.5" fill="#fff"/><path d="M8 20h8"/>')},
+ {id:'ttt',name:'Tic-Tac-Toe',desc:'Spiele gegen die KI.',bg:G('#1dd1a1','#10ac84'),svg:ic('<path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>')},
+ {id:'react',name:'Reaktionstest',desc:'Wie schnell sind deine Finger?',bg:G('#feca57','#ff6b6b'),svg:ic('<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>')},
+];
+let inst=[];try{inst=JSON.parse(localStorage.inst||'[]')}catch(e){}
+const allApps=()=>apps.concat(SG.filter(g=>inst.includes(g.id)));
+const dockIds=['camera','browser','tube','mail'];
+function tile(a){const d=document.createElement('div');d.className='app';d.innerHTML=`<div class="ic" style="background:${a.bg}">${a.svg}</div><span>${a.name}</span>`;d.onclick=()=>openApp(a.id);return d}
+function renderHome(){$('#grid').innerHTML='';$('#dock').innerHTML='';allApps().forEach(a=>{const t=tile(a);if(dockIds.includes(a.id)){t.querySelector('span').remove();$('#dock').appendChild(t)}else $('#grid').appendChild(t)})}
+renderHome();
+
+/* ---------- Fenster-Manager ---------- */
+let cleanup=null;
+function openApp(id){
+  const a=allApps().find(x=>x.id===id);closeApp(true);
+  const w=$('#win');w.style.display='flex';requestAnimationFrame(()=>w.classList.add('show'));
+  $('#title').textContent=a.name;$('#body').innerHTML='';$('#body').style.justifyContent='';
+  cleanup=A[id]($('#body'))||null;
+}
+function closeApp(quiet){
+  if(cleanup){try{cleanup()}catch(e){}cleanup=null}
+  const w=$('#win');w.classList.remove('show');
+  if(quiet){w.style.display='none';return}
+  setTimeout(()=>{if(!w.classList.contains('show'))w.style.display='none'},220);
+}
+$('#back').onclick=()=>closeApp();$('#nav').onclick=()=>closeApp();
+
+/* ---------- Helfer ---------- */
+function swipe(el,cb){let x,y;el.addEventListener('touchstart',e=>{x=e.touches[0].clientX;y=e.touches[0].clientY},{passive:true});
+ el.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-x,dy=e.changedTouches[0].clientY-y;if(Math.max(Math.abs(dx),Math.abs(dy))<24)return;
+  cb(Math.abs(dx)>Math.abs(dy)?(dx>0?'r':'l'):(dy>0?'d':'u'))},{passive:true})}
+const hi=(k,v)=>{let o=+localStorage[k]||0;if(v!==undefined&&v>o){localStorage[k]=o=v}return o};
+const size=()=>Math.min(innerWidth,480)-24;
+
+const A={};
+
+/* ---------- SNAKE ---------- */
+A.snake=el=>{
+  const N=20,S=Math.min(size(),400),c=document.createElement('canvas');c.width=c.height=S;
+  el.innerHTML=`<div class="gh"><span id="sc">Punkte: 0</span><span>Rekord: ${hi('snake')}</span></div>`;el.appendChild(c);
+  el.insertAdjacentHTML('beforeend',`<div class="pad"><button class="u">▲</button><button class="l">◀</button><button class="d">▼</button><button class="r">▶</button></div><button class="b" id="rs">Neustart</button>`);
+  const x=c.getContext('2d'),u=S/N;let s,d,nd,f,sc,over,iv;
+  function init(){s=[[10,10],[9,10],[8,10]];d=nd=[1,0];sc=0;over=false;food();$('#sc').textContent='Punkte: 0'}
+  function food(){do{f=[Math.random()*N|0,Math.random()*N|0]}while(s.some(p=>p[0]==f[0]&&p[1]==f[1]))}
+  const dir={u:[0,-1],d:[0,1],l:[-1,0],r:[1,0]};
+  function set(k){const n=dir[k];if(n[0]+d[0]||n[1]+d[1])nd=n}
+  function step(){if(over)return;d=nd;const h=[s[0][0]+d[0],s[0][1]+d[1]];
+    if(h[0]<0||h[1]<0||h[0]>=N||h[1]>=N||s.some(p=>p[0]==h[0]&&p[1]==h[1])){over=true;hi('snake',sc);draw();return}
+    s.unshift(h);if(h[0]==f[0]&&h[1]==f[1]){sc++;$('#sc').textContent='Punkte: '+sc;food()}else s.pop();draw()}
+  function draw(){x.fillStyle='#0a0d18';x.fillRect(0,0,S,S);
+    x.fillStyle='#ff5252';x.beginPath();x.arc((f[0]+.5)*u,(f[1]+.5)*u,u*.4,0,7);x.fill();
+    s.forEach((p,i)=>{x.fillStyle=i?'#2ecc71':'#7dffb0';x.beginPath();x.roundRect(p[0]*u+1,p[1]*u+1,u-2,u-2,5);x.fill()});
+    if(over){x.fillStyle='rgba(0,0,0,.6)';x.fillRect(0,0,S,S);x.fillStyle='#fff';x.font='bold 26px sans-serif';x.textAlign='center';x.fillText('Game Over – '+sc,S/2,S/2)}}
+  el.querySelectorAll('.pad button').forEach(b=>b.onclick=()=>set(b.className));
+  swipe(c,set);$('#rs').onclick=init;
+  const kh=e=>{const m={ArrowUp:'u',ArrowDown:'d',ArrowLeft:'l',ArrowRight:'r'}[e.key];if(m)set(m)};addEventListener('keydown',kh);
+  init();iv=setInterval(step,115);return()=>{clearInterval(iv);removeEventListener('keydown',kh)};
+};
+
+/* ---------- 2048 ---------- */
+A.g2048=el=>{
+  let b,sc;const colors={0:'#2a3250',2:'#4a90e2',4:'#2ecc71',8:'#f1c40f',16:'#e67e22',32:'#e74c3c',64:'#9b59b6',128:'#1abc9c',256:'#fd79a8',512:'#e84393',1024:'#6c5ce7',2048:'#ffd32a'};
+  el.innerHTML=`<div class="gh"><span id="sc"></span><span>Rekord: <b id="hs"></b></span></div><div class="tiles" id="t"></div><p style="opacity:.7">Wische zum Bewegen</p><button class="b" id="rs">Neustart</button>`;
+  const add=()=>{const e=[];b.forEach((v,i)=>v||e.push(i));if(e.length)b[e[Math.random()*e.length|0]]=Math.random()<.9?2:4};
+  const init=()=>{b=Array(16).fill(0);sc=0;add();add();draw()};
+  const draw=()=>{$('#sc').textContent='Punkte: '+sc;$('#hs').textContent=hi('g2048',sc);
+    $('#t').innerHTML=b.map(v=>`<div class="tile" style="background:${colors[v]||'#ffd32a'};font-size:${v>=1024?18:24}px">${v||''}</div>`).join('')};
+  const line=(k,d)=>{const r=[];for(let i=0;i<4;i++){const idx=d=='l'?[0,1,2,3].map(j=>k*4+j):d=='r'?[3,2,1,0].map(j=>k*4+j):d=='u'?[0,1,2,3].map(j=>j*4+k):[3,2,1,0].map(j=>j*4+k);return idx}};
+  const move=d=>{let ch=false;for(let k=0;k<4;k++){const idx=line(k,d);let a=idx.map(i=>b[i]).filter(v=>v);
+    for(let i=0;i<a.length-1;i++)if(a[i]==a[i+1]){a[i]*=2;sc+=a[i];a.splice(i+1,1)}
+    while(a.length<4)a.push(0);idx.forEach((id,j)=>{if(b[id]!=a[j])ch=true;b[id]=a[j]})}
+    if(ch){add();draw()}};
+  swipe($('#t'),move);swipe(el,move);$('#rs').onclick=init;
+  const kh=e=>{const m={ArrowUp:'u',ArrowDown:'d',ArrowLeft:'l',ArrowRight:'r'}[e.key];if(m)move(m)};addEventListener('keydown',kh);
+  init();return()=>removeEventListener('keydown',kh);
+};
+
+/* ---------- MEMORY ---------- */
+A.memory=el=>{
+  el.innerHTML=`<div class="gh"><span id="mv">Züge: 0</span><span>Bestzeit: <b id="bt">${localStorage.mem||'-'}</b></span></div><div class="mem" id="m"></div><button class="b" id="rs">Neustart</button>`;
+  let first,lock,moves,found,t0;
+  const init=()=>{const e=['🐺','⚡','🔥','🌙','🎧','🚀','💎','🍀'];const d=[...e,...e].sort(()=>Math.random()-.5);moves=found=0;first=null;lock=false;t0=Date.now();$('#mv').textContent='Züge: 0';
+    $('#m').innerHTML=d.map(v=>`<div class="card" data-v="${v}"></div>`).join('');
+    $('#m').querySelectorAll('.card').forEach(c=>c.onclick=()=>{if(lock||c.classList.contains('open')||c.classList.contains('done'))return;c.classList.add('open');c.textContent=c.dataset.v;
+      if(!first){first=c;return}moves++;$('#mv').textContent='Züge: '+moves;
+      if(first.dataset.v==c.dataset.v){first.className=c.className='card done';first=null;if(++found==8){const t=Math.round((Date.now()-t0)/1000);if(!localStorage.mem||t<+localStorage.mem)localStorage.mem=t;$('#bt').textContent=localStorage.mem+'s'}}
+      else{lock=true;const f=first;first=null;setTimeout(()=>{f.className=c.className='card';f.textContent=c.textContent='';lock=false},700)}})};
+  $('#rs').onclick=init;init();
+};
+
+/* ---------- PONG ---------- */
+A.pong=el=>{
+  const W=300,H=Math.min(450,innerHeight-220);const c=document.createElement('canvas');c.width=W;c.height=H;el.innerHTML=`<div class="gh"><span id="sc">Du 0 : 0 KI</span></div>`;el.appendChild(c);
+  const x=c.getContext('2d');let p=W/2,a=W/2,bx=W/2,by=H/2,vx=3,vy=4,ps=0,as=0,raf;
+  const pw=64;const pos=e=>{const r=c.getBoundingClientRect();p=(e.touches?e.touches[0].clientX:e.clientX)-r.left;p=p*W/r.width};
+  c.addEventListener('touchmove',pos,{passive:true});c.addEventListener('touchstart',pos,{passive:true});c.addEventListener('mousemove',pos);
+  const reset=d=>{bx=W/2;by=H/2;vx=(Math.random()-.5)*6;vy=4*d};
+  function loop(){a+=Math.max(-3.2,Math.min(3.2,bx-a));bx+=vx;by+=vy;if(bx<6||bx>W-6)vx*=-1;
+    if(by>H-26&&by<H-14&&Math.abs(bx-p)<pw/2+6&&vy>0){vy=-Math.abs(vy)*1.04;vx+=(bx-p)/10}
+    if(by<26&&by>14&&Math.abs(bx-a)<pw/2+6&&vy<0){vy=Math.abs(vy)}
+    if(by<0){ps++;reset(1)}if(by>H){as++;reset(-1)}
+    $('#sc').textContent=`Du ${ps} : ${as} KI`;
+    x.fillStyle='#0a0d18';x.fillRect(0,0,W,H);x.setLineDash([8,8]);x.strokeStyle='#334';x.beginPath();x.moveTo(0,H/2);x.lineTo(W,H/2);x.stroke();
+    x.fillStyle='#4cc9ff';x.fillRect(p-pw/2,H-24,pw,10);x.fillStyle='#ff6b6b';x.fillRect(a-pw/2,14,pw,10);x.fillStyle='#fff';x.beginPath();x.arc(bx,by,6,0,7);x.fill();raf=requestAnimationFrame(loop)}
+  reset(1);loop();return()=>cancelAnimationFrame(raf);
+};
+
+/* ---------- LUCARIO JUMP (Flappy) ---------- */
+A.flappy=el=>{
+  const W=300,H=Math.min(480,innerHeight-190);const c=document.createElement('canvas');c.width=W;c.height=H;
+  el.innerHTML=`<div class="gh"><span id="sc">0</span><span>Rekord: ${hi('flappy')}</span></div>`;el.appendChild(c);
+  const x=c.getContext('2d');let y,v,pipes,sc,over,t,raf;
+  const init=()=>{y=H/2;v=0;pipes=[];sc=0;over=false;t=0;$('#sc').textContent=0};
+  const jump=e=>{e.preventDefault();if(over)init();else v=-5.2};c.addEventListener('touchstart',jump,{passive:false});c.addEventListener('mousedown',jump);
+  const kh=e=>{if(e.code=='Space')jump(e)};addEventListener('keydown',kh);
+  function loop(){if(!over){v+=.28;y+=v;t++;if(t%90==1)pipes.push({x:W,g:60+Math.random()*(H-220),s:0});
+    pipes.forEach(p=>{p.x-=2;if(!p.s&&p.x<60){p.s=1;sc++;$('#sc').textContent=sc}
+      if(p.x<84&&p.x>40&&(y<p.g||y>p.g+120))over=true});pipes=pipes.filter(p=>p.x>-50);if(y<0||y>H)over=true;if(over)hi('flappy',sc)}
+    x.fillStyle='#0f1b3d';x.fillRect(0,0,W,H);
+    pipes.forEach(p=>{x.fillStyle='#2ecc71';x.fillRect(p.x,0,44,p.g);x.fillRect(p.x,p.g+120,44,H)});
+    x.font='30px sans-serif';x.fillText('🐺',48,y+10);
+    if(over){x.fillStyle='rgba(0,0,0,.6)';x.fillRect(0,0,W,H);x.fillStyle='#fff';x.font='bold 22px sans-serif';x.textAlign='center';x.fillText('Game Over – tippen',W/2,H/2);x.textAlign='left'}
+    raf=requestAnimationFrame(loop)}
+  init();loop();return()=>{cancelAnimationFrame(raf);removeEventListener('keydown',kh)};
+};
+
+/* ---------- KAMERA ---------- */
+A.camera=el=>{
+  let stream,face='environment';
+  el.innerHTML=`<video id="v" autoplay playsinline muted></video><div id="msg" style="padding:8px;opacity:.8"></div><div style="display:flex;align-items:center;gap:24px;padding-bottom:10px"><button class="g" id="fl">🔄</button><div class="shutter" id="sh"></div><button class="g" id="go">🖼</button></div>`;
+  async function start(){if(stream)stream.getTracks().forEach(t=>t.stop());
+    try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:face},audio:false});$('#v').srcObject=stream;$('#msg').textContent=''}
+    catch(e){$('#msg').textContent='Kamera nicht verfügbar: '+e.message+' (Berechtigung erteilen / HTTPS bzw. localhost nötig)'}}
+  $('#fl').onclick=()=>{face=face=='user'?'environment':'user';start()};
+  $('#go').onclick=()=>openApp('gallery');
+  $('#sh').onclick=()=>{const v=$('#v');if(!v.videoWidth)return;const c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);
+    c.toBlob(async b=>{await st('photos','readwrite',s=>s.add({blob:b,date:Date.now()}));$('#msg').textContent='📸 Foto gespeichert';v.style.opacity=.3;setTimeout(()=>v.style.opacity=1,120)},'image/jpeg',.92)};
+  start();return()=>{if(stream)stream.getTracks().forEach(t=>t.stop())};
+};
+
+/* ---------- GALERIE ---------- */
+A.gallery=el=>{
+  const urls=[];
+  el.innerHTML=`<div style="display:flex;gap:8px;padding:6px"><label class="b" style="border-radius:14px;padding:10px 16px;font-weight:700;background:var(--acc);color:#04202e">＋ Importieren<input type="file" accept="image/*" multiple hidden id="imp"></label></div><div class="photos" id="ph"></div><div id="viewer"></div>`;
+  async function load(){urls.forEach(URL.revokeObjectURL);urls.length=0;const all=await st('photos','readonly',s=>s.getAll());all.sort((a,b)=>b.date-a.date);
+    $('#ph').innerHTML=all.length?'':'<p style="grid-column:1/4;text-align:center;opacity:.6;padding:40px">Noch keine Fotos. Mach eins mit der Kamera!</p>';
+    all.forEach(p=>{const u=URL.createObjectURL(p.blob);urls.push(u);const i=document.createElement('img');i.src=u;i.onclick=()=>view(p,u);$('#ph').appendChild(i)})}
+  function view(p,u){const v=$('#viewer');v.style.display='flex';v.innerHTML=`<img src="${u}"><div style="display:flex;gap:10px"><button class="g" id="cl">Schließen</button><a class="g" style="text-decoration:none;color:#fff;padding:11px 16px;border-radius:14px;background:var(--glass)" download="LucarioNet_${p.id}.jpg" href="${u}">Speichern</a><button class="g" id="dl" style="color:#ff6b6b">Löschen</button></div>`;
+    $('#cl').onclick=()=>v.style.display='none';$('#dl').onclick=async()=>{await st('photos','readwrite',s=>s.delete(p.id));v.style.display='none';load()}}
+  $('#imp').onchange=async e=>{for(const f of e.target.files)await st('photos','readwrite',s=>s.add({blob:f,date:Date.now()}));load()};
+  load();return()=>urls.forEach(URL.revokeObjectURL);
+};
+
+/* ---------- BROWSER ---------- */
+A.browser=el=>{
+  el.innerHTML=`<div style="display:flex;gap:6px;width:100%;padding:6px"><button class="g" id="bk">‹</button><input type="text" id="u" placeholder="Suchen oder URL eingeben" autocapitalize="off"><button class="b" id="go">Go</button><button class="g" id="ex" title="Extern öffnen">↗</button></div>
+  <div id="hm" style="width:100%;padding:20px;text-align:center"><div style="font-size:30px;font-weight:300;margin:30px 0">LucarioNet Browser</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px"></div></div><iframe id="f" style="display:none" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+  <p id="hint" style="font-size:12px;opacity:.6;padding:6px;margin:0;text-align:center">Manche Seiten verbieten Einbettung – dann ↗ nutzen.</p>`;
+  const hist=[];
+  const links=[['Wikipedia','https://de.wikipedia.org'],['OpenStreetMap','https://www.openstreetmap.org'],['Bing','https://www.bing.com'],['Archive.org','https://archive.org'],['MDN','https://developer.mozilla.org'],['Wetter','https://wttr.in']];
+  links.forEach(([n,u])=>{const b=document.createElement('button');b.className='g';b.textContent=n;b.onclick=()=>nav(u);el.querySelector('#hm div:last-child').appendChild(b)});
+  function nav(q,noHist){q=q.trim();if(!q)return;let u=q;if(!/^https?:\/\//.test(q))u=/^[^\s]+\.[a-z]{2,}(\/.*)?$/i.test(q)?'https://'+q:'https://www.bing.com/search?q='+encodeURIComponent(q);
+    if(!noHist)hist.push(u);$('#u').value=u;$('#hm').style.display='none';$('#f').style.display='block';$('#f').src=u}
+  $('#go').onclick=()=>nav($('#u').value);$('#u').onkeydown=e=>{if(e.key=='Enter')nav($('#u').value)};
+  $('#bk').onclick=()=>{hist.pop();const l=hist[hist.length-1];if(l)nav(l,1);else{$('#f').style.display='none';$('#f').src='about:blank';$('#hm').style.display='block';$('#u').value=''}};
+  $('#ex').onclick=()=>{const v=$('#u').value;if(v)open(v,'_blank')};
+};
+
+/* ---------- MUSIK ---------- */
+A.music=el=>{
+  const au=new Audio();let list=[],cur=-1,urls=[];
+  el.innerHTML=`<div class="cover" id="cv">🎵</div><div id="tt" style="font-size:18px;font-weight:600;text-align:center;padding:0 16px;min-height:26px">Kein Titel</div>
+  <input type="range" id="sk" min="0" max="100" value="0"><div style="display:flex;gap:18px;align-items:center;margin:8px"><button class="g" id="pv">⏮</button><button class="b" id="pl" style="font-size:22px;padding:12px 22px">▶</button><button class="g" id="nx">⏭</button></div>
+  <input type="range" id="vo" min="0" max="1" step=".01" value=".8" style="width:50%">
+  <label class="g" style="margin:10px;padding:10px 16px;border-radius:14px;background:var(--glass)">＋ Songs hinzufügen<input type="file" accept="audio/*" multiple hidden id="imp"></label><div id="ls" style="width:100%"></div>`;
+  async function load(){urls.forEach(URL.revokeObjectURL);urls=[];list=await st('music','readonly',s=>s.getAll());
+    $('#ls').innerHTML='';list.forEach((m,i)=>{urls[i]=URL.createObjectURL(m.blob);const d=document.createElement('div');d.className='trk'+(i==cur?' on':'');d.innerHTML=`<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${m.name.replace(/</g,'&lt;')}</span><span class="x" style="opacity:.5">✕</span>`;
+      d.onclick=()=>play(i);d.querySelector('.x').onclick=async e=>{e.stopPropagation();await st('music','readwrite',s=>s.delete(m.id));if(i==cur){au.pause();cur=-1}load()};$('#ls').appendChild(d)})}
+  function play(i){if(!list.length)return;cur=(i+list.length)%list.length;au.src=urls[cur];au.play();$('#tt').textContent=list[cur].name;$('#cv').textContent='🎶';[...$('#ls').children].forEach((d,j)=>d.classList.toggle('on',j==cur))}
+  $('#imp').onchange=async e=>{for(const f of e.target.files)await st('music','readwrite',s=>s.add({blob:f,name:f.name.replace(/\.[^.]+$/,'')}));load()};
+  $('#pl').onclick=()=>{if(cur<0)play(0);else au.paused?au.play():au.pause()};$('#nx').onclick=()=>play(cur+1);$('#pv').onclick=()=>play(cur-1);
+  au.onplay=()=>$('#pl').textContent='⏸';au.onpause=()=>$('#pl').textContent='▶';au.onended=()=>play(cur+1);
+  au.ontimeupdate=()=>{if(au.duration)$('#sk').value=au.currentTime/au.duration*100};$('#sk').oninput=e=>{if(au.duration)au.currentTime=e.target.value/100*au.duration};
+  $('#vo').oninput=e=>au.volume=e.target.value;au.volume=.8;
+  load();return()=>{au.pause();urls.forEach(URL.revokeObjectURL)};
+};
+
+/* ---------- EINSTELLUNGEN ---------- */
+A.settings=el=>{
+  el.innerHTML=`<div class="set"><b>Hintergrund</b><div class="sw" id="sw" style="flex-wrap:wrap"></div><label style="display:inline-block;margin-top:12px;padding:10px 16px;border-radius:14px;background:var(--glass)">＋ Eigenes Bild hochladen<input type="file" accept="image/*" multiple hidden id="wu"></label><p style="opacity:.55;font-size:12px;margin:8px 0 0">Eigenes Bild lange drücken zum Löschen</p></div>
+  <div class="set"><b>Als App installieren</b><p style="opacity:.8;margin:6px 0 10px">Installiert LucarioNet wie eine echte App auf diesem Gerät.</p><button class="b" id="inst">Installieren</button></div>
+  <div class="set"><b>Über LucarioNet</b><p style="opacity:.8;margin:8px 0 0">Version 2.0 „Aura“<br>Eigenes Handy-Betriebssystem (Web-Shell)<br>Apps: Spiele, Kamera, Galerie, Browser, Musik, LucarioTube, LucarioMail, App Store</p></div>
+  <div class="set"><button class="g" id="fs">Vollbild</button> <button class="g" id="rb">Neustart</button></div>`;
+  async function sws(){$('#sw').innerHTML='';
+    walls.forEach((w,i)=>{const d=document.createElement('div');d.style.background=`linear-gradient(135deg,${w[0]},${w[1]},${w[2]})`;d.onclick=()=>setWall(i);$('#sw').appendChild(d)});
+    const cw=await st('walls','readonly',s=>s.getAll());
+    cw.forEach(w=>{const d=document.createElement('div');d.style.cssText=`background:url(${URL.createObjectURL(w.blob)}) center/cover`;d.onclick=()=>setCustom(w.id);d.oncontextmenu=async e=>{e.preventDefault();await st('walls','readwrite',s=>s.delete(w.id));sws()};$('#sw').appendChild(d)})}
+  sws();
+  $('#wu').onchange=async e=>{for(const f of e.target.files)await st('walls','readwrite',s=>s.add({blob:f}));sws()};
+  $('#inst').onclick=async()=>{if(window.dp){window.dp.prompt()}else alert('Öffne LucarioNet in Chrome über http://localhost:8080 und nutze Menü ⋮ → „App installieren“. Läuft es bereits als App, ist alles erledigt.')};
+  $('#fs').onclick=()=>document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();$('#rb').onclick=()=>location.reload();
+};
+
+/* ---------- LUCARIOTUBE ---------- */
+A.tube=el=>{
+  const urls=[];const rev=()=>{urls.forEach(URL.revokeObjectURL);urls.length=0};
+  const U=b=>{const u=URL.createObjectURL(b);urls.push(u);return u};
+  const fmt=d=>new Date(d).toLocaleDateString('de-DE');
+  const thumb=f=>new Promise(r=>{const v=document.createElement('video');const u=URL.createObjectURL(f);v.src=u;v.muted=true;v.playsInline=true;v.preload='metadata';
+    v.onloadedmetadata=()=>{v.currentTime=Math.min(1,(v.duration||2)/2)};
+    v.onseeked=()=>{const c=document.createElement('canvas');c.width=480;c.height=270;const k=Math.max(480/v.videoWidth,270/v.videoHeight),w=v.videoWidth*k,h=v.videoHeight*k;c.getContext('2d').drawImage(v,(480-w)/2,(270-h)/2,w,h);c.toBlob(b=>{URL.revokeObjectURL(u);r(b)},'image/jpeg',.8)};
+    v.onerror=()=>{URL.revokeObjectURL(u);r(null)};setTimeout(()=>r(null),8000)});
+  async function list(){rev();const all=await st('videos','readonly',s=>s.getAll());all.sort((a,b)=>b.date-a.date);
+    el.innerHTML=`<div style="display:flex;width:100%;padding:10px 12px;gap:8px;align-items:center"><div style="font-weight:800;font-size:19px;flex:1"><span style="color:#ff3b5c">▶</span> LucarioTube</div><button class="b" id="up">⬆ Hochladen</button></div><div class="vgrid" id="vg"></div>`;
+    $('#up').onclick=upload;const g=$('#vg');
+    if(!all.length)g.innerHTML='<p style="text-align:center;opacity:.6;padding:40px 10px">Noch keine Videos. Lade dein erstes hoch!</p>';
+    all.forEach(v=>{const d=document.createElement('div');d.className='vc';d.innerHTML=`<img class="th" ${v.thumb?`src="${U(v.thumb)}"`:''}><div class="meta"><b>${esc(v.title)}</b><div style="opacity:.6;font-size:13px">${v.views} Aufrufe · ${fmt(v.date)} · 👍 ${v.likes}</div></div>`;d.onclick=()=>watch(v.id);g.appendChild(d)})}
+  async function watch(id){const v=await st('videos','readonly',s=>s.get(id));v.views++;await st('videos','readwrite',s=>s.put(v));rev();
+    el.innerHTML=`<button class="g" id="bk" style="margin:8px;align-self:flex-start">‹ Videos</button><video class="pl" controls autoplay playsinline src="${U(v.blob)}"></video><div style="width:100%;padding:12px 16px"><div style="font-size:18px;font-weight:700">${esc(v.title)}</div><div style="opacity:.6;font-size:13px;margin:4px 0">${v.views} Aufrufe · ${fmt(v.date)}</div><div style="display:flex;gap:8px;margin:10px 0"><button class="g" id="lk">👍 ${v.likes}</button><a class="g" style="text-decoration:none;color:#fff;padding:11px 16px;border-radius:14px;background:var(--glass)" download="${esc(v.title)}" href="${U(v.blob)}">⬇ Laden</a><button class="g" id="dl" style="color:#ff6b6b">Löschen</button></div><p style="opacity:.85;white-space:pre-wrap">${esc(v.desc||'')}</p><b>Kommentare (<span id="cn">${v.comments.length}</span>)</b><div style="display:flex;gap:6px;margin:8px 0"><input type="text" id="ci" placeholder="Kommentar hinzufügen…"><button class="b" id="cs">Senden</button></div><div id="cl"></div></div>`;
+    const cm=()=>{$('#cn').textContent=v.comments.length;$('#cl').innerHTML=v.comments.slice().reverse().map(c=>`<div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><div style="opacity:.5;font-size:12px">Du · ${fmt(c.d)}</div>${esc(c.t)}</div>`).join('')};cm();
+    $('#bk').onclick=list;
+    $('#lk').onclick=async()=>{v.likes++;$('#lk').textContent='👍 '+v.likes;await st('videos','readwrite',s=>s.put(v))};
+    $('#cs').onclick=async()=>{const t=$('#ci').value.trim();if(!t)return;v.comments.push({t,d:Date.now()});$('#ci').value='';cm();await st('videos','readwrite',s=>s.put(v))};
+    $('#dl').onclick=async()=>{if(confirm('Video löschen?')){await st('videos','readwrite',s=>s.delete(v.id));list()}}}
+  function upload(){rev();
+    el.innerHTML=`<button class="g" id="bk" style="margin:8px;align-self:flex-start">‹ Abbrechen</button><div style="width:100%;padding:8px 16px"><b style="font-size:18px">Video hochladen</b><label class="g" style="display:block;margin:10px 0;padding:14px;border-radius:14px;background:var(--glass);text-align:center" id="fl">📁 Videodatei wählen<input type="file" accept="video/*" hidden id="vf"></label><input class="f" id="ti" placeholder="Titel"><textarea id="de" rows="3" placeholder="Beschreibung"></textarea><button class="b" id="pub" style="width:100%;margin-top:8px">Veröffentlichen</button><p id="ms" style="opacity:.7"></p></div>`;
+    let f;$('#bk').onclick=list;
+    $('#vf').onchange=e=>{f=e.target.files[0];if(f){$('#fl').firstChild.textContent='🎬 '+f.name;if(!$('#ti').value)$('#ti').value=f.name.replace(/\.[^.]+$/,'')}};
+    $('#pub').onclick=async()=>{if(!f){$('#ms').textContent='Bitte zuerst eine Videodatei wählen.';return}$('#ms').textContent='Wird veröffentlicht…';
+      const th=await thumb(f);await st('videos','readwrite',s=>s.add({blob:f,thumb:th,title:$('#ti').value.trim()||f.name,desc:$('#de').value,date:Date.now(),views:0,likes:0,comments:[]}));list()}}
+  list();return rev;
+};
+
+/* ---------- LUCARIOMAIL ---------- */
+A.mail=el=>{
+  const me=()=>(localStorage.mailUser||'du')+'@lucario.net';
+  const NM={inbox:'Posteingang',sent:'Gesendet',draft:'Entwürfe',trash:'Papierkorb'};let folder='inbox';
+  const getAll=()=>st('mails','readonly',s=>s.getAll());const add=m=>st('mails','readwrite',s=>s.add(m));
+  const fmt=d=>new Date(d).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+  async function list(){
+    if(!localStorage.mailInit){localStorage.mailInit=1;await add({folder:'inbox',from:'team@lucario.net',to:me(),subject:'Willkommen bei LucarioMail 👋',body:'Hallo!\n\nDas ist dein eigenes Postfach auf LucarioNet.\nDeine Adresse: '+me()+'\n\nNachrichten an dich selbst landen im Posteingang. Für echte externe E-Mails nutze „Extern senden“ – das öffnet deine E-Mail-App.\n\nViel Spaß!\nDas LucarioNet-Team',date:Date.now(),read:0})}
+    const all=(await getAll()).filter(m=>m.folder==folder).sort((a,b)=>b.date-a.date);
+    el.innerHTML=`<div style="display:flex;align-items:center;gap:8px;width:100%;padding:10px 12px"><div style="flex:1"><div style="font-weight:800;font-size:19px">✉ LucarioMail</div><div style="opacity:.6;font-size:12px">${esc(me())}</div></div><button class="g" id="ac">👤</button><button class="b" id="nw">＋ Neu</button></div><div class="tabs" id="tb"></div><div style="width:100%" id="ml"></div>`;
+    for(const k in NM){const b=document.createElement('button');b.className=k==folder?'b':'g';b.textContent=NM[k];b.onclick=()=>{folder=k;list()};$('#tb').appendChild(b)}
+    $('#nw').onclick=()=>compose();
+    $('#ac').onclick=()=>{const n=prompt('Benutzername für deine Adresse:',localStorage.mailUser||'du');if(n&&/^[a-z0-9._-]{2,20}$/i.test(n)){localStorage.mailUser=n.toLowerCase();list()}};
+    if(!all.length)$('#ml').innerHTML='<p style="text-align:center;opacity:.6;padding:40px">Keine Nachrichten</p>';
+    all.forEach(m=>{const d=document.createElement('div');d.className='mrow';const out=folder=='sent'||folder=='draft';const who=out?m.to||'(kein Empfänger)':m.from;
+      d.innerHTML=`<div class="av">${esc((who[0]||'?').toUpperCase())}</div><div style="flex:1;min-width:0;${m.read||folder!='inbox'?'':'font-weight:700'}"><div style="display:flex;justify-content:space-between;gap:6px"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${out?'An: ':''}${esc(who)}</span><span style="opacity:.5;font-size:12px;font-weight:400">${fmt(m.date)}</span></div><div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(m.subject||'(kein Betreff)')}</div><div style="opacity:.5;font-size:13px;font-weight:400;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(m.body.slice(0,60))}</div></div>`;
+      d.onclick=()=>folder=='draft'?compose(m):read(m);$('#ml').appendChild(d)})}
+  async function read(m){if(!m.read){m.read=1;await st('mails','readwrite',s=>s.put(m))}
+    el.innerHTML=`<button class="g" id="bk" style="margin:8px;align-self:flex-start">‹ ${NM[m.folder]}</button><div style="width:100%;padding:8px 18px"><div style="font-size:20px;font-weight:700">${esc(m.subject||'(kein Betreff)')}</div><div style="opacity:.65;font-size:13px;margin:6px 0">Von: ${esc(m.from)}<br>An: ${esc(m.to)}<br>${fmt(m.date)}</div><hr style="border:0;border-top:1px solid rgba(255,255,255,.1)"><p style="white-space:pre-wrap;line-height:1.5">${esc(m.body)}</p><div style="display:flex;gap:8px"><button class="b" id="re">↩ Antworten</button><button class="g" id="dl" style="color:#ff6b6b">${m.folder=='trash'?'Endgültig löschen':'Löschen'}</button></div></div>`;
+    $('#bk').onclick=list;
+    $('#re').onclick=()=>compose({to:m.folder=='inbox'?m.from:m.to,subject:(/^Re:/.test(m.subject)?'':'Re: ')+m.subject,body:'\n\n— '+m.from+' schrieb:\n'+m.body.split('\n').map(l=>'> '+l).join('\n')});
+    $('#dl').onclick=async()=>{if(m.folder=='trash')await st('mails','readwrite',s=>s.delete(m.id));else{m.folder='trash';await st('mails','readwrite',s=>s.put(m))}list()}}
+  function compose(pre={}){
+    el.innerHTML=`<button class="g" id="bk" style="margin:8px;align-self:flex-start">‹ Abbrechen</button><div style="width:100%;padding:8px 16px"><b style="font-size:18px">Neue Nachricht</b><input class="f" id="to" placeholder="An (z. B. ${esc(me())})" value="${esc(pre.to||'')}"><input class="f" id="su" placeholder="Betreff" value="${esc(pre.subject||'')}"><textarea id="bo" rows="9" placeholder="Nachricht…">${esc(pre.body||'')}</textarea><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px"><button class="b" id="sd">Senden</button><button class="g" id="dr">Entwurf</button><button class="g" id="ex">📤 Extern senden</button></div><p id="ms" style="opacity:.7"></p></div>`;
+    const rec=f=>({folder:f,from:me(),to:$('#to').value.trim(),subject:$('#su').value,body:$('#bo').value,date:Date.now(),read:1});
+    const rm=async()=>{if(pre.id){await st('mails','readwrite',s=>s.delete(pre.id));pre={...pre,id:undefined}}};
+    $('#bk').onclick=list;
+    $('#sd').onclick=async()=>{const r=rec('sent');if(!r.to){$('#ms').textContent='Bitte einen Empfänger eintragen.';return}await rm();await add(r);if(r.to.toLowerCase()==me())await add({...r,folder:'inbox',read:0});folder='sent';list()};
+    $('#dr').onclick=async()=>{await rm();await add(rec('draft'));folder='draft';list()};
+    $('#ex').onclick=()=>{const r=rec('sent');location.href='mailto:'+r.to+'?subject='+encodeURIComponent(r.subject)+'&body='+encodeURIComponent(r.body)}}
+  list();
+};
+
+/* ---------- APP STORE ---------- */
+A.store=el=>{
+  function draw(){el.innerHTML=`<div style="width:100%;padding:14px 16px;font-size:21px;font-weight:800">🛍 LucarioStore</div><div style="width:100%;padding:0 16px 8px;opacity:.65;font-size:13px">Kostenlose Spiele für dein LucarioNet</div><div style="width:100%" id="sl"></div>`;
+    SG.forEach(g=>{const on=inst.includes(g.id);const d=document.createElement('div');d.className='sc';
+      d.innerHTML=`<div class="ic" style="background:${g.bg}">${g.svg}</div><div style="flex:1;min-width:0"><b>${g.name}</b><div style="opacity:.65;font-size:13px">${g.desc}</div></div><button class="${on?'g':'b'}" id="a">${on?'Öffnen':'Laden'}</button>${on?'<button class="g" id="x" style="color:#ff6b6b">✕</button>':''}`;
+      d.querySelector('#a').onclick=()=>{if(on)openApp(g.id);else{inst.push(g.id);localStorage.inst=JSON.stringify(inst);renderHome();draw()}};
+      const x=d.querySelector('#x');if(x)x.onclick=()=>{inst=inst.filter(i=>i!=g.id);localStorage.inst=JSON.stringify(inst);renderHome();draw()};
+      $('#sl').appendChild(d)})}
+  draw();
+};
+
+/* ---------- STORE-SPIELE ---------- */
+A.tetris=el=>{
+  const W=10,H=20,C=Math.max(14,Math.floor(Math.min(innerHeight-300,440)/20));const c=document.createElement('canvas');c.width=W*C;c.height=H*C;
+  el.innerHTML=`<div class="gh"><span id="sc">0</span><span>Rekord: ${hi('tetris')}</span></div>`;el.appendChild(c);
+  el.insertAdjacentHTML('beforeend',`<div style="display:flex;gap:8px;margin:10px"><button class="g" data-k="l">◀</button><button class="g" data-k="o">⟳</button><button class="g" data-k="r">▶</button><button class="g" data-k="d">▼</button><button class="g" data-k="h">⤓</button><button class="b" id="rs">↺</button></div>`);
+  const x=c.getContext('2d');
+  const SH=[[[1,1,1,1]],[[1,1],[1,1]],[[0,1,0],[1,1,1]],[[1,0,0],[1,1,1]],[[0,0,1],[1,1,1]],[[0,1,1],[1,1,0]],[[1,1,0],[0,1,1]]];
+  const CO=['#4cc9ff','#ffd32a','#a29bfe','#0984e3','#e67e22','#2ecc71','#ff6b6b'];
+  let bd,p,sc,over,iv;
+  const hit=(s,px,py)=>s.some((r,j)=>r.some((v,i)=>v&&(px+i<0||px+i>=W||py+j>=H||(py+j>=0&&bd[py+j][px+i]))));
+  const nw=()=>{const i=Math.random()*7|0;p={s:SH[i],c:CO[i],x:3,y:0};if(hit(p.s,p.x,p.y))over=true};
+  const rot=s=>s[0].map((_,i)=>s.map(r=>r[i]).reverse());
+  const lock=()=>{p.s.forEach((r,j)=>r.forEach((v,i)=>{if(v&&p.y+j>=0)bd[p.y+j][p.x+i]=p.c}));let n=0;bd=bd.filter(r=>{if(r.every(v=>v)){n++;return false}return true});while(bd.length<H)bd.unshift(Array(W).fill(0));sc+=[0,100,300,500,800][n];$('#sc').textContent=sc;hi('tetris',sc);nw()};
+  const mv=(dx,dy)=>{if(over)return;if(!hit(p.s,p.x+dx,p.y+dy)){p.x+=dx;p.y+=dy}else if(dy)lock();draw()};
+  const act=k=>{if(over)return;if(k=='l')mv(-1,0);else if(k=='r')mv(1,0);else if(k=='d')mv(0,1);else if(k=='o'){const r=rot(p.s);if(!hit(r,p.x,p.y)){p.s=r;draw()}}else if(k=='h'){while(!hit(p.s,p.x,p.y+1))p.y++;lock();draw()}};
+  function draw(){x.fillStyle='#0a0d18';x.fillRect(0,0,W*C,H*C);
+    bd.forEach((r,j)=>r.forEach((v,i)=>{if(v){x.fillStyle=v;x.fillRect(i*C+1,j*C+1,C-2,C-2)}}));
+    p.s.forEach((r,j)=>r.forEach((v,i)=>{if(v){x.fillStyle=p.c;x.fillRect((p.x+i)*C+1,(p.y+j)*C+1,C-2,C-2)}}));
+    if(over){x.fillStyle='rgba(0,0,0,.6)';x.fillRect(0,0,W*C,H*C);x.fillStyle='#fff';x.font='bold 22px sans-serif';x.textAlign='center';x.fillText('Game Over',W*C/2,H*C/2)}}
+  const init=()=>{bd=Array.from({length:H},()=>Array(W).fill(0));sc=0;over=false;$('#sc').textContent=0;nw();draw()};
+  el.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>act(b.dataset.k));$('#rs').onclick=init;
+  swipe(c,k=>act({l:'l',r:'r',d:'d',u:'o'}[k]));
+  const kh=e=>{const m={ArrowLeft:'l',ArrowRight:'r',ArrowDown:'d',ArrowUp:'o',' ':'h'}[e.key];if(m)act(m)};addEventListener('keydown',kh);
+  init();iv=setInterval(()=>mv(0,1),550);return()=>{clearInterval(iv);removeEventListener('keydown',kh)};
+};
+
+A.mines=el=>{
+  const N=9,M=10;let g,flag,over,first;
+  el.innerHTML=`<div class="gh"><span id="ms"></span><button class="g" id="fl">⛏ Aufdecken</button><button class="g" id="rs">↺</button></div><div id="mg" style="display:grid;grid-template-columns:repeat(9,1fr);gap:3px;width:min(94vw,380px);margin:10px"></div>`;
+  const nb=i=>{const r=i/N|0,c=i%N,o=[];for(let a=-1;a<=1;a++)for(let d=-1;d<=1;d++){if(!a&&!d)continue;const rr=r+a,cc=c+d;if(rr>=0&&rr<N&&cc>=0&&cc<N)o.push(rr*N+cc)}return o};
+  const plant=s=>{let k=0;while(k<M){const i=Math.random()*N*N|0;if(i==s||nb(s).includes(i)||g[i].m)continue;g[i].m=1;k++}g.forEach((c,i)=>c.n=nb(i).filter(j=>g[j].m).length)};
+  const open=i=>{const c=g[i];if(c.o||c.f)return;c.o=1;if(c.m){over=true;return}if(!c.n)nb(i).forEach(open)};
+  const won=()=>!first&&g.every(c=>c.m||c.o);
+  function draw(){$('#ms').textContent='💣 '+(M-g.filter(c=>c.f).length)+(over?' – verloren':won()?' – gewonnen! 🎉':'');
+    $('#mg').innerHTML=g.map((c,i)=>{let t='',bg='#2a3250';if(c.o||(over&&c.m)){bg=c.m?'#e74c3c':'#161b2e';t=c.m?'💣':(c.n||'')}else if(c.f)t='🚩';return `<div data-i="${i}" style="aspect-ratio:1;border-radius:8px;background:${bg};display:grid;place-items:center;font-weight:800;font-size:17px">${t}</div>`}).join('');
+    $('#mg').querySelectorAll('div').forEach(d=>d.onclick=()=>{const i=+d.dataset.i;if(over||won())return;if(flag){if(!g[i].o)g[i].f^=1}else{if(first){plant(i);first=false}open(i)}draw()})}
+  const init=()=>{g=Array.from({length:N*N},()=>({m:0,o:0,f:0,n:0}));flag=false;over=false;first=true;$('#fl').textContent='⛏ Aufdecken';draw()};
+  $('#fl').onclick=()=>{flag=!flag;$('#fl').textContent=flag?'🚩 Flaggen':'⛏ Aufdecken'};$('#rs').onclick=init;init();
+};
+
+A.breakout=el=>{
+  const W=300,H=Math.min(400,innerHeight-190);const c=document.createElement('canvas');c.width=W;c.height=H;
+  el.innerHTML=`<div class="gh"><span id="sc">0</span><span>Rekord: ${hi('breakout')}</span></div>`;el.appendChild(c);
+  const x=c.getContext('2d');let p,bx,by,vx,vy,br,sc,over,raf;
+  const init=()=>{p=W/2;bx=W/2;by=H-60;vx=2.6;vy=-3.4;sc=0;over=false;br=[];const col=['#ff6b6b','#ffa94d','#ffd43b','#69db7c','#4dabf7'];for(let r=0;r<5;r++)for(let k=0;k<7;k++)br.push({x:k*42+4,y:r*18+30,a:1,c:col[r]});$('#sc').textContent=0};
+  const pos=e=>{const r=c.getBoundingClientRect();p=((e.touches?e.touches[0].clientX:e.clientX)-r.left)*W/r.width};
+  c.addEventListener('touchmove',pos,{passive:true});c.addEventListener('touchstart',e=>{pos(e);if(over)init()},{passive:true});c.addEventListener('mousemove',pos);c.addEventListener('mousedown',()=>{if(over)init()});
+  function loop(){if(!over){bx+=vx;by+=vy;if(bx<5||bx>W-5)vx*=-1;if(by<5)vy=Math.abs(vy);
+    if(by>H-24&&by<H-12&&vy>0&&Math.abs(bx-p)<34){vy=-Math.abs(vy);vx+=(bx-p)/12}
+    br.forEach(b=>{if(b.a&&bx>b.x&&bx<b.x+40&&by>b.y&&by<b.y+14){b.a=0;vy*=-1;sc++;$('#sc').textContent=sc;hi('breakout',sc)}});
+    if(br.every(b=>!b.a)){const s=sc;init();sc=s;vy*=1.1}
+    if(by>H)over=true}
+    x.fillStyle='#0a0d18';x.fillRect(0,0,W,H);br.forEach(b=>{if(b.a){x.fillStyle=b.c;x.fillRect(b.x,b.y,40,14)}});
+    x.fillStyle='#4cc9ff';x.fillRect(p-30,H-24,60,10);x.fillStyle='#fff';x.beginPath();x.arc(bx,by,5,0,7);x.fill();
+    if(over){x.fillStyle='rgba(0,0,0,.6)';x.fillRect(0,0,W,H);x.fillStyle='#fff';x.font='bold 22px sans-serif';x.textAlign='center';x.fillText('Game Over – tippen',W/2,H/2);x.textAlign='left'}
+    raf=requestAnimationFrame(loop)}
+  init();loop();return()=>cancelAnimationFrame(raf);
+};
+
+A.ttt=el=>{
+  let b,over;
+  el.innerHTML=`<div class="gh"><span id="ms">Du bist X</span><button class="g" id="rs">↺</button></div><div id="bd" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:min(80vw,300px);margin:14px"></div><div class="gh"><span id="st"></span></div>`;
+  const L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  const win=b=>{for(const l of L)if(b[l[0]]&&b[l[0]]==b[l[1]]&&b[l[0]]==b[l[2]])return b[l[0]];return b.every(v=>v)?'-':null};
+  const mm=(b,t)=>{const w=win(b);if(w=='O')return{s:1};if(w=='X')return{s:-1};if(w=='-')return{s:0};let best={s:t=='O'?-2:2};b.forEach((v,i)=>{if(v)return;b[i]=t;const r=mm(b,t=='O'?'X':'O');b[i]=0;if(t=='O'?r.s>best.s:r.s<best.s)best={s:r.s,m:i}});return best};
+  const ai=()=>{let m;if(Math.random()<.25){const e=[];b.forEach((v,i)=>v||e.push(i));m=e[Math.random()*e.length|0]}else m=mm(b,'O').m;b[m]='O'};
+  function draw(){$('#bd').innerHTML=b.map((v,i)=>`<div data-i="${i}" style="aspect-ratio:1;border-radius:16px;background:#2a3250;display:grid;place-items:center;font-size:44px;font-weight:800;color:${v=='X'?'#4cc9ff':'#ff6b6b'}">${v||''}</div>`).join('');
+    const w=win(b);$('#st').textContent=w=='X'?'Du gewinnst! 🎉':w=='O'?'KI gewinnt':w=='-'?'Unentschieden':'';over=!!w;
+    $('#bd').querySelectorAll('div').forEach(d=>d.onclick=()=>{const i=+d.dataset.i;if(over||b[i])return;b[i]='X';if(!win(b))ai();draw()})}
+  const init=()=>{b=Array(9).fill(0);over=false;draw()};$('#rs').onclick=init;init();
+};
+
+A.react=el=>{
+  el.innerHTML=`<div class="gh"><span>Bestzeit: <b id="bt">${localStorage.react||'-'}</b> ms</span></div><div id="bx" style="width:min(90vw,380px);height:300px;border-radius:24px;background:#2a3250;display:grid;place-items:center;font-size:22px;font-weight:700;text-align:center;margin:20px;padding:20px">Tippen zum Starten</div>`;
+  let state=0,t0,to;const bx=$('#bx');
+  bx.onclick=()=>{
+    if(state==0){state=1;bx.style.background='#c0392b';bx.textContent='Warte auf Grün…';to=setTimeout(()=>{state=2;t0=performance.now();bx.style.background='#27ae60';bx.textContent='JETZT!'},1000+Math.random()*3000)}
+    else if(state==1){clearTimeout(to);state=0;bx.style.background='#2a3250';bx.textContent='Zu früh! Nochmal tippen'}
+    else{const t=Math.round(performance.now()-t0);state=0;bx.style.background='#2a3250';bx.textContent=t+' ms – nochmal tippen';if(!localStorage.react||t<+localStorage.react){localStorage.react=t;$('#bt').textContent=t}}};
+  return()=>clearTimeout(to);
+};
+
+/* ---------- PWA ---------- */
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();window.dp=e});
+if('serviceWorker' in navigator&&location.protocol!='file:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+
+/* ---------- Boot ---------- */
+setTimeout(()=>{$('#boot').style.opacity=0;setTimeout(()=>$('#boot').remove(),600)},1800);
+</script>
+</body>
+</html>
