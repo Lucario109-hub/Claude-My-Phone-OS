@@ -1,36 +1,50 @@
-# LucarioNet 2.0 – Raspberry-Pi-Paket
+# LucarioNet 5.0
 
-## Inhalt
-- `index.html` – das komplette System (alle Apps)
-- `manifest.webmanifest`, `sw.js`, `icon*.png/svg` – machen LucarioNet installierbar und offline-fähig
-- `install.sh` – richtet alles auf dem Raspberry Pi ein
+Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierbar als PWA).
 
-## Auf den Raspberry Pi packen
-1. Raspberry Pi OS (mit Desktop) installieren und mit WLAN verbinden.
-2. Den Ordner auf den Pi kopieren (USB-Stick oder `scp -r lucarionet-pi pi@<IP>:~`).
-3. Im Terminal:
-   ```
-   cd lucarionet-pi
-   bash install.sh
-   sudo reboot
-   ```
-4. Nach dem Neustart startet LucarioNet automatisch im Vollbild.
+## Was drin ist
+- Start: Hell/Dunkel/Auto-Modus, Akzentfarben, eigene Hintergründe, Schnelleinstellungen (Statusleiste antippen), PIN-Sperre, Suche
+- Messenger mit eigener Telefonnummer (Ende-zu-Ende verschlüsselt, Nummern nur einmal vergeben)
+- E-Mail mit Konto + Passwort, Namen nur einmal vergeben
+- Telefon (simulierte Anrufe), Kamera, Galerie, Browser, Musik, LucarioTube (eigene Uploads)
+- Einstellungen: Konto, Verknüpfte Apps (WhatsApp, Telegram, Signal, Instagram, TikTok, Snapchat, Discord, X, Facebook, YouTube, Spotify, Gmail), Anzeige, Hintergrund, Ton, Sicherheit, Datenschutz, Speicher, Apps, Info
+- Rechner, Notizen, Uhr, Kalender, Dateien, System-Manager
+- App Store: Snake, 2048, Memory, Pong, Flappy, Tetris, Minesweeper, Breakout, Tic-Tac-Toe, Reaktion, 4 Gewinnt, Simon, Whack, Wetter, Aufgaben, Zeichnen, Recorder, Taschenlampe, Würfel, Einheiten
 
-## Als App installieren (ohne Pi-Skript)
-- Starte einen Webserver im Ordner: `python3 -m http.server 8080`
-- Öffne in Chrome `http://localhost:8080` → Menü ⋮ → **App installieren**
-  (oder in LucarioNet: Einstellungen → Installieren).
-- Wichtig: Installation und Kamera funktionieren nur über `localhost` oder HTTPS, nicht über `file://`.
+## Neu in 5.0
+- Startbildschirm: Uhrzeit, WLAN-Chip, Akku, Notruf; Entsperren per Passwort oder PIN (Fehlversuch-Sperre bleibt auch nach Neustart)
+- Einrichtungs-Assistent beim ersten Start (WLAN, Design, Sperre, Konto)
+- WLAN-Menü: Status, Internet-Test; auf dem Raspberry Pi echte Netzwerksuche, Verbinden, Hotspot (lucarionet-server.py + NetworkManager)
+- LucarioBot: Assistent (offline-Befehle) + optional KI-Server (z. B. Ollama auf dem Pi)
+- Support: Tickets, automatische Antworten, E-Mail an support@lucario.net, Sofort-Hilfe bei gestohlenen Daten (Passwort ändern, Verknüpfungen trennen, Konto löschen, Gerät zurücksetzen)
+- Fehler behoben: doppelte Element-IDs (Anmelden-Button, Aufgaben, Rechner-Anzeige), Spiele-Timer laufen nach dem Schließen nicht weiter
 
-## Apps
-Spiele (Snake, 2048, Memory, Pong, Lucario Jump), Kamera, Galerie, Browser, Musik,
-LucarioTube (eigene Videos hochladen, liken, kommentieren), LucarioMail (eigenes Postfach),
-App Store (Tetris, Minesweeper, Breakout, Tic-Tac-Toe, Reaktionstest), eigene Hintergründe.
+## Neu in 6.0
+- **Lucario Arena**: Ballerspiel in der App. Singleplayer-Wellen, Multiplayer (Online-Match als Simulation, Freundesduell an einem Gerät), Quests, Coins und Diamanten, Kisten (100 Coins / 100 Diamanten), Skin-Verkauf, Mythic-Fähigkeiten. Spielstand im Gerätespeicher.
+- **Terminal**: Shell mit help, ls, cat, ps, calc, theme, open, neofetch u. a. Befehl `arena` startet das Spiel, `arena sim 200` zeigt die Balancing-Simulation.
+- Tastatur am PC: Tasten wählen die gleichnamige Schaltfläche (z. B. 1, z, d, m).
 
-## Gut zu wissen
-- Alles (Videos, Fotos, Mails, Musik, Hintergründe) liegt **lokal** im Browser-Speicher des Geräts
-  (IndexedDB). Es gibt keinen Server und keine Synchronisation zwischen Geräten.
-- LucarioTube und LucarioMail sind lokale Apps. Mails an andere Adressen werden über „Extern senden“
-  in deiner E-Mail-App geöffnet. Echter E-Mail-Versand bräuchte einen Mailserver.
-- Browser-Daten nicht löschen, sonst sind Uploads weg.
-- Updates: neue `index.html` kopieren und in `sw.js` die Version (`lucarionet-v2` → `v3`) erhöhen.
+## Neu in 6.1
+- **Fuß Knabber Simulator**: Klicker-Spiel mit Fruchtschnitten (acht Sorten), Fuß Knabber Münzen über die Zeit, Level, Belohnung alle 5 Minuten, Upgrades, Prestige. Klickt man eine Fruchtschnitte an, gibt es einen Jumpscare (in den Spiel-Einstellungen auf „Manchmal“ oder „Aus“ stellbar; beim ersten Start kommt ein Warnhinweis).
+- Das Spiel ist **nicht im App Store**. Installation: Terminal-App öffnen und `füße knabbern` eingeben.
+- Fehler behoben: Warnung des Browsers, weil der Browser-iframe zugleich Skripte und „same-origin“ erlaubte (Sandbox-Ausbruch); Sperrbildschirm, Apps und Einstellungsseiten laufen ohne Konsolenfehler (41 Apps geprüft).
+
+## Installieren auf dem Handy
+Die Dateien auf einen https-Host legen (z. B. Netlify Drop oder GitHub Pages), die Adresse im Handy-Browser öffnen, "Zur Startseite hinzufügen" / "App installieren".
+
+## Raspberry Pi
+`bash install.sh` (Kiosk-Autostart mit Chromium, eigener Server mit WLAN-Schnittstelle).
+
+## Ehrliche Grenzen
+- Keine echte Mobilfunk-Verbindung: Anrufe sind simuliert ("Echt anrufen" nutzt tel:).
+- Telefon-Bestätigungscode ist eine Demo (kein SMS-Dienst).
+- Eindeutige Namen/Nummern gelten pro Gerät (kein zentraler Server).
+- Verknüpfte Apps öffnen nur Deep-Links, keine echte API-Anbindung.
+- Kamera, Installation und Verschlüsselung brauchen https oder localhost.
+- Wetter braucht Internet.
+- WLAN suchen/verbinden geht nur auf dem Pi (Browser dürfen das nicht). Auf dem Handy zeigt das Menü Status und Test.
+- Die Gerätesperre ist eine Software-Sperre der Oberfläche; sie schützt nicht gegen jemanden mit Zugriff auf die Gerätedateien. Konto-Inhalte sind separat verschlüsselt.
+- Es gibt keinen Server und kein Support-Personal: Tickets bekommen automatische Antworten und liegen auf dem Gerät. Eine echte Support-Adresse trägst du unter Einstellungen → Support ein.
+- LucarioBot ist offline regelbasiert; freie Antworten gibt es nur mit eigenem KI-Server. Ein API-Schlüssel liegt unverschlüsselt im lokalen Speicher.
+- Nach einem Neustart musst du dich bei der LucarioID neu anmelden.
+- Lucario Arena: Der Online-Modus ist eine Simulation (Computer-Gegner). Echtes Online-Spielen bräuchte einen Spiele-Server.

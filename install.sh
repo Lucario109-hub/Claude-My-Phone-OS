@@ -8,7 +8,10 @@ PORT=8080
 
 echo "==> Installiere LucarioNet nach $DIR"
 mkdir -p "$DIR"
-cp -f index.html manifest.webmanifest sw.js icon.svg icon-192.png icon-512.png "$DIR/"
+cp -f index.html manifest.webmanifest sw.js icon.svg icon-192.png icon-512.png lucarionet-server.py "$DIR/"
+
+echo "==> Prüfe NetworkManager (für das WLAN-Menü)"
+command -v nmcli >/dev/null 2>&1 || sudo apt-get install -y network-manager || true
 
 echo "==> Prüfe Chromium"
 if command -v chromium >/dev/null 2>&1; then
@@ -30,7 +33,7 @@ After=network.target
 [Service]
 User=$USER
 WorkingDirectory=$DIR
-ExecStart=/usr/bin/python3 -m http.server $PORT --bind 127.0.0.1
+ExecStart=/usr/bin/python3 $DIR/lucarionet-server.py --port $PORT --bind 127.0.0.1
 Restart=always
 
 [Install]
