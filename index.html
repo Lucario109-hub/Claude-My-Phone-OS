@@ -191,6 +191,66 @@ select.f{appearance:auto}
 .fkjs{position:absolute;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:fkflash 1.8s steps(1) both;overflow:hidden}
 .fkms{width:92%;max-width:380px;animation:fkjump .28s cubic-bezier(.2,2,.4,1) both,fkshake .12s linear .3s 12 alternate}.fkjt{font:900 30px Impact,system-ui,sans-serif;color:#e00018;text-align:center;text-shadow:3px 3px 0 #200,-2px 0 #0ff;margin-top:6px;animation:fkshake .18s linear 0s 9 alternate}.fkjd{color:#ffb3b8;font-size:13px;text-align:center;margin-top:8px}
 @keyframes fkjump{0%{transform:scale(.05)}100%{transform:scale(1)}}@keyframes fkshake{0%{transform:translate(-5px,3px) rotate(-1.2deg)}100%{transform:translate(5px,-3px) rotate(1.2deg)}}@keyframes fkflash{0%{background:#fff}12%{background:#a00}30%{background:#000}100%{background:#000}}
+/* ================= 6.2: Lucario Arena (grafisch) ================= */
+.ag{position:relative;width:100%;height:100%;min-height:520px;background:#0b0f1e;color:#eaf0ff;font-family:system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.ag *{box-sizing:border-box}
+.ag .gsc{position:absolute;inset:0;display:flex;flex-direction:column;overflow-y:auto;background:radial-gradient(120% 70% at 50% -10%,#2b2f7a 0,#0b0f1e 60%)}
+.ag .hd{display:flex;align-items:center;gap:8px;padding:10px 12px;position:sticky;top:0;z-index:3;background:rgba(11,15,30,.92);backdrop-filter:blur(6px)}
+.ag .hd .gt{flex:1;font-weight:800;font-size:17px;letter-spacing:.3px}
+.ag .bk{background:#222a55;border:0;color:#fff;border-radius:10px;padding:7px 12px;font-size:15px;cursor:pointer}
+.ag .cur{display:flex;gap:6px}.ag .cur span{background:#1a2046;border-radius:99px;padding:5px 10px;font-weight:700;font-size:13px}
+.ag .logo{text-align:center;margin:14px 0 4px;font-size:30px;font-weight:900;letter-spacing:2px;background:linear-gradient(90deg,#6ee7ff,#a78bfa,#ff7ac6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ag .gsub{text-align:center;opacity:.65;font-size:12px;margin-bottom:10px}
+.ag .lo{display:flex;gap:10px;justify-content:center;margin:6px 12px 12px}
+.ag .lo .sl{flex:1;background:#141a3a;border:1px solid #2a3470;border-radius:14px;padding:8px;text-align:center;font-size:11px;cursor:pointer}
+.ag .lo .sl svg{display:block;margin:0 auto 4px}
+.ag .menu{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 12px 18px}
+.ag .mb{border:0;border-radius:16px;padding:16px 8px;color:#fff;font-weight:800;font-size:15px;cursor:pointer;position:relative;background:#1b2250;box-shadow:inset 0 0 0 1px #34408a}
+.ag .mb small{display:block;font-weight:500;opacity:.75;font-size:11px;margin-top:3px}
+.ag .mb.big{grid-column:1/3;background:linear-gradient(135deg,#ff4d6d,#ff9f1c);box-shadow:0 6px 20px #ff4d6d55;font-size:19px;padding:20px}
+.ag .mb.pv{grid-column:1/3;background:linear-gradient(135deg,#6a5cff,#31c7ff);box-shadow:0 6px 20px #6a5cff55}
+.ag .dot{position:absolute;top:8px;right:10px;background:#ff3b5c;border-radius:99px;min-width:20px;height:20px;font-size:12px;line-height:20px;text-align:center}
+.ag .gcard{border-radius:14px;padding:10px;background:#141a3a;border:2px solid var(--rc,#445);position:relative;text-align:center;cursor:pointer}
+.ag .gcard .nm{font-size:11px;font-weight:700;margin-top:4px;line-height:1.2;min-height:26px}
+.ag .gcard .rr{font-size:10px;color:var(--rc);font-weight:800;letter-spacing:.5px}
+.ag .gcard .x{position:absolute;top:4px;right:6px;font-size:11px;background:#0008;border-radius:99px;padding:1px 6px}
+.ag .gcard.eq{box-shadow:0 0 0 2px #fff6,0 0 14px var(--rc)}
+.ag .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 12px 20px}
+.ag .gtabs{display:flex;gap:6px;padding:0 12px 10px}
+.ag .gtabs button{flex:1;background:#1a2046;border:0;color:#fff;border-radius:10px;padding:9px;font-weight:700;cursor:pointer}
+.ag .gtabs button.gon{background:#4f46e5}
+.ag .btn{border:0;border-radius:12px;padding:12px 14px;font-weight:800;color:#fff;background:#4f46e5;font-size:15px;cursor:pointer}
+.ag .btn.g{background:#16a34a}.ag .btn.gr{background:#dc2626}.ag .btn.o{background:#d97706}.ag .btn.gd{background:#2b3366}.ag .btn:disabled{opacity:.4}
+.ag .gpad{padding:0 12px 18px}
+.ag .case{display:flex;gap:10px;margin-bottom:12px}
+.ag .case .gcb{flex:1;border-radius:16px;padding:14px 8px;text-align:center;border:0;color:#fff;font-weight:800;cursor:pointer}
+.ag .case .gcb svg{display:block;margin:0 auto 6px}
+.ag .case .gcb.n{background:linear-gradient(160deg,#5b6bd6,#273277)}.ag .case .gcb.p{background:linear-gradient(160deg,#c04bff,#5b1fa5)}
+.ag .case .gcb small{display:block;font-weight:500;opacity:.8}
+.ag .reel{position:relative;height:96px;overflow:hidden;border-radius:14px;background:#0a0e22;border:1px solid #2a3470;margin-bottom:10px}
+.ag .reel:after{content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;background:#fff;box-shadow:0 0 10px #fff;transform:translateX(-50%)}
+.ag .rl{display:flex;gap:6px;position:absolute;left:0;top:8px;will-change:transform}
+.ag .rl .ri{width:80px;height:80px;flex:none;border-radius:10px;background:#141a3a;border-bottom:4px solid var(--rc);display:flex;align-items:center;justify-content:center}
+.ag .ovl{position:absolute;inset:0;z-index:10;background:rgba(5,7,18,.86);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;text-align:center;animation:agin .2s}
+@keyframes agin{from{opacity:0;transform:scale(.96)}}
+.ag .ovl h2{margin:0;font-size:26px}.ag .ovl .big{font-size:56px}
+.ag .row{display:flex;justify-content:space-between;align-items:center;background:#141a3a;border-radius:12px;padding:10px 12px;margin-bottom:8px;gap:8px;font-size:13px}
+.ag .bar{height:8px;background:#0a0e22;border-radius:99px;overflow:hidden;margin-top:5px}.ag .bar i{display:block;height:100%;background:linear-gradient(90deg,#22c55e,#a3e635)}
+.ag canvas{position:absolute;inset:0;width:100%;height:100%;display:block;background:#0a0d1c;touch-action:none}
+.ag .hud{position:absolute;left:0;right:0;top:0;padding:8px 10px;display:flex;gap:8px;align-items:center;pointer-events:none;z-index:4}
+.ag .hud .hp{flex:1}.ag .hud .hp .bar{height:12px;margin:0}.ag .hud .hp b{font-size:11px}
+.ag .hud .gpill{background:#0009;border-radius:99px;padding:4px 10px;font-size:12px;font-weight:800}
+.ag .pz{pointer-events:auto;background:#0009;border:0;color:#fff;border-radius:99px;width:34px;height:34px;font-size:15px}
+.ag .acts{position:absolute;right:12px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:4}
+.ag .ab{width:62px;height:62px;border-radius:50%;border:3px solid #fff5;color:#fff;font-size:24px;background:#16a34a99;position:relative;cursor:pointer}
+.ag .ab.s{background:#7c3aedaa}.ag .ab:disabled{opacity:.35}
+.ag .ab span{position:absolute;bottom:-2px;right:-2px;background:#000b;border-radius:99px;font-size:11px;padding:1px 6px;font-weight:800}
+.ag .joy{position:absolute;left:0;bottom:0;width:55%;height:34%;z-index:3}
+.ag .stick{position:absolute;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:#ffffff14;border:2px solid #ffffff44;pointer-events:none;display:none}
+.ag .stick i{position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px;border-radius:50%;background:#ffffff66}
+.ag .hint{position:absolute;left:12px;bottom:12px;font-size:11px;opacity:.5;z-index:2;pointer-events:none}
+.ag .sh{animation:agsh .25s}@keyframes agsh{25%{transform:translate(-4px,2px)}75%{transform:translate(4px,-2px)}}
+.ag .gsc>*{flex-shrink:0}
 </style>
 </head>
 <body>
@@ -2627,13 +2687,33 @@ const Arena=(()=>{
     t(got>0&&w>=1&&q.coins>=200+got-1,'Autopilot-Lauf: Welle '+w+', +'+got+' Coins');
     return res}
 
+
+  /* ---------- Reine Funktionen für die grafische Oberfläche ---------- */
+  function claimMain(p){
+    if(p.main>=MAIN.length)return null;const m=MAIN[p.main];if(stat(p,m[2])<m[3])return null;
+    addCoins(p,m[4]);addDiamonds(p,m[5]);p.main++;return{coins:m[4],diamonds:m[5],title:m[0]}}
+  function claimDaily(p,i){
+    ensureDaily(p);const d=p.daily.list[i];if(!d||d.claimed)return null;const [t,ev,goal,co,di]=DAILY[d.id];if(d.progress<goal)return null;
+    d.claimed=true;addCoins(p,co);addDiamonds(p,di);let bonus=0;
+    if(p.daily.list.every(x=>x.claimed)&&!p.daily.bonus){p.daily.bonus=true;addDiamonds(p,DAILY_ALL_BONUS_DIAMONDS);bonus=DAILY_ALL_BONUS_DIAMONDS}
+    return{coins:co,diamonds:di,bonus,title:t}}
+  function sellOne(p,k){
+    if(!(p.inv[k]>0))return 0;const v=SELL[SKIN[k].rar];p.inv[k]--;
+    if(p.inv[k]==0){delete p.inv[k];for(const sl in p.equip)if(p.equip[sl]==k)p.equip[sl]=null}
+    p.coins+=v;p.stats.skins_sold++;event(p,'sell');return v}
+  function sellDupes(p){let tot=0;for(const k of Object.keys(p.inv)){const ex=p.inv[k]-1;if(ex>0){tot+=ex*SELL[SKIN[k].rar];p.inv[k]=1;p.stats.skins_sold+=ex;event(p,'sell',ex)}}p.coins+=tot;return tot}
+  function equip(p,kind,id){if(id===null){p.equip[kind]=null;return true}if(p.inv[id]>0&&SKIN[id].kind==kind){p.equip[kind]=id;return true}return false}
+  const core={R,SKIN,SKIN_IDS,RARITIES,RCOL,ODDS,SELL,MAIN,DAILY,ABILITY_TEXT,ABIL_NAME,DAILY_ALL_BONUS_DIAMONDS,CASE_COINS,CASE_DIAMONDS,WAVE_BONUS_BASE,WAVE_BONUS_STEP,PVP_WIN_BONUS,PVP_LOSS_BONUS,
+    rollRarity,openCase:(p,prem)=>openCase(p,prem,false),killRewards,addCoins,addDiamonds,event,ensureDaily,stat,questsPending,spawnWave,newProfile,normalize,
+    claimMain,claimDaily,sellOne,sellDupes,equip,setIO:f=>{IO=f}};
   /* ---------- Start ---------- */
   async function play(io,profile){IO=io;QUIET=AUTO=false;rnd=Math.random;await mainMenu(profile)}
   const setIO=io=>{IO=io};
-  return{play,simulate,report,selftest,newProfile,normalize,setIO,R,SKIN,SKINS,SELL,ODDS,MAIN,DAILY,
+  return{core,play,simulate,report,selftest,newProfile,normalize,setIO,R,SKIN,SKINS,SELL,ODDS,MAIN,DAILY,
     _t:{spawnWave,makePlayer,rollRarity,Fighter,act,doShot,hitChance,runWaves,duel,questsMenu,shopMenu,sellMenu,inventoryMenu,ensureDaily,questsPending,stat,
       setRnd:f=>{rnd=f},setAuto:(q,a,m)=>{QUIET=q;AUTO=a;if(m)AUTO_MAX=m}}}
 })();
+
 
 /* ================= 6.0: Text-Oberfläche (Terminal-Fenster) für Arena und Terminal-App ================= */
 function TermUI(el,o={}){
@@ -2696,18 +2776,6 @@ const ArenaStore={
     save:p=>{holder.p=p;ArenaStore.save(p)},
     today:()=>new Date().toLocaleDateString('sv-SE')}}
 };
-
-/* ================= LUCARIO ARENA (App) ================= */
-A.arena=el=>{
-  const ui=TermUI(el,{showPrompt:false}),holder={p:ArenaStore.load()};
-  (async()=>{
-    for(;;){
-      await Arena.play(ArenaStore.io(ui,holder),holder.p);
-      ArenaStore.save(holder.p);
-      const a=await ui.read('Spiel beendet. Dein Fortschritt ist gespeichert.',[['r','▶ Neu starten'],['x','✖ Schließen']],{noEcho:true});
-      if(a=='x'){closeApp();return}}
-  })();
-  return()=>{ui.dispose();if(holder.p)ArenaStore.save(holder.p)}};
 
 /* ================= TERMINAL (App) ================= */
 A.terminal=el=>{
@@ -2820,6 +2888,413 @@ A.terminal=el=>{
       try{await exec(line)}catch(e){P('Fehler: '+(e&&e.message||e))}}
   })();
   return()=>{ui.dispose();if(holder.p)ArenaStore.save(holder.p)}};
+
+
+/* ================= 6.2: Lucario Arena – Echtzeit-Kampf (Simulation ohne Zeichnen, damit sie testbar ist) ================= */
+const Live=(()=>{
+  const W=360,H=560,C=()=>Arena.core;
+  const T={HPMUL:4,PRATE:2.2,DRATE:1.7,PSPD:115,PBSPD:470,EBSPD:1.2,FIRE:1.8,DMG:1.4};  /* Stellschrauben für das Balancing */
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const KIND={
+    grunt:{r:11,spd:42,range:150,fire:[1.7,2.9],burst:1,bspd:125,spread:.16},
+    elite:{r:13,spd:54,range:120,fire:[1.4,2.3],burst:2,bspd:150,spread:.12},
+    boss:{r:27,spd:28,range:175,fire:[1.2,1.8],burst:3,bspd:140,spread:.3}};
+  let uid=0;
+  class Sim{
+    constructor(o){
+      this.R=C().R;this.mode=o.mode;this.t=0;this.bullets=[];this.fx=[];this.holes=[];this.enemies=[];this.ev=[];this.queue=[];this.wave=o.wave||1;this.over=false;this.winner=null;
+      this.players=[this.mk(o.me,'a',W/2,H-100)];
+      if(o.mode=='duel')this.players.push(this.mk(o.opp,'b',W/2,100));
+      else this.startWave(this.wave);
+    }
+    mk(s,team,x,y){
+      const K=C().SKIN,w=s.weapon?K[s.weapon]:null,ch=s.char?K[s.char]:null,duel=this.mode=='duel';
+      const pl={id:++uid,team,x,y,r:11,hp:100,max:100,meds:s.meds??(duel?1:3),ai:!!s.ai,name:s.name||(ch?ch.name:'Du'),
+        weapon:w,char:ch,wab:w?w.ab:null,cab:ch?ch.ab:null,spd:T.PSPD,rate:duel?T.DRATE:T.PRATE,dmin:20,dmax:30,
+        shootT:0.3,cdAb:0,phase:0,frozen:0,frost:0,slow:0,turbo:false,ang:team=='a'?-Math.PI/2:Math.PI/2,inp:{x:0,y:0},aiT:0,aiDir:1,flash:0,hurt:0,dead:false,kills:0};
+      if(pl.cab=='turbo'){pl.turbo=true;pl.spd*=1.5;pl.rate*=1.25}
+      return pl};
+    startWave(n){
+      this.wave=n;const foes=C().spawnWave(n);
+      this.queue=foes.map((f,i)=>({f,at:this.t+0.4+i*0.55}));this.cleared=false;this.waveStart=this.t};
+    spawn(f){
+      const k=KIND[f.kind];
+      const e={id:++uid,kind:f.kind,name:f.name,x:30+this.R.f()*(W-60),y:-20,r:k.r,hp:Math.round(f.hp*T.HPMUL),max:Math.round(f.hp*T.HPMUL),dmin:f.dmin,dmax:f.dmax,
+        spd:k.spd,fireT:this.R.f()*k.fire[1]+0.8,burstLeft:0,burstT:0,frozen:0,frost:0,stun:0,hit:0,rage:false,mult:1+0.05*(this.wave-1),tx:30+this.R.f()*(W-60),ty:70+this.R.f()*130};
+      this.enemies.push(e)};
+    me(){return this.players[0]}
+    foesOf(pl){return pl.team=='a'?(this.mode=='duel'?[this.players[1]]:this.enemies):[this.players[0]]}
+    nearest(pl,list){let b=null,bd=1e9;for(const e of list){if(e.dead||e.hp<=0)continue;const d=Math.hypot(e.x-pl.x,e.y-pl.y);if(d<bd){bd=d;b=e}}return b}
+    useMed(pl){if(pl.meds<=0||pl.hp>=pl.max||pl.dead)return false;pl.meds--;const h=Math.min(40,pl.max-pl.hp);pl.hp+=h;this.float(pl.x,pl.y-18,'+'+h,'#5dff9a');return true}
+    ability(pl){
+      if(pl.cdAb>0||pl.dead)return false;const duel=this.mode=='duel';
+      if(pl.cab=='phase'){pl.phase=duel?1:2;pl.cdAb=10;this.float(pl.x,pl.y-20,'PHASE','#bfe');return true}
+      if(pl.wab=='blackhole'){
+        const tgt=this.nearest(pl,this.foesOf(pl));const hx=tgt?tgt.x:W/2,hy=tgt?tgt.y:H/2;
+        this.holes.push({x:hx,y:hy,t:2.4,r:100,team:pl.team});pl.cdAb=12;
+        for(const f of this.foesOf(pl)){if(Math.hypot(f.x-hx,f.y-hy)<100){this.hurt(f,duel?24:30,pl,false);if(duel)f.slow=1.8;else f.stun=2.2}}
+        this.ev.push({t:'hole'});return true}
+      return false}
+    hurt(tg,d,src,crit){
+      if(tg.hp<=0||tg.dead)return;
+      if(tg.phase>0)return;
+      tg.hp-=d;tg.hit=0.12;this.float(tg.x+(this.R.f()*10-5),tg.y-tg.r-4,String(Math.round(d)),crit?'#ffd93d':'#fff',crit);
+      if(tg.hp<=0){tg.hp=0;this.kill(tg,src)}}
+    kill(tg,src){
+      for(let i=0;i<14;i++)this.fx.push({x:tg.x,y:tg.y,vx:(this.R.f()-.5)*220,vy:(this.R.f()-.5)*220,t:.5+this.R.f()*.4,c:tg.kind=='boss'?'#ff5c6c':'#ffb347',s:2+this.R.f()*3});
+      if(tg.team){tg.dead=true;this.ev.push({t:'pdead',who:tg})}
+      else{this.ev.push({t:'kill',foe:{kind:tg.kind,wave_mult:tg.mult,name:tg.name},x:tg.x,y:tg.y});if(src)src.kills++}}
+    float(x,y,text,c,big){this.fx.push({x,y,vx:0,vy:-34,t:.8,txt:text,c,big})}
+    shoot(pl,tg){
+      const a=Math.atan2(tg.y-pl.y,tg.x-pl.x)+(this.R.f()-.5)*0.04;pl.ang=a;pl.flash=.06;
+      let d=this.R.int(pl.dmin,pl.dmax),crit=this.R.f()<.10;if(crit)d=Math.floor(d*1.8);
+      const sp=this.mode=='duel'?330:T.PBSPD;
+      this.bullets.push({x:pl.x+Math.cos(a)*14,y:pl.y+Math.sin(a)*14,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,d,crit,team:pl.team,own:pl,r:3.4,life:1.6,c:'p'})}
+    enemyShoot(e,pl){
+      const k=KIND[e.kind],n=k.burst;
+      for(let i=0;i<n;i++){
+        const base=Math.atan2(pl.y-e.y,pl.x-e.x),off=e.kind=='boss'?(i-1)*0.24:0,a=base+off+(this.R.f()-.5)*k.spread*2;
+        const d=this.R.int(e.dmin,e.dmax)*(e.rage?1.2:1)*T.DMG;
+        this.bullets.push({x:e.x,y:e.y+e.r*.6,vx:Math.cos(a)*k.bspd*T.EBSPD,vy:Math.sin(a)*k.bspd*T.EBSPD,d,team:'e',own:e,r:3.6,life:4,c:'e'})}}
+    step(dt,inputs){
+      if(this.over)return;this.t+=dt;const duel=this.mode=='duel';
+      /* Spawns */
+      for(let i=this.queue.length-1;i>=0;i--)if(this.queue[i].at<=this.t){this.spawn(this.queue[i].f);this.queue.splice(i,1)}
+      /* Spieler */
+      for(const pl of this.players){
+        if(pl.dead)continue;
+        const inp=pl.ai?this.aiInput(pl):(inputs&&inputs[pl.team])||pl.inp;
+        if(pl.cdAb>0)pl.cdAb-=dt;if(pl.phase>0)pl.phase-=dt;if(pl.frozen>0)pl.frozen-=dt;if(pl.slow>0)pl.slow-=dt;if(pl.hurt>0)pl.hurt-=dt;if(pl.flash>0)pl.flash-=dt;if(pl.hit>0)pl.hit-=dt;
+        const m=Math.hypot(inp.x,inp.y),sp=pl.spd*(pl.slow>0?.5:1)*(pl.frozen>0?0:1);
+        if(m>.05){const k=Math.min(1,m)/m;pl.x+=inp.x*k*sp*dt;pl.y+=inp.y*k*sp*dt}
+        pl.x=clamp(pl.x,pl.r,W-pl.r);
+        if(duel)pl.y=clamp(pl.y,pl.team=='a'?H*.5:pl.r,pl.team=='a'?H-pl.r:H*.5);else pl.y=clamp(pl.y,H*.3,H-pl.r);
+        pl.shootT-=dt;
+        const tgt=this.nearest(pl,this.foesOf(pl));
+        if(tgt){pl.ang=Math.atan2(tgt.y-pl.y,tgt.x-pl.x);
+          if(pl.shootT<=0&&pl.frozen<=0&&(!duel||pl.slow<=0||true)&&tgt.y>-5){this.shoot(pl,tgt);pl.shootT=1/pl.rate}}
+        if(pl.ai){pl.aiT-=dt;if(pl.hp<35&&pl.meds>0)this.useMed(pl);if(pl.cdAb<=0&&(pl.cab=='phase'&&pl.hp<60||pl.wab=='blackhole'))this.ability(pl)}
+      }
+      /* Gegner */
+      if(!duel){
+        const me=this.me(),order=[...this.enemies].sort((a,b)=>Math.hypot(a.x-me.x,a.y-me.y)-Math.hypot(b.x-me.x,b.y-me.y));
+        const att=new Set(order.slice(0,3));this.enemies.forEach(e=>{if(e.kind=='boss')att.add(e)});
+        for(const e of this.enemies){
+          const k=KIND[e.kind];if(e.hit>0)e.hit-=dt;
+          if(e.kind=='boss'&&!e.rage&&e.hp<e.max/2){e.rage=true;this.float(e.x,e.y-40,'RAGE!','#ff5c6c',true)}
+          if(e.frozen>0){e.frozen-=dt;continue}if(e.stun>0){e.stun-=dt;continue}
+          if(e.y<0){e.y+=70*dt;continue}
+          const d=Math.hypot(me.x-e.x,me.y-e.y);
+          let dx=0,dy=0;
+          if(d>k.range){dx=me.x-e.x;dy=me.y-e.y}else if(d<k.range*.6){dx=e.x-me.x;dy=e.y-me.y}else{dx=-(me.y-e.y)*(e.id%2?1:-1);dy=(me.x-e.x)*(e.id%2?1:-1)}
+          const L=Math.hypot(dx,dy)||1;const sp=e.spd*(e.rage?1.25:1);e.x=clamp(e.x+dx/L*sp*dt,e.r,W-e.r);e.y=clamp(e.y+dy/L*sp*dt,5,H-e.r);
+          if(att.has(e)&&me.hp>0&&!me.dead){
+            if(e.burstLeft>0){e.burstT-=dt;if(e.burstT<=0){this.enemyShoot({...e,kind:'grunt',dmin:e.dmin,dmax:e.dmax,rage:e.rage,x:e.x,y:e.y,r:e.r},me);e.burstLeft--;e.burstT=.14}}
+            else{e.fireT-=dt*(e.rage?1.35:1)*T.FIRE;if(e.fireT<=0){const kk=KIND[e.kind];e.fireT=kk.fire[0]+this.R.f()*(kk.fire[1]-kk.fire[0]);if(e.kind=='elite'){e.burstLeft=1;e.burstT=.14}this.enemyShoot(e,me)}}
+          }
+        }
+      }
+      /* Schwarze Löcher */
+      for(let i=this.holes.length-1;i>=0;i--){const h=this.holes[i];h.t-=dt;
+        if(this.mode=='wave')for(const e of this.enemies){const d=Math.hypot(h.x-e.x,h.y-e.y);if(d<h.r&&d>3){e.x+=(h.x-e.x)/d*90*dt;e.y+=(h.y-e.y)/d*90*dt}}
+        if(h.t<=0)this.holes.splice(i,1)}
+      /* Kugeln */
+      for(let i=this.bullets.length-1;i>=0;i--){
+        const b=this.bullets[i];b.x+=b.vx*dt;b.y+=b.vy*dt;b.life-=dt;
+        let rm=b.life<=0||b.x<-20||b.x>W+20||b.y<-30||b.y>H+30;
+        if(!rm){
+          if(b.team=='a'||b.team=='b'){
+            const list=this.foesOf(b.own);
+            for(const f of list){if(f.hp<=0||f.dead||(f.y<0&&!duel))continue;if(Math.hypot(f.x-b.x,f.y-b.y)<f.r+b.r){
+              if(f.phase>0){continue}
+              this.hurt(f,b.d,b.own,b.crit);rm=true;
+              const wab=b.own.wab;if(wab=='frost'&&f.hp>0){f.frost++;if(f.frost>=(duel?4:3)){f.frost=0;if(duel)f.slow=1.4;else f.frozen=2.2;this.float(f.x,f.y-24,'EINGEFROREN','#8fd8ff')}}
+              break}}
+          }else{
+            const p=this.me();
+            if(!p.dead&&p.phase<=0&&Math.hypot(p.x-b.x,p.y-b.y)<p.r+b.r){
+              rm=true;if(p.turbo&&this.R.f()<.25){this.float(p.x,p.y-18,'AUSGEWICHEN','#ffd93d')}else{p.hp-=b.d;p.hurt=.18;this.float(p.x,p.y-18,String(Math.round(b.d)),'#ff8f8f');if(p.hp<=0){p.hp=0;p.dead=true;this.ev.push({t:'pdead',who:p})}}}
+          }
+        }
+        if(rm)this.bullets.splice(i,1)}
+      /* Gegner aufräumen, Welle fertig? */
+      this.enemies=this.enemies.filter(e=>e.hp>0);
+      if(!duel&&!this.cleared&&!this.queue.length&&!this.enemies.length){this.cleared=true;this.ev.push({t:'clear',wave:this.wave})}
+      if(duel&&!this.over){const a=this.players[0],b=this.players[1];if(a.dead||b.dead){this.over=true;this.winner=a.dead&&b.dead?null:a.dead?'b':'a'}}
+      if(!duel&&this.me().dead)this.over=true;
+      /* Effekte */
+      for(let i=this.fx.length-1;i>=0;i--){const f=this.fx[i];f.t-=dt;f.x+=(f.vx||0)*dt;f.y+=(f.vy||0)*dt;if(f.t<=0)this.fx.splice(i,1)}
+    }
+    /* Computer-Steuerung: Gegner im Duell und Autopilot für die Simulation */
+    aiInput(pl){
+      if(pl.aiT<=0){pl.aiT=.5+this.R.f()*.9;pl.aiDir=this.R.f()<.5?-1:1}
+      const v=this.dodge(pl);let x=pl.aiDir*.8+v.x*1.6,y=v.y*1.6;
+      const foe=this.nearest(pl,this.foesOf(pl));if(foe){const d=Math.abs(foe.y-pl.y);if(d<170)y+=(pl.team=='b'?-1:1)*.5;else if(d>260)y-=(pl.team=='b'?-1:1)*.3}
+      if(pl.x<40)x=Math.abs(x);if(pl.x>W-40)x=-Math.abs(x);
+      return{x:clamp(x,-1,1),y:clamp(y,-1,1)}}
+    dodge(pl){
+      let x=0,y=0;
+      for(const b of this.bullets){if(b.team==pl.team||(this.mode=='wave'&&b.team=='a'))continue;
+        const rx=pl.x-b.x,ry=pl.y-b.y,d=Math.hypot(rx,ry);if(d>95||d<1)continue;
+        const sp=Math.hypot(b.vx,b.vy),dot=(b.vx*rx+b.vy*ry)/(sp*d);if(dot<.35)continue;
+        const px=-b.vy/sp,py=b.vx/sp,side=(rx*px+ry*py)>=0?1:-1,w=(1-d/95)*dot;x+=px*side*w;y+=py*side*w}
+      return{x,y}}
+    autoInput(pl){
+      const v=this.dodge(pl);let x=v.x*2.2,y=v.y*2.2;
+      for(const e of this.enemies){const dx=pl.x-e.x,dy=pl.y-e.y,d=Math.hypot(dx,dy);const keep=e.kind=='boss'?190:130;if(d<keep&&d>1){const w=(1-d/keep)*1.6;x+=dx/d*w;y+=dy/d*w}}
+      if(pl.x<45)x+=.9;if(pl.x>W-45)x-=.9;y+=(H*.78-pl.y)/H*1.2;
+      if(Math.abs(x)+Math.abs(y)<.15)x=Math.sin(this.t*1.3)*.5;
+      return{x:clamp(x,-1,1),y:clamp(y,-1,1)}}
+    autoUse(pl){
+      const alive=this.enemies.length;
+      if(pl.hp<45&&pl.meds>0)this.useMed(pl);
+      if(pl.cdAb<=0){if(pl.cab=='phase'&&(pl.hp<70||alive>=3))this.ability(pl);else if(pl.wab=='blackhole'&&alive>=3)this.ability(pl)}}
+  }
+  /* Ein kompletter Autopilot-Lauf (für die Balancing-Simulation) */
+  function autoRun(Rnd,loadout,maxWave=60){
+    const p=C().newProfile(),prof=p;let wave=1;const dt=1/30;let coins=0,dia=0;
+    for(;;){
+      const sim=new Sim({mode:'wave',wave,me:{weapon:loadout&&loadout.weapon,char:loadout&&loadout.char,meds:3}});
+      if(wave>1&&prof._hp!==undefined){sim.me().hp=prof._hp;sim.me().meds=prof._meds}
+      let tt=0;
+      while(!sim.over&&!sim.cleared&&tt<240){
+        sim.step(dt,{a:sim.autoInput(sim.me())});sim.autoUse(sim.me());tt+=dt;
+        for(const ev of sim.ev){if(ev.t=='kill'){const d0=prof.diamonds,c0=prof.coins;C().killRewards(prof,ev.foe,false,[]);coins+=prof.coins-c0;dia+=prof.diamonds-d0}}
+        sim.ev.length=0}
+      if(sim.me().dead||tt>=240)return{wave,coins,dia};
+      coins+=C().WAVE_BONUS_BASE+C().WAVE_BONUS_STEP*wave;
+      prof._hp=Math.min(100,sim.me().hp+40);prof._meds=Math.min(3,sim.me().meds+1);wave++;if(wave>maxWave)return{wave,coins,dia}}}
+  return{Sim,W,H,T,autoRun,KIND}
+})();
+
+
+/* ================= 6.2: LUCARIO ARENA – grafische App ================= */
+const ArenaGUI={
+  RC:{Common:'#9aa4b8',Rare:'#3b82f6',Epic:'#a855f7',Legendary:'#fbbf24',Mythic:'#ff4d6d'},
+  hue(id){let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))%360;return h},
+  icon(id,w=64){
+    const C=Arena.core,s=C.SKIN[id];if(!s)return '<svg width="'+w+'" height="'+w+'"></svg>';
+    const h=this.hue(id),a='hsl('+h+',80%,58%)',b='hsl('+((h+40)%360)+',70%,35%)',c=this.RC[s.rar],glow=s.rar=='Mythic'||s.rar=='Legendary'?'<circle cx="32" cy="32" r="26" fill="'+c+'" opacity=".18"/>':'';
+    const body=s.kind=='weapon'
+      ?'<g transform="rotate(-18 32 32)"><rect x="6" y="26" width="40" height="11" rx="4" fill="'+b+'" stroke="#000a" stroke-width="1.5"/><rect x="42" y="28.5" width="17" height="6" rx="2" fill="'+a+'"/><rect x="14" y="36" width="9" height="14" rx="3" fill="'+b+'" stroke="#000a" stroke-width="1.5"/><rect x="10" y="22" width="22" height="5" rx="2" fill="'+a+'"/><circle cx="52" cy="31.5" r="2" fill="#fff" opacity=".9"/></g>'
+      :'<ellipse cx="32" cy="50" rx="19" ry="10" fill="'+b+'" stroke="#000a" stroke-width="1.5"/><circle cx="32" cy="29" r="17" fill="'+a+'" stroke="#000a" stroke-width="1.5"/><rect x="19" y="24" width="26" height="11" rx="5.5" fill="#0c1230"/><circle cx="26" cy="29.5" r="2.6" fill="'+c+'"/><circle cx="38" cy="29.5" r="2.6" fill="'+c+'"/><path d="M20 15 L25 8 L30 14 M44 15 L39 8 L34 14" stroke="'+b+'" stroke-width="3" fill="none" stroke-linecap="round"/>';
+    return '<svg viewBox="0 0 64 64" width="'+w+'" height="'+w+'">'+glow+body+'</svg>'},
+  mount(el){return ArenaGUI._mount(el)}
+};
+ArenaGUI._mount=function(el){
+  const C=Arena.core,SK=C.SKIN,RC=this.RC,G=this;
+  let P=ArenaStore.load(),alive=true,game=null,cleanup=[];
+  C.setIO({today:()=>new Date().toLocaleDateString('sv-SE'),save:p=>ArenaStore.save(p),out(){},status(){},tmp(){},pause:()=>Promise.resolve()});
+  const save=()=>ArenaStore.save(P);
+  el.innerHTML='<div class="ag"></div>';const root=el.firstChild;
+  const q=(s,r)=>(r||root).querySelector(s),sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  const cur=()=>'<div class="cur"><span>🪙 '+P.coins+'</span><span>💎 '+P.diamonds+'</span></div>';
+  const card=(id,extra='')=>{const s=SK[id];return '<div class="gcard'+(P.equip[s.kind]==id?' eq':'')+'" data-id="'+id+'" style="--rc:'+RC[s.rar]+'">'+(P.inv[id]>1?'<span class="x">×'+P.inv[id]+'</span>':'')+G.icon(id,56)+'<div class="rr">'+s.rar.toUpperCase()+'</div><div class="nm">'+esc(s.name)+'</div>'+extra+'</div>'};
+  const screen=(title,body,back='menu')=>{root.innerHTML='<div class="gsc"><div class="hd">'+(back?'<button class="bk" data-back>←</button>':'')+'<div class="gt">'+title+'</div>'+cur()+'</div>'+body+'</div>';
+    const b=q('[data-back]');if(b)b.onclick=()=>go(back);return q('.gsc')};
+  const toast=t=>Sys.toast(t);
+  function go(s,a){stopGame();(S[s]||S.menu)(a)}
+  const S={};
+  /* ---------- Hauptmenü ---------- */
+  S.menu=()=>{
+    const pend=C.questsPending(P),w=P.equip.weapon,c=P.equip.char;
+    screen('', '<div class="logo">LUCARIO ARENA</div><div class="gsub">Beste Welle '+P.stats.best_wave+' · '+P.stats.bot_kills+' Bot-Kills</div>'
+      +'<div class="lo"><div class="sl" data-eq="weapon">'+(w?G.icon(w,54):'<svg width="54" height="54"></svg>')+'🔫 '+(w?esc(SK[w].name):'keine Waffe')+'</div><div class="sl" data-eq="char">'+(c?G.icon(c,54):'<svg width="54" height="54"></svg>')+'🦸 '+(c?esc(SK[c].name):'kein Charakter')+'</div></div>'
+      +'<div class="menu"><button class="mb big" data-go="run">⚔ KAMPF<small>Wellen gegen Bots</small></button><button class="mb pv" data-go="duel">🎯 DUELL<small>Gegen Spieler – wer zuerst 2 Runden gewinnt</small></button>'
+      +'<button class="mb" data-go="shop">📦 Shop</button><button class="mb" data-go="inv">🎒 Inventar<small>'+Object.keys(P.inv).length+'/28</small></button>'
+      +'<button class="mb" data-go="quests">📜 Quests'+(pend?'<span class="dot">'+pend+'</span>':'')+'</button><button class="mb" data-go="prof">👤 Profil</button></div>',null);
+    root.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+    root.querySelectorAll('[data-eq]').forEach(b=>b.onclick=()=>go('inv',b.dataset.eq));
+    const h=q('.hd');h.innerHTML='<div class="gt">🏟 Arena</div>'+cur()+'<button class="bk" data-x>✕</button>';q('[data-x]').onclick=()=>closeApp()};
+  /* ---------- Shop ---------- */
+  S.shop=()=>{
+    const el=screen('📦 Shop','<div class="gpad"><div class="case"><button class="gcb n" data-c="0">'+G.crate('#7b8cff')+'Kiste<small>'+C.CASE_COINS+' 🪙</small></button><button class="gcb p" data-c="1">'+G.crate('#e07bff')+'Premium<small>'+C.CASE_DIAMONDS+' 💎</small></button></div>'
+      +'<div class="reel" id="reel" style="display:none"><div class="rl"></div></div><div id="res"></div>'
+      +'<div class="row"><span>Chancen Normal: '+C.ODDS.normal.map((o,i)=>'<b style="color:'+RC[C.RARITIES[i]]+'">'+o+'%</b>').join(' · ')+'</span></div>'
+      +'<div class="row"><span>Chancen Premium: '+C.ODDS.premium.map((o,i)=>'<b style="color:'+RC[C.RARITIES[i]]+'">'+o+'%</b>').join(' · ')+'</span></div>'
+      +'<div class="row"><span>Garantie: alle 20 normalen Kisten mind. Selten · Premium: Mythic spätestens nach 50.</span></div></div>');
+    let busy=false;
+    el.querySelectorAll('[data-c]').forEach(b=>b.onclick=async()=>{
+      if(busy)return;const prem=b.dataset.c=='1',cost=prem?C.CASE_DIAMONDS:C.CASE_COINS;
+      if((prem?P.diamonds:P.coins)<cost){toast('Zu wenig '+(prem?'Diamanten':'Coins'));return}
+      busy=true;if(prem)P.diamonds-=cost;else P.coins-=cost;
+      const sid=await C.openCase(P,prem);const isNew=P.inv[sid]==1;save();
+      const reel=q('#reel'),rl=q('.rl');reel.style.display='block';q('#res').innerHTML='';
+      const N=34,items=[];for(let i=0;i<N;i++)items.push(C.SKIN_IDS[Math.floor(Math.random()*28)]);items[N-5]=sid;
+      rl.innerHTML=items.map(i=>'<div class="ri" style="--rc:'+RC[SK[i].rar]+'">'+G.icon(i,60)+'</div>').join('');
+      rl.style.transition='none';rl.style.transform='translateX(0)';rl.offsetWidth;
+      const tx=-((N-5)*86+40-reel.clientWidth/2);rl.style.transition='transform 3.2s cubic-bezier(.12,.7,.1,1)';rl.style.transform='translateX('+tx+'px)';
+      await sleep(3400);if(!alive)return;
+      const s=SK[sid];q('#res').innerHTML='<div class="gcard" style="--rc:'+RC[s.rar]+';box-shadow:0 0 28px '+RC[s.rar]+';margin-bottom:12px"><div class="rr" style="font-size:13px">'+(isNew?'NEU! ':'DUPLIKAT · ')+s.rar.toUpperCase()+'</div>'+G.icon(sid,110)+'<div class="nm" style="font-size:15px">'+esc(s.name)+'</div><div style="font-size:11px;opacity:.7">'+esc(s.fx)+'</div>'+(s.ab?'<div style="font-size:11px;margin-top:6px;color:'+RC[s.rar]+'">'+esc(C.ABILITY_TEXT[s.ab])+'</div>':'')+(isNew?'<button class="btn g" data-eqn style="margin-top:8px">Ausrüsten</button>':'<div style="font-size:12px;margin-top:6px">Verkaufswert '+C.SELL[s.rar]+' 🪙</div>')+'</div>';
+      const e=q('[data-eqn]');if(e)e.onclick=()=>{C.equip(P,s.kind,sid);save();toast('Ausgerüstet');e.remove()};
+      q('.cur').outerHTML=cur();busy=false});
+  };
+  G.crate=c=>'<svg viewBox="0 0 64 64" width="54" height="54"><rect x="8" y="22" width="48" height="32" rx="4" fill="'+c+'" stroke="#000a" stroke-width="2"/><rect x="6" y="14" width="52" height="12" rx="3" fill="#fff" opacity=".35" stroke="#000a" stroke-width="2"/><rect x="27" y="22" width="10" height="32" fill="#ffd93d" stroke="#000a" stroke-width="1.5"/><circle cx="32" cy="38" r="4" fill="#fff"/></svg>';
+  /* ---------- Inventar ---------- */
+  S.inv=(kind)=>{
+    kind=kind||'weapon';
+    const ids=C.SKIN_IDS.filter(i=>SK[i].kind==kind&&P.inv[i]>0).sort((a,b)=>C.RARITIES.indexOf(SK[b].rar)-C.RARITIES.indexOf(SK[a].rar));
+    const dup=Object.keys(P.inv).reduce((s,k)=>s+Math.max(0,P.inv[k]-1)*C.SELL[SK[k].rar],0);
+    const el=screen('🎒 Inventar','<div class="gtabs"><button data-k="weapon" class="'+(kind=='weapon'?'gon':'')+'">🔫 Waffen</button><button data-k="char" class="'+(kind=='char'?'gon':'')+'">🦸 Charaktere</button></div>'
+      +(ids.length?'<div class="grid">'+ids.map(i=>card(i)).join('')+'</div>':'<div class="gpad" style="opacity:.7;text-align:center;padding:30px">Noch nichts da – hol dir Kisten im Shop!</div>')
+      +'<div class="gpad"><button class="btn o" style="width:100%" data-sd '+(dup?'':'disabled')+'>Duplikate verkaufen ('+dup+' 🪙)</button></div>');
+    el.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>S.inv(b.dataset.k));
+    el.querySelectorAll('.gcard').forEach(c=>c.onclick=()=>detail(c.dataset.id));
+    q('[data-sd]').onclick=()=>{const t=C.sellDupes(P);save();toast('+'+t+' Coins');S.inv(kind)}};
+  function detail(id){
+    const s=SK[id],eq=P.equip[s.kind]==id,o=document.createElement('div');o.className='ovl';
+    o.innerHTML='<div class="gcard" style="--rc:'+RC[s.rar]+';box-shadow:0 0 30px '+RC[s.rar]+';padding:16px;max-width:300px"><div class="rr">'+s.rar.toUpperCase()+' · '+(s.kind=='weapon'?'WAFFE':'CHARAKTER')+'</div>'+G.icon(id,120)+'<div class="nm" style="font-size:16px">'+esc(s.name)+'</div><div style="font-size:12px;opacity:.75;margin:4px 0">'+esc(s.fx)+'</div>'+(s.ab?'<div style="font-size:12px;color:'+RC[s.rar]+'">'+esc(C.ABILITY_TEXT[s.ab])+'</div>':'')+'<div style="font-size:12px;margin-top:6px">Besitz: ×'+P.inv[id]+'</div></div>'
+      +'<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><button class="btn g" data-e>'+(eq?'Ablegen':'Ausrüsten')+'</button><button class="btn o" data-s>Verkaufen '+C.SELL[s.rar]+' 🪙</button><button class="btn gd" data-c>Zurück</button></div>';
+    root.appendChild(o);const k=s.kind;
+    o.querySelector('[data-c]').onclick=()=>o.remove();
+    o.querySelector('[data-e]').onclick=()=>{C.equip(P,k,eq?null:id);save();S.inv(k)};
+    o.querySelector('[data-s]').onclick=()=>{C.sellOne(P,id);save();S.inv(k)}}
+  /* ---------- Quests ---------- */
+  S.quests=()=>{
+    C.ensureDaily(P);const m=C.MAIN[P.main];
+    let h='<div class="gpad"><div style="font-weight:800;margin:6px 0">Hauptquest '+Math.min(P.main+1,C.MAIN.length)+'/'+C.MAIN.length+'</div>';
+    if(m){const v=Math.min(C.stat(P,m[2]),m[3]),ok=v>=m[3];h+='<div class="row" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between"><b>'+esc(m[0])+'</b><span>+'+m[4]+' 🪙'+(m[5]?' +'+m[5]+' 💎':'')+'</span></div><div style="opacity:.75;font-size:12px">'+esc(m[1])+' ('+v+'/'+m[3]+')</div><div class="bar"><i style="width:'+(v/m[3]*100)+'%"></i></div><button class="btn g" style="margin-top:8px" data-cm '+(ok?'':'disabled')+'>Belohnung abholen</button></div>'}
+    else h+='<div class="row">🏆 Alle Hauptquests geschafft!</div>';
+    h+='<div style="font-weight:800;margin:12px 0 6px">Tägliche Quests</div>';
+    P.daily.list.forEach((d,i)=>{const [t,ev,goal,co,di]=C.DAILY[d.id],ok=d.progress>=goal;
+      h+='<div class="row" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between"><b>'+esc(t)+'</b><span>+'+co+' 🪙'+(di?' +'+di+' 💎':'')+'</span></div><div class="bar"><i style="width:'+(d.progress/goal*100)+'%"></i></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px"><span style="font-size:12px;opacity:.75">'+d.progress+'/'+goal+'</span>'+(d.claimed?'<span>✔ abgeholt</span>':'<button class="btn g" style="padding:7px 12px" data-cd="'+i+'" '+(ok?'':'disabled')+'>Abholen</button>')+'</div></div>'});
+    h+='<div class="row">Alle 3 täglichen Quests: +'+C.DAILY_ALL_BONUS_DIAMONDS+' 💎 Bonus'+(P.daily.bonus?' ✔':'')+'</div></div>';
+    const el=screen('📜 Quests',h);
+    const cm=q('[data-cm]');if(cm)cm.onclick=()=>{const r=C.claimMain(P);if(r){save();toast('+'+r.coins+' 🪙'+(r.diamonds?' +'+r.diamonds+' 💎':''))}S.quests()};
+    el.querySelectorAll('[data-cd]').forEach(b=>b.onclick=()=>{const r=C.claimDaily(P,+b.dataset.cd);if(r){save();toast('+'+r.coins+' 🪙'+(r.diamonds?' +'+r.diamonds+' 💎':'')+(r.bonus?' · Tagesbonus +'+r.bonus+' 💎':''))}S.quests()})};
+  /* ---------- Profil ---------- */
+  S.prof=()=>{const s=P.stats,rows=[['Läufe',s.runs],['Beste Welle',s.best_wave],['Wellen überlebt',s.waves_cleared],['Bot-Kills',s.bot_kills],['Elite-Kills',s.elite_kills],['Boss-Kills',s.boss_kills],['Duelle',s.pvp_matches+' (Siege '+s.pvp_wins+')'],['Kisten geöffnet',s.cases_opened],['Skins verkauft',s.skins_sold],['Coins verdient',s.coins_earned],['Diamanten gefunden',s.diamonds_found]];
+    const el=screen('👤 Profil','<div class="gpad">'+rows.map(r=>'<div class="row"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>').join('')+'<button class="btn gr" style="width:100%;margin-top:10px" data-rs>Spielstand löschen</button></div>');
+    q('[data-rs]').onclick=()=>{if(confirm('Wirklich alles löschen?')){P=Arena.newProfile();save();go('menu')}}};
+  /* ---------- Kampf ---------- */
+  S.run=()=>startGame('wave');S.duel=()=>startGame('duel');
+  function stopGame(){if(game){game.stop();game=null}}
+  function startGame(mode){
+    if(mode=='wave')P.stats.runs++;save();
+    root.innerHTML='<canvas></canvas><div class="hud"><div class="hp"><b id="hpt"></b><div class="bar"><i id="hpb"></i></div></div><span class="gpill" id="wv"></span><button class="pz" data-p>⏸</button></div><div class="joy"></div><div class="stick"><i></i></div><div class="acts"><button class="ab s" data-ab>✨</button><button class="ab" data-md>💊<span></span></button></div><div class="hint">Wischen = bewegen · Zielen & Schießen automatisch · WASD</div>';
+    game=new Game(mode);game.start()}
+  class Game{
+    constructor(mode){this.mode=mode;this.wave=1;this.round=1;this.sc=[0,0];this.run={coins:0,dia:0,kills:0};this.carry=null;this.keys={};this.inp={x:0,y:0};this.paused=false;this.dead=false;this.t0=0;this.timers=[];
+      this.opp=null}
+    start(){
+      this.cv=q('canvas');this.ctx=this.cv.getContext('2d');
+      const fit=()=>{const r=root.getBoundingClientRect(),d=Math.min(2,window.devicePixelRatio||1);this.cv.width=r.width*d;this.cv.height=r.height*d;this.k=Math.min(r.width/Live.W,r.height/Live.H);this.ox=(r.width-Live.W*this.k)/2;this.oy=(r.height-Live.H*this.k)/2;this.d=d};
+      fit();this.ro=new ResizeObserver(fit);this.ro.observe(root);
+      /* Steuerung */
+      const joy=q('.joy'),st=q('.stick'),stI=st.firstChild;let id=null,cx=0,cy=0;const rr=root;
+      const area=root;
+      const pd=e=>{if(e.target.closest('button')||id!==null)return;const r=root.getBoundingClientRect();if(e.clientY-r.top<r.height*.3)return;id=e.pointerId;cx=e.clientX;cy=e.clientY;st.style.display='block';st.style.left=(cx-r.left)+'px';st.style.top=(cy-r.top)+'px';stI.style.transform='none';try{root.setPointerCapture(id)}catch(_){}};
+      const pm=e=>{if(e.pointerId!==id)return;let dx=e.clientX-cx,dy=e.clientY-cy;const m=Math.hypot(dx,dy),R=46;if(m>R){dx=dx/m*R;dy=dy/m*R}this.inp={x:dx/R,y:dy/R};stI.style.transform='translate('+dx+'px,'+dy+'px)'};
+      const pu=e=>{if(e.pointerId!==id)return;id=null;this.inp={x:0,y:0};st.style.display='none'};
+      root.addEventListener('pointerdown',pd);root.addEventListener('pointermove',pm);root.addEventListener('pointerup',pu);root.addEventListener('pointercancel',pu);
+      const kd=e=>{this.keys[e.key.toLowerCase()]=1;if(e.key==' ')this.useAb();if(e.key=='e')this.useMed()},ku=e=>{delete this.keys[e.key.toLowerCase()]};
+      window.addEventListener('keydown',kd);window.addEventListener('keyup',ku);
+      this.off=()=>{this.ro.disconnect();window.removeEventListener('keydown',kd);window.removeEventListener('keyup',ku);root.removeEventListener('pointerdown',pd);root.removeEventListener('pointermove',pm);root.removeEventListener('pointerup',pu);root.removeEventListener('pointercancel',pu)};
+      q('[data-ab]').onclick=()=>this.useAb();q('[data-md]').onclick=()=>this.useMed();q('[data-p]').onclick=()=>this.pause();
+      this.newMatch();
+      this.last=performance.now();const loop=t=>{if(!this.alive_){return}this.raf=requestAnimationFrame(loop);const dt=Math.min(.05,(t-this.last)/1000);this.last=t;this.frame(dt)};
+      this.alive_=true;this.raf=requestAnimationFrame(loop)}
+    stop(){this.alive_=false;cancelAnimationFrame(this.raf);this.off&&this.off();this.timers.forEach(clearTimeout)}
+    later(f,ms){this.timers.push(setTimeout(f,ms))}
+    loadout(){return{weapon:P.equip.weapon,char:P.equip.char,meds:this.mode=='duel'?1:(this.carry?this.carry.meds:3),name:'Du'}}
+    newMatch(){
+      if(this.mode=='duel'){
+        if(!this.opp){const w=C.R.pick(C.SKIN_IDS.filter(i=>SK[i].kind=='weapon')),c=C.R.pick(C.SKIN_IDS.filter(i=>SK[i].kind=='char'));
+          const nm=['xX_Pixel_Xx','NoScope_Nora','Kaktus_Kalle','Turbo_Tim','Lara_Laser','Schrottkönig','Blitz_Bruno','Mia_Mythic'];this.opp={weapon:w,char:c,name:C.R.pick(nm),ai:true,meds:1}}
+        this.sim=new Live.Sim({mode:'duel',me:this.loadout(),opp:this.opp})}
+      else{this.sim=new Live.Sim({mode:'wave',wave:this.wave,me:this.loadout()});if(this.carry){this.sim.me().hp=this.carry.hp}}
+      this.dead=false;this.banner=this.mode=='duel'?'Runde '+this.round:'Welle '+this.wave;this.bt=1.6;
+      const sb=this.sim.me();q('[data-ab]').style.display=(sb.cab=='phase'||sb.wab=='blackhole')?'':'none'}
+    pause(){if(this.dead)return;this.paused=!this.paused;if(this.paused){const o=document.createElement('div');o.className='ovl';o.id='pz';o.innerHTML='<h2>⏸ Pause</h2><button class="btn g" data-r>Weiter</button><button class="btn gr" data-q>'+(this.mode=='wave'?'Aufgeben & Auszahlen':'Duell aufgeben')+'</button>';root.appendChild(o);o.querySelector('[data-r]').onclick=()=>this.pause();o.querySelector('[data-q]').onclick=()=>{this.paused=false;o.remove();this.sim.me().hp=0;this.sim.me().dead=true;this.sim.over=true;this.sim.winner='b'}}else{const o=q('#pz');if(o)o.remove()}}
+    useAb(){this.sim&&this.sim.ability(this.sim.me())}
+    useMed(){this.sim&&this.sim.useMed(this.sim.me())}
+    frame(dt){
+      if(!this.paused&&!this.dead){
+        const k=this.keys;let x=(k.d||k.arrowright?1:0)-(k.a||k.arrowleft?1:0),y=(k.s||k.arrowdown?1:0)-(k.w||k.arrowup?1:0);
+        const inp=(x||y)?{x,y}:this.inp;
+        if(this.bt>0){this.bt-=dt}
+        this.sim.step(dt,{a:inp});this.events()}
+      this.draw();this.hud()}
+    events(){
+      const s=this.sim,me=s.me();
+      for(const ev of s.ev){
+        if(ev.t=='kill'){const d0=P.diamonds,c0=P.coins,log=[];C.killRewards(P,ev.foe,false,log);this.run.coins+=P.coins-c0;this.run.dia+=P.diamonds-d0;this.run.kills++;if(P.diamonds>d0)s.float(ev.x,ev.y-20,'+'+(P.diamonds-d0)+' 💎','#7de3ff',true);s.float(ev.x+10,ev.y,'+'+(P.coins-c0),'#ffd93d')}
+        else if(ev.t=='clear'&&!this.dead&&this.mode=='wave')this.waveDone();
+        else if(ev.t=='hole'){root.classList.add('sh');setTimeout(()=>root.classList.remove('sh'),260)}}
+      s.ev.length=0;
+      if(s.over&&!this.dead){this.dead=true;if(this.mode=='wave')this.later(()=>this.runOver(),700);else this.later(()=>this.roundOver(),900)}}
+    waveDone(){
+      const s=this.sim,me=s.me(),w=this.wave,bonus=C.WAVE_BONUS_BASE+C.WAVE_BONUS_STEP*w;
+      C.addCoins(P,bonus);this.run.coins+=bonus;P.stats.waves_cleared++;P.stats.best_wave=Math.max(P.stats.best_wave,w);C.event(P,'wave_clear');save();
+      this.dead=true;const heal=Math.min(me.max-me.hp,40);this.carry={hp:Math.min(me.max,me.hp+heal),meds:Math.min(3,me.meds+1)};
+      const o=document.createElement('div');o.className='ovl';
+      o.innerHTML='<div class="big">🏁</div><h2>Welle '+w+' geschafft!</h2><div>+'+bonus+' 🪙 Wellenbonus · +40 ❤ · +1 💊</div><div style="opacity:.8">Diesen Lauf: '+this.run.coins+' 🪙 · '+this.run.dia+' 💎 · '+this.run.kills+' Kills</div><button class="btn g" data-n>Welle '+(w+1)+' ▶</button><button class="btn o" data-e>Auszahlen & Beenden</button>';
+      root.appendChild(o);
+      o.querySelector('[data-n]').onclick=()=>{o.remove();this.wave++;this.newMatch()};
+      o.querySelector('[data-e]').onclick=()=>{o.remove();this.runOver(true)}}
+    runOver(quit){
+      const w=this.wave,best=quit?w:w-1;P.stats.best_wave=Math.max(P.stats.best_wave,best);save();stopGame();
+      root.innerHTML='<div class="ovl"><div class="big">'+(quit?'💰':'💀')+'</div><h2>'+(quit?'Ausgezahlt':'Ausgeschaltet')+' – Welle '+w+'</h2><div class="row" style="width:100%;max-width:300px"><span>Coins</span><b>+'+this.run.coins+' 🪙</b></div><div class="row" style="width:100%;max-width:300px"><span>Diamanten</span><b>+'+this.run.dia+' 💎</b></div><div class="row" style="width:100%;max-width:300px"><span>Bot-Kills</span><b>'+this.run.kills+'</b></div><button class="btn g" data-a>Nochmal ⚔</button><button class="btn gd" data-m>Menü</button></div>';
+      q('[data-a]').onclick=()=>go('run');q('[data-m]').onclick=()=>go('menu')}
+    roundOver(){
+      const s=this.sim,a=s.players[0],b=s.players[1];let win=s.winner=='a',draw=!s.winner;
+      if(win){this.sc[0]++;const c0=P.coins,d0=P.diamonds;C.killRewards(P,{},true,[]);this.run.coins+=P.coins-c0;this.run.dia+=P.diamonds-d0}else if(!draw)this.sc[1]++;
+      save();const end=this.sc[0]>=2||this.sc[1]>=2;
+      const o=document.createElement('div');o.className='ovl';
+      if(!end){o.innerHTML='<div class="big">'+(win?'✅':draw?'🤝':'❌')+'</div><h2>Runde '+this.round+' '+(win?'gewonnen':draw?'unentschieden':'verloren')+'</h2><div style="font-size:22px;font-weight:800">'+this.sc[0]+' : '+this.sc[1]+'</div><button class="btn g" data-n>Nächste Runde ▶</button>';root.appendChild(o);
+        o.querySelector('[data-n]').onclick=()=>{o.remove();this.round++;this.newMatch()}}
+      else{const w=this.sc[0]>this.sc[1];P.stats.pvp_matches++;if(w){C.addCoins(P,C.PVP_WIN_BONUS);P.stats.pvp_wins++;C.event(P,'pvp_win')}else C.addCoins(P,C.PVP_LOSS_BONUS);save();
+        o.innerHTML='<div class="big">'+(w?'🏆':'😵')+'</div><h2>'+(w?'MATCH GEWONNEN':'Match verloren')+' '+this.sc[0]+':'+this.sc[1]+'</h2><div>'+(w?'Siegprämie +'+C.PVP_WIN_BONUS:'Trostpreis +'+C.PVP_LOSS_BONUS)+' 🪙</div><div style="opacity:.8">Gegner: '+esc(this.opp.name)+'</div><button class="btn g" data-a>Revanche 🎯</button><button class="btn gd" data-m>Menü</button>';root.appendChild(o);
+        o.querySelector('[data-a]').onclick=()=>go('duel');o.querySelector('[data-m]').onclick=()=>go('menu')}}
+    hud(){
+      const me=this.sim.me(),h=q('#hpb');if(!h)return;h.style.width=Math.max(0,me.hp/me.max*100)+'%';h.style.background=me.hp<35?'#ef4444':'';
+      q('#hpt').textContent='❤ '+Math.ceil(me.hp)+' / '+me.max;
+      q('#wv').textContent=this.mode=='duel'?'Duell '+this.sc[0]+':'+this.sc[1]:'Welle '+this.wave+' · '+(this.sim.enemies.length+this.sim.queue.length)+' Gegner · 🪙'+this.run.coins;
+      const m=q('[data-md]');m.querySelector('span').textContent=me.meds;m.disabled=me.meds<=0||me.hp>=me.max;
+      const a=q('[data-ab]');if(a){a.disabled=me.cdAb>0;a.innerHTML=(me.cab=='phase'?'👻':'🕳')+(me.cdAb>0?'<span>'+Math.ceil(me.cdAb)+'</span>':'')}}
+    draw(){
+      const g=this.ctx,s=this.sim,d=this.d,W=Live.W,H=Live.H;
+      g.setTransform(1,0,0,1,0,0);g.fillStyle='#0a0d1c';g.fillRect(0,0,this.cv.width,this.cv.height);
+      g.setTransform(this.k*d,0,0,this.k*d,this.ox*d,this.oy*d);
+      const bg=g.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#141a3d');bg.addColorStop(1,'#0c1129');g.fillStyle=bg;g.fillRect(0,0,W,H);
+      g.strokeStyle='#ffffff0c';g.lineWidth=1;for(let x=0;x<=W;x+=30){g.beginPath();g.moveTo(x,0);g.lineTo(x,H);g.stroke()}for(let y=((s.t*20)%30);y<=H;y+=30){g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke()}
+      if(s.mode=='duel'){g.strokeStyle='#ffffff25';g.setLineDash([8,8]);g.beginPath();g.moveTo(0,H/2);g.lineTo(W,H/2);g.stroke();g.setLineDash([])}
+      for(const h of s.holes){const p=h.t/2.4,gr=g.createRadialGradient(h.x,h.y,4,h.x,h.y,h.r);gr.addColorStop(0,'#000');gr.addColorStop(.5,'#5b21b6aa');gr.addColorStop(1,'#5b21b600');g.fillStyle=gr;g.beginPath();g.arc(h.x,h.y,h.r*(.8+.2*Math.sin(s.t*9)),0,7);g.fill()}
+      for(const e of s.enemies)this.drawEnemy(g,e);
+      for(const p of s.players)if(!p.dead)this.drawPlayer(g,p);
+      for(const b of s.bullets){g.fillStyle=b.team=='e'?'#ff5470':(b.team=='b'?'#ff9f1c':(b.crit?'#ffd93d':'#6ee7ff'));g.shadowColor=g.fillStyle;g.shadowBlur=10;g.beginPath();g.arc(b.x,b.y,b.r,0,7);g.fill();g.shadowBlur=0}
+      for(const f of s.fx){if(f.txt){g.globalAlpha=Math.min(1,f.t*2);g.fillStyle=f.c;g.font=(f.big?'bold 15px':'bold 11px')+' system-ui';g.textAlign='center';g.strokeStyle='#000';g.lineWidth=3;g.strokeText(f.txt,f.x,f.y);g.fillText(f.txt,f.x,f.y);g.globalAlpha=1}else{g.globalAlpha=Math.max(0,f.t*2);g.fillStyle=f.c;g.fillRect(f.x,f.y,f.s,f.s);g.globalAlpha=1}}
+      if(this.bt>0){g.globalAlpha=Math.min(1,this.bt);g.fillStyle='#fff';g.font='900 34px system-ui';g.textAlign='center';g.strokeStyle='#000';g.lineWidth=5;g.strokeText(this.banner,W/2,H/2-40);g.fillText(this.banner,W/2,H/2-40);g.globalAlpha=1}
+      if(s.me().hurt>0){g.fillStyle='rgba(255,0,40,'+s.me().hurt*1.2+')';g.fillRect(0,0,W,H)}}
+    drawPlayer(g,p){
+      const h=G.hue(p.char?p.char.id:'x'),hw=G.hue(p.weapon?p.weapon.id:'y'),foe=p.team=='b';
+      g.save();g.translate(p.x,p.y);if(p.phase>0)g.globalAlpha=.4;
+      const r=p.char?RC[p.char.rar]:'#9aa4b8';
+      if(p.char&&(p.char.rar=='Mythic'||p.char.rar=='Legendary')){g.shadowColor=r;g.shadowBlur=14}
+      g.fillStyle=foe?'hsl('+h+',55%,45%)':'hsl('+(p.char?h:200)+',75%,58%)';g.strokeStyle=r;g.lineWidth=2.5;g.beginPath();g.arc(0,0,p.r,0,7);g.fill();g.stroke();g.shadowBlur=0;
+      g.save();g.rotate(p.ang);g.fillStyle=p.weapon?'hsl('+hw+',80%,60%)':'#cfd6e6';g.strokeStyle='#000a';g.lineWidth=1.5;g.fillRect(4,-3,17,6);g.strokeRect(4,-3,17,6);if(p.flash>0){g.fillStyle='#fff';g.beginPath();g.arc(23,0,5,0,7);g.fill()}g.restore();
+      g.fillStyle='#0c1230';g.fillRect(-6,-4,12,5);
+      if(p.frozen>0||p.slow>0){g.strokeStyle='#8fd8ff';g.lineWidth=2;g.beginPath();g.arc(0,0,p.r+4,0,7);g.stroke()}
+      g.restore();
+      if(foe){g.fillStyle='#000a';g.fillRect(p.x-18,p.y-p.r-10,36,5);g.fillStyle='#f97316';g.fillRect(p.x-18,p.y-p.r-10,36*p.hp/p.max,5);g.fillStyle='#fff';g.font='9px system-ui';g.textAlign='center';g.fillText(p.name,p.x,p.y-p.r-13)}}
+    drawEnemy(g,e){
+      g.save();g.translate(e.x,e.y);const hit=e.hit>0,col=e.kind=='boss'?'#dc2626':e.kind=='elite'?'#f97316':'#64748b';
+      g.fillStyle=hit?'#fff':col;g.strokeStyle='#000b';g.lineWidth=2.5;
+      if(e.frozen>0){g.shadowColor='#8fd8ff';g.shadowBlur=14}
+      if(e.kind=='grunt'){g.fillRect(-e.r,-e.r,e.r*2,e.r*2);g.strokeRect(-e.r,-e.r,e.r*2,e.r*2)}
+      else{g.beginPath();const n=e.kind=='boss'?8:6;for(let i=0;i<n;i++){const a=i/n*6.283+.3;g.lineTo(Math.cos(a)*e.r,Math.sin(a)*e.r)}g.closePath();g.fill();g.stroke()}
+      g.shadowBlur=0;g.fillStyle=e.rage?'#ff0':'#ffe66d';const ey=e.r*.25,ex=e.r*.38;g.beginPath();g.arc(-ex,-ey,e.r*.17,0,7);g.arc(ex,-ey,e.r*.17,0,7);g.fill();
+      if(e.frozen>0){g.fillStyle='#bfeaff88';g.fillRect(-e.r-2,-e.r-2,e.r*2+4,e.r*2+4)}
+      if(e.stun>0){g.fillStyle='#fff';g.font='12px system-ui';g.textAlign='center';g.fillText('💫',0,-e.r-14)}
+      g.restore();
+      const bw=e.kind=='boss'?70:30;g.fillStyle='#000a';g.fillRect(e.x-bw/2,e.y-e.r-9,bw,5);g.fillStyle=e.kind=='boss'?'#ef4444':'#a3e635';g.fillRect(e.x-bw/2,e.y-e.r-9,bw*e.hp/e.max,5);
+      if(e.kind=='boss'){g.fillStyle='#fff';g.font='bold 10px system-ui';g.textAlign='center';g.fillText(e.name.replace('BOSS: ',''),e.x,e.y-e.r-14)}}
+  }
+  S.menu();
+  return()=>{alive=false;stopGame();save()};
+};
+A.arena=el=>ArenaGUI.mount(el);
+
 
 /* ================= 6.1: Fuß Knabber Simulator (versteckte App, Installation per Terminal-Befehl) ================= */
 const Fuss={

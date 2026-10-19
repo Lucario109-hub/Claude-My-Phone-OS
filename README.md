@@ -20,9 +20,12 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 - Fehler behoben: doppelte Element-IDs (Anmelden-Button, Aufgaben, Rechner-Anzeige), Spiele-Timer laufen nach dem Schließen nicht weiter
 
 ## Neu in 6.0
-- **Lucario Arena**: Ballerspiel in der App. Singleplayer-Wellen, Multiplayer (Online-Match als Simulation, Freundesduell an einem Gerät), Quests, Coins und Diamanten, Kisten (100 Coins / 100 Diamanten), Skin-Verkauf, Mythic-Fähigkeiten. Spielstand im Gerätespeicher.
+- **Lucario Arena**: Echtzeit-Shooter mit grafischer Oberfläche (Joystick, Auto-Zielen, Fähigkeiten-Buttons). Wellen gegen Bots, Duelle (Best of 3 gegen Computer-Spieler), Quests, Coins und Diamanten, Kisten (100 Coins / 100 Diamanten), Skin-Verkauf, Mythic-Fähigkeiten. Spielstand im Gerätespeicher.
 - **Terminal**: Shell mit help, ls, cat, ps, calc, theme, open, neofetch u. a. Befehl `arena` startet das Spiel, `arena sim 200` zeigt die Balancing-Simulation.
 - Tastatur am PC: Tasten wählen die gleichnamige Schaltfläche (z. B. 1, z, d, m).
+
+## Neu in 6.2
+- Lucario Arena ist jetzt ein echtes Echtzeit-Spiel mit Grafik: Menü, Shop mit Kisten-Animation, Inventar, Quests, Profil. Die Text-Version läuft weiter im Terminal (`arena`).
 
 ## Neu in 6.1
 - **Fuß Knabber Simulator**: Klicker-Spiel mit Fruchtschnitten (acht Sorten), Fuß Knabber Münzen über die Zeit, Level, Belohnung alle 5 Minuten, Upgrades, Prestige. Klickt man eine Fruchtschnitte an, gibt es einen Jumpscare (in den Spiel-Einstellungen auf „Manchmal“ oder „Aus“ stellbar; beim ersten Start kommt ein Warnhinweis).
