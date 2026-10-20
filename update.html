@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LucarioNet aktualisieren</title>
+<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0b1020;color:#fff;font-family:system-ui,sans-serif;text-align:center;padding:24px}.b{max-width:320px}h1{font-size:22px}p{opacity:.8;line-height:1.4}.s{font-size:48px;animation:r 1s linear infinite;display:inline-block}@keyframes r{to{transform:rotate(360deg)}}</style></head>
+<body><div class="b"><div class="s">⟳</div><h1>LucarioNet wird aktualisiert …</h1><p id="m">Alter Zwischenspeicher wird entfernt. Deine Spielstände, Mails, Fotos und Apps bleiben erhalten.</p></div>
+<script>
+(async()=>{
+  const m=document.getElementById('m');
+  try{
+    if('serviceWorker' in navigator){const rs=await navigator.serviceWorker.getRegistrations();for(const r of rs)await r.unregister()}
+    if(window.caches){const ks=await caches.keys();for(const k of ks)await caches.delete(k)}
+    m.textContent='Fertig! Die neue Version startet …';
+  }catch(e){m.textContent='Neustart …'}
+  setTimeout(()=>{location.replace('./index.html?u='+Date.now())},900);
+})();
+</script></body></html>
