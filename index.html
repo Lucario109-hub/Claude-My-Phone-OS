@@ -597,7 +597,8 @@ addEventListener('pointerdown',()=>Sys.unlock(),{passive:true});
 /* ---------- Einstellungen, Design (Dunkel/Hell), Sperre, Schnelleinstellungen, Badges ---------- */
 const hex=b=>[...b].map(x=>x.toString(16).padStart(2,'0')).join('');
 const unhex=h=>Uint8Array.from(h.match(/../g)||[],x=>parseInt(x,16));
-const DEF={theme:'dark',accent:'#4cc9ff',font:1,bright:100,reduce:0,ringVol:.5,vibrate:1,sound:1,notif:1,autolock:1,style:'classic'};
+const DEF={theme:'dark',accent:'#4cc9ff',font:1,bright:100,reduce:0,ringVol:.5,vibrate:1,sound:1,notif:1,autolock:1,style:'classic',accents:null};
+const DEFACC=['#4cc9ff','#7b2ff7','#ff6b9d','#2ecc71','#ffb347','#ff5252','#00d2d3','#a29bfe'];let ACEDIT=false;
 let SET={...DEF};try{SET={...DEF,...JSON.parse(LS.settings||'{}')}}catch(e){}
 const saveSet=()=>{try{LS.settings=JSON.stringify(SET)}catch(e){}};
 const mq=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;
@@ -1227,11 +1228,18 @@ A.settings=el=>{
   };
 
   P.disp=async()=>{
-    const ac=['#4cc9ff','#7b2ff7','#ff6b9d','#2ecc71','#ffb347','#ff5252','#00d2d3','#a29bfe'];
-    add(hdr('Anzeige & Design')+'<div class="set"><b>Design-Stil</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['classic','Klassisch'],['lucario','⬡ LucarioOS']].map(([k,n])=>'<button class="'+((SET.style||'classic')==k?'b':'g')+'" data-sty="'+k+'">'+n+'</button>').join('')+'</div><p style="margin:8px 0 0;opacity:.7;font-size:12px">LucarioOS: dunkles Glas-Design mit großer Uhr, Begrüßung, Akku- und WLAN-Widget.</p></div><div class="set"><b>Design</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['dark','🌙 Dunkel'],['light','☀️ Hell'],['auto','🌓 Auto']].map(([k,n])=>'<button class="'+(SET.theme==k?'b':'g')+'" data-th="'+k+'">'+n+'</button>').join('')+'</div></div><div class="set"><b>Akzentfarbe</b><div class="sw" style="flex-wrap:wrap" id="ac"></div></div><div class="set"><b>Schriftgröße</b><input type="range" id="fz" min="0.9" max="1.25" step="0.05" value="'+SET.font+'" style="width:100%;margin-top:10px"></div><div class="set"><b>Helligkeit</b><input type="range" id="br" min="40" max="100" step="5" value="'+SET.bright+'" style="width:100%;margin-top:10px"></div><div class="set">'+srow('Animationen reduzieren','Weniger Bewegung',tg('rd',SET.reduce))+'</div>');
+    const ac=(Array.isArray(SET.accents)&&SET.accents.length)?SET.accents:DEFACC.slice();
+    add(hdr('Anzeige & Design')+'<div class="set"><b>Design-Stil</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['classic','Klassisch'],['lucario','⬡ LucarioOS']].map(([k,n])=>'<button class="'+((SET.style||'classic')==k?'b':'g')+'" data-sty="'+k+'">'+n+'</button>').join('')+'</div><p style="margin:8px 0 0;opacity:.7;font-size:12px">LucarioOS: dunkles Glas-Design mit großer Uhr, Begrüßung, Akku- und WLAN-Widget.</p></div><div class="set"><b>Design</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['dark','🌙 Dunkel'],['light','☀️ Hell'],['auto','🌓 Auto']].map(([k,n])=>'<button class="'+(SET.theme==k?'b':'g')+'" data-th="'+k+'">'+n+'</button>').join('')+'</div></div><div class="set"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b style="flex:1">Akzentfarbe</b><button class="g" id="acp" style="padding:7px 12px">＋ Neue Farbe</button><button class="'+(ACEDIT?'b':'g')+'" id="ace" style="padding:7px 12px">'+(ACEDIT?'✔ Fertig':'✎ Bearbeiten')+'</button></div><input type="color" id="acn" value="#4cc9ff" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px"><div class="sw" style="flex-wrap:wrap" id="ac"></div><p style="margin:8px 0 0;opacity:.7;font-size:12px">'+(ACEDIT?'Tippe auf eine Farbe, um sie zu löschen. Mindestens eine bleibt.':'Tippe auf eine Farbe zum Auswählen oder füge eigene hinzu.')+'</p>'+(ACEDIT?'<button class="g" id="acr" style="margin-top:8px;padding:7px 12px">↺ Standardfarben wiederherstellen</button>':'')+'</div><div class="set"><b>Schriftgröße</b><input type="range" id="fz" min="0.9" max="1.25" step="0.05" value="'+SET.font+'" style="width:100%;margin-top:10px"></div><div class="set"><b>Helligkeit</b><input type="range" id="br" min="40" max="100" step="5" value="'+SET.bright+'" style="width:100%;margin-top:10px"></div><div class="set">'+srow('Animationen reduzieren','Weniger Bewegung',tg('rd',SET.reduce))+'</div>');
     el.querySelectorAll('[data-th]').forEach(b=>b.onclick=()=>{SET.theme=b.dataset.th;saveSet();applySet();go('disp')});
     el.querySelectorAll('[data-sty]').forEach(b=>b.onclick=()=>{SET.style=b.dataset.sty;saveSet();applySet();tick();go('disp')});
-    ac.forEach(c=>{const d=document.createElement('div');d.style.background=c;if(SET.accent==c)d.style.outline='3px solid var(--txt)';d.onclick=()=>{SET.accent=c;saveSet();applySet();go('disp')};$('#ac').appendChild(d)});
+    const saveAc=l=>{SET.accents=l;if(!l.includes(SET.accent))SET.accent=l[0];saveSet();applySet();go('disp')};
+    ac.forEach(c=>{const d=document.createElement('div');d.style.background=c;d.style.position='relative';if(SET.accent==c&&!ACEDIT)d.style.outline='3px solid var(--txt)';
+      if(ACEDIT){d.innerHTML='<span style="position:absolute;right:-5px;top:-5px;width:20px;height:20px;border-radius:50%;background:#e03b3b;color:#fff;font-size:13px;line-height:20px;text-align:center;font-weight:800">×</span>'}
+      d.onclick=()=>{if(ACEDIT){if(ac.length<=1){Sys.toast('Mindestens eine Farbe bleibt');return}saveAc(ac.filter(x=>x!=c))}else{SET.accent=c;saveSet();applySet();go('disp')}};$('#ac').appendChild(d)});
+    $('#ace').onclick=()=>{ACEDIT=!ACEDIT;go('disp')};
+    $('#acp').onclick=()=>{$('#acn').click()};
+    $('#acn').onchange=e=>{const c=e.target.value.toLowerCase();if(ac.includes(c)){SET.accent=c;saveSet();applySet();go('disp');return}if(ac.length>=24){Sys.toast('Maximal 24 Farben');return}SET.accent=c;saveAc(ac.concat([c]))};
+    const rs=$('#acr');if(rs)rs.onclick=()=>{SET.accents=null;SET.accent=DEFACC[0];saveSet();applySet();go('disp')};
     $('#fz').onchange=e=>{SET.font=+e.target.value;saveSet();applySet()};
     $('#br').oninput=e=>{SET.bright=+e.target.value;saveSet();applySet()};
     $('#rd').onchange=e=>{SET.reduce=e.target.checked?1:0;saveSet();applySet()};

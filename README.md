@@ -28,6 +28,8 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 Öffne einmal `update.html` (z. B. `https://lucario109-hub.github.io/Claude-My-Phone-OS/update.html`). Die Seite entfernt nur den alten Zwischenspeicher und startet LucarioNet neu. Spielstände bleiben erhalten.
 
 ## Neu in 6.4
+
+- Akzentfarben in Einstellungen → Anzeige & Design: eigene Farben hinzufügen (＋ Neue Farbe), mit ✎ Bearbeiten Farben löschen (mind. 1 bleibt), ↺ Standardfarben wiederherstellen.
 - **Design-Stil LucarioOS**: Einstellungen → Anzeige & Design → Design-Stil. Dunkles Glas-Design mit großer Uhr, Begrüßung, Datum, Suchleiste, Akku- und WLAN-Widget.
 
 ## Neu in 6.3
