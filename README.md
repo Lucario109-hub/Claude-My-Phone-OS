@@ -27,6 +27,9 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 ## Hängt die App auf einer alten Version?
 Öffne einmal `update.html` (z. B. `https://lucario109-hub.github.io/Claude-My-Phone-OS/update.html`). Die Seite entfernt nur den alten Zwischenspeicher und startet LucarioNet neu. Spielstände bleiben erhalten.
 
+## Neu in 6.4
+- **Design-Stil LucarioOS**: Einstellungen → Anzeige & Design → Design-Stil. Dunkles Glas-Design mit großer Uhr, Begrüßung, Datum, Suchleiste, Akku- und WLAN-Widget.
+
 ## Neu in 6.3
 - **Putz Simulator** (geheim): Installation nur im Terminal mit `Putz Simulator 123`. Karten werden mit jedem Level größer und dreckiger, Wischmopps und Schwämme kaufen und upgraden, Quests, Teleport.
 - LucarioTube: roter Löschen-Button mit Sicherheitsabfrage, Papierkorb direkt auf jedem Video.
