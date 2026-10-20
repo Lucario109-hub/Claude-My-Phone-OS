@@ -1,6 +1,6 @@
 // LucarioNet Service Worker – macht die App offline-fähig und installierbar.
 // Bei Updates die Version unten erhöhen (z. B. v3), damit der Cache erneuert wird.
-const V = 'lucarionet-v11';
+const V = 'lucarionet-v12';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
@@ -20,8 +20,11 @@ self.addEventListener('fetch', e => {
   const u = new URL(e.request.url);
   // Fremde Seiten (Internet-Test, KI-Server) und die lokale API nie aus dem Cache bedienen
   if (u.origin !== location.origin || u.pathname.startsWith('/api/')) return;
+  // Netzwerk zuerst (immer die neueste Version), Cache nur als Offline-Reserve
   e.respondWith(
-    caches.match(e.request).then(r => r || fetch(e.request).catch(() =>
-      e.request.mode === 'navigate' ? caches.match('index.html') : Response.error()))
+    fetch(e.request, {cache: 'no-cache'}).then(r => {
+      if (r && r.ok) { const copy = r.clone(); caches.open(V).then(c => c.put(e.request, copy)); }
+      return r;
+    }).catch(() => caches.match(e.request).then(r => r || (e.request.mode === 'navigate' ? caches.match('index.html') : Response.error())))
   );
 });
