@@ -24,6 +24,12 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 - **Terminal**: Shell mit help, ls, cat, ps, calc, theme, open, neofetch u. a. Befehl `arena` startet das Spiel, `arena sim 200` zeigt die Balancing-Simulation.
 - Tastatur am PC: Tasten wählen die gleichnamige Schaltfläche (z. B. 1, z, d, m).
 
+## Neu in 6.3
+- **Putz Simulator** (geheim): Installation nur im Terminal mit `Putz Simulator 123`. Karten werden mit jedem Level größer und dreckiger, Wischmopps und Schwämme kaufen und upgraden, Quests, Teleport.
+- LucarioTube: roter Löschen-Button mit Sicherheitsabfrage, Papierkorb direkt auf jedem Video.
+- Lucario Arena: nach jeder Runde automatischer 3-Sekunden-Countdown.
+- Spiele-Fixes: Snake, Flappy und Breakout warten auf den ersten Tipp, Pong hat eine Aufschlagpause, alle laufen unabhängig von der Bildwiederholrate.
+
 ## Neu in 6.2
 - Lucario Arena ist jetzt ein echtes Echtzeit-Spiel mit Grafik: Menü, Shop mit Kisten-Animation, Inventar, Quests, Profil. Die Text-Version läuft weiter im Terminal (`arena`).
 
