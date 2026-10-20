@@ -2098,7 +2098,7 @@ const LB={
   async status(){
     let bat='';try{if(navigator.getBattery){const b=await navigator.getBattery();bat='Akku: '+Math.round(b.level*100)+' %'+(b.charging?' (lädt)':'')+'\n'}}catch(e){}
     let sp='';try{if(navigator.storage&&navigator.storage.estimate){const e=await navigator.storage.estimate();sp='Speicher belegt: '+((e.usage||0)/1048576).toFixed(1)+' MB\n'}}catch(e){}
-    return 'LucarioNet 6.0\n'+bat+sp+'Netz: '+Net.text()+'\nApps: '+allApps().length+'\nKonto: '+(Sys.session?Sys.session.name+'@lucario.net':'nicht angemeldet')+'\nGerätesperre: '+(Lock.has()?'aktiv':'keine')+'\nTheme: '+(isDark()?'dunkel':'hell');
+    return 'LucarioNet 6.3\n'+bat+sp+'Netz: '+Net.text()+'\nApps: '+allApps().length+'\nKonto: '+(Sys.session?Sys.session.name+'@lucario.net':'nicht angemeldet')+'\nGerätesperre: '+(Lock.has()?'aktiv':'keine')+'\nTheme: '+(isDark()?'dunkel':'hell');
   },
   /* Lokale Befehle: antwortet {text,chips} oder null */
   async local(raw){
@@ -2896,10 +2896,10 @@ A.terminal=el=>{
   let cwd='/home';const P=t=>ui.print(t);
   /* kleines virtuelles Dateisystem */
   const files=()=>({
-    '/etc/os-release':'NAME="LucarioNet"\nVERSION="6.0"\nID=lucarionet\nHOME_URL=lucario.net',
+    '/etc/os-release':'NAME="LucarioNet"\nVERSION="6.3"\nID=lucarionet\nHOME_URL=lucario.net',
     '/etc/hostname':'lucario',
-    '/etc/motd':'Willkommen bei LucarioNet 6.0 – tippe "help".',
-    '/proc/version':'LucarioNet 6.0 (Web-Shell) – Scheduler: 3 Prioritätsklassen, Dienste: '+Sys.svc.length,
+    '/etc/motd':'Willkommen bei LucarioNet 6.3 – tippe "help".',
+    '/proc/version':'LucarioNet 6.3 (Web-Shell) – Scheduler: 3 Prioritätsklassen, Dienste: '+Sys.svc.length,
     '/proc/meminfo':memText(),
     '/var/log/system.log':Sys.logs.slice().reverse().join('\n')||'(leer)',
     '/home/readme.txt':'Das ist dein Heimordner. Tippe "arena" für das Ballerspiel.\nSpielstand: /games/arena.sav',
@@ -2961,8 +2961,8 @@ A.terminal=el=>{
       case 'date':case 'time':P(new Date().toLocaleString('de-DE',{dateStyle:'full',timeStyle:'medium'}));return;
       case 'whoami':P(user());return;
       case 'hostname':P('lucario');return;
-      case 'ver':P('LucarioNet 6.0');return;
-      case 'uname':P(args[0]=='-a'?'LucarioNet 6.0 lucario web-shell '+(navigator.userAgent||'').slice(0,60):'LucarioNet');return;
+      case 'ver':P('LucarioNet 6.3');return;
+      case 'uname':P(args[0]=='-a'?'LucarioNet 6.3 lucario web-shell '+(navigator.userAgent||'').slice(0,60):'LucarioNet');return;
       case 'uptime':P('Laufzeit: '+up()+' · Prozesse: '+(Sys.svc.length+1)+' · Konto: '+user());return;
       case 'pwd':P(cwd);return;
       case 'cd':{const t=abs(args[0]||'/home');if(dirs.includes(t))cwd=t;else P('cd: '+(args[0]||'')+': Kein solcher Ordner');return}
@@ -2996,7 +2996,7 @@ A.terminal=el=>{
       case 'history':ui.history().forEach((h,i)=>P(String(i+1).padStart(4)+'  '+h));return;
       case 'neofetch':{
         const l=['  ⬡⬡⬡⬡⬡  ','⬡⬡     ⬡⬡','⬡   ◆   ⬡','⬡⬡     ⬡⬡','  ⬡⬡⬡⬡⬡  '];
-        const info=[c2(user()+'@lucario','1;36'),'OS: LucarioNet 6.0','Laufzeit: '+up(),'Apps: '+allApps().length,'Netz: '+(typeof Net!='undefined'?Net.text():'?'),'Design: '+(isDark()?'dunkel':'hell')];
+        const info=[c2(user()+'@lucario','1;36'),'OS: LucarioNet 6.3','Laufzeit: '+up(),'Apps: '+allApps().length,'Netz: '+(typeof Net!='undefined'?Net.text():'?'),'Design: '+(isDark()?'dunkel':'hell')];
         for(let i=0;i<Math.max(l.length,info.length);i++)P(c2((l[i]||'').padEnd(11),'1;36')+(info[i]||''));return}
       case 'arena':await arena(args);return;
       case 'reboot':if((await ui.read('Wirklich neu starten?',[['j','✔ Ja'],['n','✘ Nein']],{ps:'?'})).toLowerCase()=='j'){P('Neustart …');setTimeout(()=>location.reload(),400)}return;
@@ -3004,7 +3004,7 @@ A.terminal=el=>{
       default:P(cmd+': Befehl nicht gefunden – tippe "help"');
     }}
   (async()=>{
-    P(c2('LucarioNet Terminal 6.0','1;36')+'  –  tippe '+c2('help','1;33')+' für alle Befehle, '+c2('arena','1;33')+' für das Ballerspiel.');
+    P(c2('LucarioNet Terminal 6.3','1;36')+'  –  tippe '+c2('help','1;33')+' für alle Befehle, '+c2('arena','1;33')+' für das Ballerspiel.');
     for(;;){
       let line;try{line=await ui.read('',null,{ps:user()+'@lucario:'+(cwd=='/home'?'~':cwd)+'$',hist:true})}catch(e){return}
       try{await exec(line)}catch(e){P('Fehler: '+(e&&e.message||e))}}
