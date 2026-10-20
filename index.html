@@ -174,28 +174,28 @@ select.f{appearance:auto}
 /* ================= 6.4: Design-Stil LucarioOS ================= */
 .cy{font-weight:inherit}
 .lohd,.lologo,.lowd,.lodots,#hgr{display:none}
-#phone.lo{background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20480%20900%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%221%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%231d4fff%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%232f7bff%22%20stop-opacity%3D%22.9%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237fd0ff%22%20stop-opacity%3D%221%22%2F%3E%3C%2FlinearGradient%3E%3Cfilter%20id%3D%22b%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22140%25%22%3E%3CfeGaussianBlur%20stdDeviation%3D%2214%22%2F%3E%3C%2Ffilter%3E%3Cfilter%20id%3D%22s%22%3E%3CfeGaussianBlur%20stdDeviation%3D%221.2%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M-40%20520%20C120%20420%20260%20360%20520%20120%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%2246%22%20fill%3D%22none%22%20filter%3D%22url%28%23b%29%22%20opacity%3D%22.55%22%2F%3E%3Cpath%20d%3D%22M-40%20520%20C120%20420%20260%20360%20520%20120%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%223%22%20fill%3D%22none%22%20filter%3D%22url%28%23s%29%22%2F%3E%3Cpath%20d%3D%22M-40%20640%20C140%20560%20300%20460%20520%20300%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%2230%22%20fill%3D%22none%22%20filter%3D%22url%28%23b%29%22%20opacity%3D%22.4%22%2F%3E%3Cpath%20d%3D%22M-40%20640%20C140%20560%20300%20460%20520%20300%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20filter%3D%22url%28%23s%29%22%20opacity%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M-40%20800%20C160%20740%20320%20640%20520%20520%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%2222%22%20fill%3D%22none%22%20filter%3D%22url%28%23b%29%22%20opacity%3D%22.3%22%2F%3E%3Cpath%20d%3D%22M-40%20800%20C160%20740%20320%20640%20520%20520%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%221.6%22%20fill%3D%22none%22%20filter%3D%22url%28%23s%29%22%20opacity%3D%22.6%22%2F%3E%3C%2Fsvg%3E") center/cover no-repeat,radial-gradient(120% 70% at 85% 5%,#0b2a7a 0,#050a1f 55%,#02040f 100%)!important;--acc:#4cd8ff}
-#phone.lo .lohd{display:flex;justify-content:space-between;align-items:flex-start;margin:0 0 4px;padding-left:12px;border-left:3px solid #2fb8ff}
-#phone.lo .lob b{display:block;font:400 28px/1.1 system-ui,sans-serif;letter-spacing:.3px}#phone.lo .lob b i{font-style:normal;color:#4cd8ff}
+#phone.lo{background:var(--lobg) center/cover no-repeat,radial-gradient(120% 70% at 85% 5%,rgb(var(--lomid)) 0,rgb(var(--lodk)) 55%,#02040f 100%)!important}
+#phone.lo .lohd{display:flex;justify-content:space-between;align-items:flex-start;margin:0 0 4px;padding-left:12px;border-left:3px solid var(--lo)}
+#phone.lo .lob b{display:block;font:400 28px/1.1 system-ui,sans-serif;letter-spacing:.3px}#phone.lo .lob b i{font-style:normal;color:var(--lo)}
 #phone.lo .lob small{display:block;font-size:13px;opacity:.85;letter-spacing:.5px;margin-top:2px}
-#phone.lo .lodate{display:flex;gap:10px;align-items:center;background:rgba(10,20,55,.55);border:1px solid rgba(120,170,255,.35);border-radius:22px;padding:8px 16px;font-size:13px;backdrop-filter:blur(10px)}
-#phone.lo .lodate b{display:block;font-weight:600}#phone.lo .lodate i{display:block;font-style:normal;color:#4cd8ff}
-#phone.lo .lologo{display:block;position:absolute;right:-14px;top:128px;width:170px;opacity:.95;pointer-events:none;filter:drop-shadow(0 0 18px #2f7bff)}
+#phone.lo .lodate{display:flex;gap:10px;align-items:center;background:rgba(var(--lodk),.62);border:1px solid rgba(var(--lorgb),.42);border-radius:22px;padding:8px 16px;font-size:13px;backdrop-filter:blur(10px)}
+#phone.lo .lodate b{display:block;font-weight:600}#phone.lo .lodate i{display:block;font-style:normal;color:var(--lo)}
+#phone.lo .lologo{display:block;position:absolute;right:-14px;top:128px;width:170px;opacity:.95;pointer-events:none;filter:drop-shadow(0 0 18px rgba(var(--lorgb),.8))}
 #phone.lo #clock{text-align:left;margin:20px 0 4px;position:relative;z-index:1}
 #phone.lo #clock .t{font-size:84px;font-weight:300;letter-spacing:-3px;line-height:1}
-#phone.lo #clock .cy{color:#4cd8ff}
+#phone.lo #clock .cy{color:var(--lo)}
 #phone.lo #clock .d{display:none}
 #phone.lo #hgr{display:block;font-size:21px;opacity:.8;margin-top:8px}
-#phone.lo #search{margin:12px 0 18px;padding:15px 52px 15px 48px;border-radius:28px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234cd8ff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4-4'/%3E%3C/svg%3E") 14px center/22px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234cd8ff' stroke-width='2' stroke-linecap='round'%3E%3Crect x='9' y='3' width='6' height='11' rx='3'/%3E%3Cpath d='M5 11a7 7 0 0014 0M12 18v3'/%3E%3C/svg%3E") right 16px center/22px no-repeat,rgba(14,28,75,.55);border:1px solid rgba(120,170,255,.4);box-shadow:0 0 18px rgba(47,123,255,.25);color:#fff}
-#phone.lo .app .ic{background:linear-gradient(150deg,rgba(40,95,235,.6),rgba(8,20,70,.85))!important;border:1px solid rgba(130,175,255,.4);box-shadow:0 0 16px rgba(47,123,255,.35),inset 0 1px 0 rgba(255,255,255,.28)!important;border-radius:20px}
+#phone.lo #search{margin:12px 0 18px;padding:15px 52px 15px 48px;border-radius:28px;background:var(--losearch) 14px center/22px no-repeat,var(--lomic) right 16px center/22px no-repeat,rgba(var(--lodk),.62);border:1px solid rgba(var(--lorgb),.45);box-shadow:0 0 18px rgba(var(--lorgb),.28);color:#fff}
+#phone.lo .app .ic{background:linear-gradient(150deg,rgba(var(--lorgb),.5),rgba(var(--lodk),.88))!important;border:1px solid rgba(var(--lorgb),.5);box-shadow:0 0 16px rgba(var(--lorgb),.38),inset 0 1px 0 rgba(255,255,255,.28)!important;border-radius:20px}
 #phone.lo .app span{font-size:12px;text-shadow:0 1px 3px #000}
-#phone.lo .ic svg{filter:drop-shadow(0 0 4px rgba(120,190,255,.6))}
-#phone.lo #dock{background:rgba(10,22,70,.55);border:1px solid rgba(120,170,255,.35);box-shadow:0 0 22px rgba(47,123,255,.3)}
-#phone.lo .lowd{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(10,22,70,.55);border:1px solid rgba(120,170,255,.35);border-radius:26px;padding:12px 18px;margin:6px 0 8px;backdrop-filter:blur(12px)}
+#phone.lo .ic svg{filter:drop-shadow(0 0 4px rgba(var(--lorgb),.7))}
+#phone.lo #dock{background:rgba(var(--lodk),.62);border:1px solid rgba(var(--lorgb),.42);box-shadow:0 0 22px rgba(var(--lorgb),.32)}
+#phone.lo .lowd{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(var(--lodk),.62);border:1px solid rgba(var(--lorgb),.42);border-radius:26px;padding:12px 18px;margin:6px 0 8px;backdrop-filter:blur(12px)}
 #phone.lo .lowd>div{display:flex;align-items:center;gap:10px;flex:1;font-size:13px}#phone.lo .lowd small{display:block;opacity:.85}#phone.lo .lowd b{display:block;font-size:18px}
-#phone.lo .lowd .bar{height:8px;min-width:50px;background:rgba(255,255,255,.18);border-radius:6px;overflow:hidden;margin-top:4px}#phone.lo .lowd .bar i{display:block;height:100%;width:50%;background:linear-gradient(90deg,#4cd8ff,#7aa0ff)}
+#phone.lo .lowd .bar{height:8px;min-width:50px;background:rgba(255,255,255,.18);border-radius:6px;overflow:hidden;margin-top:4px}#phone.lo .lowd .bar i{display:block;height:100%;width:50%;background:linear-gradient(90deg,var(--lo),var(--lo2))}
 #phone.lo .lowd .sep{flex:none;width:1px;align-self:stretch;background:rgba(255,255,255,.2)}
-#phone.lo .lowd em{font-style:normal;color:#4cd8ff;display:block}
+#phone.lo .lowd em{font-style:normal;color:var(--lo);display:block}
 #phone.lo .lodots{display:flex;justify-content:center;gap:8px;margin:0 0 4px}#phone.lo .lodots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3)}#phone.lo .lodots i.on{background:#fff}
 #phone.lo #home{padding-bottom:128px}
 /* ================= 6.1: Fuß Knabber Simulator ================= */
@@ -391,7 +391,7 @@ select.f{appearance:auto}
   <div id="status"><span id="sbt">--:--</span><span id="bat"><span id="wf" title="WLAN">📶</span><span id="bt"></span></span></div>
   <div id="home">
     <div class="lohd"><div class="lob"><b>Lucario<i>OS</i></b><small>Smarter. Schneller. Deins.</small></div><div class="lodate"><span>📅</span><div><b id="lodow"></b><i id="lodm"></i></div></div></div>
-    <div class="lologo"><svg viewBox="0 0 100 100" width="170"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7fd0ff"/><stop offset="1" stop-color="#2f4fff"/></linearGradient></defs><polygon points="50,6 90,28 90,72 50,94 10,72 10,28" fill="rgba(30,70,200,.25)" stroke="url(#lg)" stroke-width="5" stroke-linejoin="round"/><polygon points="50,18 79,34 79,66 50,82 21,66 21,34" fill="none" stroke="url(#lg)" stroke-width="2.5" stroke-linejoin="round" opacity=".7"/><path d="M40 34v32h22" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="lologo"><svg viewBox="0 0 100 100" width="170"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--lo)"/><stop offset="1" style="stop-color:var(--lo2)"/></linearGradient></defs><polygon points="50,6 90,28 90,72 50,94 10,72 10,28" fill="rgba(255,255,255,.06)" stroke="url(#lg)" stroke-width="5" stroke-linejoin="round"/><polygon points="50,18 79,34 79,66 50,82 21,66 21,34" fill="none" stroke="url(#lg)" stroke-width="2.5" stroke-linejoin="round" opacity=".7"/><path d="M40 34v32h22" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     <div id="clock"><div class="t" id="hclk">--:--</div><div class="d" id="hdate"></div><div id="hgr"></div></div>
     <input id="search" type="search" placeholder="🔍 Apps & Web durchsuchen" autocomplete="off">
     <div id="grid"></div>
@@ -602,13 +602,22 @@ let SET={...DEF};try{SET={...DEF,...JSON.parse(LS.settings||'{}')}}catch(e){}
 const saveSet=()=>{try{LS.settings=JSON.stringify(SET)}catch(e){}};
 const mq=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;
 const isDark=()=>SET.theme=='auto'?(mq?mq.matches:true):SET.theme=='dark';
+function loTheme(){
+  const p=$('#phone'),hx=(SET.accent||'#4cc9ff').replace('#',''),c=[0,2,4].map(i=>parseInt(hx.slice(i,i+2),16)),mix=(k,b)=>c.map((v,i)=>Math.round(v*k+b[i]*(1-k))),
+    lo='rgb('+c+')',lo2='rgb('+mix(.45,[10,20,60])+')',dk=mix(.1,[2,6,22]),mid=mix(.3,[4,10,40]);
+  const sv=c2=>'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="'+c2+'" stroke-width="2" stroke-linecap="round">';
+  const U=s=>'url("data:image/svg+xml,'+encodeURIComponent(s)+'")';
+  const sw='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 900" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="'+lo2+'" stop-opacity="0"/><stop offset=".5" stop-color="'+lo+'" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity=".95"/></linearGradient><filter id="b" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter><filter id="s"><feGaussianBlur stdDeviation="1.2"/></filter></defs>'
+    +[['M-40 520 C120 420 260 360 520 120',46,3,.55,1],['M-40 640 C140 560 300 460 520 300',30,2,.4,.8],['M-40 800 C160 740 320 640 520 520',22,1.6,.3,.6]].map(a=>'<path d="'+a[0]+'" stroke="url(#g)" stroke-width="'+a[1]+'" fill="none" filter="url(#b)" opacity="'+a[3]+'"/><path d="'+a[0]+'" stroke="url(#g)" stroke-width="'+a[2]+'" fill="none" filter="url(#s)" opacity="'+a[4]+'"/>').join('')+'</svg>';
+  const s=p.style;s.setProperty('--lo',lo);s.setProperty('--lo2',lo2);s.setProperty('--lorgb',c.join(','));s.setProperty('--lodk',dk.join(','));s.setProperty('--lomid',mid.join(','));
+  s.setProperty('--lobg',U(sw));s.setProperty('--losearch',U(sv(lo)+'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>'));s.setProperty('--lomic',U(sv(lo)+'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>'))}
 function applySet(){
   const p=$('#phone');p.dataset.theme=isDark()?'dark':'light';
   p.style.setProperty('--acc',SET.accent);p.style.setProperty('--zoom',SET.font);
   const h=SET.accent.replace('#','');const lum=(parseInt(h.slice(0,2),16)*.299+parseInt(h.slice(2,4),16)*.587+parseInt(h.slice(4,6),16)*.114);
   p.style.setProperty('--onacc',lum>150?'#04202e':'#ffffff');
   p.style.filter=SET.bright<100?'brightness('+(SET.bright/100)+')':'';
-  p.classList.toggle('reduce',!!SET.reduce);p.classList.toggle('lo',SET.style=='lucario');try{$('#search').placeholder=SET.style=='lucario'?'LucarioOS durchsuchen…':'🔍 Apps & Web durchsuchen'}catch(_){}
+  p.classList.toggle('reduce',!!SET.reduce);p.classList.toggle('lo',SET.style=='lucario');if(SET.style=='lucario'){loTheme();try{tick()}catch(_){}}try{$('#search').placeholder=SET.style=='lucario'?'LucarioOS durchsuchen…':'🔍 Apps & Web durchsuchen'}catch(_){}
   if(!LS.wallSet&&!LS.wallc)setWall(isDark()?0:4,false);
   try{document.querySelector('meta[name=theme-color]').content=isDark()?'#0b1020':'#f2f4fa'}catch(e){}
 }
