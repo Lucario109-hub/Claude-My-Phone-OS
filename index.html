@@ -247,6 +247,12 @@ select.f{appearance:auto}
 #phone.lo #lock .dots i{border-color:var(--lo)}#phone.lo #lock .dots i.on{background:var(--lo)}
 #phone.lo #lock button.b{background:linear-gradient(90deg,var(--lo),var(--lo2));color:#fff;border-radius:18px;box-shadow:0 0 16px rgba(var(--lorgb),.5)}
 #phone.lo #lock input.f{background:rgba(var(--lodk),.65);border:1px solid rgba(var(--lorgb),.5);color:#fff}
+#lofx{display:none;position:absolute;inset:0;overflow:hidden;pointer-events:none}
+#phone.lo.lofx #lofx{display:block}
+#lofx i{position:absolute;left:-10%;width:85%;height:3px;border-radius:2px;background:linear-gradient(90deg,transparent,rgba(var(--lorgb),.95) 50%,transparent);filter:blur(1.2px);box-shadow:0 0 22px 4px rgba(var(--lorgb),.8);transform:translateX(-120%) rotate(-24deg);animation:lostr 8s linear infinite}
+#lofx u{position:absolute;right:-30%;top:-10%;width:90%;height:50%;border-radius:50%;background:radial-gradient(circle,rgba(var(--lorgb),.35),transparent 65%);animation:loglow 5s ease-in-out infinite}
+@keyframes lostr{0%{transform:translateX(-120%) rotate(-24deg);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateX(250%) rotate(-24deg);opacity:0}}
+@keyframes loglow{50%{opacity:.35;transform:scale(1.15)}}
 /* ================= 6.1: Fuß Knabber Simulator ================= */
 .fk{container-type:inline-size;width:100%;min-height:100%;color:#fff;font-family:system-ui,sans-serif;padding:10px 10px 44px;background:radial-gradient(120% 60% at 50% 0,#4a46b8 0,#2a2670 45%,#17143f 100%);position:relative}
 .fk *{box-sizing:border-box}
@@ -439,6 +445,7 @@ select.f{appearance:auto}
     <svg viewBox="0 0 100 100"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4cc9ff"/><stop offset="1" stop-color="#7b2ff7"/></linearGradient></defs><polygon points="50,4 91,27 91,73 50,96 9,73 9,27" fill="none" stroke="url(#lgb)" stroke-width="5"/><path d="M36 28v40h30" fill="none" stroke="url(#lgb)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 28l12 14" stroke="#4cc9ff" stroke-width="6" stroke-linecap="round"/></svg></div>
     <div class="bname">LucarioNet</div>
   </div>
+  <div id="lofx"><u></u><i style="top:14%;animation-duration:7s"></i><i style="top:34%;animation-duration:9s;animation-delay:-3s;height:3px"></i><i style="top:52%;animation-duration:6s;animation-delay:-1s;opacity:.7"></i><i style="top:70%;animation-duration:11s;animation-delay:-6s;height:3px"></i><i style="top:86%;animation-duration:8s;animation-delay:-4s"></i></div>
   <div id="status"><span id="sbt">--:--</span><span id="bat"><span id="wf" title="WLAN">📶</span><span id="bt"></span></span></div>
   <div id="home">
     <div class="lohd"><div class="lob"><b>Lucario<i>OS</i></b><small>Smarter. Schneller. Deins.</small></div><div class="lodate"><span>📅</span><div><b id="lodow"></b><i id="lodm"></i></div></div></div>
@@ -655,7 +662,7 @@ addEventListener('pointerdown',()=>Sys.unlock(),{passive:true});
 /* ---------- Einstellungen, Design (Dunkel/Hell), Sperre, Schnelleinstellungen, Badges ---------- */
 const hex=b=>[...b].map(x=>x.toString(16).padStart(2,'0')).join('');
 const unhex=h=>Uint8Array.from(h.match(/../g)||[],x=>parseInt(x,16));
-const DEF={theme:'dark',accent:'#4cc9ff',font:1,bright:100,reduce:0,ringVol:.5,vibrate:1,sound:1,notif:1,autolock:1,style:'lucario',accents:null};
+const DEF={theme:'dark',accent:'#4cc9ff',font:1,bright:100,reduce:0,ringVol:.5,vibrate:1,sound:1,notif:1,autolock:1,style:'lucario',accents:null,lofx:0};
 const DEFACC=['#4cc9ff','#7b2ff7','#ff6b9d','#2ecc71','#ffb347','#ff5252','#00d2d3','#a29bfe'];let ACEDIT=false;
 let SET={...DEF};try{SET={...DEF,...JSON.parse(LS.settings||'{}')}}catch(e){}
 try{if(!LS.loMig){LS.loMig=1;SET.style='lucario';LS.settings=JSON.stringify(SET)}}catch(e){}
@@ -677,7 +684,7 @@ function applySet(){
   const h=SET.accent.replace('#','');const lum=(parseInt(h.slice(0,2),16)*.299+parseInt(h.slice(2,4),16)*.587+parseInt(h.slice(4,6),16)*.114);
   p.style.setProperty('--onacc',lum>150?'#04202e':'#ffffff');
   p.style.filter=SET.bright<100?'brightness('+(SET.bright/100)+')':'';
-  p.classList.toggle('reduce',!!SET.reduce);p.classList.toggle('lo',SET.style=='lucario');if(SET.style=='lucario'){loTheme();try{tick()}catch(_){}}try{$('#search').placeholder=SET.style=='lucario'?'LucarioOS durchsuchen…':'🔍 Apps & Web durchsuchen'}catch(_){}
+  p.classList.toggle('reduce',!!SET.reduce);p.classList.toggle('lo',SET.style=='lucario');p.classList.toggle('lofx',!!SET.lofx&&!SET.reduce);if(SET.style=='lucario'){loTheme();try{tick()}catch(_){}}try{$('#search').placeholder=SET.style=='lucario'?'LucarioOS durchsuchen…':'🔍 Apps & Web durchsuchen'}catch(_){}
   if(!LS.wallSet&&!LS.wallc)setWall(isDark()?0:4,false);
   try{document.querySelector('meta[name=theme-color]').content=isDark()?'#0b1020':'#f2f4fa'}catch(e){}
 }
@@ -1313,7 +1320,7 @@ A.settings=el=>{
 
   P.disp=async()=>{
     const ac=(Array.isArray(SET.accents)&&SET.accents.length)?SET.accents:DEFACC.slice();
-    add(hdr('Anzeige & Design')+'<div class="set"><b>Design-Stil</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['classic','Klassisch'],['lucario','⬡ LucarioOS']].map(([k,n])=>'<button class="'+((SET.style||'classic')==k?'b':'g')+'" data-sty="'+k+'">'+n+'</button>').join('')+'</div><p style="margin:8px 0 0;opacity:.7;font-size:12px">LucarioOS: dunkles Glas-Design mit großer Uhr, Begrüßung, Akku- und WLAN-Widget.</p></div><div class="set"><b>Design</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['dark','🌙 Dunkel'],['light','☀️ Hell'],['auto','🌓 Auto']].map(([k,n])=>'<button class="'+(SET.theme==k?'b':'g')+'" data-th="'+k+'">'+n+'</button>').join('')+'</div></div><div class="set"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b style="flex:1">Akzentfarbe</b><button class="g" id="acp" style="padding:7px 12px">＋ Neue Farbe</button><button class="'+(ACEDIT?'b':'g')+'" id="ace" style="padding:7px 12px">'+(ACEDIT?'✔ Fertig':'✎ Bearbeiten')+'</button></div><input type="color" id="acn" value="#4cc9ff" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px"><div class="sw" style="flex-wrap:wrap" id="ac"></div><p style="margin:8px 0 0;opacity:.7;font-size:12px">'+(ACEDIT?'Tippe auf eine Farbe, um sie zu löschen. Mindestens eine bleibt.':'Tippe auf eine Farbe zum Auswählen oder füge eigene hinzu.')+'</p>'+(ACEDIT?'<button class="g" id="acr" style="margin-top:8px;padding:7px 12px">↺ Standardfarben wiederherstellen</button>':'')+'</div><div class="set"><b>Schriftgröße</b><input type="range" id="fz" min="0.9" max="1.25" step="0.05" value="'+SET.font+'" style="width:100%;margin-top:10px"></div><div class="set"><b>Helligkeit</b><input type="range" id="br" min="40" max="100" step="5" value="'+SET.bright+'" style="width:100%;margin-top:10px"></div><div class="set">'+srow('Animationen reduzieren','Weniger Bewegung',tg('rd',SET.reduce))+'</div>');
+    add(hdr('Anzeige & Design')+'<div class="set"><b>Design-Stil</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['classic','Klassisch'],['lucario','⬡ LucarioOS']].map(([k,n])=>'<button class="'+((SET.style||'classic')==k?'b':'g')+'" data-sty="'+k+'">'+n+'</button>').join('')+'</div><p style="margin:8px 0 0;opacity:.7;font-size:12px">LucarioOS: dunkles Glas-Design mit großer Uhr, Begrüßung, Akku- und WLAN-Widget.</p></div><div class="set">'+srow('Bewegte Streifen','Animierter LucarioOS-Hintergrund (nur im LucarioOS-Design)',tg('lfx',SET.lofx))+'</div><div class="set"><b>Design</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['dark','🌙 Dunkel'],['light','☀️ Hell'],['auto','🌓 Auto']].map(([k,n])=>'<button class="'+(SET.theme==k?'b':'g')+'" data-th="'+k+'">'+n+'</button>').join('')+'</div></div><div class="set"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b style="flex:1">Akzentfarbe</b><button class="g" id="acp" style="padding:7px 12px">＋ Neue Farbe</button><button class="'+(ACEDIT?'b':'g')+'" id="ace" style="padding:7px 12px">'+(ACEDIT?'✔ Fertig':'✎ Bearbeiten')+'</button></div><input type="color" id="acn" value="#4cc9ff" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px"><div class="sw" style="flex-wrap:wrap" id="ac"></div><p style="margin:8px 0 0;opacity:.7;font-size:12px">'+(ACEDIT?'Tippe auf eine Farbe, um sie zu löschen. Mindestens eine bleibt.':'Tippe auf eine Farbe zum Auswählen oder füge eigene hinzu.')+'</p>'+(ACEDIT?'<button class="g" id="acr" style="margin-top:8px;padding:7px 12px">↺ Standardfarben wiederherstellen</button>':'')+'</div><div class="set"><b>Schriftgröße</b><input type="range" id="fz" min="0.9" max="1.25" step="0.05" value="'+SET.font+'" style="width:100%;margin-top:10px"></div><div class="set"><b>Helligkeit</b><input type="range" id="br" min="40" max="100" step="5" value="'+SET.bright+'" style="width:100%;margin-top:10px"></div><div class="set">'+srow('Animationen reduzieren','Weniger Bewegung',tg('rd',SET.reduce))+'</div>');
     el.querySelectorAll('[data-th]').forEach(b=>b.onclick=()=>{SET.theme=b.dataset.th;saveSet();applySet();go('disp')});
     el.querySelectorAll('[data-sty]').forEach(b=>b.onclick=()=>{SET.style=b.dataset.sty;saveSet();applySet();tick();go('disp')});
     const saveAc=l=>{SET.accents=l;if(!l.includes(SET.accent))SET.accent=l[0];saveSet();applySet();go('disp')};
@@ -1327,6 +1334,7 @@ A.settings=el=>{
     $('#fz').onchange=e=>{SET.font=+e.target.value;saveSet();applySet()};
     $('#br').oninput=e=>{SET.bright=+e.target.value;saveSet();applySet()};
     $('#rd').onchange=e=>{SET.reduce=e.target.checked?1:0;saveSet();applySet()};
+    $('#lfx').onchange=e=>{SET.lofx=e.target.checked?1:0;saveSet();applySet();if(SET.lofx&&SET.reduce)Sys.toast('Zum Anzeigen „Animationen reduzieren“ ausschalten')};
   };
 
   P.wall=async()=>{
