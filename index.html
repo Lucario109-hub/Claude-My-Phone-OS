@@ -61,7 +61,20 @@ input[type=range]{width:90%}
 .set{width:90%;padding:14px;background:var(--glass);border-radius:16px;margin:8px}
 .sw{display:flex;gap:10px;margin-top:10px}.sw div{width:44px;height:44px;border-radius:12px}
 #boot{position:absolute;inset:0;background:#05070f;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .6s}
-#boot svg{width:110px;height:110px;animation:p 1.4s infinite}
+#boot{background:radial-gradient(90% 60% at 50% 40%,#0a1a3a 0,#05070f 70%);overflow:hidden}
+#boot .bast{position:relative;width:110px;height:110px;animation:bfall 1.5s cubic-bezier(.55,.05,.85,.5) both}
+#boot .bast svg{width:110px;height:110px;position:relative;z-index:2;animation:bbounce .7s cubic-bezier(.2,.7,.3,1) 1.5s both;filter:drop-shadow(0 0 14px #4cc9ff)}
+#boot .btail{position:absolute;left:50%;bottom:50%;width:22px;height:640px;margin-left:-11px;transform-origin:50% 100%;transform:rotate(14deg);border-radius:12px;background:linear-gradient(to top,#bfeaff,#4cc9ff 18%,rgba(76,201,255,.45) 50%,transparent);filter:blur(3px);box-shadow:0 0 26px #4cc9ff;animation:btail 1.9s both;z-index:1}
+#boot .bring{position:absolute;left:50%;top:50%;width:110px;height:110px;margin:-55px 0 0 -55px;border-radius:50%;border:3px solid #4cc9ff;opacity:0;animation:bring .9s ease-out 1.5s forwards}
+#boot .bring.r2{animation-delay:1.65s;border-color:#7b2ff7}
+#boot .bflash{position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,#4cc9ffaa,transparent 60%);opacity:0;animation:bflash .8s ease-out 1.5s forwards;pointer-events:none}
+#boot .bname{font-size:26px;font-weight:300;letter-spacing:4px;opacity:0;animation:bname .7s ease-out 1.9s both}
+@keyframes bfall{0%{transform:translate(150px,-640px) scale(.55);opacity:0}8%{opacity:1}100%{transform:translate(0,0) scale(1)}}
+@keyframes bbounce{0%{transform:translateY(0) scale(1.18)}35%{transform:translateY(-26px) scale(1)}65%{transform:translateY(0)}82%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+@keyframes btail{0%{opacity:0}10%{opacity:1}78%{opacity:1}100%{opacity:0}}
+@keyframes bring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(3.4);opacity:0}}
+@keyframes bflash{0%{opacity:.9}100%{opacity:0}}
+@keyframes bname{0%{opacity:0;transform:translateY(10px);letter-spacing:12px}100%{opacity:1;transform:none;letter-spacing:4px}}
 @keyframes p{50%{transform:scale(1.1);filter:drop-shadow(0 0 20px #4cc9ff)}}
 .vgrid{width:100%;padding:8px 12px;display:flex;flex-direction:column;gap:18px}
 .vc{cursor:pointer}.vc .th{width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;background:#222;display:block}
@@ -203,7 +216,8 @@ select.f{appearance:auto}
 #phone.lo #grid .app{scroll-snap-align:none}#phone.lo #grid .app:nth-child(8n+1){scroll-snap-align:start}
 #phone.lo .lodots i{cursor:pointer;padding:0;box-sizing:content-box;border:6px solid transparent;background-clip:padding-box;width:8px;height:8px}
 #phone.lo .lowd>div{cursor:pointer}
-#phone.lo #body.sx{background:radial-gradient(120% 60% at 85% 0,rgba(var(--lomid),.95) 0,rgb(var(--lodk)) 55%,#02040f 100%);padding:10px 14px 40px;align-items:stretch}
+#phone.lo #body.sx{background:radial-gradient(120% 60% at 85% 0,rgba(var(--lomid),.95) 0,rgb(var(--lodk)) 55%,#02040f 100%)}
+#phone.lo #body.sx:has(.sxh,.sxh2){padding:10px 14px 40px;align-items:stretch}
 #phone.lo #body.sx .sh1{display:none}
 #phone.lo #body.sx .sxh{display:flex;align-items:center;gap:12px;margin:6px 4px 12px;filter:drop-shadow(0 0 10px rgba(var(--lorgb),.5))}
 #phone.lo #body.sx .sxh b{display:block;font:400 30px/1.05 system-ui,sans-serif}#phone.lo #body.sx .sxh b i{font-style:normal;color:var(--lo)}
@@ -409,8 +423,10 @@ select.f{appearance:auto}
 <body>
 <div id="phone">
   <div id="boot">
-    <svg viewBox="0 0 100 100"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4cc9ff"/><stop offset="1" stop-color="#7b2ff7"/></linearGradient></defs><polygon points="50,4 91,27 91,73 50,96 9,73 9,27" fill="none" stroke="url(#lgb)" stroke-width="5"/><path d="M36 28v40h30" fill="none" stroke="url(#lgb)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 28l12 14" stroke="#4cc9ff" stroke-width="6" stroke-linecap="round"/></svg>
-    <div style="font-size:26px;font-weight:300;letter-spacing:4px">LucarioNet</div>
+    <div class="bflash"></div>
+    <div class="bast"><i class="btail"></i><i class="bring"></i><i class="bring r2"></i>
+    <svg viewBox="0 0 100 100"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4cc9ff"/><stop offset="1" stop-color="#7b2ff7"/></linearGradient></defs><polygon points="50,4 91,27 91,73 50,96 9,73 9,27" fill="none" stroke="url(#lgb)" stroke-width="5"/><path d="M36 28v40h30" fill="none" stroke="url(#lgb)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 28l12 14" stroke="#4cc9ff" stroke-width="6" stroke-linecap="round"/></svg></div>
+    <div class="bname">LucarioNet</div>
   </div>
   <div id="status"><span id="sbt">--:--</span><span id="bat"><span id="wf" title="WLAN">📶</span><span id="bt"></span></span></div>
   <div id="home">
@@ -429,7 +445,7 @@ select.f{appearance:auto}
 </div>
 
 <script>
-/* ================= LucarioNet 6.0 ================= */
+/* ================= LucarioNet 6.4 ================= */
 const LS=(()=>{try{const t='__t';localStorage.setItem(t,'1');localStorage.removeItem(t);return localStorage}catch(e){const m={};return new Proxy(m,{get:(t,k)=>k=='removeItem'?(x=>{delete m[x]}):k=='getItem'?(x=>m[x]===undefined?null:m[x]):k=='setItem'?((x,v)=>{m[x]=String(v)}):k=='clear'?(()=>{for(const x in m)delete m[x]}):m[k],set:(t,k,v)=>{m[k]=String(v);return true},deleteProperty:(t,k)=>{delete m[k];return true}})}})();
 
 const $=s=>document.querySelector(s);
@@ -539,7 +555,7 @@ let cleanup=null;
 function openApp(id){
   const a=allApps().find(x=>x.id===id);closeApp(true);Sys.spawn(a);
   const w=$('#win');w.style.display='flex';requestAnimationFrame(()=>w.classList.add('show'));
-  $('#title').textContent=a.name;$('#body').innerHTML='';$('#body').style.justifyContent='';$('#body').style.overflow='';$('#phone').classList.add('inapp');appOpen=true;
+  $('#title').textContent=a.name;$('#body').innerHTML='';$('#body').style.justifyContent='';$('#body').style.overflow='';$('#phone').classList.add('inapp');appOpen=true;$('#body').classList.toggle('sx',['taskmgr','terminal','support','units','calc','files','ai','store','recorder','torch','clock','calendar','notes','todo'].includes(id));
   cleanup=A[id]($('#body'))||null;
 }
 function closeApp(quiet){Sys.reap();appOpen=false;appIv.forEach(clearInterval);appIv=[];$('#phone').classList.remove('inapp');
@@ -1206,11 +1222,11 @@ A.settings=el=>{
   const back='<button class="g" id="bk" style="margin:8px 12px;align-self:flex-start">‹ Einstellungen</button>';
   const hdr=t=>'<div class="sh1" style="width:100%;padding:0 16px 8px;font-size:21px;font-weight:800">'+t+'</div>';
   const LO=()=>$('#phone').classList.contains('lo');
-  const SI={acct:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/>',links:'<path d="M10 14a4 4 0 005.6 0l3-3a4 4 0 00-5.6-5.6l-1 1M14 10a4 4 0 00-5.6 0l-3 3a4 4 0 005.6 5.6l1-1"/>',disp:'<path d="M12 3a9 9 0 100 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a3 3 0 003-3c0-6-4-11-8-11z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7" r="1"/>',wall:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/>',snd:'<path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>',wifi:'<path d="M2 9a15 15 0 0120 0M5 13a10 10 0 0114 0M8.5 16.5a5 5 0 017 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/>',ai:'<rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01"/>',support:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/>',sec:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',priv:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',store:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',inst:'<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v6M9 12l3 3 3-3"/>',about:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>'};
+  const SI={acct:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/>',links:'<path d="M10 14a4 4 0 005.6 0l3-3a4 4 0 00-5.6-5.6l-1 1M14 10a4 4 0 00-5.6 0l-3 3a4 4 0 005.6 5.6l1-1"/>',disp:'<path d="M12 3a9 9 0 100 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a3 3 0 003-3c0-6-4-11-8-11z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7" r="1"/>',wall:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/>',snd:'<path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>',wifi:'<path d="M2 9a15 15 0 0120 0M5 13a10 10 0 0114 0M8.5 16.5a5 5 0 017 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/>',ai:'<rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01"/>',support:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/>',sec:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',priv:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',store:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',inst:'<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v6M9 12l3 3 3-3"/>',dsp:'<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',batt:'<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10 2h4M12 8v6M10 11h4"/>',apps:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',sys:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>',about:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>'};
   const sico=k=>'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(SI[k]||SI.about)+'</svg>';
   const chev='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
   const hexlogo='<svg viewBox="0 0 100 100" width="46" height="46"><polygon points="50,6 90,28 90,72 50,94 10,72 10,28" fill="rgba(255,255,255,.06)" stroke="var(--lo)" stroke-width="6" stroke-linejoin="round"/><path d="M40 34v32h22" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  let ITEMS=[];
+  let ITEMS=[],LOLIST=[];
   const tg=(id,on)=>'<label class="tg"><input type="checkbox" id="'+id+'"'+(on?' checked':'')+'><span></span></label>';
   const srow=(t,sub,right)=>'<div class="srow"><div style="flex:1;min-width:0"><div>'+t+'</div>'+(sub?'<div style="opacity:.6;font-size:12px;margin-top:2px">'+sub+'</div>':'')+'</div>'+(right||'')+'</div>';
   const add=h=>el.insertAdjacentHTML('beforeend',h);
@@ -1221,10 +1237,13 @@ A.settings=el=>{
     if(page=='main'){
       const me=Sys.session;let ph='';
       if(me){const a=await st('accounts','readonly',s=>s.get(me.name));ph=a&&a.phone?' · '+a.phone:''}
-      const items=[['acct','👤','Konto & Telefonnummer',me?esc(me.name)+'@lucario.net'+esc(ph):'Nicht angemeldet'],['links','🔗','Verknüpfte Apps','WhatsApp, Telegram, Instagram …'],['disp','🎨','Anzeige & Design','Dunkel/Hell, Akzentfarbe, Schrift'],['wall','🖼','Hintergründe','Eigene Bilder hochladen'],['snd','🔔','Töne & Vibration','Klingelton, Lautstärke'],['wifi','📶','WLAN & Internet','Netzwerke, Hotspot, Verbindungstest'],['ai','🤖','KI-Assistent','LucarioBot, KI-Server'],['support','🛟','Support','Team-Support, Tickets'],['sec','🔒','Sicherheit','Gerätesperre, Sofort-Hilfe'],['priv','🛡','Datenschutz & Berechtigungen','Kamera, Mikrofon, Standort'],['store','💾','Speicher & Daten','Backup, Zurücksetzen'],['inst','📲','App installieren','Auf dem Startbildschirm'],['about','ℹ️','Über LucarioNet','Version 4.0']];
+      const items=[['acct','👤','Konto & Telefonnummer',me?esc(me.name)+'@lucario.net'+esc(ph):'Nicht angemeldet'],['links','🔗','Verknüpfte Apps','WhatsApp, Telegram, Instagram …'],['disp','🎨','Anzeige & Design','Dunkel/Hell, Akzentfarbe, Schrift'],['wall','🖼','Hintergründe','Eigene Bilder hochladen'],['snd','🔔','Töne & Vibration','Klingelton, Lautstärke'],['wifi','📶','WLAN & Internet','Netzwerke, Hotspot, Verbindungstest'],['ai','🤖','KI-Assistent','LucarioBot, KI-Server'],['support','🛟','Support','Team-Support, Tickets'],['sec','🔒','Sicherheit','Gerätesperre, Sofort-Hilfe'],['priv','🛡','Datenschutz & Berechtigungen','Kamera, Mikrofon, Standort'],['store','💾','Speicher & Daten','Backup, Zurücksetzen'],['inst','📲','App installieren','Auf dem Startbildschirm'],['about','ℹ️','Über LucarioNet','Version 6.4']];
       ITEMS=items;el.classList.toggle('sx',LO());
       if(LO()){
-        const rows=q=>items.filter(i=>!q||(i[2]+' '+i[3]).toLowerCase().includes(q)).map(i=>{const t=i[0]=='disp'?'Design':i[2],s=i[0]=='disp'?'Farben & Stil':i[3];return '<div class="sxi" data-p="'+i[0]+'"><span class="sxe">'+sico(i[0])+'</span><div class="sxt"><b>'+t+'</b><small>'+s+'</small></div><span class="sxc">'+chev+'</span></div>'}).join('')||'<div style="padding:20px;opacity:.7">Nichts gefunden.</div>';
+        const byId=Object.fromEntries(items.map(i=>[i[0],i]));
+        const LOL=[['acct','Allgemein','Konto, Telefonnummer & Basis'],['disp','Design','Farben & Stil'],['wall','Hintergrundbild','Galerie & Live'],['dsp','Anzeige','Helligkeit & Schrift'],['batt','Akku & Leistung','Energie & Nutzung'],['wifi','WLAN & Netzwerk','Verbindungen'],['apps','Apps','Verwalten & Berechtigungen'],['sec','Sicherheit','Schutz & Datenschutz'],['snd','Benachrichtigungen','Ton & Vibration'],['sys','System','Info & Updates']].concat(['links','ai','support','priv','store','inst'].map(k=>[k,byId[k][2],byId[k][3]]));
+        LOLIST=LOL;
+        const rows=q=>LOL.filter(i=>!q||(i[1]+' '+i[2]).toLowerCase().includes(q)).map(i=>{const t=i[1],s=i[2];return '<div class="sxi" data-p="'+i[0]+'"><span class="sxe">'+sico(i[0])+'</span><div class="sxt"><b>'+t+'</b><small>'+s+'</small></div><span class="sxc">'+chev+'</span></div>'}).join('')||'<div style="padding:20px;opacity:.7">Nichts gefunden.</div>';
         el.innerHTML='<div class="sxh">'+hexlogo+'<div><b>Lucario<i>OS</i></b><small>Einstellungen</small></div></div><input class="sxs" id="sxs" type="search" placeholder="Suche in den Einstellungen…" autocomplete="off"><div class="sxl" id="sxl">'+rows('')+'</div>';
         const bind=()=>el.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>b.dataset.p=='wifi'?Net.open():go(b.dataset.p));
         bind();$('#sxs').oninput=e=>{$('#sxl').innerHTML=rows(e.target.value.trim().toLowerCase());bind()};
@@ -1234,7 +1253,7 @@ A.settings=el=>{
       el.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>b.dataset.p=='wifi'?Net.open():go(b.dataset.p));
     }else{
       el.classList.toggle('sx',LO());
-      if(LO()){const it=ITEMS.find(i=>i[0]==page)||[page,'','Einstellungen',''];const t=page=='disp'?'Design':it[2],s=page=='disp'?'Farben & Stil':it[3];
+      if(LO()){const it=LOLIST.find(i=>i[0]==page)||[page,'Einstellungen',''];const t=it[1],s=it[2];
         el.innerHTML='<div class="sxh2"><button id="bk" class="sxb">'+chev.replace('M9 5l7 7-7 7','M15 5l-7 7 7 7')+'</button><div><b>'+t+'</b><small>'+s+'</small></div></div>'}
       else el.innerHTML=back;
       await P[page]();$('#bk').onclick=()=>go('main')}
@@ -1412,8 +1431,32 @@ A.settings=el=>{
     $('#inst').onclick=()=>{if(window.dp)window.dp.prompt();else alert('Nutze das Browser-Menü: „App installieren“ bzw. „Zum Home-Bildschirm“. Läuft LucarioNet schon als App, ist alles erledigt.')};
   };
 
+  P.dsp=async()=>{
+    add(hdr('Anzeige')+'<div class="set"><b>Helligkeit</b><input type="range" id="br" min="40" max="100" step="5" value="'+SET.bright+'" style="width:100%;margin-top:10px"></div><div class="set"><b>Schriftgröße</b><input type="range" id="fz" min="0.9" max="1.25" step="0.05" value="'+SET.font+'" style="width:100%;margin-top:10px"></div><div class="set">'+srow('Animationen reduzieren','Weniger Bewegung',tg('rd',SET.reduce))+'</div><div class="set"><button class="g" id="fs">⛶ Vollbild umschalten</button></div>');
+    $('#fz').onchange=e=>{SET.font=+e.target.value;saveSet();applySet()};
+    $('#br').oninput=e=>{SET.bright=+e.target.value;saveSet();applySet()};
+    $('#rd').onchange=e=>{SET.reduce=e.target.checked?1:0;saveSet();applySet()};
+    $('#fs').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
+  };
+  P.batt=async()=>{
+    let lv='–',ch='Unbekannt',pc=0;
+    try{const b=await navigator.getBattery();pc=Math.round(b.level*100);lv=pc+' %';ch=b.charging?'Lädt ⚡':'Entlädt'}catch(e){}
+    const up=Math.floor((Date.now()-Sys.t0)/60000);
+    add(hdr('Akku & Leistung')+'<div class="set"><div style="font-size:42px;font-weight:300">'+lv+'</div><div style="opacity:.75;margin-bottom:8px">'+ch+'</div><div style="height:10px;border-radius:6px;background:rgba(255,255,255,.18);overflow:hidden"><i style="display:block;height:100%;width:'+pc+'%;background:linear-gradient(90deg,var(--acc),#7b2ff7)"></i></div></div><div class="set">'+srow('Energiesparmodus','Weniger Animationen & gedimmt',tg('sv',SET.saver))+srow('Laufzeit dieser Sitzung',null,'<b>'+up+' min</b>')+srow('Laufende Dienste',null,'<b>'+Sys.svc.length+'</b>')+'</div>');
+    $('#sv').onchange=e=>{const on=e.target.checked?1:0;SET.saver=on;if(on){SET.prevB=SET.bright;SET.bright=60;SET.reduce=1}else{SET.bright=SET.prevB||100;SET.reduce=0}saveSet();applySet()};
+  };
+  P.apps=async()=>{
+    const L=allApps();
+    add(hdr('Apps')+'<div class="set" style="padding:6px 14px">'+L.map(a=>'<div class="srow" style="padding:8px 0"><div style="width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;background:'+a.bg+'"><div style="width:22px;height:22px">'+a.svg+'</div></div><div style="flex:1">'+esc(a.name)+'</div></div>').join('')+'</div><div class="set" style="display:flex;gap:8px;flex-wrap:wrap"><button class="b" id="ast">💾 App-Store</button><button class="g" id="apv">🛡 Berechtigungen</button></div>');
+    $('#ast').onclick=()=>openApp('store');$('#apv').onclick=()=>go('priv');
+  };
+  P.sys=async()=>{
+    let st='–';try{const e=await navigator.storage.estimate();st=Math.round(e.usage/1048576)+' MB von '+Math.round(e.quota/1048576)+' MB'}catch(e){}
+    add(hdr('System')+'<div class="set"><div style="text-align:center;font-size:20px;font-weight:700">LucarioNet 6.4</div><p style="text-align:center;opacity:.7;margin:4px 0 0">Design: '+((SET.style||'classic')=='lucario'?'LucarioOS':'Klassisch')+'</p></div><div class="set">'+srow('Prozessorkerne',null,'<b>'+(navigator.hardwareConcurrency||'–')+'</b>')+srow('Arbeitsspeicher',null,'<b>'+(navigator.deviceMemory?navigator.deviceMemory+' GB':'–')+'</b>')+srow('Speicher belegt',null,'<b>'+st+'</b>')+srow('Netzwerk',null,'<b>'+(navigator.onLine?'Online':'Offline')+'</b>')+srow('Apps',null,'<b>'+allApps().length+'</b>')+'</div><div class="set" style="display:flex;gap:8px;flex-wrap:wrap"><button class="b" id="upd">⟳ Nach Updates suchen</button><button class="g" id="abt">ℹ Über LucarioNet</button><button class="g" id="tm">📊 Task-Manager</button></div>');
+    $('#upd').onclick=()=>{location.assign('update.html')};$('#abt').onclick=()=>go('about');$('#tm').onclick=()=>openApp('taskmgr');
+  };
   P.about=async()=>{
-    add(hdr('Über LucarioNet')+'<div class="set"><div style="text-align:center;font-size:42px">⬡</div><div style="text-align:center;font-size:22px;font-weight:700">LucarioNet 6.0</div><p style="text-align:center;opacity:.7;margin:6px 0 0">Eigenes Handy-Betriebssystem (Web-Shell)</p></div><div class="set" style="font-size:13px;line-height:1.7;opacity:.85">Apps: '+allApps().length+' installiert, '+SG.length+' im Store<br>Sicherheit: PBKDF2, AES-256-GCM, RSA-OAEP<br>Design: Dunkel, Hell, Automatisch<br>Netz: '+Net.text()+'<br>Browser: '+esc(navigator.userAgent.slice(0,90))+'</div>');
+    add(hdr('Über LucarioNet')+'<div class="set"><div style="text-align:center;font-size:42px">⬡</div><div style="text-align:center;font-size:22px;font-weight:700">LucarioNet 6.4</div><p style="text-align:center;opacity:.7;margin:6px 0 0">Eigenes Handy-Betriebssystem (Web-Shell)</p></div><div class="set" style="font-size:13px;line-height:1.7;opacity:.85">Apps: '+allApps().length+' installiert, '+SG.length+' im Store<br>Sicherheit: PBKDF2, AES-256-GCM, RSA-OAEP<br>Design: Dunkel, Hell, Automatisch<br>Netz: '+Net.text()+'<br>Browser: '+esc(navigator.userAgent.slice(0,90))+'</div>');
   };
 
   draw();
@@ -2366,7 +2409,7 @@ A.support=el=>{
       const to=SET.supportMail;
       if(!to){Sys.toast('Lege zuerst eine Support-Adresse fest');Sys.openPage='support';openApp('settings');return}
       const body=tk.msgs.filter(m=>m.who=='me').map(m=>m.text).join('\n\n');
-      location.href='mailto:'+encodeURIComponent(to).replace('%40','@')+'?subject='+encodeURIComponent('['+tk.id+'] '+tk.subject)+'&body='+encodeURIComponent(body+'\n\n— gesendet aus LucarioNet 6.0');
+      location.href='mailto:'+encodeURIComponent(to).replace('%40','@')+'?subject='+encodeURIComponent('['+tk.id+'] '+tk.subject)+'&body='+encodeURIComponent(body+'\n\n— gesendet aus LucarioNet 6.4');
     };
   }
   const p=Sys.pendingSupport;Sys.pendingSupport=null;
@@ -3952,7 +3995,7 @@ A.putz=el=>{
 /* ===ARENA-END=== */
 
 Core.init();
-setTimeout(()=>{$('#boot').style.opacity=0;setTimeout(()=>$('#boot').remove(),600)},1800);
+setTimeout(()=>{$('#boot').style.opacity=0;setTimeout(()=>$('#boot').remove(),600)},3200);
 </script>
 </body>
 </html>

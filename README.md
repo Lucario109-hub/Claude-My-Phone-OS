@@ -29,6 +29,8 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 
 ## Neu in 6.4
 
+- Start-Animation: das Logo stürzt wie ein Asteroid mit blauem Streifen herunter. Einstellungen neu gegliedert (Allgemein, Design, Hintergrundbild, Anzeige, Akku & Leistung, WLAN, Apps, Sicherheit, Benachrichtigungen, System). Technische Apps (System, Terminal, Support, Einheiten, Rechner …) im LucarioOS-Design.
+
 - Einstellungen im LucarioOS-Stil: Header mit Logo, Suche, Kategorien mit Icons, Detailseiten mit Zurück-Pfeil (nur im LucarioOS-Design).
 
 - LucarioOS-Startseite: Seitenpunkte funktionieren (Antippen oder Wischen), WLAN-Karte öffnet das WLAN-Menü, Akku-Karte die Einstellungen.
