@@ -223,7 +223,7 @@ select.f{appearance:auto}
 #phone.lo #body.sx .sxh b{display:block;font:400 30px/1.05 system-ui,sans-serif}#phone.lo #body.sx .sxh b i{font-style:normal;color:var(--lo)}
 #phone.lo #body.sx .sxh small{display:block;font-size:17px;opacity:.9}
 #phone.lo #body.sx .sxs{width:100%;padding:13px 18px;border-radius:26px;border:1px solid rgba(var(--lorgb),.5);background:rgba(var(--lodk),.62);color:#fff;font-size:15px;box-shadow:0 0 16px rgba(var(--lorgb),.25);margin-bottom:14px;outline:0}
-#phone.lo #body.sx .sxl{border:1px solid rgba(var(--lorgb),.4);border-radius:26px;background:rgba(var(--lodk),.55);box-shadow:0 0 22px rgba(var(--lorgb),.22);padding:6px 14px;backdrop-filter:blur(10px)}
+#phone.lo #body.sx .sxl{border:1px solid rgba(var(--lorgb),.4);border-radius:26px;background:rgba(var(--lodk),.55);box-shadow:0 0 22px rgba(var(--lorgb),.22);padding:6px 14px;}
 #phone.lo #body.sx .sxi{display:flex;align-items:center;gap:14px;padding:12px 2px;border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer}#phone.lo #body.sx .sxi:last-child{border:0}
 #phone.lo #body.sx .sxe{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;flex:none;color:#fff;background:linear-gradient(150deg,rgba(var(--lorgb),.5),rgba(var(--lodk),.9));border:1px solid rgba(var(--lorgb),.55);box-shadow:0 0 14px rgba(var(--lorgb),.35)}
 #phone.lo #body.sx .sxt{flex:1;min-width:0}#phone.lo #body.sx .sxt b{display:block;font-weight:500;font-size:16px}#phone.lo #body.sx .sxt small{display:block;color:var(--lo);font-size:12.5px;margin-top:2px;opacity:.9}
@@ -258,6 +258,12 @@ select.f{appearance:auto}
 @keyframes lopulse{0%,100%{filter:drop-shadow(0 0 12px rgba(var(--lorgb),.6))}50%{filter:drop-shadow(0 0 28px rgba(var(--lorgb),1))}}
 @keyframes lospin{to{transform:rotate(360deg)}}
 @keyframes lobeat{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+#phone.inapp #lofx{display:none!important}
+#phone.inapp #home *,#phone.inapp #dock,#phone.inapp #dock *,#phone.inapp #search{animation:none!important}
+#phone.inapp #home,#phone.inapp #dock{visibility:hidden}
+#phone.lo #body.sx *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#phone.lo #body.sx .set,#phone.lo #body.sx .sxi{contain:layout paint}
+#phone.lo #body.sx .set{box-shadow:none}
 #lofx{display:none;position:absolute;inset:0;overflow:hidden;pointer-events:none}
 #phone.lo.fx-streaks #lofx,#phone.lo.fx-stars #lofx,#phone.lo.fx-aurora #lofx{display:block}
 #lofx i,#lofx u,#lofx s,#lofx b{display:none}
@@ -1384,7 +1390,7 @@ A.settings=el=>{
     $('#acn').onchange=e=>{const c=e.target.value.toLowerCase();if(ac.includes(c)){SET.accent=c;saveSet();applySet();go('disp');return}if(ac.length>=24){Sys.toast('Maximal 24 Farben');return}SET.accent=c;saveAc(ac.concat([c]))};
     const rs=$('#acr');if(rs)rs.onclick=()=>{SET.accents=null;SET.accent=DEFACC[0];saveSet();applySet();go('disp')};
     $('#fz').onchange=e=>{SET.font=+e.target.value;saveSet();applySet()};
-    $('#br').oninput=e=>{SET.bright=+e.target.value;saveSet();applySet()};
+    $('#br').oninput=e=>{const v=+e.target.value;$('#phone').style.filter=v<100?'brightness('+(v/100)+')':''};$('#br').onchange=e=>{SET.bright=+e.target.value;saveSet();applySet()};
     $('#rd').onchange=e=>{SET.reduce=e.target.checked?1:0;saveSet();applySet()};
     $('#lfx').onclick=()=>go('anim');
   };
@@ -1518,7 +1524,7 @@ A.settings=el=>{
   P.dsp=async()=>{
     add(hdr('Anzeige')+'<div class="set"><b>Helligkeit</b><input type="range" id="br" min="40" max="100" step="5" value="'+SET.bright+'" style="width:100%;margin-top:10px"></div><div class="set"><b>Schriftgröße</b><input type="range" id="fz" min="0.9" max="1.25" step="0.05" value="'+SET.font+'" style="width:100%;margin-top:10px"></div><div class="set">'+srow('Animationen reduzieren','Weniger Bewegung',tg('rd',SET.reduce))+'</div><div class="set"><button class="g" id="fs">⛶ Vollbild umschalten</button></div>');
     $('#fz').onchange=e=>{SET.font=+e.target.value;saveSet();applySet()};
-    $('#br').oninput=e=>{SET.bright=+e.target.value;saveSet();applySet()};
+    $('#br').oninput=e=>{const v=+e.target.value;$('#phone').style.filter=v<100?'brightness('+(v/100)+')':''};$('#br').onchange=e=>{SET.bright=+e.target.value;saveSet();applySet()};
     $('#rd').onchange=e=>{SET.reduce=e.target.checked?1:0;saveSet();applySet()};
     $('#fs').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
   };
