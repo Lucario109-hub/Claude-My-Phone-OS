@@ -299,9 +299,12 @@ select.f{appearance:auto}
 #lofx u{position:absolute;right:-30%;top:-10%;width:90%;height:50%;border-radius:50%;background:radial-gradient(circle,rgba(var(--lorgb),.35),transparent 65%);animation:loglow 5s ease-in-out infinite}
 @keyframes lostr{0%{transform:translateX(-120%) rotate(-24deg);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateX(250%) rotate(-24deg);opacity:0}}
 @keyframes loglow{50%{opacity:.35;transform:scale(1.15)}}
-#phone.lo.cico .app .ic{background:linear-gradient(160deg,rgba(255,255,255,.34),rgba(255,255,255,0) 52%),var(--abg)!important;border:1px solid rgba(255,255,255,.35);box-shadow:0 8px 16px rgba(0,0,0,.45),0 0 14px rgba(var(--lorgb),.28),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -8px 14px rgba(0,0,0,.22)!important}
-#phone.lo.cico .app .ic:before{content:"";position:absolute;left:10%;right:10%;top:3px;height:38%;border-radius:50% 50% 60% 60%/70% 70% 40% 40%;background:linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,0));pointer-events:none}
-#phone.lo.cico .ic svg{filter:drop-shadow(0 2px 3px rgba(0,0,0,.45))}
+#phone:not(.lo) .app .ic{background:linear-gradient(160deg,rgba(255,255,255,.34),rgba(255,255,255,0) 52%),var(--abg)!important;border:1px solid rgba(255,255,255,.35);box-shadow:0 8px 16px rgba(0,0,0,.45),0 0 14px rgba(var(--lorgb),.28),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -8px 14px rgba(0,0,0,.22)!important}
+#phone:not(.lo) .app .ic:before{content:"";position:absolute;left:10%;right:10%;top:3px;height:38%;border-radius:50% 50% 60% 60%/70% 70% 40% 40%;background:linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,0));pointer-events:none}
+#phone:not(.lo) .ic svg{filter:drop-shadow(0 2px 3px rgba(0,0,0,.45))}
+#phone.lo.cico .app .ic{background:radial-gradient(circle at 30% 20%,color-mix(in srgb,var(--abc,#4cc9ff) 38%,transparent),transparent 62%),linear-gradient(150deg,rgba(var(--lodk),.92),#040815)!important;border:1.5px solid color-mix(in srgb,var(--abc,#4cc9ff) 70%,#fff 10%);box-shadow:0 0 16px color-mix(in srgb,var(--abc,#4cc9ff) 55%,transparent),inset 0 0 14px color-mix(in srgb,var(--abc,#4cc9ff) 30%,transparent)!important}
+#phone.lo.cico .app .ic svg{stroke:color-mix(in srgb,var(--abc,#4cc9ff) 60%,#fff);stroke-width:1.7;filter:drop-shadow(0 0 5px var(--abc,#4cc9ff))}
+#phone.lo.cico .app .ic svg *{stroke:inherit}
 #hero{display:none}
 #phone.lo.hero #hero{display:block;position:absolute;left:0;right:0;top:0;height:190px;z-index:2;pointer-events:none;overflow:hidden;-webkit-mask-image:linear-gradient(#000 20%,transparent);mask-image:linear-gradient(#000 20%,transparent)}
 #hero:before{content:"";position:absolute;inset:0;background:var(--abg);opacity:.5}
@@ -614,7 +617,7 @@ SG.push({id:'putz',cat:'Spiele',hidden:true,name:'Putz Simulator',desc:'Geheimes
 let inst=[];try{inst=JSON.parse(LS.inst||'[]')}catch(e){}
 const allApps=()=>apps.concat(SG.filter(g=>inst.includes(g.id)));
 const dockIds=['phone','messenger','browser','mail'];
-function tile(a){const d=document.createElement('div');d.className='app';d.dataset.n=a.name.toLowerCase();d.innerHTML=`<div class="ic" style="background:${a.bg};--abg:${a.bg}">${a.svg}<i class="bd" data-b="${a.id}"></i></div><span>${a.name}</span>`;d.onclick=()=>openApp(a.id);return d}
+function tile(a){const d=document.createElement('div');d.className='app';d.dataset.n=a.name.toLowerCase();d.innerHTML=`<div class="ic" style="background:${a.bg};--abg:${a.bg};--abc:${(String(a.bg).match(/#[0-9a-fA-F]{6}/)||['#4cc9ff'])[0]}">${a.svg}<i class="bd" data-b="${a.id}"></i></div><span>${a.name}</span>`;d.onclick=()=>openApp(a.id);return d}
 function renderHome(){$('#grid').innerHTML='';$('#dock').innerHTML='';allApps().sort((x,y)=>{const i=ORDER.indexOf(x.id),j=ORDER.indexOf(y.id);return (i<0?99:i)-(j<0?99:j)}).forEach(a=>{const t=tile(a);if(dockIds.includes(a.id)){t.querySelector('span').remove();$('#dock').appendChild(t)}else $('#grid').appendChild(t)});try{loDots()}catch(_){}}
 function loDots(){const g=$('#grid'),d=document.querySelector('.lodots');if(!g||!d)return;const n=Math.max(1,Math.ceil(g.children.length/8));
   d.innerHTML=Array.from({length:n},(_,i)=>'<i data-p="'+i+'"></i>').join('');

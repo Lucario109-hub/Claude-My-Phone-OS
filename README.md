@@ -29,6 +29,8 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 
 ## Neu in 6.4
 
+- Zwei Icon-Stile: LucarioOS bekommt Neon-Icons (Glas-Kachel, Symbol in der Farbe der App), das klassische Design die bunten Glanz-Icons.
+
 - Mehr Grafik in den Apps: bunte, glänzende App-Icons und ein Grafik-Banner (großes Icon + Leuchten) oben in jeder App; beides in Einstellungen → Design schaltbar.
 
 - Animationen & Effekte (Einstellungen → Animationen): 11 einzeln schaltbare Effekte (Streifen, Polarlicht, Sterne, Logo, schwebende Icons, Icon-Glanz, Uhr-Leuchten, Leuchtkarten, Tipp-Wellen, App-Zoom, Neigungseffekt) plus Presets Maximum / Leicht / Alles aus.
