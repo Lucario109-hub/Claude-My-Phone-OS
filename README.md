@@ -29,6 +29,8 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 
 ## Neu in 6.4
 
+- Spiele-Grafik-Upgrade: neues Spiel-Design (Sternenhintergrund, Neon-Rahmen, glänzende HUD-Anzeigen) für alle Mini-Spiele; Snake, Pong, Lucario Jump, Breakout und Tetris mit Verläufen, Leuchteffekten, Partikeln und Ball-Spuren (Tetris mit Geisterblock); 2048, Memory, Minesweeper, Tic-Tac-Toe, Vier gewinnt, Simon, Maulwurf, Reaktionstest mit 3D-/Glanz-Optik und Animationen.
+
 - Putz Simulator 2.0: 6 Räume mit eigener Optik (Keller, Küche, Garage, Schwimmbad, Lagerhalle, Raumstation), 5 Dreck-Sorten (neu: Rost und Giftschlamm), Boss-Räume alle 5 Level, 2 neue Mopps und 2 neue Schwämme, Combo-Multiplikator, Boosts (⚡ Turbo, 💰 ×2), bis zu 5 Putzroboter, Minikarte, Seifenblasen/Glanz-Effekte, neue Putzi-Figur und 15 weitere Quests. Effekte & Minikarte sind unter Statistiken abschaltbar.
 
 - Zwei Icon-Stile: LucarioOS bekommt Neon-Icons (Glas-Kachel, Symbol in der Farbe der App), das klassische Design die bunten Glanz-Icons.
