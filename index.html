@@ -197,7 +197,12 @@ select.f{appearance:auto}
 #phone.lo .lowd .sep{flex:none;width:1px;align-self:stretch;background:rgba(255,255,255,.2)}
 #phone.lo .lowd em{font-style:normal;color:var(--lo);display:block}
 #phone.lo .lodots{display:flex;justify-content:center;gap:8px;margin:0 0 4px}#phone.lo .lodots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3)}#phone.lo .lodots i.on{background:#fff}
-#phone.lo #home{padding-bottom:128px}
+#phone.lo #home{padding-bottom:128px;overflow-y:auto;overflow-x:hidden}
+#phone.lo #grid{flex:none;min-height:0;overflow-x:auto;overflow-y:hidden;display:grid;grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-flow:column;grid-auto-columns:25%;gap:16px 0;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px}
+#phone.lo #grid::-webkit-scrollbar{display:none}
+#phone.lo #grid .app{scroll-snap-align:none}#phone.lo #grid .app:nth-child(8n+1){scroll-snap-align:start}
+#phone.lo .lodots i{cursor:pointer;padding:0;box-sizing:content-box;border:6px solid transparent;background-clip:padding-box;width:8px;height:8px}
+#phone.lo .lowd>div{cursor:pointer}
 /* ================= 6.1: Fuß Knabber Simulator ================= */
 .fk{container-type:inline-size;width:100%;min-height:100%;color:#fff;font-family:system-ui,sans-serif;padding:10px 10px 44px;background:radial-gradient(120% 60% at 50% 0,#4a46b8 0,#2a2670 45%,#17143f 100%);position:relative}
 .fk *{box-sizing:border-box}
@@ -500,8 +505,15 @@ let inst=[];try{inst=JSON.parse(LS.inst||'[]')}catch(e){}
 const allApps=()=>apps.concat(SG.filter(g=>inst.includes(g.id)));
 const dockIds=['phone','messenger','browser','mail'];
 function tile(a){const d=document.createElement('div');d.className='app';d.dataset.n=a.name.toLowerCase();d.innerHTML=`<div class="ic" style="background:${a.bg}">${a.svg}<i class="bd" data-b="${a.id}"></i></div><span>${a.name}</span>`;d.onclick=()=>openApp(a.id);return d}
-function renderHome(){$('#grid').innerHTML='';$('#dock').innerHTML='';allApps().sort((x,y)=>{const i=ORDER.indexOf(x.id),j=ORDER.indexOf(y.id);return (i<0?99:i)-(j<0?99:j)}).forEach(a=>{const t=tile(a);if(dockIds.includes(a.id)){t.querySelector('span').remove();$('#dock').appendChild(t)}else $('#grid').appendChild(t)})}
-renderHome();
+function renderHome(){$('#grid').innerHTML='';$('#dock').innerHTML='';allApps().sort((x,y)=>{const i=ORDER.indexOf(x.id),j=ORDER.indexOf(y.id);return (i<0?99:i)-(j<0?99:j)}).forEach(a=>{const t=tile(a);if(dockIds.includes(a.id)){t.querySelector('span').remove();$('#dock').appendChild(t)}else $('#grid').appendChild(t)});try{loDots()}catch(_){}}
+function loDots(){const g=$('#grid'),d=document.querySelector('.lodots');if(!g||!d)return;const n=Math.max(1,Math.ceil(g.children.length/8));
+  d.innerHTML=Array.from({length:n},(_,i)=>'<i data-p="'+i+'"></i>').join('');
+  const cur=()=>Math.min(n-1,Math.round(g.scrollLeft/Math.max(1,g.clientWidth)));
+  const mark=()=>{const c=cur();d.querySelectorAll('i').forEach((e,i)=>e.classList.toggle('on',i==c))};
+  d.querySelectorAll('i').forEach(e=>e.onclick=()=>g.scrollTo({left:e.dataset.p*g.clientWidth,behavior:'smooth'}));
+  g.onscroll=mark;mark()}
+renderHome();loDots();
+{const w=document.querySelectorAll('.lowd>div');if(w[1])w[1].onclick=()=>{try{Net.open()}catch(e){}};if(w[0])w[0].onclick=()=>{try{openApp('settings')}catch(e){}}}
 
 /* ---------- Fenster-Manager ---------- */
 let cleanup=null;
