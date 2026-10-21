@@ -29,6 +29,8 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 
 ## Neu in 6.4
 
+- Mehr Grafik in den Apps: bunte, glänzende App-Icons und ein Grafik-Banner (großes Icon + Leuchten) oben in jeder App; beides in Einstellungen → Design schaltbar.
+
 - Animationen & Effekte (Einstellungen → Animationen): 11 einzeln schaltbare Effekte (Streifen, Polarlicht, Sterne, Logo, schwebende Icons, Icon-Glanz, Uhr-Leuchten, Leuchtkarten, Tipp-Wellen, App-Zoom, Neigungseffekt) plus Presets Maximum / Leicht / Alles aus.
 
 - Bewegte Streifen im LucarioOS-Hintergrund: Einstellungen → Design → Bewegte Streifen (standardmäßig aus).

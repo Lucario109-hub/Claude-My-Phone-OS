@@ -299,6 +299,17 @@ select.f{appearance:auto}
 #lofx u{position:absolute;right:-30%;top:-10%;width:90%;height:50%;border-radius:50%;background:radial-gradient(circle,rgba(var(--lorgb),.35),transparent 65%);animation:loglow 5s ease-in-out infinite}
 @keyframes lostr{0%{transform:translateX(-120%) rotate(-24deg);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateX(250%) rotate(-24deg);opacity:0}}
 @keyframes loglow{50%{opacity:.35;transform:scale(1.15)}}
+#phone.lo.cico .app .ic{background:linear-gradient(160deg,rgba(255,255,255,.34),rgba(255,255,255,0) 52%),var(--abg)!important;border:1px solid rgba(255,255,255,.35);box-shadow:0 8px 16px rgba(0,0,0,.45),0 0 14px rgba(var(--lorgb),.28),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -8px 14px rgba(0,0,0,.22)!important}
+#phone.lo.cico .app .ic:before{content:"";position:absolute;left:10%;right:10%;top:3px;height:38%;border-radius:50% 50% 60% 60%/70% 70% 40% 40%;background:linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,0));pointer-events:none}
+#phone.lo.cico .ic svg{filter:drop-shadow(0 2px 3px rgba(0,0,0,.45))}
+#hero{display:none}
+#phone.lo.hero #hero{display:block;position:absolute;left:0;right:0;top:0;height:190px;z-index:2;pointer-events:none;overflow:hidden;-webkit-mask-image:linear-gradient(#000 20%,transparent);mask-image:linear-gradient(#000 20%,transparent)}
+#hero:before{content:"";position:absolute;inset:0;background:var(--abg);opacity:.5}
+#hero:after{content:"";position:absolute;right:-40px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(var(--lorgb),.55),transparent 65%)}
+#hero svg{position:absolute;right:-18px;top:16px;width:170px;height:170px;opacity:.3;transform:rotate(-14deg);filter:drop-shadow(0 0 14px rgba(255,255,255,.5));z-index:1}
+#hero i{position:absolute;left:-30px;top:30px;width:140px;height:140px;border-radius:50%;border:2px solid rgba(255,255,255,.18);box-shadow:inset 0 0 30px rgba(255,255,255,.08)}
+#phone.lo.fx-float #hero svg{animation:lofloat 6s ease-in-out infinite}
+#phone.lo.hero #bar,#phone.lo.hero #body{position:relative}
 /* ================= 6.1: Fuß Knabber Simulator ================= */
 .fk{container-type:inline-size;width:100%;min-height:100%;color:#fff;font-family:system-ui,sans-serif;padding:10px 10px 44px;background:radial-gradient(120% 60% at 50% 0,#4a46b8 0,#2a2670 45%,#17143f 100%);position:relative}
 .fk *{box-sizing:border-box}
@@ -603,7 +614,7 @@ SG.push({id:'putz',cat:'Spiele',hidden:true,name:'Putz Simulator',desc:'Geheimes
 let inst=[];try{inst=JSON.parse(LS.inst||'[]')}catch(e){}
 const allApps=()=>apps.concat(SG.filter(g=>inst.includes(g.id)));
 const dockIds=['phone','messenger','browser','mail'];
-function tile(a){const d=document.createElement('div');d.className='app';d.dataset.n=a.name.toLowerCase();d.innerHTML=`<div class="ic" style="background:${a.bg}">${a.svg}<i class="bd" data-b="${a.id}"></i></div><span>${a.name}</span>`;d.onclick=()=>openApp(a.id);return d}
+function tile(a){const d=document.createElement('div');d.className='app';d.dataset.n=a.name.toLowerCase();d.innerHTML=`<div class="ic" style="background:${a.bg};--abg:${a.bg}">${a.svg}<i class="bd" data-b="${a.id}"></i></div><span>${a.name}</span>`;d.onclick=()=>openApp(a.id);return d}
 function renderHome(){$('#grid').innerHTML='';$('#dock').innerHTML='';allApps().sort((x,y)=>{const i=ORDER.indexOf(x.id),j=ORDER.indexOf(y.id);return (i<0?99:i)-(j<0?99:j)}).forEach(a=>{const t=tile(a);if(dockIds.includes(a.id)){t.querySelector('span').remove();$('#dock').appendChild(t)}else $('#grid').appendChild(t)});try{loDots()}catch(_){}}
 function loDots(){const g=$('#grid'),d=document.querySelector('.lodots');if(!g||!d)return;const n=Math.max(1,Math.ceil(g.children.length/8));
   d.innerHTML=Array.from({length:n},(_,i)=>'<i data-p="'+i+'"></i>').join('');
@@ -629,7 +640,7 @@ let cleanup=null;
 function openApp(id){
   const a=allApps().find(x=>x.id===id);closeApp(true);Sys.spawn(a);
   const w=$('#win');w.style.display='flex';requestAnimationFrame(()=>w.classList.add('show'));
-  $('#title').textContent=a.name;$('#body').innerHTML='';$('#body').style.justifyContent='';$('#body').style.overflow='';$('#phone').classList.add('inapp');appOpen=true;$('#body').classList.toggle('sx',['taskmgr','terminal','support','units','calc','files','ai','store','recorder','torch','clock','calendar','notes','todo'].includes(id));
+  $('#title').textContent=a.name;{let hr=$('#hero');if(!hr){hr=document.createElement('div');hr.id='hero';w.appendChild(hr)}hr.style.setProperty('--abg',a.bg);hr.innerHTML='<i></i>'+a.svg}$('#body').innerHTML='';$('#body').style.justifyContent='';$('#body').style.overflow='';$('#phone').classList.add('inapp');appOpen=true;$('#body').classList.toggle('sx',['taskmgr','terminal','support','units','calc','files','ai','store','recorder','torch','clock','calendar','notes','todo'].includes(id));
   cleanup=A[id]($('#body'))||null;
 }
 function closeApp(quiet){Sys.reap();appOpen=false;appIv.forEach(clearInterval);appIv=[];$('#phone').classList.remove('inapp');
@@ -718,7 +729,7 @@ addEventListener('pointerdown',()=>Sys.unlock(),{passive:true});
 /* ---------- Einstellungen, Design (Dunkel/Hell), Sperre, Schnelleinstellungen, Badges ---------- */
 const hex=b=>[...b].map(x=>x.toString(16).padStart(2,'0')).join('');
 const unhex=h=>Uint8Array.from(h.match(/../g)||[],x=>parseInt(x,16));
-const DEF={theme:'dark',accent:'#4cc9ff',font:1,bright:100,reduce:0,ringVol:.5,vibrate:1,sound:1,notif:1,autolock:1,style:'lucario',accents:null,lofx:0,fx:null};
+const DEF={theme:'dark',accent:'#4cc9ff',font:1,bright:100,reduce:0,ringVol:.5,vibrate:1,sound:1,notif:1,autolock:1,style:'lucario',accents:null,lofx:0,fx:null,cico:1,hero:1};
 const FXL=[['streaks','Bewegte Streifen','Lichtstreifen ziehen über den Hintergrund'],['aurora','Polarlicht','Weiche Farbwolken driften langsam'],['stars','Sterne','Funkelnde Sterne, die nach oben treiben'],['logo','Logo-Animation','Logo schwebt, leuchtet, Ring dreht sich'],['float','Schwebende Icons','App-Icons wippen sanft'],['shine','Icon-Glanz','Glanz läuft über die Icons'],['clock','Uhr-Leuchten','Uhr pulsiert in Akzentfarbe'],['glow','Atmende Leuchtkarten','Dock, Suche & Karten glühen'],['ripple','Tipp-Wellen','Leuchtende Welle bei jeder Berührung'],['open','App-Zoom','Apps springen beim Öffnen auf'],['tilt','Neigungseffekt','Logo & Icons folgen der Handy-Neigung']];
 const DEFACC=['#4cc9ff','#7b2ff7','#ff6b9d','#2ecc71','#ffb347','#ff5252','#00d2d3','#a29bfe'];let ACEDIT=false;
 let SET={...DEF};try{SET={...DEF,...JSON.parse(LS.settings||'{}')}}catch(e){}
@@ -742,7 +753,7 @@ function applySet(){
   const h=SET.accent.replace('#','');const lum=(parseInt(h.slice(0,2),16)*.299+parseInt(h.slice(2,4),16)*.587+parseInt(h.slice(4,6),16)*.114);
   p.style.setProperty('--onacc',lum>150?'#04202e':'#ffffff');
   p.style.filter=SET.bright<100?'brightness('+(SET.bright/100)+')':'';
-  p.classList.toggle('reduce',!!SET.reduce);p.classList.toggle('lo',SET.style=='lucario');{const fx=SET.fx||{};FXL.forEach(f=>p.classList.toggle('fx-'+f[0],!!fx[f[0]]&&!SET.reduce))}if(SET.style=='lucario'){loTheme();try{tick()}catch(_){}}try{$('#search').placeholder=SET.style=='lucario'?'LucarioOS durchsuchen…':'🔍 Apps & Web durchsuchen'}catch(_){}
+  p.classList.toggle('reduce',!!SET.reduce);p.classList.toggle('lo',SET.style=='lucario');p.classList.toggle('cico',SET.cico!==0);p.classList.toggle('hero',SET.hero!==0);{const fx=SET.fx||{};FXL.forEach(f=>p.classList.toggle('fx-'+f[0],!!fx[f[0]]&&!SET.reduce))}if(SET.style=='lucario'){loTheme();try{tick()}catch(_){}}try{$('#search').placeholder=SET.style=='lucario'?'LucarioOS durchsuchen…':'🔍 Apps & Web durchsuchen'}catch(_){}
   if(!LS.wallSet&&!LS.wallc)setWall(isDark()?0:4,false);
   try{document.querySelector('meta[name=theme-color]').content=isDark()?'#0b1020':'#f2f4fa'}catch(e){}
 }
@@ -1378,7 +1389,7 @@ A.settings=el=>{
 
   P.disp=async()=>{
     const ac=(Array.isArray(SET.accents)&&SET.accents.length)?SET.accents:DEFACC.slice();
-    add(hdr('Anzeige & Design')+'<div class="set"><b>Design-Stil</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['classic','Klassisch'],['lucario','⬡ LucarioOS']].map(([k,n])=>'<button class="'+((SET.style||'classic')==k?'b':'g')+'" data-sty="'+k+'">'+n+'</button>').join('')+'</div><p style="margin:8px 0 0;opacity:.7;font-size:12px">LucarioOS: dunkles Glas-Design mit großer Uhr, Begrüßung, Akku- und WLAN-Widget.</p></div><div class="set"><button class="b" id="lfx">✨ Animationen & Effekte</button><p style="margin:8px 0 0;opacity:.7;font-size:12px">Streifen, Sterne, Polarlicht, schwebende Icons und mehr – einzeln schaltbar.</p></div><div class="set"><b>Design</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['dark','🌙 Dunkel'],['light','☀️ Hell'],['auto','🌓 Auto']].map(([k,n])=>'<button class="'+(SET.theme==k?'b':'g')+'" data-th="'+k+'">'+n+'</button>').join('')+'</div></div><div class="set"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b style="flex:1">Akzentfarbe</b><button class="g" id="acp" style="padding:7px 12px">＋ Neue Farbe</button><button class="'+(ACEDIT?'b':'g')+'" id="ace" style="padding:7px 12px">'+(ACEDIT?'✔ Fertig':'✎ Bearbeiten')+'</button></div><input type="color" id="acn" value="#4cc9ff" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px"><div class="sw" style="flex-wrap:wrap" id="ac"></div><p style="margin:8px 0 0;opacity:.7;font-size:12px">'+(ACEDIT?'Tippe auf eine Farbe, um sie zu löschen. Mindestens eine bleibt.':'Tippe auf eine Farbe zum Auswählen oder füge eigene hinzu.')+'</p>'+(ACEDIT?'<button class="g" id="acr" style="margin-top:8px;padding:7px 12px">↺ Standardfarben wiederherstellen</button>':'')+'</div><div class="set"><b>Schriftgröße</b><input type="range" id="fz" min="0.9" max="1.25" step="0.05" value="'+SET.font+'" style="width:100%;margin-top:10px"></div><div class="set"><b>Helligkeit</b><input type="range" id="br" min="40" max="100" step="5" value="'+SET.bright+'" style="width:100%;margin-top:10px"></div><div class="set">'+srow('Animationen reduzieren','Weniger Bewegung',tg('rd',SET.reduce))+'</div>');
+    add(hdr('Anzeige & Design')+'<div class="set"><b>Design-Stil</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['classic','Klassisch'],['lucario','⬡ LucarioOS']].map(([k,n])=>'<button class="'+((SET.style||'classic')==k?'b':'g')+'" data-sty="'+k+'">'+n+'</button>').join('')+'</div><p style="margin:8px 0 0;opacity:.7;font-size:12px">LucarioOS: dunkles Glas-Design mit großer Uhr, Begrüßung, Akku- und WLAN-Widget.</p></div><div class="set">'+srow('Farbige App-Icons','Jede App mit eigener Farbe & Glanz',tg('cic',SET.cico!==0))+srow('Grafik-Kopfbereich in Apps','Großes App-Symbol & Farbverlauf oben',tg('hro',SET.hero!==0))+'</div><div class="set"><button class="b" id="lfx">✨ Animationen & Effekte</button><p style="margin:8px 0 0;opacity:.7;font-size:12px">Streifen, Sterne, Polarlicht, schwebende Icons und mehr – einzeln schaltbar.</p></div><div class="set"><b>Design</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['dark','🌙 Dunkel'],['light','☀️ Hell'],['auto','🌓 Auto']].map(([k,n])=>'<button class="'+(SET.theme==k?'b':'g')+'" data-th="'+k+'">'+n+'</button>').join('')+'</div></div><div class="set"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b style="flex:1">Akzentfarbe</b><button class="g" id="acp" style="padding:7px 12px">＋ Neue Farbe</button><button class="'+(ACEDIT?'b':'g')+'" id="ace" style="padding:7px 12px">'+(ACEDIT?'✔ Fertig':'✎ Bearbeiten')+'</button></div><input type="color" id="acn" value="#4cc9ff" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px"><div class="sw" style="flex-wrap:wrap" id="ac"></div><p style="margin:8px 0 0;opacity:.7;font-size:12px">'+(ACEDIT?'Tippe auf eine Farbe, um sie zu löschen. Mindestens eine bleibt.':'Tippe auf eine Farbe zum Auswählen oder füge eigene hinzu.')+'</p>'+(ACEDIT?'<button class="g" id="acr" style="margin-top:8px;padding:7px 12px">↺ Standardfarben wiederherstellen</button>':'')+'</div><div class="set"><b>Schriftgröße</b><input type="range" id="fz" min="0.9" max="1.25" step="0.05" value="'+SET.font+'" style="width:100%;margin-top:10px"></div><div class="set"><b>Helligkeit</b><input type="range" id="br" min="40" max="100" step="5" value="'+SET.bright+'" style="width:100%;margin-top:10px"></div><div class="set">'+srow('Animationen reduzieren','Weniger Bewegung',tg('rd',SET.reduce))+'</div>');
     el.querySelectorAll('[data-th]').forEach(b=>b.onclick=()=>{SET.theme=b.dataset.th;saveSet();applySet();go('disp')});
     el.querySelectorAll('[data-sty]').forEach(b=>b.onclick=()=>{SET.style=b.dataset.sty;saveSet();applySet();tick();go('disp')});
     const saveAc=l=>{SET.accents=l;if(!l.includes(SET.accent))SET.accent=l[0];saveSet();applySet();go('disp')};
@@ -1393,6 +1404,7 @@ A.settings=el=>{
     $('#br').oninput=e=>{const v=+e.target.value;$('#phone').style.filter=v<100?'brightness('+(v/100)+')':''};$('#br').onchange=e=>{SET.bright=+e.target.value;saveSet();applySet()};
     $('#rd').onchange=e=>{SET.reduce=e.target.checked?1:0;saveSet();applySet()};
     $('#lfx').onclick=()=>go('anim');
+    $('#cic').onchange=e=>{SET.cico=e.target.checked?1:0;saveSet();applySet()};$('#hro').onchange=e=>{SET.hero=e.target.checked?1:0;saveSet();applySet()};
   };
 
   P.wall=async()=>{
