@@ -29,6 +29,8 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 
 ## Neu in 6.4
 
+- Putz Simulator 2.0: 6 Räume mit eigener Optik (Keller, Küche, Garage, Schwimmbad, Lagerhalle, Raumstation), 5 Dreck-Sorten (neu: Rost und Giftschlamm), Boss-Räume alle 5 Level, 2 neue Mopps und 2 neue Schwämme, Combo-Multiplikator, Boosts (⚡ Turbo, 💰 ×2), bis zu 5 Putzroboter, Minikarte, Seifenblasen/Glanz-Effekte, neue Putzi-Figur und 15 weitere Quests. Effekte & Minikarte sind unter Statistiken abschaltbar.
+
 - Zwei Icon-Stile: LucarioOS bekommt Neon-Icons (Glas-Kachel, Symbol in der Farbe der App), das klassische Design die bunten Glanz-Icons.
 
 - Mehr Grafik in den Apps: bunte, glänzende App-Icons und ein Grafik-Banner (großes Icon + Leuchten) oben in jeder App; beides in Einstellungen → Design schaltbar.
