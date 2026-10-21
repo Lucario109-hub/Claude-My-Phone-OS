@@ -211,7 +211,7 @@ select.f{appearance:auto}
 #phone.lo .lowd em{font-style:normal;color:var(--lo);display:block}
 #phone.lo .lodots{display:flex;justify-content:center;gap:8px;margin:0 0 4px}#phone.lo .lodots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3)}#phone.lo .lodots i.on{background:#fff}
 #phone.lo #home{padding-bottom:128px;overflow-y:auto;overflow-x:hidden}
-#phone.lo #grid{flex:none;min-height:0;overflow-x:auto;overflow-y:hidden;display:grid;grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-flow:column;grid-auto-columns:25%;gap:16px 0;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px}
+#phone.lo #grid{flex:none;min-height:0;overflow-x:auto;overflow-y:hidden;display:grid;grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-flow:column;grid-auto-columns:25%;gap:16px 0;scroll-snap-type:x mandatory;scrollbar-width:none;padding:8px 0 6px}
 #phone.lo #grid::-webkit-scrollbar{display:none}
 #phone.lo #grid .app{scroll-snap-align:none}#phone.lo #grid .app:nth-child(8n+1){scroll-snap-align:start}
 #phone.lo .lodots i{cursor:pointer;padding:0;box-sizing:content-box;border:6px solid transparent;background-clip:padding-box;width:8px;height:8px}
@@ -247,19 +247,48 @@ select.f{appearance:auto}
 #phone.lo #lock .dots i{border-color:var(--lo)}#phone.lo #lock .dots i.on{background:var(--lo)}
 #phone.lo #lock button.b{background:linear-gradient(90deg,var(--lo),var(--lo2));color:#fff;border-radius:18px;box-shadow:0 0 16px rgba(var(--lorgb),.5)}
 #phone.lo #lock input.f{background:rgba(var(--lodk),.65);border:1px solid rgba(var(--lorgb),.5);color:#fff}
-#phone.lo.lofx{background:radial-gradient(120% 70% at 85% 5%,rgb(var(--lomid)) 0,rgb(var(--lodk)) 55%,#02040f 100%)!important}
-#phone.lo.lofx #lock{background:radial-gradient(120% 70% at 85% 5%,rgb(var(--lomid)) 0,rgb(var(--lodk)) 55%,#02040f 100%)}
-#phone.lo.lofx .lologo{animation:lofloat 6s ease-in-out infinite,lopulse 3.2s ease-in-out infinite}
-#phone.lo.lofx .lologo svg polygon:nth-of-type(2){stroke-dasharray:14 9;transform-origin:50% 50%;animation:lospin 14s linear infinite}
-#phone.lo.lofx .lologo svg path{animation:lobeat 3.2s ease-in-out infinite;transform-origin:50% 50%}
-#phone.lo.lofx #lock .lklogo{animation:lofloat 6s ease-in-out infinite}
-#phone.lo.lofx #lock .lklogo svg polygon:nth-of-type(2){stroke-dasharray:14 9;transform-origin:50% 50%;animation:lospin 14s linear infinite}
+#phone.lo.fx-streaks,#phone.lo.fx-aurora{background:radial-gradient(120% 70% at 85% 5%,rgb(var(--lomid)) 0,rgb(var(--lodk)) 55%,#02040f 100%)!important}
+#phone.lo.fx-streaks #lock,#phone.lo.fx-aurora #lock{background:radial-gradient(120% 70% at 85% 5%,rgb(var(--lomid)) 0,rgb(var(--lodk)) 55%,#02040f 100%)}
+#phone.lo.fx-logo .lologo{animation:lofloat 6s ease-in-out infinite,lopulse 3.2s ease-in-out infinite}
+#phone.lo.fx-logo .lologo svg polygon:nth-of-type(2){stroke-dasharray:14 9;transform-origin:50% 50%;animation:lospin 14s linear infinite}
+#phone.lo.fx-logo .lologo svg path{animation:lobeat 3.2s ease-in-out infinite;transform-origin:50% 50%}
+#phone.lo.fx-logo #lock .lklogo{animation:lofloat 6s ease-in-out infinite}
+#phone.lo.fx-logo #lock .lklogo svg polygon:nth-of-type(2){stroke-dasharray:14 9;transform-origin:50% 50%;animation:lospin 14s linear infinite}
 @keyframes lofloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(2.5deg)}}
 @keyframes lopulse{0%,100%{filter:drop-shadow(0 0 12px rgba(var(--lorgb),.6))}50%{filter:drop-shadow(0 0 28px rgba(var(--lorgb),1))}}
 @keyframes lospin{to{transform:rotate(360deg)}}
 @keyframes lobeat{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 #lofx{display:none;position:absolute;inset:0;overflow:hidden;pointer-events:none}
-#phone.lo.lofx #lofx{display:block}
+#phone.lo.fx-streaks #lofx,#phone.lo.fx-stars #lofx,#phone.lo.fx-aurora #lofx{display:block}
+#lofx i,#lofx u,#lofx s,#lofx b{display:none}
+#phone.lo.fx-streaks #lofx i,#phone.lo.fx-streaks #lofx u{display:block}
+#phone.lo.fx-stars #lofx s{display:block}
+#phone.lo.fx-aurora #lofx b{display:block}
+#lofx s{position:absolute;inset:0;background-image:radial-gradient(1.6px 1.6px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 90px 140px,#cfeaff,transparent),radial-gradient(2px 2px at 160px 70px,#fff,transparent),radial-gradient(1px 1px at 230px 200px,#fff,transparent),radial-gradient(1.4px 1.4px at 60px 220px,#bfe3ff,transparent);background-size:260px 260px;animation:lotw 3.5s ease-in-out infinite}
+#lofx s.b{background-size:170px 170px;opacity:.7;animation:lotw 5s ease-in-out -2s infinite,lodrift 40s linear infinite}
+@keyframes lotw{0%,100%{opacity:.25}50%{opacity:1}}@keyframes lodrift{to{background-position:0 -170px}}
+#lofx b{position:absolute;width:130%;height:55%;left:-15%;border-radius:50%;filter:blur(40px);background:radial-gradient(ellipse,rgba(var(--lorgb),.55),transparent 65%);top:5%;animation:loaur 14s ease-in-out infinite}
+#lofx b.b2{top:45%;background:radial-gradient(ellipse,var(--lo2),transparent 65%);opacity:.35;animation-duration:19s;animation-delay:-6s}
+@keyframes loaur{0%,100%{transform:translate(-8%,0) scale(1)}50%{transform:translate(10%,12%) scale(1.25)}}
+#phone.lo.fx-float #grid .app .ic{animation:lobob 4.2s ease-in-out infinite}
+#phone.lo.fx-float #grid .app:nth-child(3n) .ic{animation-delay:-1.4s}#phone.lo.fx-float #grid .app:nth-child(3n+1) .ic{animation-delay:-2.8s}
+@keyframes lobob{50%{transform:translateY(-6px)}}
+#phone.lo.fx-shine .app .ic:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.6) 50%,transparent 62%);background-size:300% 100%;background-position:150% 0;animation:loshine 5s ease-in-out infinite}
+#phone.lo.fx-shine .app:nth-child(2n) .ic:after{animation-delay:-1.7s}#phone.lo.fx-shine .app:nth-child(3n) .ic:after{animation-delay:-3.2s}
+@keyframes loshine{0%,55%{background-position:150% 0}100%{background-position:-50% 0}}
+#phone.lo.fx-clock #hclk{animation:loclk 3s ease-in-out infinite}#phone.lo.fx-clock #hclk .cy{animation:loclk2 3s ease-in-out infinite}
+@keyframes loclk{50%{text-shadow:0 0 14px rgba(255,255,255,.45)}}@keyframes loclk2{50%{text-shadow:0 0 22px var(--lo),0 0 40px rgba(var(--lorgb),.6)}}
+#phone.lo.fx-glow #dock,#phone.lo.fx-glow #search,#phone.lo.fx-glow .lowd,#phone.lo.fx-glow .lodate{animation:loglw 3.6s ease-in-out infinite}
+@keyframes loglw{50%{box-shadow:0 0 34px 3px rgba(var(--lorgb),.6)}}
+.rip{position:absolute;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;border:3px solid var(--lo,var(--acc));box-shadow:0 0 14px var(--lo,var(--acc));pointer-events:none;z-index:300;animation:lorip .65s ease-out forwards}
+@keyframes lorip{to{transform:scale(6);opacity:0}}
+#phone.fx-open #win{transform:scale(.6);transition:transform .38s cubic-bezier(.2,.9,.3,1.15),opacity .25s}
+#phone.fx-open #win.show{transform:none}
+#phone.lo.fx-tilt .lologo{translate:calc(var(--tx,0)*16px) calc(var(--ty,0)*12px)}
+#phone.lo.fx-tilt #clock{translate:calc(var(--tx,0)*-5px) calc(var(--ty,0)*-4px)}
+#phone.lo.fx-tilt #grid{translate:calc(var(--tx,0)*-3px) calc(var(--ty,0)*-3px)}
+#phone.lo.fx-tilt #dock{translate:calc(var(--tx,0)*4px) 0}
+
 #lofx i{position:absolute;left:-10%;width:85%;height:3px;border-radius:2px;background:linear-gradient(90deg,transparent,rgba(var(--lorgb),.95) 50%,transparent);filter:blur(1.2px);box-shadow:0 0 22px 4px rgba(var(--lorgb),.8);transform:translateX(-120%) rotate(-24deg);animation:lostr 8s linear infinite}
 #lofx u{position:absolute;right:-30%;top:-10%;width:90%;height:50%;border-radius:50%;background:radial-gradient(circle,rgba(var(--lorgb),.35),transparent 65%);animation:loglow 5s ease-in-out infinite}
 @keyframes lostr{0%{transform:translateX(-120%) rotate(-24deg);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateX(250%) rotate(-24deg);opacity:0}}
@@ -456,7 +485,7 @@ select.f{appearance:auto}
     <svg viewBox="0 0 100 100"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4cc9ff"/><stop offset="1" stop-color="#7b2ff7"/></linearGradient></defs><polygon points="50,4 91,27 91,73 50,96 9,73 9,27" fill="none" stroke="url(#lgb)" stroke-width="5"/><path d="M36 28v40h30" fill="none" stroke="url(#lgb)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 28l12 14" stroke="#4cc9ff" stroke-width="6" stroke-linecap="round"/></svg></div>
     <div class="bname">LucarioNet</div>
   </div>
-  <div id="lofx"><u></u><i style="top:14%;animation-duration:7s"></i><i style="top:34%;animation-duration:9s;animation-delay:-3s;height:3px"></i><i style="top:52%;animation-duration:6s;animation-delay:-1s;opacity:.7"></i><i style="top:70%;animation-duration:11s;animation-delay:-6s;height:3px"></i><i style="top:86%;animation-duration:8s;animation-delay:-4s"></i></div>
+  <div id="lofx"><u></u><s></s><s class="b"></s><b></b><b class="b2"></b><i style="top:14%;animation-duration:7s"></i><i style="top:34%;animation-duration:9s;animation-delay:-3s;height:3px"></i><i style="top:52%;animation-duration:6s;animation-delay:-1s;opacity:.7"></i><i style="top:70%;animation-duration:11s;animation-delay:-6s;height:3px"></i><i style="top:86%;animation-duration:8s;animation-delay:-4s"></i></div>
   <div id="status"><span id="sbt">--:--</span><span id="bat"><span id="wf" title="WLAN">📶</span><span id="bt"></span></span></div>
   <div id="home">
     <div class="lohd"><div class="lob"><b>Lucario<i>OS</i></b><small>Smarter. Schneller. Deins.</small></div><div class="lodate"><span>📅</span><div><b id="lodow"></b><i id="lodm"></i></div></div></div>
@@ -581,6 +610,16 @@ renderHome();loDots();
 
 /* ---------- Fenster-Manager ---------- */
 let cleanup=null;
+(()=>{const ph=()=>$('#phone');let lx=0,ly=0;
+  addEventListener('pointerdown',e=>{const p=ph();if(!p)return;const r=p.getBoundingClientRect();lx=e.clientX-r.left;ly=e.clientY-r.top;
+    if(p.classList.contains('fx-ripple')){const s=document.createElement('span');s.className='rip';s.style.left=lx+'px';s.style.top=ly+'px';p.appendChild(s);setTimeout(()=>s.remove(),700)}
+    const w=$('#win');if(w)w.style.transformOrigin=lx+'px '+ly+'px'},true);
+  let tOn=false;const set=(x,y)=>{const hm=$('#phone');hm.style.setProperty('--tx',Math.max(-1,Math.min(1,x)).toFixed(2));hm.style.setProperty('--ty',Math.max(-1,Math.min(1,y)).toFixed(2))};
+  window.tiltOn=()=>{if(tOn)return;tOn=true;
+    const go=()=>addEventListener('deviceorientation',e=>{if(!$('#phone').classList.contains('fx-tilt'))return;set((e.gamma||0)/30,((e.beta||0)-45)/30)});
+    try{if(window.DeviceOrientationEvent&&DeviceOrientationEvent.requestPermission){DeviceOrientationEvent.requestPermission().then(r=>{if(r=='granted')go()}).catch(()=>{})}else go()}catch(_){}
+    addEventListener('pointermove',e=>{if(e.pointerType=='mouse'&&$('#phone').classList.contains('fx-tilt')){const r=$('#phone').getBoundingClientRect();set((e.clientX-r.left)/r.width*2-1,(e.clientY-r.top)/r.height*2-1)}})};
+  setTimeout(()=>{try{if(SET.fx&&SET.fx.tilt)window.tiltOn()}catch(e){}},0)})();
 function openApp(id){
   const a=allApps().find(x=>x.id===id);closeApp(true);Sys.spawn(a);
   const w=$('#win');w.style.display='flex';requestAnimationFrame(()=>w.classList.add('show'));
@@ -673,9 +712,11 @@ addEventListener('pointerdown',()=>Sys.unlock(),{passive:true});
 /* ---------- Einstellungen, Design (Dunkel/Hell), Sperre, Schnelleinstellungen, Badges ---------- */
 const hex=b=>[...b].map(x=>x.toString(16).padStart(2,'0')).join('');
 const unhex=h=>Uint8Array.from(h.match(/../g)||[],x=>parseInt(x,16));
-const DEF={theme:'dark',accent:'#4cc9ff',font:1,bright:100,reduce:0,ringVol:.5,vibrate:1,sound:1,notif:1,autolock:1,style:'lucario',accents:null,lofx:0};
+const DEF={theme:'dark',accent:'#4cc9ff',font:1,bright:100,reduce:0,ringVol:.5,vibrate:1,sound:1,notif:1,autolock:1,style:'lucario',accents:null,lofx:0,fx:null};
+const FXL=[['streaks','Bewegte Streifen','Lichtstreifen ziehen über den Hintergrund'],['aurora','Polarlicht','Weiche Farbwolken driften langsam'],['stars','Sterne','Funkelnde Sterne, die nach oben treiben'],['logo','Logo-Animation','Logo schwebt, leuchtet, Ring dreht sich'],['float','Schwebende Icons','App-Icons wippen sanft'],['shine','Icon-Glanz','Glanz läuft über die Icons'],['clock','Uhr-Leuchten','Uhr pulsiert in Akzentfarbe'],['glow','Atmende Leuchtkarten','Dock, Suche & Karten glühen'],['ripple','Tipp-Wellen','Leuchtende Welle bei jeder Berührung'],['open','App-Zoom','Apps springen beim Öffnen auf'],['tilt','Neigungseffekt','Logo & Icons folgen der Handy-Neigung']];
 const DEFACC=['#4cc9ff','#7b2ff7','#ff6b9d','#2ecc71','#ffb347','#ff5252','#00d2d3','#a29bfe'];let ACEDIT=false;
 let SET={...DEF};try{SET={...DEF,...JSON.parse(LS.settings||'{}')}}catch(e){}
+try{if(SET.lofx&&!SET.fx){SET.fx={streaks:1,logo:1};LS.settings=JSON.stringify(SET)}}catch(e){}
 try{if(!LS.loMig){LS.loMig=1;SET.style='lucario';LS.settings=JSON.stringify(SET)}}catch(e){}
 const saveSet=()=>{try{LS.settings=JSON.stringify(SET)}catch(e){}};
 const mq=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;
@@ -695,7 +736,7 @@ function applySet(){
   const h=SET.accent.replace('#','');const lum=(parseInt(h.slice(0,2),16)*.299+parseInt(h.slice(2,4),16)*.587+parseInt(h.slice(4,6),16)*.114);
   p.style.setProperty('--onacc',lum>150?'#04202e':'#ffffff');
   p.style.filter=SET.bright<100?'brightness('+(SET.bright/100)+')':'';
-  p.classList.toggle('reduce',!!SET.reduce);p.classList.toggle('lo',SET.style=='lucario');p.classList.toggle('lofx',!!SET.lofx&&!SET.reduce);if(SET.style=='lucario'){loTheme();try{tick()}catch(_){}}try{$('#search').placeholder=SET.style=='lucario'?'LucarioOS durchsuchen…':'🔍 Apps & Web durchsuchen'}catch(_){}
+  p.classList.toggle('reduce',!!SET.reduce);p.classList.toggle('lo',SET.style=='lucario');{const fx=SET.fx||{};FXL.forEach(f=>p.classList.toggle('fx-'+f[0],!!fx[f[0]]&&!SET.reduce))}if(SET.style=='lucario'){loTheme();try{tick()}catch(_){}}try{$('#search').placeholder=SET.style=='lucario'?'LucarioOS durchsuchen…':'🔍 Apps & Web durchsuchen'}catch(_){}
   if(!LS.wallSet&&!LS.wallc)setWall(isDark()?0:4,false);
   try{document.querySelector('meta[name=theme-color]').content=isDark()?'#0b1020':'#f2f4fa'}catch(e){}
 }
@@ -1255,7 +1296,7 @@ A.settings=el=>{
   const back='<button class="g" id="bk" style="margin:8px 12px;align-self:flex-start">‹ Einstellungen</button>';
   const hdr=t=>'<div class="sh1" style="width:100%;padding:0 16px 8px;font-size:21px;font-weight:800">'+t+'</div>';
   const LO=()=>$('#phone').classList.contains('lo');
-  const SI={acct:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/>',links:'<path d="M10 14a4 4 0 005.6 0l3-3a4 4 0 00-5.6-5.6l-1 1M14 10a4 4 0 00-5.6 0l-3 3a4 4 0 005.6 5.6l1-1"/>',disp:'<path d="M12 3a9 9 0 100 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a3 3 0 003-3c0-6-4-11-8-11z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7" r="1"/>',wall:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/>',snd:'<path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>',wifi:'<path d="M2 9a15 15 0 0120 0M5 13a10 10 0 0114 0M8.5 16.5a5 5 0 017 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/>',ai:'<rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01"/>',support:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/>',sec:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',priv:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',store:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',inst:'<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v6M9 12l3 3 3-3"/>',dsp:'<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',batt:'<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10 2h4M12 8v6M10 11h4"/>',apps:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',sys:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>',about:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>'};
+  const SI={anim:'<path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/>',acct:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/>',links:'<path d="M10 14a4 4 0 005.6 0l3-3a4 4 0 00-5.6-5.6l-1 1M14 10a4 4 0 00-5.6 0l-3 3a4 4 0 005.6 5.6l1-1"/>',disp:'<path d="M12 3a9 9 0 100 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a3 3 0 003-3c0-6-4-11-8-11z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7" r="1"/>',wall:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/>',snd:'<path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>',wifi:'<path d="M2 9a15 15 0 0120 0M5 13a10 10 0 0114 0M8.5 16.5a5 5 0 017 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/>',ai:'<rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01"/>',support:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/>',sec:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',priv:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',store:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',inst:'<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v6M9 12l3 3 3-3"/>',dsp:'<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',batt:'<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10 2h4M12 8v6M10 11h4"/>',apps:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',sys:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>',about:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>'};
   const sico=k=>'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(SI[k]||SI.about)+'</svg>';
   const chev='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
   const hexlogo='<svg viewBox="0 0 100 100" width="46" height="46"><polygon points="50,6 90,28 90,72 50,94 10,72 10,28" fill="rgba(255,255,255,.06)" stroke="var(--lo)" stroke-width="6" stroke-linejoin="round"/><path d="M40 34v32h22" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -1274,7 +1315,7 @@ A.settings=el=>{
       ITEMS=items;el.classList.toggle('sx',LO());
       if(LO()){
         const byId=Object.fromEntries(items.map(i=>[i[0],i]));
-        const LOL=[['acct','Allgemein','Konto, Telefonnummer & Basis'],['disp','Design','Farben & Stil'],['wall','Hintergrundbild','Galerie & Live'],['dsp','Anzeige','Helligkeit & Schrift'],['batt','Akku & Leistung','Energie & Nutzung'],['wifi','WLAN & Netzwerk','Verbindungen'],['apps','Apps','Verwalten & Berechtigungen'],['sec','Sicherheit','Schutz & Datenschutz'],['snd','Benachrichtigungen','Ton & Vibration'],['sys','System','Info & Updates']].concat(['links','ai','support','priv','store','inst'].map(k=>[k,byId[k][2],byId[k][3]]));
+        const LOL=[['acct','Allgemein','Konto, Telefonnummer & Basis'],['disp','Design','Farben & Stil'],['wall','Hintergrundbild','Galerie & Live'],['anim','Animationen','Effekte & Bewegung'],['dsp','Anzeige','Helligkeit & Schrift'],['batt','Akku & Leistung','Energie & Nutzung'],['wifi','WLAN & Netzwerk','Verbindungen'],['apps','Apps','Verwalten & Berechtigungen'],['sec','Sicherheit','Schutz & Datenschutz'],['snd','Benachrichtigungen','Ton & Vibration'],['sys','System','Info & Updates']].concat(['links','ai','support','priv','store','inst'].map(k=>[k,byId[k][2],byId[k][3]]));
         LOLIST=LOL;
         const rows=q=>LOL.filter(i=>!q||(i[1]+' '+i[2]).toLowerCase().includes(q)).map(i=>{const t=i[1],s=i[2];return '<div class="sxi" data-p="'+i[0]+'"><span class="sxe">'+sico(i[0])+'</span><div class="sxt"><b>'+t+'</b><small>'+s+'</small></div><span class="sxc">'+chev+'</span></div>'}).join('')||'<div style="padding:20px;opacity:.7">Nichts gefunden.</div>';
         el.innerHTML='<div class="sxh">'+hexlogo+'<div><b>Lucario<i>OS</i></b><small>Einstellungen</small></div></div><input class="sxs" id="sxs" type="search" placeholder="Suche in den Einstellungen…" autocomplete="off"><div class="sxl" id="sxl">'+rows('')+'</div>';
@@ -1331,7 +1372,7 @@ A.settings=el=>{
 
   P.disp=async()=>{
     const ac=(Array.isArray(SET.accents)&&SET.accents.length)?SET.accents:DEFACC.slice();
-    add(hdr('Anzeige & Design')+'<div class="set"><b>Design-Stil</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['classic','Klassisch'],['lucario','⬡ LucarioOS']].map(([k,n])=>'<button class="'+((SET.style||'classic')==k?'b':'g')+'" data-sty="'+k+'">'+n+'</button>').join('')+'</div><p style="margin:8px 0 0;opacity:.7;font-size:12px">LucarioOS: dunkles Glas-Design mit großer Uhr, Begrüßung, Akku- und WLAN-Widget.</p></div><div class="set">'+srow('Bewegte Streifen','Animierter LucarioOS-Hintergrund (nur im LucarioOS-Design)',tg('lfx',SET.lofx))+'</div><div class="set"><b>Design</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['dark','🌙 Dunkel'],['light','☀️ Hell'],['auto','🌓 Auto']].map(([k,n])=>'<button class="'+(SET.theme==k?'b':'g')+'" data-th="'+k+'">'+n+'</button>').join('')+'</div></div><div class="set"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b style="flex:1">Akzentfarbe</b><button class="g" id="acp" style="padding:7px 12px">＋ Neue Farbe</button><button class="'+(ACEDIT?'b':'g')+'" id="ace" style="padding:7px 12px">'+(ACEDIT?'✔ Fertig':'✎ Bearbeiten')+'</button></div><input type="color" id="acn" value="#4cc9ff" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px"><div class="sw" style="flex-wrap:wrap" id="ac"></div><p style="margin:8px 0 0;opacity:.7;font-size:12px">'+(ACEDIT?'Tippe auf eine Farbe, um sie zu löschen. Mindestens eine bleibt.':'Tippe auf eine Farbe zum Auswählen oder füge eigene hinzu.')+'</p>'+(ACEDIT?'<button class="g" id="acr" style="margin-top:8px;padding:7px 12px">↺ Standardfarben wiederherstellen</button>':'')+'</div><div class="set"><b>Schriftgröße</b><input type="range" id="fz" min="0.9" max="1.25" step="0.05" value="'+SET.font+'" style="width:100%;margin-top:10px"></div><div class="set"><b>Helligkeit</b><input type="range" id="br" min="40" max="100" step="5" value="'+SET.bright+'" style="width:100%;margin-top:10px"></div><div class="set">'+srow('Animationen reduzieren','Weniger Bewegung',tg('rd',SET.reduce))+'</div>');
+    add(hdr('Anzeige & Design')+'<div class="set"><b>Design-Stil</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['classic','Klassisch'],['lucario','⬡ LucarioOS']].map(([k,n])=>'<button class="'+((SET.style||'classic')==k?'b':'g')+'" data-sty="'+k+'">'+n+'</button>').join('')+'</div><p style="margin:8px 0 0;opacity:.7;font-size:12px">LucarioOS: dunkles Glas-Design mit großer Uhr, Begrüßung, Akku- und WLAN-Widget.</p></div><div class="set"><button class="b" id="lfx">✨ Animationen & Effekte</button><p style="margin:8px 0 0;opacity:.7;font-size:12px">Streifen, Sterne, Polarlicht, schwebende Icons und mehr – einzeln schaltbar.</p></div><div class="set"><b>Design</b><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+[['dark','🌙 Dunkel'],['light','☀️ Hell'],['auto','🌓 Auto']].map(([k,n])=>'<button class="'+(SET.theme==k?'b':'g')+'" data-th="'+k+'">'+n+'</button>').join('')+'</div></div><div class="set"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b style="flex:1">Akzentfarbe</b><button class="g" id="acp" style="padding:7px 12px">＋ Neue Farbe</button><button class="'+(ACEDIT?'b':'g')+'" id="ace" style="padding:7px 12px">'+(ACEDIT?'✔ Fertig':'✎ Bearbeiten')+'</button></div><input type="color" id="acn" value="#4cc9ff" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px"><div class="sw" style="flex-wrap:wrap" id="ac"></div><p style="margin:8px 0 0;opacity:.7;font-size:12px">'+(ACEDIT?'Tippe auf eine Farbe, um sie zu löschen. Mindestens eine bleibt.':'Tippe auf eine Farbe zum Auswählen oder füge eigene hinzu.')+'</p>'+(ACEDIT?'<button class="g" id="acr" style="margin-top:8px;padding:7px 12px">↺ Standardfarben wiederherstellen</button>':'')+'</div><div class="set"><b>Schriftgröße</b><input type="range" id="fz" min="0.9" max="1.25" step="0.05" value="'+SET.font+'" style="width:100%;margin-top:10px"></div><div class="set"><b>Helligkeit</b><input type="range" id="br" min="40" max="100" step="5" value="'+SET.bright+'" style="width:100%;margin-top:10px"></div><div class="set">'+srow('Animationen reduzieren','Weniger Bewegung',tg('rd',SET.reduce))+'</div>');
     el.querySelectorAll('[data-th]').forEach(b=>b.onclick=()=>{SET.theme=b.dataset.th;saveSet();applySet();go('disp')});
     el.querySelectorAll('[data-sty]').forEach(b=>b.onclick=()=>{SET.style=b.dataset.sty;saveSet();applySet();tick();go('disp')});
     const saveAc=l=>{SET.accents=l;if(!l.includes(SET.accent))SET.accent=l[0];saveSet();applySet();go('disp')};
@@ -1345,7 +1386,7 @@ A.settings=el=>{
     $('#fz').onchange=e=>{SET.font=+e.target.value;saveSet();applySet()};
     $('#br').oninput=e=>{SET.bright=+e.target.value;saveSet();applySet()};
     $('#rd').onchange=e=>{SET.reduce=e.target.checked?1:0;saveSet();applySet()};
-    $('#lfx').onchange=e=>{SET.lofx=e.target.checked?1:0;saveSet();applySet();if(SET.lofx&&SET.reduce)Sys.toast('Zum Anzeigen „Animationen reduzieren“ ausschalten')};
+    $('#lfx').onclick=()=>go('anim');
   };
 
   P.wall=async()=>{
@@ -1465,6 +1506,15 @@ A.settings=el=>{
     $('#inst').onclick=()=>{if(window.dp)window.dp.prompt();else alert('Nutze das Browser-Menü: „App installieren“ bzw. „Zum Home-Bildschirm“. Läuft LucarioNet schon als App, ist alles erledigt.')};
   };
 
+  P.anim=async()=>{
+    const fx=SET.fx||{},on=FXL.filter(f=>fx[f[0]]).length;
+    add(hdr('Animationen')+'<div class="set"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="b" id="fxm">🚀 Maximum</button><button class="g" id="fxl">✨ Leicht</button><button class="g" id="fxo">✖ Alles aus</button></div><p style="margin:8px 0 0;opacity:.75;font-size:12px">'+on+' von '+FXL.length+' Effekten an'+(SET.reduce?' – „Animationen reduzieren“ ist an, daher sind alle pausiert.':'')+' · Die meisten Effekte wirken im LucarioOS-Design.</p></div><div class="set">'+FXL.map(f=>srow(f[1],f[2],tg('fx_'+f[0],fx[f[0]]))).join('')+'</div>');
+    const setAll=o=>{SET.fx=o;saveSet();applySet();go('anim')};
+    $('#fxm').onclick=()=>{SET.reduce=0;setAll(Object.fromEntries(FXL.map(f=>[f[0],1])))};
+    $('#fxl').onclick=()=>setAll({streaks:1,logo:1,glow:1});
+    $('#fxo').onclick=()=>setAll({});
+    FXL.forEach(f=>{$('#fx_'+f[0]).onchange=e=>{SET.fx=Object.assign({},SET.fx||{},{[f[0]]:e.target.checked?1:0});saveSet();applySet();if(f[0]=='tilt'&&e.target.checked)tiltOn();if(SET.reduce)Sys.toast('„Animationen reduzieren“ ist an')}});
+  };
   P.dsp=async()=>{
     add(hdr('Anzeige')+'<div class="set"><b>Helligkeit</b><input type="range" id="br" min="40" max="100" step="5" value="'+SET.bright+'" style="width:100%;margin-top:10px"></div><div class="set"><b>Schriftgröße</b><input type="range" id="fz" min="0.9" max="1.25" step="0.05" value="'+SET.font+'" style="width:100%;margin-top:10px"></div><div class="set">'+srow('Animationen reduzieren','Weniger Bewegung',tg('rd',SET.reduce))+'</div><div class="set"><button class="g" id="fs">⛶ Vollbild umschalten</button></div>');
     $('#fz').onchange=e=>{SET.font=+e.target.value;saveSet();applySet()};
