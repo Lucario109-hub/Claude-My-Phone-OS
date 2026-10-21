@@ -1,15 +1,44 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LucarioNet aktualisieren</title>
-<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0b1020;color:#fff;font-family:system-ui,sans-serif;text-align:center;padding:24px}.b{max-width:320px}h1{font-size:22px}p{opacity:.8;line-height:1.4}.s{font-size:48px;animation:r 1s linear infinite;display:inline-block}@keyframes r{to{transform:rotate(360deg)}}</style></head>
-<body><div class="b"><div class="s">⟳</div><h1>LucarioNet wird aktualisiert …</h1><p id="m">Alter Zwischenspeicher wird entfernt. Deine Spielstände, Mails, Fotos und Apps bleiben erhalten.</p></div>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#05070f"><title>LucarioNet aktualisieren</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(110% 70% at 80% 0,#0d2a5c 0,#07122b 45%,#02040f 100%);color:#fff;font-family:system-ui,sans-serif;text-align:center;padding:24px;overflow:hidden}
+body:before{content:"";position:fixed;left:-20%;top:30%;width:140%;height:3px;background:linear-gradient(90deg,transparent,#4cc9ff,transparent);transform:rotate(-18deg);filter:blur(2px);opacity:.5;animation:sw 3s ease-in-out infinite}
+@keyframes sw{50%{transform:rotate(-18deg) translateY(40px);opacity:.15}}
+.b{max-width:340px;width:100%}
+.lg{position:relative;width:120px;height:120px;margin:0 auto 22px}
+.lg svg{width:120px;height:120px;filter:drop-shadow(0 0 16px #4cc9ff);animation:pu 1.6s ease-in-out infinite}
+.lg i{position:absolute;inset:-12px;border-radius:50%;border:3px solid transparent;border-top-color:#4cc9ff;border-right-color:#7b2ff7;animation:r 1.1s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}@keyframes pu{50%{transform:scale(1.06)}}
+.n{font-size:30px;font-weight:300;letter-spacing:.5px}.n b{font-weight:300;color:#4cc9ff}
+h1{font-size:19px;font-weight:500;margin:14px 0 6px}
+p{opacity:.78;line-height:1.45;margin:0 0 20px;font-size:14px;min-height:40px}
+.bar{height:10px;border-radius:8px;background:rgba(255,255,255,.14);overflow:hidden;border:1px solid rgba(76,201,255,.35);box-shadow:0 0 18px rgba(76,201,255,.25)}
+.bar i{display:block;height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,#4cc9ff,#7b2ff7);box-shadow:0 0 12px #4cc9ff;transition:width .6s ease}
+.st{display:flex;justify-content:space-between;margin-top:10px;font-size:12px;opacity:.7}
+.ok .lg i{display:none}.ok h1{color:#4cc9ff}
+</style></head>
+<body><div class="b" id="bx">
+<div class="lg"><i></i><svg viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4cc9ff"/><stop offset="1" stop-color="#7b2ff7"/></linearGradient></defs><polygon points="50,4 91,27 91,73 50,96 9,73 9,27" fill="rgba(255,255,255,.05)" stroke="url(#g)" stroke-width="5"/><path d="M36 28v40h30" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 28l12 14" stroke="#4cc9ff" stroke-width="6" stroke-linecap="round"/></svg></div>
+<div class="n">Lucario<b>Net</b></div>
+<h1 id="h">Wird aktualisiert …</h1>
+<p id="m">Alter Zwischenspeicher wird entfernt. Deine Spielstände, Mails, Fotos und Apps bleiben erhalten.</p>
+<div class="bar"><i id="pb"></i></div>
+<div class="st"><span id="s1">Dienste beenden</span><span id="s2">Speicher leeren</span><span id="s3">Neu starten</span></div>
+</div>
 <script>
 (async()=>{
-  const m=document.getElementById('m');
+  const $=id=>document.getElementById(id),pb=$('pb'),wait=t=>new Promise(r=>setTimeout(r,t));
+  const step=(n,t)=>{pb.style.width=n+'%';['s1','s2','s3'].forEach((k,i)=>$(k).style.opacity=i<t?1:.5)};
+  step(12,1);await wait(500);
   try{
     if('serviceWorker' in navigator){const rs=await navigator.serviceWorker.getRegistrations();for(const r of rs)await r.unregister()}
+    step(45,2);await wait(500);
     if(window.caches){const ks=await caches.keys();for(const k of ks)await caches.delete(k)}
-    m.textContent='Fertig! Die neue Version startet …';
-  }catch(e){m.textContent='Neustart …'}
-  setTimeout(()=>{location.replace('./index.html?u='+Date.now())},900);
+    step(80,3);await wait(500);
+    $('h').textContent='Fertig!';$('m').textContent='Die neue Version startet …';$('bx').classList.add('ok');
+  }catch(e){$('h').textContent='Neustart …';$('m').textContent=''}
+  step(100,3);await wait(900);
+  location.replace('./index.html?u='+Date.now());
 })();
 </script></body></html>
