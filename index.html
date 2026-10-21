@@ -203,6 +203,25 @@ select.f{appearance:auto}
 #phone.lo #grid .app{scroll-snap-align:none}#phone.lo #grid .app:nth-child(8n+1){scroll-snap-align:start}
 #phone.lo .lodots i{cursor:pointer;padding:0;box-sizing:content-box;border:6px solid transparent;background-clip:padding-box;width:8px;height:8px}
 #phone.lo .lowd>div{cursor:pointer}
+#phone.lo #body.sx{background:radial-gradient(120% 60% at 85% 0,rgba(var(--lomid),.95) 0,rgb(var(--lodk)) 55%,#02040f 100%);padding:10px 14px 40px;align-items:stretch}
+#phone.lo #body.sx .sh1{display:none}
+#phone.lo #body.sx .sxh{display:flex;align-items:center;gap:12px;margin:6px 4px 12px;filter:drop-shadow(0 0 10px rgba(var(--lorgb),.5))}
+#phone.lo #body.sx .sxh b{display:block;font:400 30px/1.05 system-ui,sans-serif}#phone.lo #body.sx .sxh b i{font-style:normal;color:var(--lo)}
+#phone.lo #body.sx .sxh small{display:block;font-size:17px;opacity:.9}
+#phone.lo #body.sx .sxs{width:100%;padding:13px 18px;border-radius:26px;border:1px solid rgba(var(--lorgb),.5);background:rgba(var(--lodk),.62);color:#fff;font-size:15px;box-shadow:0 0 16px rgba(var(--lorgb),.25);margin-bottom:14px;outline:0}
+#phone.lo #body.sx .sxl{border:1px solid rgba(var(--lorgb),.4);border-radius:26px;background:rgba(var(--lodk),.55);box-shadow:0 0 22px rgba(var(--lorgb),.22);padding:6px 14px;backdrop-filter:blur(10px)}
+#phone.lo #body.sx .sxi{display:flex;align-items:center;gap:14px;padding:12px 2px;border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer}#phone.lo #body.sx .sxi:last-child{border:0}
+#phone.lo #body.sx .sxe{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;flex:none;color:#fff;background:linear-gradient(150deg,rgba(var(--lorgb),.5),rgba(var(--lodk),.9));border:1px solid rgba(var(--lorgb),.55);box-shadow:0 0 14px rgba(var(--lorgb),.35)}
+#phone.lo #body.sx .sxt{flex:1;min-width:0}#phone.lo #body.sx .sxt b{display:block;font-weight:500;font-size:16px}#phone.lo #body.sx .sxt small{display:block;color:var(--lo);font-size:12.5px;margin-top:2px;opacity:.9}
+#phone.lo #body.sx .sxc{color:var(--lo);opacity:.9}
+#phone.lo #body.sx .sxh2{display:flex;align-items:center;gap:12px;margin:4px 4px 12px;width:100%}
+#phone.lo #body.sx .sxh2 b{display:block;font-size:24px;font-weight:600}#phone.lo #body.sx .sxh2 small{display:block;opacity:.8;font-size:13px}
+#phone.lo #body.sx .sxb{width:42px;height:42px;border-radius:14px;padding:0;display:grid;place-items:center;background:rgba(var(--lodk),.7);border:1px solid rgba(var(--lorgb),.5);color:var(--lo);margin:0}
+#phone.lo #body.sx .set{width:100%;margin:6px 0;border-radius:22px;background:linear-gradient(160deg,rgba(var(--lomid),.55),rgba(var(--lodk),.75));border:1px solid rgba(var(--lorgb),.4);box-shadow:0 0 18px rgba(var(--lorgb),.2)}
+#phone.lo #body.sx .srow,#phone.lo #body.sx .mi{border-color:rgba(255,255,255,.1)}
+#phone.lo #body.sx button.b{background:linear-gradient(90deg,var(--lo),var(--lo2));color:#fff;border:0;border-radius:16px;box-shadow:0 0 14px rgba(var(--lorgb),.5)}
+#phone.lo #body.sx button.g{background:rgba(var(--lodk),.7);border:1px solid rgba(var(--lorgb),.45);color:#fff;border-radius:16px}
+#phone.lo #body.sx .tg input:checked+span{background:var(--lo)}
 /* ================= 6.1: Fuß Knabber Simulator ================= */
 .fk{container-type:inline-size;width:100%;min-height:100%;color:#fff;font-family:system-ui,sans-serif;padding:10px 10px 44px;background:radial-gradient(120% 60% at 50% 0,#4a46b8 0,#2a2670 45%,#17143f 100%);position:relative}
 .fk *{box-sizing:border-box}
@@ -1185,7 +1204,13 @@ A.settings=el=>{
   let page=Sys.openPage||'main';Sys.openPage=null;
   const P={};
   const back='<button class="g" id="bk" style="margin:8px 12px;align-self:flex-start">‹ Einstellungen</button>';
-  const hdr=t=>'<div style="width:100%;padding:0 16px 8px;font-size:21px;font-weight:800">'+t+'</div>';
+  const hdr=t=>'<div class="sh1" style="width:100%;padding:0 16px 8px;font-size:21px;font-weight:800">'+t+'</div>';
+  const LO=()=>$('#phone').classList.contains('lo');
+  const SI={acct:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/>',links:'<path d="M10 14a4 4 0 005.6 0l3-3a4 4 0 00-5.6-5.6l-1 1M14 10a4 4 0 00-5.6 0l-3 3a4 4 0 005.6 5.6l1-1"/>',disp:'<path d="M12 3a9 9 0 100 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a3 3 0 003-3c0-6-4-11-8-11z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7" r="1"/>',wall:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/>',snd:'<path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>',wifi:'<path d="M2 9a15 15 0 0120 0M5 13a10 10 0 0114 0M8.5 16.5a5 5 0 017 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/>',ai:'<rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01"/>',support:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/>',sec:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',priv:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',store:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',inst:'<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v6M9 12l3 3 3-3"/>',about:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>'};
+  const sico=k=>'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(SI[k]||SI.about)+'</svg>';
+  const chev='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
+  const hexlogo='<svg viewBox="0 0 100 100" width="46" height="46"><polygon points="50,6 90,28 90,72 50,94 10,72 10,28" fill="rgba(255,255,255,.06)" stroke="var(--lo)" stroke-width="6" stroke-linejoin="round"/><path d="M40 34v32h22" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  let ITEMS=[];
   const tg=(id,on)=>'<label class="tg"><input type="checkbox" id="'+id+'"'+(on?' checked':'')+'><span></span></label>';
   const srow=(t,sub,right)=>'<div class="srow"><div style="flex:1;min-width:0"><div>'+t+'</div>'+(sub?'<div style="opacity:.6;font-size:12px;margin-top:2px">'+sub+'</div>':'')+'</div>'+(right||'')+'</div>';
   const add=h=>el.insertAdjacentHTML('beforeend',h);
@@ -1197,9 +1222,22 @@ A.settings=el=>{
       const me=Sys.session;let ph='';
       if(me){const a=await st('accounts','readonly',s=>s.get(me.name));ph=a&&a.phone?' · '+a.phone:''}
       const items=[['acct','👤','Konto & Telefonnummer',me?esc(me.name)+'@lucario.net'+esc(ph):'Nicht angemeldet'],['links','🔗','Verknüpfte Apps','WhatsApp, Telegram, Instagram …'],['disp','🎨','Anzeige & Design','Dunkel/Hell, Akzentfarbe, Schrift'],['wall','🖼','Hintergründe','Eigene Bilder hochladen'],['snd','🔔','Töne & Vibration','Klingelton, Lautstärke'],['wifi','📶','WLAN & Internet','Netzwerke, Hotspot, Verbindungstest'],['ai','🤖','KI-Assistent','LucarioBot, KI-Server'],['support','🛟','Support','Team-Support, Tickets'],['sec','🔒','Sicherheit','Gerätesperre, Sofort-Hilfe'],['priv','🛡','Datenschutz & Berechtigungen','Kamera, Mikrofon, Standort'],['store','💾','Speicher & Daten','Backup, Zurücksetzen'],['inst','📲','App installieren','Auf dem Startbildschirm'],['about','ℹ️','Über LucarioNet','Version 4.0']];
+      ITEMS=items;el.classList.toggle('sx',LO());
+      if(LO()){
+        const rows=q=>items.filter(i=>!q||(i[2]+' '+i[3]).toLowerCase().includes(q)).map(i=>{const t=i[0]=='disp'?'Design':i[2],s=i[0]=='disp'?'Farben & Stil':i[3];return '<div class="sxi" data-p="'+i[0]+'"><span class="sxe">'+sico(i[0])+'</span><div class="sxt"><b>'+t+'</b><small>'+s+'</small></div><span class="sxc">'+chev+'</span></div>'}).join('')||'<div style="padding:20px;opacity:.7">Nichts gefunden.</div>';
+        el.innerHTML='<div class="sxh">'+hexlogo+'<div><b>Lucario<i>OS</i></b><small>Einstellungen</small></div></div><input class="sxs" id="sxs" type="search" placeholder="Suche in den Einstellungen…" autocomplete="off"><div class="sxl" id="sxl">'+rows('')+'</div>';
+        const bind=()=>el.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>b.dataset.p=='wifi'?Net.open():go(b.dataset.p));
+        bind();$('#sxs').oninput=e=>{$('#sxl').innerHTML=rows(e.target.value.trim().toLowerCase());bind()};
+        return;
+      }
       el.innerHTML=hdr('Einstellungen')+items.map(i=>'<div class="mi" data-p="'+i[0]+'"><div class="e">'+i[1]+'</div><div style="flex:1;min-width:0"><div>'+i[2]+'</div><div style="opacity:.6;font-size:12px">'+i[3]+'</div></div><span style="opacity:.4">›</span></div>').join('');
       el.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>b.dataset.p=='wifi'?Net.open():go(b.dataset.p));
-    }else{el.innerHTML=back;await P[page]();$('#bk').onclick=()=>go('main')}
+    }else{
+      el.classList.toggle('sx',LO());
+      if(LO()){const it=ITEMS.find(i=>i[0]==page)||[page,'','Einstellungen',''];const t=page=='disp'?'Design':it[2],s=page=='disp'?'Farben & Stil':it[3];
+        el.innerHTML='<div class="sxh2"><button id="bk" class="sxb">'+chev.replace('M9 5l7 7-7 7','M15 5l-7 7 7 7')+'</button><div><b>'+t+'</b><small>'+s+'</small></div></div>'}
+      else el.innerHTML=back;
+      await P[page]();$('#bk').onclick=()=>go('main')}
   }
 
   P.acct=async()=>{

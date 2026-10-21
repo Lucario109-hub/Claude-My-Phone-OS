@@ -29,6 +29,8 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 
 ## Neu in 6.4
 
+- Einstellungen im LucarioOS-Stil: Header mit Logo, Suche, Kategorien mit Icons, Detailseiten mit Zurück-Pfeil (nur im LucarioOS-Design).
+
 - LucarioOS-Startseite: Seitenpunkte funktionieren (Antippen oder Wischen), WLAN-Karte öffnet das WLAN-Menü, Akku-Karte die Einstellungen.
 
 - Akzentfarben in Einstellungen → Anzeige & Design: eigene Farben hinzufügen (＋ Neue Farbe), mit ✎ Bearbeiten Farben löschen (mind. 1 bleibt), ↺ Standardfarben wiederherstellen.
