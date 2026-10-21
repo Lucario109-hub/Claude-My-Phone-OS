@@ -249,6 +249,15 @@ select.f{appearance:auto}
 #phone.lo #lock input.f{background:rgba(var(--lodk),.65);border:1px solid rgba(var(--lorgb),.5);color:#fff}
 #phone.lo.lofx{background:radial-gradient(120% 70% at 85% 5%,rgb(var(--lomid)) 0,rgb(var(--lodk)) 55%,#02040f 100%)!important}
 #phone.lo.lofx #lock{background:radial-gradient(120% 70% at 85% 5%,rgb(var(--lomid)) 0,rgb(var(--lodk)) 55%,#02040f 100%)}
+#phone.lo.lofx .lologo{animation:lofloat 6s ease-in-out infinite,lopulse 3.2s ease-in-out infinite}
+#phone.lo.lofx .lologo svg polygon:nth-of-type(2){stroke-dasharray:14 9;transform-origin:50% 50%;animation:lospin 14s linear infinite}
+#phone.lo.lofx .lologo svg path{animation:lobeat 3.2s ease-in-out infinite;transform-origin:50% 50%}
+#phone.lo.lofx #lock .lklogo{animation:lofloat 6s ease-in-out infinite}
+#phone.lo.lofx #lock .lklogo svg polygon:nth-of-type(2){stroke-dasharray:14 9;transform-origin:50% 50%;animation:lospin 14s linear infinite}
+@keyframes lofloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(2.5deg)}}
+@keyframes lopulse{0%,100%{filter:drop-shadow(0 0 12px rgba(var(--lorgb),.6))}50%{filter:drop-shadow(0 0 28px rgba(var(--lorgb),1))}}
+@keyframes lospin{to{transform:rotate(360deg)}}
+@keyframes lobeat{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 #lofx{display:none;position:absolute;inset:0;overflow:hidden;pointer-events:none}
 #phone.lo.lofx #lofx{display:block}
 #lofx i{position:absolute;left:-10%;width:85%;height:3px;border-radius:2px;background:linear-gradient(90deg,transparent,rgba(var(--lorgb),.95) 50%,transparent);filter:blur(1.2px);box-shadow:0 0 22px 4px rgba(var(--lorgb),.8);transform:translateX(-120%) rotate(-24deg);animation:lostr 8s linear infinite}
