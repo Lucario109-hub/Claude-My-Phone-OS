@@ -487,6 +487,37 @@ select.f{appearance:auto}
 .pzch{font:800 12px system-ui;padding:3px 9px;border-radius:12px;background:#0f1a45dd;border:1.5px solid #3b4cb0;box-shadow:0 0 10px #4cc9ff55}
 .pzch.c{border-color:#ff9d3b;color:#ffd9a0;box-shadow:0 0 12px #ff9d3b88;animation:pzpl .6s ease-in-out infinite alternate}.pzch.t{border-color:#7dffe0;color:#7dffe0}.pzch.y{border-color:#ffd93d;color:#ffd93d}
 @keyframes pzpl{to{transform:scale(1.08)}}
+#wgt{display:flex;gap:8px;margin:0 0 10px;padding:0 2px}
+#wgt>div{flex:1;min-width:0;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(12px);border-radius:16px;padding:8px 10px;cursor:pointer;overflow:hidden;color:var(--htx)}
+#wgt small{display:block;font-size:10.5px;opacity:.8}#wgt b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}#wgt i{display:block;font-style:normal;font-size:10.5px;opacity:.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#wgt .wgn{border-color:var(--lo,#ffd93d);box-shadow:0 0 14px rgba(255,217,61,.45);animation:wgp 1.6s ease-in-out infinite alternate}@keyframes wgp{to{box-shadow:0 0 22px rgba(255,217,61,.85)}}
+#phone.inapp #wgt{display:none}
+#sres{display:none;margin:-10px 0 12px;background:rgba(10,14,30,.85);border:1px solid rgba(255,255,255,.18);border-radius:16px;overflow:hidden;color:#fff;position:relative;z-index:5}#sres>div{padding:10px 14px;font-size:14px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.08)}#sres span{margin-right:8px}
+.qx{padding:6px 14px 4px}.qxr{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}.qxr .qt{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px}
+.qxh{display:flex;align-items:center;justify-content:space-between;margin:6px 0}.qxh button{background:none;border:0;color:var(--acc,#4cc9ff);font-size:12px}
+.qxn{display:flex;gap:8px;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:12px;padding:8px 10px;margin-bottom:5px;font-size:12.5px}.qxn i{font-style:normal;opacity:.6;flex:none}
+.gcc{background:var(--card,#2a3250);border:1px solid var(--line,#ffffff14);border-radius:16px;padding:12px;margin-bottom:10px;width:100%;box-sizing:border-box;color:var(--txt,#fff)}.gcc h4{margin:0 0 8px;font-size:14px}
+.gcd{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#ffb21f,#ff5d8f);color:#2a0a1a}.gcd>div{flex:1}.gcd small{display:block;opacity:.8}.gcd b{display:block;font-size:17px}.gcd i{font-style:normal;font-size:12px}
+.gcc button{border:0;border-radius:12px;padding:9px 14px;font-weight:800;background:#fff;color:#2a0a1a}.gcc button:disabled{opacity:.45}
+.gct{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0;font-size:13px;border-bottom:1px solid #ffffff12}.gct button{background:var(--acc,#4cc9ff);color:var(--onacc,#04202e);padding:6px 10px}
+.gcg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.gcg>div{background:#ffffff0f;border-radius:12px;padding:8px 10px}.gcg small{display:block;opacity:.7;font-size:11px}.gcg b{font-size:15px}
+.fb{width:100%;color:#fff;display:flex;flex-direction:column;gap:10px;font-family:system-ui,sans-serif}
+.fbh{display:grid;grid-template-columns:1.4fr 1fr .8fr;gap:8px}.fbh>div{background:linear-gradient(160deg,#1d2a5a,#101733);border:1px solid #4c6bff55;border-radius:14px;padding:8px 10px}.fbh small{display:block;font-size:10.5px;opacity:.7}.fbh b{font-size:18px}
+.fbs{position:relative;height:150px;border-radius:18px;overflow:hidden;background:radial-gradient(120% 100% at 50% 0,#243a8a,#0a0f2a);border:1px solid #6a8bff66;box-shadow:inset 0 0 40px #000a}
+.fbg{position:absolute;inset:0}.fbg i{position:absolute;font-style:normal;font-size:46px;opacity:.55;animation:fbrot var(--sp,6s) linear infinite}.fbg i:nth-child(1){left:8%;top:10px}.fbg i:nth-child(2){left:42%;top:40px;font-size:70px;animation-direction:reverse}.fbg i:nth-child(3){right:8%;top:8px;font-size:54px}
+@keyframes fbrot{to{transform:rotate(360deg)}}
+.fbc{position:absolute;left:0;right:0;bottom:0;height:34px;background:repeating-linear-gradient(90deg,#1b2145 0 22px,#262e5d 22px 44px);animation:fbbelt calc(var(--sp,6s)/3) linear infinite;border-top:2px solid #6a8bff}@keyframes fbbelt{to{background-position:44px 0}}
+.fbc span{position:absolute;bottom:34px;width:16px;height:16px;border-radius:4px;background:linear-gradient(135deg,#ffd93d,#ff8a00);box-shadow:0 0 10px #ffb21f;animation:fbbox calc(var(--sp,6s)/1.4) linear infinite}.fbc span:nth-child(2){animation-delay:-1s}.fbc span:nth-child(3){animation-delay:-2s}.fbc span:nth-child(4){animation-delay:-3s}@keyframes fbbox{from{left:-20px}to{left:100%}}
+.fbn{position:absolute;left:8px;right:8px;top:6px;font-size:12px;text-align:center;color:#ffe27a;text-shadow:0 1px 3px #000}
+.fbpop{position:absolute;transform:translate(-50%,-50%);font:900 18px system-ui;color:#ffe27a;text-shadow:0 2px 0 #000a;pointer-events:none;animation:fkpop .8s ease-out forwards}
+.fbt{border:0;border-radius:18px;padding:16px;font:800 17px system-ui;color:#fff;background:linear-gradient(135deg,#00c2ff,#7b2ff7);box-shadow:0 6px 18px #7b2ff766;touch-action:manipulation}.fbt:active{transform:scale(.97)}.fbt small{display:block;font-size:12px;opacity:.85}
+.fbu{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.fbu button{border:1px solid #6a8bff55;background:#161d44;color:#fff;border-radius:14px;padding:8px 6px;font-size:12px;font-weight:700}.fbu button small{display:block;font-weight:500;opacity:.8;margin-top:2px}.fbu button:disabled{opacity:.4}
+.fbr{display:flex;align-items:center;gap:10px;background:#161d44;border:1px solid #6a8bff44;border-radius:14px;padding:9px 10px;margin-bottom:7px;cursor:pointer}.fbr.o{opacity:.5}.fbi{font-size:26px}.fbr div{flex:1;min-width:0}.fbr b{display:block;font-size:14px}.fbr em{font-style:normal;opacity:.7}.fbr small{color:#7dff9a;font-size:12px}.fbc2{font-weight:800;font-size:13px;white-space:nowrap}
+.fkskin{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.fkskin button{border:1px solid #fff4;background:#ffffff14;color:#fff;border-radius:12px;padding:6px 10px;font-size:12px}.fkskin button.on{border-color:#ffd93d;background:#ffd93d33}.fkskin button:disabled{opacity:.4}
+.fk .fkft{filter:hue-rotate(var(--skin,0deg)) saturate(var(--sk2,1))}
+.pzdn{position:absolute;inset:0;pointer-events:none;z-index:3;transition:background 2s}
+.pzpet{position:absolute;bottom:104px;left:10px;z-index:4;font-size:30px;cursor:pointer;animation:pzwalk 14s ease-in-out infinite alternate;filter:drop-shadow(0 3px 2px #0008)}@keyframes pzwalk{from{left:6%}to{left:70%}}
+.pzpet small{position:absolute;left:50%;top:-14px;transform:translateX(-50%);font:800 11px system-ui;color:#ffe27a;white-space:nowrap;text-shadow:0 1px 2px #000}
 /* ================= 6.2: Lucario Arena (grafisch) ================= */
 .ag{position:relative;width:100%;height:100%;min-height:520px;background:#0b0f1e;color:#eaf0ff;font-family:system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .ag *{box-sizing:border-box}
@@ -1583,7 +1614,7 @@ A.settings=el=>{
     };
   };
 
-  const EXP=['settings','links','notes','todos','events','alarms','calls','inst','wall','wallSet','weatherCity'];
+  const EXP=['settings','links','notes','todos','events','alarms','calls','inst','wall','wallSet','weatherCity','fk','putz','arena','fabrik','daily','playtime','notiflog','bonus','pzbonus','putzpet','mem','react','breakout','flappy','g2048','simon','snake','tetris','whack'];
   P.store=async()=>{
     const e=navigator.storage&&navigator.storage.estimate?await navigator.storage.estimate().catch(()=>null):null;
     const mb=b=>(b/1048576).toFixed(1)+' MB';
@@ -2387,7 +2418,7 @@ A.react=el=>{
 
 /* ---------- PWA ---------- */
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();window.dp=e});
-if('serviceWorker' in navigator&&location.protocol!='file:'){const had=!!navigator.serviceWorker.controller;let rl=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had&&!rl){rl=true;location.reload()}});navigator.serviceWorker.register('sw.js').then(r=>r.update()).catch(()=>{})}
+if('serviceWorker' in navigator&&location.protocol!='file:'){const had=!!navigator.serviceWorker.controller;let rl=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had&&!rl){rl=true;try{LS.justUpd='1'}catch(e){}location.reload()}});navigator.serviceWorker.register('sw.js').then(r=>{r.update();r.addEventListener('updatefound',()=>{try{Sys.toast('⬇️ Update wird geladen…')}catch(e){}});setInterval(()=>r.update().catch(()=>{}),600000)}).catch(()=>{})}
 
 /* ---------- Boot ---------- */
 /* ================= 5.0: Konto-Sicherheit, LucarioBot (KI), Support ================= */
@@ -3805,9 +3836,10 @@ const Fuss={
 
 A.fussknabber=el=>{
   const F=Fuss,CH=F.CHEWS,GIFT=300;
-  const fresh=()=>({coins:150,total:0,run:0,nibbles:0,level:1,owned:{},mult:0,stars:0,jumps:0,scared:0,auto:true,jmode:'always',sound:true,warned:false,gift:Date.now()+GIFT*1000,seen:Date.now(),playt:0,resets:0,sstars:0,supers:0,tech:{},ach:{},golds:0,taps:0});
+  const fresh=()=>({coins:150,total:0,run:0,nibbles:0,level:1,owned:{},mult:0,stars:0,jumps:0,scared:0,auto:true,jmode:'always',sound:true,warned:false,gift:Date.now()+GIFT*1000,seen:Date.now(),playt:0,resets:0,sstars:0,supers:0,tech:{},ach:{},golds:0,taps:0,skin:0,storms:0});
   let S=fresh();try{S=Object.assign(fresh(),JSON.parse(LS.fk||'{}'));if(typeof S.owned!='object'||!S.owned)S.owned={};if(typeof S.tech!='object'||!S.tech)S.tech={};if(typeof S.ach!='object'||!S.ach)S.ach={}}catch(e){}
   const save=()=>{try{S.seen=Date.now();LS.fk=JSON.stringify(S)}catch(e){}};
+  {const b=+LS.bonus||0;if(b>0){S.coins+=b;try{LS.bonus='0'}catch(_){}}}
   const own=id=>S.owned[id]||0;
   const price=c=>Math.ceil(c.cost*Math.pow(1.15,own(c.id)));
   const lvlMul=()=>1+0.05*(S.level-1),starMul=()=>1+0.1*S.stars,upMul=()=>1+0.1*S.mult;
@@ -3895,7 +3927,7 @@ A.fussknabber=el=>{
   $e('#fkpr').onclick=()=>{
     const pg=Math.floor(Math.sqrt(S.run/1e6));if(pg<1){say('Prestige ab 1.000.000 Münzen in einem Durchlauf');return}
     if(!confirm('Neu starten und '+pg+' Stern(e) bekommen? Münzen, Fruchtschnitten und Level werden zurückgesetzt.'))return;
-    const keep={stars:S.stars+pg,auto:S.auto,jmode:S.jmode,sound:S.sound,warned:true,jumps:S.jumps,scared:S.scared,playt:S.playt,resets:S.resets+1,sstars:S.sstars,supers:S.supers,tech:S.tech,ach:S.ach,golds:S.golds,taps:S.taps};S=Object.assign(fresh(),keep);
+    const keep={stars:S.stars+pg,auto:S.auto,jmode:S.jmode,sound:S.sound,warned:true,jumps:S.jumps,scared:S.scared,playt:S.playt,resets:S.resets+1,sstars:S.sstars,supers:S.supers,tech:S.tech,ach:S.ach,golds:S.golds,taps:S.taps,skin:S.skin,storms:S.storms};S=Object.assign(fresh(),keep);
     $e('#fkshop').innerHTML=shop();rebind();rescene();say('Prestige! Du hast jetzt '+S.stars+' ★ (+'+10*S.stars+' % Einkommen)');save()};
   const foot=()=>{ // Füße antippen: kleiner Bonus
     const g=Math.max(5,Math.floor(income()*0.05*(1+.5*tl('click'))));gain(g);S.nibbles+=1;S.taps++;upd();return g};
@@ -3908,8 +3940,16 @@ A.fussknabber=el=>{
   let goldT=35+Math.random()*30;
   const spawnGold=()=>{const sc=$e('#fksc');if(!sc||sc.querySelector('.fkgold'))return;const d=document.createElement('div');d.className='fkgold';d.innerHTML=F.icon(CH.find(c=>c.rainbow),64);d.style.top=(12+Math.random()*50)+'%';
     d.onclick=e=>{e.stopPropagation();const v=Math.floor(income()*90+500);gain(v);S.golds++;pop(e,'+'+F.fmt(v),'gold');say('✨ Goldene Fruchtschnitte! +'+F.fmt(v));d.remove();upd();save()};sc.appendChild(d);setTimeout(()=>d.remove(),7000)};
+  /* Fruchtschnitten-Sturm */
+  let stormT=200+Math.random()*120;
+  const storm=()=>{const sc=$e('#fksc');if(!sc)return;S.storms++;say('⚡ FRUCHTSCHNITTEN-STURM! Fang so viele wie möglich!');
+    for(let i=0;i<14;i++)setTimeout(()=>{const s2=$e('#fksc');if(!s2)return;const d=document.createElement('div');d.className='fkgold';d.innerHTML=F.icon(CH.find(c=>c.rainbow),50);d.style.top=(6+Math.random()*62)+'%';d.style.animationDuration=(3.2+Math.random()*1.8)+'s';
+      d.onclick=e=>{e.stopPropagation();const v=Math.floor(income()*25+250);gain(v);pop(e,'+'+F.fmt(v),'gold');d.remove();upd()};s2.appendChild(d);setTimeout(()=>d.remove(),5200)},i*380)};
+  const SK=[['Normal',0,1,()=>true,'immer'],['Minze',90,1,()=>S.stars>=1,'1 Stern'],['Ozean',180,1,()=>S.stars>=10,'10 Sterne'],['Lila',260,1.2,()=>S.stars>=40,'40 Sterne'],['Rosa',320,1.3,()=>S.ach&&Object.keys(S.ach).length>=12,'12 Erfolge'],['Neon',150,3,()=>S.sstars>=1,'1 Super-Stern']];
+  const applySkin=()=>{const f=$e('.fk');if(!f)return;const k=SK[S.skin]||SK[0];f.style.setProperty('--skin',k[1]+'deg');f.style.setProperty('--sk2',k[2])};
   /* Technik-Labor */
-  const techUI=()=>{const m=ov('<div class="fkbox fkwide"><h3>🔬 Technik-Labor</h3>'+TECH.map(t=>'<div class="fkrow"><div><b>'+t.n+' <em>Stufe '+tl(t.id)+'/'+t.max+'</em></b><small>'+t.d+'</small></div>'+(tl(t.id)>=t.max?'<span class="fkmax">MAX</span>':'<button class="fkbuy'+(S.coins<tcost(t)?' off':'')+'" data-t="'+t.id+'">'+F.fmt(tcost(t))+' 🪙</button>')+'</div>').join('')+'<button class="fkchip" id="fkx">Schließen</button></div>');
+  const techUI=()=>{const m=ov('<div class="fkbox fkwide"><h3>🔬 Technik-Labor</h3>'+TECH.map(t=>'<div class="fkrow"><div><b>'+t.n+' <em>Stufe '+tl(t.id)+'/'+t.max+'</em></b><small>'+t.d+'</small></div>'+(tl(t.id)>=t.max?'<span class="fkmax">MAX</span>':'<button class="fkbuy'+(S.coins<tcost(t)?' off':'')+'" data-t="'+t.id+'">'+F.fmt(tcost(t))+' 🪙</button>')+'</div>').join('')+'<h3 style="margin-top:12px">👣 Fuß-Skins</h3><div class="fkskin">'+SK.map((k,i)=>'<button data-sk="'+i+'" class="'+(S.skin==i?'on':'')+'" '+(k[3]()?'':'disabled')+'>'+k[0]+(k[3]()?'':' 🔒 '+k[4])+'</button>').join('')+'</div><button class="fkchip" id="fkx">Schließen</button></div>');
+    m.querySelectorAll('[data-sk]').forEach(b=>b.onclick=()=>{S.skin=+b.dataset.sk;applySkin();save();techUI()});
     m.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{const t=TECH.find(x=>x.id==b.dataset.t),c=tcost(t);if(S.coins<c){say('Zu wenig Münzen!');return}S.coins-=c;S.tech[t.id]=tl(t.id)+1;save();upd();techUI()});m.querySelector('#fkx').onclick=rmOv};
   $e('#fktc').onclick=techUI;
   /* Erfolge */
@@ -3921,7 +3961,7 @@ A.fussknabber=el=>{
     if(S.resets<100){say('💎 Super Prestige erst nach 100 Prestiges ('+S.resets+'/100)');return}
     const sp=Math.max(1,Math.floor(S.stars/100));
     if(!confirm('SUPER PRESTIGE!\nAlles (Sterne, Münzen, Level, Fruchtschnitten, Prestige-Zähler) wird zurückgesetzt.\nDu bekommst '+sp+' Super-Stern(e): jeweils ×1,5 Einkommen für immer und neue Fruchtschnitten (Diamant, Galaxie, Ewigkeit). Technik und Erfolge bleiben. Fortfahren?'))return;
-    const keep={sstars:S.sstars+sp,supers:S.supers+1,tech:S.tech,ach:S.ach,golds:S.golds,taps:S.taps,auto:S.auto,jmode:S.jmode,sound:S.sound,warned:true,jumps:S.jumps,scared:S.scared,playt:S.playt,resets:0,stars:0};
+    const keep={sstars:S.sstars+sp,supers:S.supers+1,tech:S.tech,ach:S.ach,golds:S.golds,taps:S.taps,skin:S.skin,storms:S.storms,auto:S.auto,jmode:S.jmode,sound:S.sound,warned:true,jumps:S.jumps,scared:S.scared,playt:S.playt,resets:0,stars:0};
     S=Object.assign(fresh(),keep);$e('#fkshop').innerHTML=shop();rebind();rescene();pop(null,'💎 SUPER PRESTIGE!','gold');say('💎 Super Prestige! Du hast jetzt '+S.sstars+' Super-Stern(e): ×'+superMul().toFixed(2)+' Einkommen');save()};
   /* Statistik und Einstellungen */
   $e('#fkst').onclick=()=>{const m=ov('<div class="fkbox"><h3>📊 Statistik</h3><p>Münzen gesamt: <b>'+F.fmt(S.total)+'</b></p><p>Fuß geknabbert: <b>'+F.fmt(S.nibbles)+'</b></p><p>Level: <b>'+S.level+'</b> · Sterne: <b>'+S.stars+'</b> · Super-Sterne: <b>'+S.sstars+'</b></p><p>Prestiges: <b>'+S.resets+'</b> / 100 · Goldene gefangen: <b>'+S.golds+'</b></p><p>Jumpscares: <b>'+S.jumps+'</b></p><p>Spielzeit: <b>'+F.hms(S.playt)+'</b></p><button class="b" id="fkx">Schließen</button></div>');m.querySelector('#fkx').onclick=rmOv};
@@ -3962,13 +4002,14 @@ A.fussknabber=el=>{
     const left=(S.gift-now)/1000;
     if(left<=0){if(S.auto)collect();else{$e('#fkgt').textContent='00:00:00';$e('#fkgt2').textContent='00:00:00';$e('#fkgb').style.display='inline-flex';$e('#fkgs').textContent='Bereit!'}}
     else{$e('#fkgt').textContent=F.hms(left);$e('#fkgt2').textContent=F.hms(left);$e('#fkgb').style.display='none';$e('#fkgs').textContent='+'+F.fmt(giftVal())+' Münzen'}
+    stormT-=dt;if(stormT<=0){storm();stormT=240+Math.random()*180}
     goldT-=dt;if(goldT<=0){spawnGold();goldT=Math.max(15,70-5*tl('gold'))*(.7+Math.random()*.6)}
     achT+=dt;if(achT>1){achT=0;checkAch()}
     upd();if((sv+=dt)>5){sv=0;save()}};
   const giftVal=()=>Math.max(500,Math.floor(income()*60));
   const collect=()=>{const v=giftVal();gain(v);S.gift=Date.now()+GIFT*1000;say('🎁 Belohnung: +'+F.fmt(v)+' Münzen');$e('#fkgb').style.display='none';save()};
   $e('#fkgb').onclick=collect;
-  const tmr=setInterval(tick,250);
+  const tmr=setInterval(tick,250);applySkin();
 
   /* Warnhinweis beim ersten Start */
   if(!S.warned){const m=ov('<div class="fkbox"><h3>⚠ Achtung: Jumpscares</h3><p>In diesem Spiel erschrickt dich eine Fruchtschnitte mit plötzlichem Bild und lautem Ton, wenn du sie anklickst. Nichts für schwache Nerven oder kleine Kinder.</p><button class="b" id="fkok">Verstanden, los!</button><button class="fkchip" id="fkno" style="margin-top:10px">Lieber ohne Jumpscare</button></div>');
@@ -4312,13 +4353,158 @@ A.putz=el=>{
     for(let i=0;i<tier.length;i++){const t=tier[i],o=i*4,y=Math.floor(i/cols);if(y<WALL){d[o]=60;d[o+1]=66;d[o+2]=100;d[o+3]=255;continue}if(t){const c=MC[t];d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2];d[o+3]=255}else{d[o]=fr;d[o+1]=fg;d[o+2]=fb;d[o+3]=200}}
     const pc=Math.floor(px/CELL),pr=Math.floor(py/CELL);for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const x=pc+dx,y=pr+dy;if(x>=0&&y>=0&&x<cols&&y<rows){const o=(y*cols+x)*4;d[o]=255;d[o+1]=60;d[o+2]=90;d[o+3]=255}}
     mg.putImageData(mmImg,0,0)}
+  /* ---------- Haustier & Tag/Nacht ---------- */
+  const PETS=[['🐶','Hund',1,1],['🐱','Katze',10,2],['🐰','Hase',25,4],['🦊','Fuchs',40,7],['🐉','Drache',60,12]];
+  let petI=+LS.putzpet||0;if(!PETS[petI]||S.best<PETS[petI][2])petI=0;
+  const dn=document.createElement('div');dn.className='pzdn';view.appendChild(dn);
+  const pet=document.createElement('div');pet.className='pzpet';view.appendChild(pet);
+  const petUp=()=>{pet.innerHTML=PETS[petI][0]+'<small></small>'};petUp();
+  pet.onclick=e=>{e.stopPropagation();let n=petI;do{n=(n+1)%PETS.length}while(S.best<PETS[n][2]&&n!=0);petI=n;try{LS.putzpet=String(petI)}catch(_){}petUp();say(PETS[petI][0]+' '+PETS[petI][1]+' ist jetzt dein Helfer (×'+PETS[petI][3]+' Fund-Bonus) · weitere ab Level 10/25/40/60')};
+  const dnT=()=>{const hr=new Date().getHours()+new Date().getMinutes()/60;let c='transparent';if(hr<5.5||hr>=21)c='rgba(8,12,60,.5)';else if(hr<7.5)c='rgba(255,140,90,.22)';else if(hr>=18.5)c='rgba(255,110,60,.2)';dn.style.background=c};dnT();const dnI=setInterval(dnT,60000);
+  const petI2=setInterval(()=>{const v=Math.floor((4+S.level*1.5)*PETS[petI][3]);S.coins+=v;S.earned+=v;const s=pet.querySelector('small');if(s){s.textContent='+'+v;setTimeout(()=>{s.textContent=''},1200)}upd()},6000);
   /* ---------- Start ---------- */
+  {const b=+LS.pzbonus||0;if(b>0){S.coins+=b;S.earned+=b;try{LS.pzbonus='0'}catch(_){}}}
   gen();startPos();fit();new ResizeObserver(()=>fit()).observe(view);upd();
   S.seen=Date.now();
   say('Halte den Finger auf die Karte – Putzi läuft hin und wischt den Dreck weg!');
   raf=requestAnimationFrame(loop);
-  return()=>{cancelAnimationFrame(raf);removeEventListener('keydown',kd);removeEventListener('keyup',ku);rmOv();save()}
+  return()=>{clearInterval(dnI);clearInterval(petI2);cancelAnimationFrame(raf);removeEventListener('keydown',kd);removeEventListener('keyup',ku);rmOv();save()}
 };
+
+/* ===== Extras 6.5: Widgets, Suche, Benachrichtigungen, Klick-Effekte, Spielecenter, Tagesbelohnung, Fabrik ===== */
+(()=>{
+  const J=(k,d)=>{try{return JSON.parse(LS[k]||'')||d}catch(e){return d}};
+  const W=(k,v)=>{try{LS[k]=JSON.stringify(v)}catch(e){}};
+  const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+  const fm=n=>{if(n<10&&n%1)return n.toFixed(1).replace('.',',');n=Math.floor(n);if(n<1e4)return String(n);const u=['','K','Mio','Mrd','Bio','Brd'];let i=0,x=n;while(x>=1000&&i<u.length-1){x/=1000;i++}return (x>=100?x.toFixed(0):x>=10?x.toFixed(1):x.toFixed(2)).replace('.',',')+' '+u[i]};
+  const GAMES=['snake','g2048','memory','pong','flappy','simon','whack','tetris','breakout','fabrik','fussknabber','putz','arena','ttt'];
+
+  /* ---- Mehr Hintergründe ---- */
+  try{walls.push(['#0f2027','#203a43','#2c5364'],['#41295a','#2f0743','#ff9966'],['#000428','#004e92','#7df9ff'],['#200122','#6f0000','#ffd93d'],['#fdfbfb','#ebedee','#cfd9df',1],['#e0c3fc','#8ec5fc','#f5d0fe',1])}catch(e){}
+
+  /* ---- Benachrichtigungsverlauf ---- */
+  const NL=()=>J('notiflog',[]);
+  const _toast=Sys.toast;
+  Sys.toast=function(t){try{const a=NL();a.unshift({t:String(t),d:Date.now()});W('notiflog',a.slice(0,40))}catch(e){}return _toast.call(this,t)};
+
+  /* ---- Tages-Statistik / Spielzeit ---- */
+  const DY=()=>{const d=J('daily',{});if(d.day!==today()){d.day=today();d.opens=0;d.games=[];d.claimedT={};d.loginClaimed=0;W('daily',d)}return d};
+  let curId=null,curT=0,inOpen=false;
+  const commit=()=>{if(!curId)return;const s=(Date.now()-curT)/1000;if(GAMES.includes(curId)&&s>0&&s<36000){const p=J('playtime',{});p[curId]=(p[curId]||0)+s;W('playtime',p)}curId=null};
+  const _oa=openApp;openApp=function(id){commit();if(!inOpen){}curId=id;curT=Date.now();const d=DY();d.opens++;if(GAMES.includes(id)&&!d.games.includes(id))d.games.push(id);W('daily',d);inOpen=true;try{return _oa.apply(this,arguments)}finally{inOpen=false}};
+  const _ca=closeApp;closeApp=function(){if(!inOpen)commit();return _ca.apply(this,arguments)};
+
+  /* ---- Klick-Sound & Haptik ---- */
+  addEventListener('pointerdown',e=>{try{if(SET.tapfx===0||!e.target.closest)return;if(!e.target.closest('.app,button,.qt,.lodots i,.srow,.set'))return;
+    if(SET.sound&&Sys.beep)Sys.beep(1500,.025,.035);if(SET.vibrate&&navigator.vibrate)navigator.vibrate(7)}catch(_){}},true);
+
+  /* ---- Widgets auf dem Homescreen ---- */
+  const wg=document.createElement('div');wg.id='wgt';
+  try{$('#grid').before(wg)}catch(e){}
+  const wgtRender=()=>{
+    wg.style.display=SET.widgets===0?'none':'';if(SET.widgets===0)return;
+    const nt=J('notes',[]).slice().sort((a,b)=>(b.t||0)-(a.t||0))[0],td=J('todos',[]).filter(x=>!x.done),d=DY(),dl=J('daily',{}),
+      can=!d.loginClaimed;
+    wg.innerHTML='<div data-w="notes"><small>📝 Notiz</small><b>'+(nt?esc((nt.title||nt.text||'').slice(0,28)):'Keine Notiz')+'</b></div>'
+      +'<div data-w="todo"><small>✅ Aufgaben</small><b>'+(td.length?td.length+' offen':'Alles erledigt')+'</b><i>'+(td[0]?esc(td[0].text.slice(0,22)):'')+'</i></div>'
+      +'<div data-w="gamecenter" class="'+(can?'wgn':'')+'"><small>🎁 Tagesbelohnung</small><b>'+(can?'Abholen!':'🔥 '+(dl.streak||0)+' Tage')+'</b></div>';
+    wg.querySelectorAll('[data-w]').forEach(e=>e.onclick=()=>{try{openApp(e.dataset.w)}catch(_){}})};
+  wgtRender();setInterval(wgtRender,20000);
+  const _rh=renderHome;renderHome=function(){const r=_rh.apply(this,arguments);try{wgtRender()}catch(e){}return r};
+
+  /* ---- Live-Suche: Notizen, Aufgaben, Einstellungen ---- */
+  (()=>{const sr=$('#search');if(!sr)return;const box=document.createElement('div');box.id='sres';sr.after(box);
+    const SETK=[['wlan','WLAN'],['akku','Akku'],['anzeige','Anzeige'],['design','Design'],['farbe','Akzentfarben'],['animation','Animationen'],['ton','Ton'],['sperr','Sperrbildschirm'],['konto','Konto'],['schrift','Schriftgröße'],['hintergrund','Hintergrund'],['backup','Backup'],['speicher','Speicher'],['update','Updates']];
+    sr.addEventListener('input',()=>{const q=sr.value.trim().toLowerCase();if(q.length<2){box.innerHTML='';box.style.display='none';return}
+      const r=[];J('notes',[]).forEach(n=>{if(((n.title||'')+' '+(n.text||'')).toLowerCase().includes(q))r.push(['📝',(n.title||n.text||'Notiz').slice(0,40),'notes'])});
+      J('todos',[]).forEach(n=>{if((n.text||'').toLowerCase().includes(q))r.push([n.done?'☑':'✅',n.text.slice(0,40),'todo'])});
+      SETK.forEach(k=>{if(k[0].includes(q)||k[1].toLowerCase().includes(q))r.push(['⚙️','Einstellungen: '+k[1],'settings'])});
+      box.innerHTML=r.slice(0,6).map(x=>'<div data-o="'+x[2]+'"><span>'+x[0]+'</span>'+esc(x[1])+'</div>').join('');box.style.display=r.length?'block':'none';
+      box.querySelectorAll('[data-o]').forEach(e=>e.onclick=()=>{sr.value='';sr.oninput();box.innerHTML='';box.style.display='none';openApp(e.dataset.o)})})})();
+
+  /* ---- Schnellpanel: Schalter + Benachrichtigungen ---- */
+  const _qr=qpRender;
+  qpRender=function(){_qr.apply(this,arguments);try{
+    const q=$('#qp');let x=q.querySelector('.qx');if(!x){x=document.createElement('div');x.className='qx';const c=$('#qpc');q.insertBefore(x,c)}
+    const n=NL(),on=(v,d)=>v===undefined?d:v;
+    x.innerHTML='<div class="qxr"><button class="qt'+(SET.widgets!==0?' on':'')+'" data-x="wg"><span style="font-size:20px">🧩</span><span style="font-size:11px">Widgets</span></button><button class="qt'+(SET.tapfx!==0?' on':'')+'" data-x="fx"><span style="font-size:20px">👆</span><span style="font-size:11px">Klick-Effekte</span></button><button class="qt" data-x="gc"><span style="font-size:20px">🎮</span><span style="font-size:11px">Spielecenter</span></button></div>'
+      +'<div class="qxh"><b>Benachrichtigungen</b>'+(n.length?'<button data-x="cl">Löschen</button>':'')+'</div>'
+      +(n.length?n.slice(0,8).map(i=>'<div class="qxn"><span>'+esc(i.t)+'</span><i>'+new Date(i.d).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+'</i></div>').join(''):'<div class="qxn" style="opacity:.6">Keine neuen Meldungen</div>');
+    x.querySelectorAll('[data-x]').forEach(b=>b.onclick=e=>{e.stopPropagation();const k=b.dataset.x;
+      if(k=='wg'){SET.widgets=SET.widgets===0?1:0;saveSet();wgtRender()}else if(k=='fx'){SET.tapfx=SET.tapfx===0?1:0;saveSet()}
+      else if(k=='cl'){W('notiflog',[])}else if(k=='gc'){qpToggle(false);openApp('gamecenter');return}
+      qpRender()})}catch(e){}};
+
+  /* ---- Update-Hinweis ---- */
+  try{if(LS.justUpd){LS.removeItem?LS.removeItem('justUpd'):delete LS.justUpd;setTimeout(()=>Sys.toast('✓ LucarioNet wurde aktualisiert'),2500)}}catch(e){}
+
+  /* ---- Tagesbelohnung ---- */
+  const reward=(fk,pz)=>{try{LS.bonus=String((+LS.bonus||0)+fk);LS.pzbonus=String((+LS.pzbonus||0)+pz)}catch(e){}};
+  const streakReward=s=>({fk:Math.floor(3000*Math.pow(s,1.7)),pz:Math.floor(300*s)});
+  const TASKS=[['t1','Öffne 5 Apps',d=>d.opens>=5,.25],['t2','Spiele 2 verschiedene Spiele',d=>d.games.length>=2,.35],['t3','Öffne Fuß Knabber oder Putz Simulator',d=>d.games.includes('fussknabber')||d.games.includes('putz'),.4]];
+  const claimLogin=()=>{const d=DY(),dl=J('daily',{});if(d.loginClaimed)return;const y=new Date(Date.now()-864e5),yk=y.getFullYear()+'-'+String(y.getMonth()+1).padStart(2,'0')+'-'+String(y.getDate()).padStart(2,'0');
+    dl.streak=(dl.lastClaim===yk?(dl.streak||0)+1:1);dl.lastClaim=today();dl.loginClaimed=1;W('daily',dl);const r=streakReward(dl.streak);reward(r.fk,r.pz);Sys.toast('🎁 Tag '+dl.streak+': +'+fm(r.fk)+' Fuß-Münzen, +'+fm(r.pz)+' Putz-Geld');wgtRender()};
+
+  /* ---- Spielecenter ---- */
+  const gcIcon=G('#ffb21f','#ff5d8f');
+  apps.push({id:'gamecenter',name:'Spielecenter',bg:gcIcon,svg:ic('<path d="M6 9h12a3 3 0 013 3v3a3 3 0 01-5 2l-1-1H9l-1 1a3 3 0 01-5-2v-3a3 3 0 013-3z"/><path d="M8 11v4M6 13h4" /><circle cx="16" cy="12" r="1" fill="#fff"/><circle cx="18" cy="14" r="1" fill="#fff"/>')});
+  A.gamecenter=el=>{
+    const NAMES={snake:'Snake',g2048:'2048',simon:'Simon',whack:'Maulwurf',breakout:'Breakout',flappy:'Lucario Jump',tetris:'Tetris'};
+    const draw=()=>{const d=DY(),dl=J('daily',{}),fk=J('fk',null),pz=J('putz',null),fb=J('fabrik',null),pt=J('playtime',{});
+      const r=streakReward((dl.lastClaim&&!d.loginClaimed?(dl.streak||0)+1:dl.streak||1)||1);
+      const sec=Object.values(pt).reduce((a,b)=>a+b,0),hm=Math.floor(sec/3600)+' h '+Math.floor(sec%3600/60)+' min';
+      el.style.alignItems='stretch';el.style.padding='12px';
+      el.innerHTML='<div class="gcc gcd"><div><small>Tagesbelohnung</small><b>🔥 '+(dl.streak||0)+' Tage in Folge</b><i>Heute: +'+fm(r.fk)+' 🪙 Fuß · +'+fm(r.pz)+' 💰 Putz</i></div><button id="gcl" '+(d.loginClaimed?'disabled':'')+'>'+(d.loginClaimed?'Abgeholt ✓':'Abholen')+'</button></div>'
+        +'<div class="gcc"><h4>Tagesaufgaben</h4>'+TASKS.map(t=>{const ok=t[2](d),got=d.claimedT[t[0]];return '<div class="gct"><span>'+(got?'✅':ok?'🟢':'⬜')+' '+t[1]+'</span><button data-t="'+t[0]+'" '+(!ok||got?'disabled':'')+'>'+(got?'Erledigt':ok?'Einlösen':'offen')+'</button></div>'}).join('')+'</div>'
+        +'<div class="gcc"><h4>Rekorde</h4><div class="gcg">'+Object.keys(NAMES).map(k=>'<div><small>'+NAMES[k]+'</small><b>'+(+LS[k]||0)+'</b></div>').join('')+'</div></div>'
+        +'<div class="gcc"><h4>Fortschritt</h4><div class="gcg">'
+        +'<div><small>🦶 Fuß Knabber</small><b>'+(fk?'Lv '+fk.level+' · ★'+fk.stars+(fk.sstars?' · 💎'+fk.sstars:''):'–')+'</b></div>'
+        +'<div><small>🧹 Putz Simulator</small><b>'+(pz?'Lv '+pz.best:'–')+'</b></div>'
+        +'<div><small>🏭 Fabrik</small><b>'+(fb?(fb.cores||0)+' Kerne':'–')+'</b></div>'
+        +'<div><small>⏱ Spielzeit</small><b>'+hm+'</b></div></div></div>';
+      $('#gcl').onclick=()=>{claimLogin();draw()};
+      el.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{const t=TASKS.find(x=>x[0]==b.dataset.t),dd=DY(),rr=streakReward(Math.max(1,J('daily',{}).streak||1));dd.claimedT[t[0]]=1;W('daily',dd);reward(Math.floor(rr.fk*t[3]),Math.floor(rr.pz*t[3]));Sys.toast('✓ Aufgabe: +'+fm(rr.fk*t[3])+' 🪙');draw()})};
+    draw();return()=>{}};
+
+  /* ---- Lucario Fabrik (Idle-Spiel) ---- */
+  apps.push({id:'fabrik',name:'Lucario Fabrik',bg:G('#00c2ff','#7b2ff7'),svg:ic('<path d="M3 21V9l6 4V9l6 4V5h6v16z"/><path d="M7 17h2M12 17h2M17 17h2"/>')});
+  A.fabrik=el=>{
+    const GEN=[['Mini-Roboter','🤖',15,.6],['Förderband','🏭',130,4.5],['3D-Drucker','🖨️',1200,34],['Reaktor','⚛️',13000,270],['Teleporter','🌀',140000,2200],['Raumschiff-Werft','🚀',1.5e6,18000],['Dimensionsfabrik','🪐',2e7,160000]];
+    const fresh=()=>({bolts:0,total:0,run:0,own:[0,0,0,0,0,0,0],click:0,eff:0,cores:0,pres:0,seen:Date.now(),taps:0});
+    let S=Object.assign(fresh(),J('fabrik',{}));if(!Array.isArray(S.own))S.own=fresh().own;while(S.own.length<GEN.length)S.own.push(0);
+    const save=()=>{S.seen=Date.now();W('fabrik',S)};
+    const mul=()=>(1+.25*S.eff)*(1+.1*S.cores)*(S.own.reduce((a,b)=>a+b,0)>=100?1.5:1);
+    const rate=()=>GEN.reduce((a,g,i)=>a+g[3]*S.own[i],0)*mul();
+    const cp=()=>(1+S.click*2+rate()*.01)*(1+.1*S.cores);
+    const price=i=>Math.ceil(GEN[i][2]*Math.pow(1.15,S.own[i])),cc=()=>Math.ceil(60*Math.pow(2.8,S.click)),ec=()=>Math.ceil(800*Math.pow(4,S.eff));
+    const pg=()=>Math.floor(Math.sqrt(S.run/1e6));
+    const away=Math.min(2*3600,(Date.now()-(S.seen||Date.now()))/1000);let msg='';
+    if(away>60&&rate()>0){const g=Math.floor(rate()*away*.5);S.bolts+=g;S.total+=g;S.run+=g;msg='Willkommen zurück! Die Fabrik hat offline '+fm(g)+' 🔩 gebaut.'}
+    el.style.alignItems='stretch';el.style.padding='10px';
+    el.innerHTML='<div class="fb"><div class="fbh"><div><small>Schrauben</small><b id="fbb">0</b></div><div><small>pro Sekunde</small><b id="fbr">0</b></div><div><small>Kerne</small><b id="fbk">0</b></div></div>'
+      +'<div class="fbs" id="fbs"><div class="fbg"><i>⚙️</i><i class="r">⚙️</i><i>⚙️</i></div><div class="fbc"><span></span><span></span><span></span><span></span></div><div class="fbn" id="fbn"></div></div>'
+      +'<button class="fbt" id="fbt">🔧 Schraube drehen <small id="fbp"></small></button>'
+      +'<div class="fbu"><button id="fbcu"></button><button id="fbeu"></button><button id="fbpr"></button></div><div id="fbl"></div></div>';
+    const pop=(e,txt)=>{const s=$('#fbs'),r=s.getBoundingClientRect(),d=document.createElement('div');d.className='fbpop';d.textContent=txt;d.style.left=((e&&e.clientX!=null?e.clientX:r.left+r.width/2)-r.left)+'px';d.style.top=((e&&e.clientY!=null?e.clientY:r.top+r.height/2)-r.top)+'px';s.appendChild(d);setTimeout(()=>d.remove(),800)};
+    const list=()=>{$('#fbl').innerHTML=GEN.map((g,i)=>'<div class="fbr'+(S.bolts<price(i)?' o':'')+'" data-g="'+i+'"><span class="fbi">'+g[1]+'</span><div><b>'+g[0]+' <em>×'+S.own[i]+'</em></b><small>+'+fm(g[3]*mul())+' /s</small></div><span class="fbc2">'+fm(price(i))+' 🔩</span></div>').join('');
+      $('#fbl').querySelectorAll('[data-g]').forEach(r=>r.onclick=()=>{const i=+r.dataset.g,c=price(i);if(S.bolts<c)return;S.bolts-=c;S.own[i]++;upd();list();save()})};
+    const upd=()=>{$('#fbb').textContent=fm(S.bolts);$('#fbr').textContent=fm(rate());$('#fbk').textContent=S.cores;$('#fbp').textContent='+'+fm(cp());
+      $('#fbcu').innerHTML='🔩 Klick-Kraft Lv '+S.click+'<small>'+fm(cc())+'</small>';$('#fbcu').disabled=S.bolts<cc();
+      $('#fbeu').innerHTML='⚡ Effizienz Lv '+S.eff+' (+25 %)<small>'+fm(ec())+'</small>';$('#fbeu').disabled=S.bolts<ec();
+      $('#fbpr').innerHTML='♻️ Neustart<small>'+(pg()>0?'+'+pg()+' Kerne (+10 % je Kern)':'ab 1 Mio. Schrauben')+'</small>';$('#fbpr').disabled=pg()<1;
+      $('#fbn').textContent=msg;const gs=$('#fbs');gs.style.setProperty('--sp',Math.max(.4,6-Math.log10(1+rate())*.8)+'s');
+      $('#fbl').querySelectorAll('[data-g]').forEach(r=>r.classList.toggle('o',S.bolts<price(+r.dataset.g)))};
+    $('#fbt').onclick=e=>{const v=cp();S.bolts+=v;S.total+=v;S.run+=v;S.taps++;pop(e,'+'+fm(v));upd()};
+    $('#fbcu').onclick=()=>{const c=cc();if(S.bolts<c)return;S.bolts-=c;S.click++;upd();save()};
+    $('#fbeu').onclick=()=>{const c=ec();if(S.bolts<c)return;S.bolts-=c;S.eff++;upd();list();save()};
+    $('#fbpr').onclick=()=>{const g=pg();if(g<1)return;if(!confirm('Neustart: Du bekommst '+g+' Kerne (+10 % Einkommen je Kern). Schrauben, Maschinen und Upgrades werden zurückgesetzt. Fortfahren?'))return;const c=S.cores+g,p=S.pres+1,t=S.total,tp=S.taps;S=Object.assign(fresh(),{cores:c,pres:p,total:t,taps:tp});msg='Neustart! Jetzt '+S.cores+' Kerne.';upd();list();save()};
+    let last=Date.now();const iv=setInterval(()=>{const n=Date.now(),dt=(n-last)/1000;last=n;const g=rate()*dt;S.bolts+=g;S.total+=g;S.run+=g;if(n%5==0)msg='';upd()},250);
+    const sv=setInterval(save,5000);
+    upd();list();
+    return()=>{clearInterval(iv);clearInterval(sv);save()}};
+
+  try{renderHome();loDots()}catch(e){}
+})();
 
 /* ===ARENA-END=== */
 

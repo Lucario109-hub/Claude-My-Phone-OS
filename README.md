@@ -28,6 +28,8 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 Öffne einmal `update.html` (z. B. `https://lucario109-hub.github.io/Claude-My-Phone-OS/update.html`). Die Seite entfernt nur den alten Zwischenspeicher und startet LucarioNet neu. Spielstände bleiben erhalten.
 
 ## Neu in 6.4
+- Widgets auf dem Homescreen, Live-Suche (Notizen, Aufgaben, Einstellungen), Benachrichtigungsverlauf im Schnellpanel, Klick-Sounds/Haptik, 6 neue Hintergründe, Backup inkl. Spielständen, Update-Hinweis.
+- Neu: Spielecenter (Tagesbelohnung, Tagesaufgaben, Rekorde), Lucario Fabrik (Idle-Spiel), Fuß Knabber: Fruchtschnitten-Sturm + Skins, Putz Simulator: Haustiere + Tag/Nacht.
 - Fuß Knabber Simulator 2.0: neue Fruchtschnitten, Technik-Labor, Erfolge, Goldene Fruchtschnitte, Disco-Grafik und 💎 Super Prestige (erst nach 100 Prestiges).
 
 - Spiele-Grafik-Upgrade: neues Spiel-Design (Sternenhintergrund, Neon-Rahmen, glänzende HUD-Anzeigen) für alle Mini-Spiele; Snake, Pong, Lucario Jump, Breakout und Tetris mit Verläufen, Leuchteffekten, Partikeln und Ball-Spuren (Tetris mit Geisterblock); 2048, Memory, Minesweeper, Tic-Tac-Toe, Vier gewinnt, Simon, Maulwurf, Reaktionstest mit 3D-/Glanz-Optik und Animationen.
