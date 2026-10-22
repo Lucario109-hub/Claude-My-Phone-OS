@@ -28,6 +28,7 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 Öffne einmal `update.html` (z. B. `https://lucario109-hub.github.io/Claude-My-Phone-OS/update.html`). Die Seite entfernt nur den alten Zwischenspeicher und startet LucarioNet neu. Spielstände bleiben erhalten.
 
 ## Neu in 6.4
+- Fuß Knabber: Kaufmenge ×1 / ×10 / ×100 / MAX im Fruchtschnitten-Shop.
 - Putz und Fuß Knabber: Button „Alles max kaufen“ kauft alle bezahlbaren Upgrade-Stufen auf einmal.
 - Fuß Knabber: Zahlen gehen jetzt weiter (Trl, Trd, Qa …) und zeigen nie mehr Infinity. Putz Simulator: Boss alle 10 Level (wirft Dreck, gibt Skins), 3 neue Welten (Vulkanhöhle, Eispalast, Zuckerfabrik), Technik-Labor mit 8 neuen Upgrades.
 - Widgets auf dem Homescreen, Live-Suche (Notizen, Aufgaben, Einstellungen), Benachrichtigungsverlauf im Schnellpanel, Klick-Sounds/Haptik, 6 neue Hintergründe, Backup inkl. Spielständen, Update-Hinweis.
