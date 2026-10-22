@@ -6,13 +6,22 @@
 <meta name="theme-color" content="#0b1020">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LucarioNet">
+<meta name="description" content="LucarioNet – ein eigenes Handy-Betriebssystem im Browser. Läuft in Chrome, Safari, Firefox und Edge.">
+<meta name="color-scheme" content="dark light">
+<meta name="format-detection" content="telephone=no">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>LucarioNet</title>
 <style>
 :root{--bg1:#0b1020;--bg2:#1b2a6b;--bg3:#00c2ff;--glass:rgba(255,255,255,.12);--txt:#fff;--acc:#4cc9ff}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+input,textarea,[contenteditable]{-webkit-user-select:text;user-select:text}
+#oldb{display:none;position:fixed;inset:0;z-index:99999;background:#0b1020;color:#fff;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:system-ui,sans-serif}#oldb div{max-width:360px}#oldb h2{margin:0 0 10px}#oldb p{opacity:.85;line-height:1.5}
+@supports(height:100dvh){html,body,#phone{height:100dvh}}
 html,body{margin:0;height:100%;overflow:hidden;background:#000;font-family:-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--txt)}
 #phone{position:relative;width:100%;height:100%;max-width:480px;margin:0 auto;overflow:hidden;background:linear-gradient(160deg,var(--bg1),var(--bg2) 60%,var(--bg3));background-size:cover;background-position:center}
 #status{position:absolute;top:0;left:0;right:0;height:34px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font-size:14px;font-weight:600;z-index:50;cursor:pointer;color:var(--htx)}
@@ -20,13 +29,13 @@ html,body{margin:0;height:100%;overflow:hidden;background:#000;font-family:-appl
 #clock{text-align:center;margin:18px 0 8px}
 #clock .t{font-size:68px;font-weight:200;letter-spacing:-2px}
 #clock .d{font-size:15px;opacity:.8}
-#search{margin:10px 0 18px;background:var(--hg);backdrop-filter:blur(14px);border-radius:20px;padding:12px 16px;font-size:15px;opacity:.9;border:1px solid rgba(255,255,255,.15)}
+#search{margin:10px 0 18px;background:var(--hg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-radius:20px;padding:12px 16px;font-size:15px;opacity:.9;border:1px solid rgba(255,255,255,.15)}
 #grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px 8px;align-content:start;flex:1;min-height:0;overflow:auto;padding-bottom:10px}
 .app{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;cursor:pointer}
 .app .ic{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.35);transition:transform .15s}
 .app:active .ic{transform:scale(.88)}
 .ic svg{width:36px;height:36px}
-#dock{position:absolute;left:14px;right:14px;bottom:30px;height:84px;background:var(--hg);backdrop-filter:blur(20px);border-radius:30px;display:flex;justify-content:space-around;align-items:center;border:1px solid rgba(255,255,255,.18);z-index:5}
+#dock{position:absolute;left:14px;right:14px;bottom:30px;height:84px;background:var(--hg);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-radius:30px;display:flex;justify-content:space-around;align-items:center;border:1px solid rgba(255,255,255,.18);z-index:5}
 #nav{position:absolute;bottom:0;left:0;right:0;height:26px;display:flex;justify-content:center;align-items:center;z-index:60}
 #nav div{width:130px;height:5px;border-radius:3px;background:rgba(255,255,255,.85)}
 #win{position:absolute;inset:0;background:var(--win);color:var(--txt);z-index:40;display:none;flex-direction:column;padding-top:34px;padding-bottom:26px;transform:scale(.9);opacity:0;transition:.22s}
@@ -90,7 +99,7 @@ textarea,input.f{width:100%;background:var(--glass);border:0;color:var(--txt);bo
 #call{position:absolute;inset:0;z-index:90;display:none;flex-direction:column;align-items:center;padding:90px 20px 40px;background:linear-gradient(160deg,#0b1020,#1b2a6b);text-align:center}
 .cav{width:110px;height:110px;border-radius:50%;display:grid;place-items:center;font-size:48px;font-weight:700;background:linear-gradient(135deg,#7b2ff7,#00c2ff);margin-bottom:20px}
 .cbtns{display:flex;gap:70px}.cb{width:72px;height:72px;border-radius:50%;border:0;font-size:30px;color:#fff}.cb.red{background:#e74c3c}.cb.green{background:#2ecc71}
-#toast{position:absolute;top:40px;left:16px;right:16px;z-index:95;background:rgba(20,26,50,.94);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:12px 16px;font-size:14px;transform:translateY(-140px);transition:.3s;pointer-events:none}
+#toast{position:absolute;top:40px;left:16px;right:16px;z-index:95;background:rgba(20,26,50,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:12px 16px;font-size:14px;transform:translateY(-140px);transition:.3s;pointer-events:none}
 #toast.on{transform:none}
 .keys{display:grid;grid-template-columns:repeat(3,76px);gap:12px;justify-content:center;margin:14px 0}.keys button{height:62px;border-radius:50%;border:0;background:var(--glass);color:var(--txt);font-size:24px}
 table.t{width:100%;border-collapse:collapse;font-size:13px}table.t td,table.t th{padding:7px 6px;text-align:left;border-bottom:1px solid var(--line)}
@@ -128,7 +137,7 @@ select.f{appearance:auto}
 .mi2{display:flex;gap:8px;width:100%;padding:8px 10px 10px}
 #lock{position:absolute;inset:0;z-index:120;display:none;flex-direction:column;align-items:center;background:linear-gradient(160deg,#0b1020,#1b2a6b);color:#fff;--txt:#fff;--glass:rgba(255,255,255,.12)}
 .dots{margin:10px 0 24px}.dots i{width:14px;height:14px;border-radius:50%;border:2px solid #fff;margin:0 6px;display:inline-block}.dots i.on{background:#fff}
-#qp{position:absolute;left:0;right:0;top:0;z-index:70;transform:translateY(-115%);transition:.3s;background:rgba(14,18,36,.97);backdrop-filter:blur(20px);padding:48px 16px 8px;border-radius:0 0 28px 28px;color:#fff;--txt:#fff;--glass:rgba(255,255,255,.12)}
+#qp{position:absolute;left:0;right:0;top:0;z-index:70;transform:translateY(-115%);transition:.3s;background:rgba(14,18,36,.97);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);padding:48px 16px 8px;border-radius:0 0 28px 28px;color:#fff;--txt:#fff;--glass:rgba(255,255,255,.12)}
 #qp.on{transform:none}
 .qg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
 .qt{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 4px;border-radius:18px;border:0;background:var(--glass);color:#fff}
@@ -183,7 +192,7 @@ select.f{appearance:auto}
 .ta37{color:#cfd8e6}.ta34{color:#6ea8ff}.ta35{color:#d58bff}.ta33{color:#ffcf5a}.ta32{color:#4cd97b}.ta1_34{color:#6ea8ff;font-weight:700}
 .ta1_31{color:#ff5c6c;font-weight:700}.ta1_36{color:#5ee7ff;font-weight:700}.ta1_33{color:#ffd84d;font-weight:700}.ta1_32{color:#5dff9a;font-weight:700}
 
-.vdel{position:absolute;top:8px;right:8px;width:38px;height:38px;border-radius:12px;border:0;background:rgba(10,10,20,.72);color:#fff;font-size:18px;backdrop-filter:blur(4px)}.vdel:active{background:#c4122a}
+.vdel{position:absolute;top:8px;right:8px;width:38px;height:38px;border-radius:12px;border:0;background:rgba(10,10,20,.72);color:#fff;font-size:18px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}.vdel:active{background:#c4122a}
 /* ================= 6.4: Design-Stil LucarioOS ================= */
 .cy{font-weight:inherit}
 .lohd,.lologo,.lowd,.lodots,#hgr{display:none}
@@ -191,7 +200,7 @@ select.f{appearance:auto}
 #phone.lo .lohd{display:flex;justify-content:space-between;align-items:flex-start;margin:0 0 4px;padding-left:12px;border-left:3px solid var(--lo)}
 #phone.lo .lob b{display:block;font:400 28px/1.1 system-ui,sans-serif;letter-spacing:.3px}#phone.lo .lob b i{font-style:normal;color:var(--lo)}
 #phone.lo .lob small{display:block;font-size:13px;opacity:.85;letter-spacing:.5px;margin-top:2px}
-#phone.lo .lodate{display:flex;gap:10px;align-items:center;background:rgba(var(--lodk),.62);border:1px solid rgba(var(--lorgb),.42);border-radius:22px;padding:8px 16px;font-size:13px;backdrop-filter:blur(10px)}
+#phone.lo .lodate{display:flex;gap:10px;align-items:center;background:rgba(var(--lodk),.62);border:1px solid rgba(var(--lorgb),.42);border-radius:22px;padding:8px 16px;font-size:13px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 #phone.lo .lodate b{display:block;font-weight:600}#phone.lo .lodate i{display:block;font-style:normal;color:var(--lo)}
 #phone.lo .lologo{display:block;position:absolute;right:-14px;top:128px;width:170px;opacity:.95;pointer-events:none;filter:drop-shadow(0 0 18px rgba(var(--lorgb),.8))}
 #phone.lo #clock{text-align:left;margin:20px 0 4px;position:relative;z-index:1}
@@ -204,7 +213,7 @@ select.f{appearance:auto}
 #phone.lo .app span{font-size:12px;text-shadow:0 1px 3px #000}
 #phone.lo .ic svg{filter:drop-shadow(0 0 4px rgba(var(--lorgb),.7))}
 #phone.lo #dock{background:rgba(var(--lodk),.62);border:1px solid rgba(var(--lorgb),.42);box-shadow:0 0 22px rgba(var(--lorgb),.32)}
-#phone.lo .lowd{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(var(--lodk),.62);border:1px solid rgba(var(--lorgb),.42);border-radius:26px;padding:12px 18px;margin:6px 0 8px;backdrop-filter:blur(12px)}
+#phone.lo .lowd{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(var(--lodk),.62);border:1px solid rgba(var(--lorgb),.42);border-radius:26px;padding:12px 18px;margin:6px 0 8px;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
 #phone.lo .lowd>div{display:flex;align-items:center;gap:10px;flex:1;font-size:13px}#phone.lo .lowd small{display:block;opacity:.85}#phone.lo .lowd b{display:block;font-size:18px}
 #phone.lo .lowd .bar{height:8px;min-width:50px;background:rgba(255,255,255,.18);border-radius:6px;overflow:hidden;margin-top:4px}#phone.lo .lowd .bar i{display:block;height:100%;width:50%;background:linear-gradient(90deg,var(--lo),var(--lo2))}
 #phone.lo .lowd .sep{flex:none;width:1px;align-self:stretch;background:rgba(255,255,255,.2)}
@@ -241,7 +250,7 @@ select.f{appearance:auto}
 #phone.lo #lock .lkbr{font:400 22px/1.2 system-ui,sans-serif;letter-spacing:.5px;margin-top:2px}#phone.lo #lock .lkbr i{font-style:normal;color:var(--lo)}
 #phone.lo #lock .lkk{margin-top:18px;font-size:88px;font-weight:300}#phone.lo #lock .lkk .cy{color:var(--lo)}
 #phone.lo #lock .lkd{font-size:18px;opacity:.85}
-#phone.lo #lock .lkc{background:rgba(var(--lodk),.65);border:1px solid rgba(var(--lorgb),.5);box-shadow:0 0 14px rgba(var(--lorgb),.3);backdrop-filter:blur(8px)}
+#phone.lo #lock .lkc{background:rgba(var(--lodk),.65);border:1px solid rgba(var(--lorgb),.5);box-shadow:0 0 14px rgba(var(--lorgb),.3);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 #phone.lo #lock .lkh{font-size:15px}
 #phone.lo #lock .keys button{background:linear-gradient(150deg,rgba(var(--lorgb),.4),rgba(var(--lodk),.85));border:1px solid rgba(var(--lorgb),.5);box-shadow:0 0 14px rgba(var(--lorgb),.3);color:#fff}
 #phone.lo #lock .dots i{border-color:var(--lo)}#phone.lo #lock .dots i.on{background:var(--lo)}
@@ -261,7 +270,7 @@ select.f{appearance:auto}
 #phone.inapp #lofx{display:none!important}
 #phone.inapp #home *,#phone.inapp #dock,#phone.inapp #dock *,#phone.inapp #search{animation:none!important}
 #phone.inapp #home,#phone.inapp #dock{visibility:hidden}
-#phone.lo #body.sx *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#phone.lo #body.sx *{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 #phone.lo #body.sx .set,#phone.lo #body.sx .sxi{contain:layout paint}
 #phone.lo #body.sx .set{box-shadow:none}
 #lofx{display:none;position:absolute;inset:0;overflow:hidden;pointer-events:none}
@@ -319,7 +328,7 @@ select.f{appearance:auto}
 #body.gx>*{position:relative}
 #body.gx canvas{border-radius:18px;box-shadow:0 0 0 2px rgba(var(--lorgb,76,201,255),.55),0 0 30px rgba(var(--lorgb,76,201,255),.35),0 14px 34px rgba(0,0,0,.55)}
 #body.gx .gh{width:100%;justify-content:center;flex-wrap:wrap;gap:10px}
-#body.gx .gh span{background:rgba(255,255,255,.08);border:1px solid rgba(var(--lorgb,76,201,255),.45);border-radius:14px;padding:5px 14px;box-shadow:0 0 12px rgba(var(--lorgb,76,201,255),.2);backdrop-filter:none}
+#body.gx .gh span{background:rgba(255,255,255,.08);border:1px solid rgba(var(--lorgb,76,201,255),.45);border-radius:14px;padding:5px 14px;box-shadow:0 0 12px rgba(var(--lorgb,76,201,255),.2);-webkit-backdrop-filter:none;backdrop-filter:none}
 #body.gx button.b{background:linear-gradient(90deg,var(--acc),#7b2ff7);color:#fff;border-radius:16px;box-shadow:0 0 16px rgba(var(--lorgb,76,201,255),.5),inset 0 1px 0 rgba(255,255,255,.4)}
 #body.gx button.g{background:rgba(255,255,255,.1);border:1px solid rgba(var(--lorgb,76,201,255),.45);border-radius:14px;color:#fff}
 #body.gx .pad button{box-shadow:0 0 12px rgba(var(--lorgb,76,201,255),.3),inset 0 1px 0 rgba(255,255,255,.3)}
@@ -583,6 +592,9 @@ select.f{appearance:auto}
 </style>
 </head>
 <body>
+<div id="oldb"><div><h2>Dein Browser ist zu alt</h2><p>LucarioNet braucht einen aktuellen Browser. Öffne den Link in <b>Chrome</b>, <b>Safari</b> (iPhone: iOS 14 oder neuer), <b>Firefox</b> oder <b>Edge</b>. Wenn du den Link in WhatsApp, Instagram oder einer KI-App geöffnet hast: tippe auf „In Browser öffnen“.</p></div></div>
+<noscript><div style="position:fixed;inset:0;z-index:99999;background:#0b1020;color:#fff;padding:30px;font-family:system-ui,sans-serif"><h2>JavaScript ist aus</h2><p>LucarioNet braucht JavaScript. Bitte schalte es in den Browser-Einstellungen ein.</p></div></noscript>
+<script>window.__ok=0;setTimeout(function(){if(!window.__ok){var o=document.getElementById('oldb');if(o)o.style.display='flex'}},9000);addEventListener('error',function(e){if(!window.__ok&&e&&e.message&&/Syntax|Unexpected/i.test(e.message)){var o=document.getElementById('oldb');if(o)o.style.display='flex'}});</script>
 <div id="phone">
   <div id="boot">
     <div class="bflash"></div>
@@ -608,6 +620,17 @@ select.f{appearance:auto}
 </div>
 
 <script>
+/* Browser-Kompatibilität: fehlende Funktionen nachrüsten (ältere Safari/Firefox/Samsung Internet) */
+(function(){try{
+  var C=window.CanvasRenderingContext2D&&CanvasRenderingContext2D.prototype;
+  if(C&&!C.roundRect)C.roundRect=function(x,y,w,h,r){if(typeof r=='object'&&r!=null)r=r.length?r[0]:(r.x||0);r=Math.max(0,Math.min(r||0,Math.abs(w)/2,Math.abs(h)/2));this.moveTo(x+r,y);this.arcTo(x+w,y,x+w,y+h,r);this.arcTo(x+w,y+h,x,y+h,r);this.arcTo(x,y+h,x,y,r);this.arcTo(x,y,x+w,y,r);this.closePath()};
+  if(!Element.prototype.replaceChildren)Element.prototype.replaceChildren=function(){while(this.firstChild)this.removeChild(this.firstChild);for(var i=0;i<arguments.length;i++)this.appendChild(typeof arguments[i]=='string'?document.createTextNode(arguments[i]):arguments[i])};
+  if(!Array.prototype.at)Array.prototype.at=function(n){n=Math.trunc(n)||0;if(n<0)n+=this.length;return this[n]};
+  if(!String.prototype.replaceAll)String.prototype.replaceAll=function(a,b){return this.split(a).join(b)};
+  if(!Object.fromEntries)Object.fromEntries=function(it){var o={};for(var e of it)o[e[0]]=e[1];return o};
+  var de=document.documentElement;if(!de.requestFullscreen&&de.webkitRequestFullscreen)de.requestFullscreen=function(){return Promise.resolve(de.webkitRequestFullscreen())};
+  if(!window.AudioContext&&window.webkitAudioContext)window.AudioContext=window.webkitAudioContext;
+}catch(e){}})();
 /* ================= LucarioNet 6.4 ================= */
 const LS=(()=>{try{const t='__t';localStorage.setItem(t,'1');localStorage.removeItem(t);return localStorage}catch(e){const m={};return new Proxy(m,{get:(t,k)=>k=='removeItem'?(x=>{delete m[x]}):k=='getItem'?(x=>m[x]===undefined?null:m[x]):k=='setItem'?((x,v)=>{m[x]=String(v)}):k=='clear'?(()=>{for(const x in m)delete m[x]}):m[k],set:(t,k,v)=>{m[k]=String(v);return true},deleteProperty:(t,k)=>{delete m[k];return true}})}})();
 
@@ -4366,7 +4389,7 @@ A.putz=el=>{
     if(nx&&(nx[0]<cam.x||nx[0]>cam.x+vw||nx[1]<cam.y||nx[1]>cam.y+vh)){ar.style.display='block';const a=Math.atan2(nx[1]-py,nx[0]-px);ar.style.transform='translate(-50%,-50%) rotate('+a+'rad)';ar.style.left=(vw/2+Math.cos(a)*Math.min(vw,vh)*.38)+'px';ar.style.top=(vh/2+Math.sin(a)*Math.min(vw,vh)*.38)+'px'}else ar.style.display='none'}
   let arT=99,nx=null;
   function drawPlayer(){
-    g.save();g.translate(px,py);try{if(SKINS[S.skin]&&SKINS[S.skin][1]!='none')g.filter=SKINS[S.skin][1]}catch(_){}
+    g.save();g.translate(px,py);try{if(SKINS[S.skin]&&SKINS[S.skin][1]!='none'){if('filter' in g)g.filter=SKINS[S.skin][1];else{g.strokeStyle=['','#58e04a','#4cc9ff','#b24bff','#ff4d5e','#ffd93d'][S.skin]||'#fff';g.lineWidth=3;g.globalAlpha=.85;g.beginPath();g.arc(0,-2,19,0,7);g.stroke();g.globalAlpha=1}}}catch(_){}
     g.fillStyle='#0003';g.beginPath();g.ellipse(0,12,12,4.5,0,0,7);g.fill();
     if(bT>0){g.strokeStyle='#7dffe0';g.globalAlpha=.6;g.lineWidth=2;g.beginPath();g.arc(0,-2,17+Math.sin(walk*2)*2,0,7);g.stroke();g.globalAlpha=1}
     const b=Math.sin(walk)*2,bob=Math.abs(Math.sin(walk))*-1.5;
@@ -4560,7 +4583,7 @@ A.putz=el=>{
 
 /* ===ARENA-END=== */
 
-Core.init();
+Core.init();window.__ok=1;
 setTimeout(()=>{$('#boot').style.opacity=0;setTimeout(()=>$('#boot').remove(),600)},3200);
 </script>
 </body>

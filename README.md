@@ -91,3 +91,6 @@ Die Dateien auf einen https-Host legen (z. B. Netlify Drop oder GitHub Pages), d
 - LucarioBot ist offline regelbasiert; freie Antworten gibt es nur mit eigenem KI-Server. Ein API-Schlüssel liegt unverschlüsselt im lokalen Speicher.
 - Nach einem Neustart musst du dich bei der LucarioID neu anmelden.
 - Lucario Arena: Der Online-Modus ist eine Simulation (Computer-Gegner). Echtes Online-Spielen bräuchte einen Spiele-Server.
+
+## Browser-Unterstützung
+Läuft in aktuellen Chrome, Edge, Firefox, Safari (iPhone ab iOS 14), Samsung Internet. Für ältere Browser werden fehlende Funktionen nachgerüstet; ist der Browser zu alt, erscheint ein Hinweis. Auf dem iPhone: In Safari öffnen, dann Teilen → „Zum Home-Bildschirm“. Der Link funktioniert nur in dieser Schreibweise: https://lucario109-hub.github.io/Claude-My-Phone-OS/
