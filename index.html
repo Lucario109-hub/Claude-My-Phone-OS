@@ -554,6 +554,25 @@ select.f{appearance:auto}
 #phone.sk-hw .lodate,#phone.sk-hw #search,#phone.sk-hw .lowd{border-color:rgba(255,138,31,.55)!important}
 #phone.sk-sv .lodate,#phone.sk-sv #search,#phone.sk-sv .lowd{border-color:rgba(255,200,61,.55)!important}
 .skc2{display:flex;align-items:center;gap:12px;padding:14px;border-radius:18px;margin-bottom:10px;color:#fff;border:2px solid transparent;cursor:pointer}.skc2.on{border-color:#ffd93d;box-shadow:0 0 18px #ffd93d66}.skem{font-size:34px}.skc2 div{flex:1}.skc2 b{display:block;font-size:16px}.skc2 small{opacity:.85;font-size:12px}.skc2 i{font-style:normal;font-weight:800;font-size:12px;background:#0006;padding:6px 10px;border-radius:12px}
+
+#phone.sk-xm.lo.cico .app .ic{background:radial-gradient(circle at 30% 20%,rgba(255,59,59,.32),rgba(12,6,20,.92) 70%)!important;border-color:rgba(255,90,90,.65)!important;animation:skxm 2.8s ease-in-out infinite alternate}
+#phone.sk-xm.lo.cico .app .ic svg{stroke:#ffe9e9!important;filter:drop-shadow(0 0 5px #ff3b3b)!important}
+#phone.sk-xm.lo.cico .app:nth-child(3n) .ic svg{stroke:#9dffb8!important;filter:drop-shadow(0 0 5px #2ecc71)!important}
+@keyframes skxm{from{box-shadow:0 0 8px rgba(255,59,59,.5),inset 0 0 10px rgba(46,204,113,.2)}to{box-shadow:0 0 20px rgba(255,59,59,.85),inset 0 0 14px rgba(255,255,255,.18)}}
+#phone.sk-xm .lodate,#phone.sk-xm #search,#phone.sk-xm .lowd{border-color:rgba(255,90,90,.55)!important}
+.skgx{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.skgx span{position:absolute;top:-8%;opacity:.5;animation:skfall linear infinite}
+@keyframes skfall{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(125vh) rotate(360deg)}}
+.skgx b{position:absolute;font-size:30px;opacity:.9;animation:skbob 2.4s ease-in-out infinite alternate;filter:drop-shadow(0 0 8px currentColor)}
+.skgx .c1{left:6px;bottom:30px}.skgx .c2{right:6px;bottom:30px;animation-delay:-.8s}.skgx .c3{right:8px;top:36px;font-size:22px;animation-delay:-1.4s}.skgx .c4{left:8px;top:36px;font-size:22px;animation-delay:-.4s}
+@keyframes skbob{from{transform:translateY(0) scale(1)}to{transform:translateY(-6px) scale(1.12)}}
+#phone.sk-hw.sk-game #win{background:linear-gradient(180deg,#120620,#2a0e45 60%,#3a1500)!important;box-shadow:inset 0 0 40px rgba(255,138,31,.35)}
+#phone.sk-sv.sk-game #win{background:linear-gradient(180deg,#05072a,#0e1650 60%,#3a2800)!important;box-shadow:inset 0 0 40px rgba(255,200,61,.3)}
+#phone.sk-xm.sk-game #win{background:linear-gradient(180deg,#060b22,#12234d 60%,#4a0f14)!important;box-shadow:inset 0 0 40px rgba(255,59,59,.3)}
+#phone.sk-hw.sk-game #body canvas{background:#1a0833!important;border:2px solid #ff8a1f;box-shadow:0 0 18px rgba(255,138,31,.55)}
+#phone.sk-sv.sk-game #body canvas{background:#080c3a!important;border:2px solid #ffc83d;box-shadow:0 0 18px rgba(255,200,61,.5)}
+#phone.sk-xm.sk-game #body canvas{background:#0a1838!important;border:2px solid #ff4d4d;box-shadow:0 0 18px rgba(255,77,77,.5)}
+#phone.sk-hw.sk-game #title{color:#ffae4d}#phone.sk-sv.sk-game #title{color:#ffd36b}#phone.sk-xm.sk-game #title{color:#ff8a8a}
 /* ================= 6.2: Lucario Arena (grafisch) ================= */
 .ag{position:relative;width:100%;height:100%;min-height:520px;background:#0b0f1e;color:#eaf0ff;font-family:system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .ag *{box-sizing:border-box}
@@ -4729,6 +4748,7 @@ A.putz=el=>{
       rocks.forEach(r=>{x.fillStyle='#4a5470';x.beginPath();x.roundRect(r[0]*u+2,r[1]*u+2,u-4,u-4,5);x.fill();x.fillStyle='#ffffff25';x.fillRect(r[0]*u+5,r[1]*u+5,u*.3,u*.15)});
       const pl=Math.sin(tm/160)*.07;Gl(x,'#ff4d4d',16,()=>{x.fillStyle='#ff4d4d';x.beginPath();x.arc((f[0]+.5)*u,(f[1]+.5)*u,u*(.38+pl),0,7);x.fill()});
       x.fillStyle='#ffffff99';x.beginPath();x.arc((f[0]+.38)*u,(f[1]+.36)*u,u*.1,0,7);x.fill();
+      if(window.SKFOOD){x.font=(u*1.05)+'px sans-serif';x.textAlign='center';x.fillText(window.SKFOOD,(f[0]+.5)*u,(f[1]+.5)*u+u*.36);x.textAlign='left'}
       if(gold){Gl(x,'#ffd93d',20,()=>{x.fillStyle='#ffd93d';x.beginPath();x.arc((gold.p[0]+.5)*u,(gold.p[1]+.5)*u,u*(.42+pl),0,7);x.fill()});x.fillStyle='#fff';x.font='bold '+(u*.7)+'px sans-serif';x.textAlign='center';x.fillText('★',(gold.p[0]+.5)*u,(gold.p[1]+.5)*u+u*.25);x.strokeStyle='#ffd93d';x.lineWidth=2;x.beginPath();x.arc((gold.p[0]+.5)*u,(gold.p[1]+.5)*u,u*.6,-Math.PI/2,-Math.PI/2+gold.t/70*Math.PI*2);x.stroke();x.textAlign='left'}
       for(let i=s.length-1;i>=0;i--){const p=s[i],k=1-i/(s.length+3);Gl(x,slowT>0?'#7dc8ff':'#2ecc71',i?6:12,()=>{x.fillStyle=i?'hsl('+((slowT>0?200:150)-(1-k)*30)+',75%,'+(48+k*14)+'%)':(slowT>0?'#c8ecff':'#9dffc8');x.beginPath();x.roundRect(p[0]*u+1,p[1]*u+1,u-2,u-2,i?5:7);x.fill()})}
       {const hd=s[0],cx=(hd[0]+.5)*u,cy=(hd[1]+.5)*u,ex=d[0]*u*.12,ey=d[1]*u*.12,px=-d[1]*u*.2,py=d[0]*u*.2;for(const sg of [-1,1]){x.fillStyle='#fff';x.beginPath();x.arc(cx+ex+px*sg,cy+ey+py*sg,u*.15,0,7);x.fill();x.fillStyle='#10202a';x.beginPath();x.arc(cx+ex*1.6+px*sg,cy+ey*1.6+py*sg,u*.07,0,7);x.fill()}}
@@ -4779,7 +4799,7 @@ A.putz=el=>{
 
 /* ===== Saison-Skins: Halloween 🎃 und Silvester 🎆 (animierte Szene hinter dem Homescreen) ===== */
 (()=>{
-  const SK={hw:{n:'Halloween',em:'🎃',acc:'#ff8a1f',desc:'Geister, Fledermäuse, Kürbisse, Funken und violetter Nebel'},sv:{n:'Silvester',em:'🎆',acc:'#ffc83d',desc:'Feuerwerk, goldenes Konfetti, funkelnde Skyline und Glanz'}};
+  const SK={hw:{n:'Halloween',em:'🎃',food:'🎃',deco:['🎃','👻','🦇','🕸️','🕯️','💀'],acc:'#ff8a1f',desc:'Geister, Fledermäuse, Kürbisse, Funken und violetter Nebel'},xm:{n:'Weihnachten',em:'🎄',acc:'#ff3b3b',food:'🎁',deco:['❄️','🎄','🎁','⭐','🎅','⛄'],desc:'Verschneites Dorf, Lichterketten, Weihnachtsbaum und Schneefall'},sv:{n:'Silvester',food:'🎆',deco:['🎆','🎇','✨','🥂','🎉','⭐'],em:'🎆',acc:'#ffc83d',desc:'Feuerwerk, goldenes Konfetti, funkelnde Skyline und Glanz'}};
   const ph=$('#phone');if(!ph)return;
   const cv=document.createElement('canvas');cv.id='skc';cv.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;display:none;background:#000!important;border:0!important;border-radius:0!important;box-shadow:none!important';
   try{ph.insertBefore(cv,$('#fxb')||$('#home'))}catch(e){ph.appendChild(cv)}
@@ -4852,12 +4872,23 @@ A.putz=el=>{
     conf.forEach(c=>{c.y+=c.v*dt*55;c.x+=Math.sin(t*1.5+c.p)*.6;c.r+=.08;if(c.y>H+8){c.y=-8;c.x=R(0,W)}g.save();g.translate(c.x,c.y);g.rotate(c.r);g.globalAlpha=.55+.4*Math.abs(Math.sin(c.r*2));g.fillStyle=c.c;g.fillRect(-c.s/2,-c.s/4,c.s,c.s/2);g.restore()});g.globalAlpha=1;
     shineT+=dt;const ph2=(shineT%7)/7;if(ph2<.5){const sx=-W*.3+ph2*2*(W*1.6),sg=g.createLinearGradient(sx,0,sx+W*.25,H*.4);sg.addColorStop(0,'rgba(255,255,255,0)');sg.addColorStop(.5,'rgba(255,240,200,.1)');sg.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=sg;g.fillRect(0,0,W,H)}}
   /* ---------- Steuerung ---------- */
-  function build(){if(!skin)return;bg=mkBg(skin=='hw'?hwBg:svBg);if(skin=='hw')hwInit();else svInit()}
+  const IM={};function img(k){if(!IM[k]){const i=new Image();IM[k]={i,ok:false};i.onload=()=>{IM[k].ok=true;if(skin==k)try{build()}catch(e){}};i.src='skin-'+k+'.jpg'}return IM[k]}
+  function imgBg(k,fb){const m=img(k);return mkBg(x=>{if(m.ok){const w=m.i.width,h=m.i.height,sc=Math.max(W/w,H/h);x.drawImage(m.i,(W-w*sc)/2,(H-h*sc)/2,w*sc,h*sc)}else fb(x)})}
+  /* ---------- WEIHNACHTEN ---------- */
+  function xmBg(x){const sg=x.createLinearGradient(0,0,0,H);sg.addColorStop(0,'#070b24');sg.addColorStop(.6,'#13244f');sg.addColorStop(1,'#1d2f5c');x.fillStyle=sg;x.fillRect(0,0,W,H)}
+  let snow,lights,shoot;
+  function xmInit(){snow=Array.from({length:lvl()?40:110},()=>({x:R(0,W),y:R(0,H),v:R(.4,1.5),p:R(0,6),s:R(1,3.2)}));lights=Array.from({length:14},(_,i)=>({x:(i+.5)/14*W,c:['#ff3b3b','#ffd23d','#3bff7a','#4cc3ff'][i%4],p:R(0,6)}));shoot=null}
+  function xmFrame(dt,t){g.drawImage(bg,0,0);
+    g.fillStyle='rgba(255,255,255,.85)';snow.forEach(f=>{f.y+=f.v*dt*45;f.x+=Math.sin(t*.8+f.p)*.4;if(f.y>H+4){f.y=-4;f.x=R(0,W)}g.globalAlpha=.45+f.s/6;g.beginPath();g.arc(f.x,f.y,f.s*SC,0,7);g.fill()});g.globalAlpha=1;
+    g.strokeStyle='rgba(20,60,30,.9)';g.lineWidth=2;g.beginPath();g.moveTo(0,4);lights.forEach(l=>g.lineTo(l.x,4+Math.sin(l.x/W*Math.PI*3)*7+8));g.lineTo(W,6);g.stroke();
+    lights.forEach(l=>{const y=12+Math.sin(l.x/W*Math.PI*3)*7,a=.55+.45*Math.sin(t*3+l.p);g.fillStyle=l.c;g.globalAlpha=a;g.shadowColor=l.c;g.shadowBlur=14;g.beginPath();g.arc(l.x,y,4.2,0,7);g.fill();g.shadowBlur=0});g.globalAlpha=1;
+    if(!shoot&&Math.random()<dt*.15)shoot={x:R(W*.3,W),y:R(0,H*.25),l:1};if(shoot){shoot.x-=dt*420;shoot.y+=dt*170;shoot.l-=dt*1.1;g.strokeStyle='rgba(255,255,255,'+Math.max(0,shoot.l)+')';g.lineWidth=2;g.beginPath();g.moveTo(shoot.x,shoot.y);g.lineTo(shoot.x+50,shoot.y-20);g.stroke();if(shoot.l<=0)shoot=null}}
+  function build(){if(!skin)return;if(skin=='hw'){bg=imgBg('hw',hwBg);hwInit()}else if(skin=='sv'){bg=imgBg('sv',svBg);svInit()}else{bg=imgBg('xm',xmBg);xmInit()}}
   function frame(t){raf=requestAnimationFrame(frame);if(document.hidden||ph.classList.contains('inapp')){last=t;return}
     const dt=Math.min(.1,(t-last)/1000),L=lvl();if(L>=2){if(T++%90)return}else if(dt<.032)return;last=t;
-    const tt=t/1000;try{skin=='hw'?hwFrame(dt||.033,tt):svFrame(dt||.033,tt)}catch(e){}}
-  function sync(){const s=(SET.skin==='hw'||SET.skin==='sv')&&SET.style=='lucario'&&!SET.reduce?SET.skin:'';
-    ph.classList.toggle('sk-hw',s=='hw');ph.classList.toggle('sk-sv',s=='sv');
+    const tt=t/1000;try{skin=='hw'?hwFrame(dt||.033,tt):skin=='xm'?xmFrame(dt||.033,tt):svFrame(dt||.033,tt)}catch(e){}}
+  function sync(){const s=(SET.skin==='hw'||SET.skin==='sv'||SET.skin==='xm')&&SET.style=='lucario'&&!SET.reduce?SET.skin:'';
+    ph.classList.toggle('sk-hw',s=='hw');ph.classList.toggle('sk-sv',s=='sv');ph.classList.toggle('sk-xm',s=='xm');window.SKFOOD=s?SK[s].food:'';
     if(s!==skin){skin=s;if(!s){cv.style.display='none';cancelAnimationFrame(raf);raf=0;return}cv.style.display='block';size();last=performance.now();if(!raf)raf=requestAnimationFrame(frame)}else if(s&&!raf){cv.style.display='block';raf=requestAnimationFrame(frame)}}
   /* Akzentfarbe des Skins in das LucarioOS-Design einspeisen */
   const _lt=loTheme;loTheme=function(){const s=SK[SET.skin];if(s&&SET.style=='lucario'){const o=SET.accent;SET.accent=s.acc;try{return _lt.apply(this,arguments)}finally{SET.accent=o}}return _lt.apply(this,arguments)};
@@ -4865,15 +4896,24 @@ A.putz=el=>{
   try{new ResizeObserver(()=>{if(skin)size()}).observe(ph)}catch(e){}
   window.__skBoom=()=>{if(skin=='sv')boom(W/2,H*.3)};
   /* Begrüßung */
-  setInterval(()=>{try{const e=$('#hgr');if(!e||!SK[SET.skin])return;const m=e.textContent.match(/,\s*([^\s!.]+)/),n=(m?m[1]:'Luca')+(SET.skin=='hw'?'.':'!');const t=(SET.skin=='hw'?'Gruselige Nacht, ':'Frohes neues Jahr, ')+n+(SET.skin=='hw'?' 🎃':' 🎉');if(e.textContent!==t)e.textContent=t}catch(_){}},1000);
+  setInterval(()=>{try{const e=$('#hgr');if(!e||!SK[SET.skin])return;const m=e.textContent.match(/,\s*([^\s!.]+)/),n=(m?m[1]:'Luca')+(SET.skin=='sv'?'!':'.');const t=(SET.skin=='hw'?'Gruselige Nacht, ':SET.skin=='xm'?'Frohe Weihnachten, ':'Frohes neues Jahr, ')+n+(SET.skin=='hw'?' 🎃':SET.skin=='xm'?' ❤️':' 🎉');if(e.textContent!==t)e.textContent=t}catch(_){}},1000);
+  /* ---------- Spiele-Theme: Deko-Ebene in jeder App ---------- */
+  const GM=['snake','g2048','memory','pong','flappy','simon','whack','tetris','breakout','fabrik','fussknabber','putz','arena','ttt','gamecenter','sudoku','minesweeper','slide','wordle','game'];
+  function deco(id){const w=$('#win');if(!w)return;let d=$('#skgx');if(d)d.remove();const s=SET.skin,k=SK[s];if(!k||SET.style!='lucario'||SET.reduce)return;
+    d=document.createElement('div');d.id='skgx';d.className='skgx';const n=lvl()?6:12;let h='';
+    for(let i=0;i<n;i++)h+='<span style="left:'+((i*83+11)%96)+'%;animation-duration:'+(9+(i*7)%9)+'s;animation-delay:-'+((i*5)%14)+'s;font-size:'+(16+(i*5)%16)+'px">'+k.deco[i%k.deco.length]+'</span>';
+    h+='<b class="c1">'+k.deco[0]+'</b><b class="c2">'+k.deco[1]+'</b><b class="c3">'+k.deco[2]+'</b><b class="c4">'+k.deco[3]+'</b>';d.innerHTML=h;w.appendChild(d)}
+  const _oa2=openApp;openApp=function(id){const r=_oa2.apply(this,arguments);try{ph.classList.toggle('sk-game',GM.includes(id));deco(id)}catch(e){}return r};
+  const _ca2=closeApp;closeApp=function(){try{const d=$('#skgx');if(d)d.remove();ph.classList.remove('sk-game')}catch(e){}return _ca2.apply(this,arguments)};
   /* App „Skins“ */
   apps.push({id:'skins',name:'Skins',bg:G('#ff8a1f','#7b2ff7'),svg:ic('<path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2 8 12.7 4 8.8 9.5 8z"/>')});
   A.skins=el=>{
     const draw=()=>{el.style.alignItems='stretch';el.style.padding='12px';
       const card=(k,n,em,desc,css)=>'<div class="skc2'+(SET.skin==k?' on':'')+'" data-k="'+k+'" style="background:'+css+'"><span class="skem">'+em+'</span><div><b>'+n+'</b><small>'+desc+'</small></div><i>'+(SET.skin==k?'Aktiv ✓':'Aktivieren')+'</i></div>';
-      el.innerHTML='<p style="opacity:.8;font-size:13px;margin:0 0 10px">Saison-Skins färben das ganze LucarioOS um und zeigen eine animierte Szene hinter dem Homescreen. Benötigt das LucarioOS-Design.</p>'
+      el.innerHTML='<p style="opacity:.8;font-size:13px;margin:0 0 10px">Saison-Skins färben das ganze LucarioOS um, zeigen dein Bild mit Animationen hinter dem Homescreen und verzieren auch alle Spiele (z. B. Halloween: Kürbisse, Geister, Fledermäuse). Benötigt das LucarioOS-Design.</p>'
         +card('','Standard','🌌','Dein normales LucarioOS-Design','linear-gradient(135deg,#0b1020,#1b2a6b)')
         +card('hw','Halloween','🎃',SK.hw.desc,'linear-gradient(135deg,#1a0833,#a64d00)')
+        +card('xm','Weihnachten','🎄',SK.xm.desc,'linear-gradient(135deg,#0b1a3a,#a01818)')
         +card('sv','Silvester','🎆',SK.sv.desc,'linear-gradient(135deg,#0a0d3a,#8a5a00)')
         +'<p style="opacity:.6;font-size:12px;margin-top:12px">Tipp: Bei Rucklern unter ⚡ Leistung im Schnellpanel auf „Sparsam“ stellen.</p>';
       el.querySelectorAll('[data-k]').forEach(c=>c.onclick=()=>{SET.skin=c.dataset.k;if(SET.skin&&SET.style!='lucario'){SET.style='lucario'}saveSet();applySet();try{renderHome()}catch(_){}Sys.toast(SET.skin?SK[SET.skin].em+' '+SK[SET.skin].n+'-Skin aktiv':'Standard-Design');draw()})};
