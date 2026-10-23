@@ -28,6 +28,7 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 Öffne einmal `update.html` (z. B. `https://lucario109-hub.github.io/Claude-My-Phone-OS/update.html`). Die Seite entfernt nur den alten Zwischenspeicher und startet LucarioNet neu. Spielstände bleiben erhalten.
 
 ## Neu in 6.4
+- Breakout 2.0 (Leben, Level, Power-Ups, Combo), Snake 2.0 (Portal-Modus, Goldapfel, Hindernisse, Tempo-Stufen), Putz Simulator: neue Mopps und Schwamm, mehr Quests, Hochglanz-Prestige.
 - Spiele: Spieler-Level mit XP und Titeln, Rekord-Feier mit Konfetti, Tagesherausforderung, Hardcore-Modus (30 % schneller, doppelte XP) und 23 Spiele-Erfolge im Spielecenter.
 - Fehleranzeige und Notstart für Browser, in denen etwas nicht lädt (z. B. Safari).
 - Fuß Knabber: Kaufmenge ×1 / ×10 / ×100 / MAX im Fruchtschnitten-Shop.
