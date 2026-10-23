@@ -530,6 +530,13 @@ select.f{appearance:auto}
 .pzsk{font-size:28px;width:42px;text-align:center}
 .fkbmr{display:flex;gap:6px;align-items:center;margin:0 0 8px;font-size:12px}.fkbmr span{opacity:.8;margin-right:4px}.fkbmr button{flex:1;border:1px solid #fff4;background:#ffffff14;color:#fff;border-radius:10px;padding:7px 0;font-weight:800}.fkbmr button.on{background:#ffd93d;color:#2a1a00;border-color:#ffd93d}
 .gcbar{height:12px;border-radius:8px;background:#ffffff1c;overflow:hidden;margin-top:6px}.gcbar i{display:block;height:100%;background:linear-gradient(90deg,#ffb21f,#ff5d8f);border-radius:8px}
+
+@property --na{syntax:'<angle>';inherits:false;initial-value:0deg}
+#phone.fx-neon-on::after{content:'';position:absolute;inset:0;border-radius:inherit;padding:2px;background:conic-gradient(from var(--na),var(--acc,#4cc9ff),#ff4dd2,#7dffb0,#ffd93d,var(--acc,#4cc9ff));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);mask-composite:exclude;pointer-events:none;z-index:9998;animation:fxneon 5s linear infinite;filter:drop-shadow(0 0 6px var(--acc,#4cc9ff))}
+@keyframes fxneon{to{--na:360deg}}
+#phone.glitching #win{animation:fxgl .55s steps(1,end) 1}
+@keyframes fxgl{0%{filter:hue-rotate(80deg) saturate(2.4) drop-shadow(-5px 0 #f0f) drop-shadow(5px 0 #0ff);transform:translateX(-5px) skewX(3deg)}15%{filter:drop-shadow(6px 0 #f0f) drop-shadow(-6px 0 #0ff) contrast(1.3);transform:translateX(6px)}30%{filter:none;transform:none}45%{filter:drop-shadow(-4px 0 #0ff) drop-shadow(4px 0 #f0f);transform:translateX(-3px) skewX(-2deg)}60%{filter:none;transform:none}80%{filter:hue-rotate(40deg) drop-shadow(3px 0 #f0f);transform:translateX(2px)}100%{filter:none;transform:none}}
+.qxr{grid-template-columns:repeat(4,1fr)!important}
 /* ================= 6.2: Lucario Arena (grafisch) ================= */
 .ag{position:relative;width:100%;height:100%;min-height:520px;background:#0b0f1e;color:#eaf0ff;font-family:system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .ag *{box-sizing:border-box}
@@ -4508,12 +4515,12 @@ A.putz=el=>{
   qpRender=function(){_qr.apply(this,arguments);try{
     const q=$('#qp');let x=q.querySelector('.qx');if(!x){x=document.createElement('div');x.className='qx';const c=$('#qpc');q.insertBefore(x,c)}
     const n=NL(),on=(v,d)=>v===undefined?d:v;
-    x.innerHTML='<div class="qxr"><button class="qt'+(SET.widgets!==0?' on':'')+'" data-x="wg"><span style="font-size:20px">🧩</span><span style="font-size:11px">Widgets</span></button><button class="qt'+(SET.tapfx!==0?' on':'')+'" data-x="fx"><span style="font-size:20px">👆</span><span style="font-size:11px">Klick-Effekte</span></button><button class="qt" data-x="gc"><span style="font-size:20px">🎮</span><span style="font-size:11px">Spielecenter</span></button></div>'
+    x.innerHTML='<div class="qxr"><button class="qt'+(SET.widgets!==0?' on':'')+'" data-x="wg"><span style="font-size:20px">🧩</span><span style="font-size:11px">Widgets</span></button><button class="qt'+(SET.tapfx!==0?' on':'')+'" data-x="fx"><span style="font-size:20px">👆</span><span style="font-size:11px">Klick-Effekte</span></button><button class="qt" data-x="gc"><span style="font-size:20px">🎮</span><span style="font-size:11px">Spielecenter</span></button><button class="qt'+(FXL.every(f=>SET.fx&&SET.fx[f[0]])?' on':'')+'" data-x="ul"><span style="font-size:20px">🚀</span><span style="font-size:11px">Ultra</span></button></div>'
       +'<div class="qxh"><b>Benachrichtigungen</b>'+(n.length?'<button data-x="cl">Löschen</button>':'')+'</div>'
       +(n.length?n.slice(0,8).map(i=>'<div class="qxn"><span>'+esc(i.t)+'</span><i>'+new Date(i.d).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+'</i></div>').join(''):'<div class="qxn" style="opacity:.6">Keine neuen Meldungen</div>');
     x.querySelectorAll('[data-x]').forEach(b=>b.onclick=e=>{e.stopPropagation();const k=b.dataset.x;
       if(k=='wg'){SET.widgets=SET.widgets===0?1:0;saveSet();wgtRender()}else if(k=='fx'){SET.tapfx=SET.tapfx===0?1:0;saveSet()}
-      else if(k=='cl'){W('notiflog',[])}else if(k=='gc'){qpToggle(false);openApp('gamecenter');return}
+      else if(k=='ul'){const all=FXL.every(f=>SET.fx&&SET.fx[f[0]]),o={};FXL.forEach(f=>o[f[0]]=all?0:1);SET.fx=o;if(!all)SET.reduce=0;saveSet();applySet();try{if(!all)window.tiltOn()}catch(_){}Sys.toast(all?'Ultra aus':'🚀 ULTRA-Modus an: alle '+FXL.length+' Effekte')}else if(k=='cl'){W('notiflog',[])}else if(k=='gc'){qpToggle(false);openApp('gamecenter');return}
       qpRender()})}catch(e){}};
 
   /* ---- Update-Hinweis ---- */
@@ -4709,6 +4716,37 @@ A.putz=el=>{
     swipe(c,set);$('#rs').onclick=init;$('#sm').onclick=()=>{portal=!portal;LS.snmode=portal?'1':'0';init()};
     const kh=e=>{const m={ArrowUp:'u',ArrowDown:'d',ArrowLeft:'l',ArrowRight:'r'}[e.key];if(m)set(m)};addEventListener('keydown',kh);
     init();tmo=setTimeout(loopT,delay());const rf=loop60(()=>{},draw);return()=>{clearTimeout(tmo);rf();removeEventListener('keydown',kh)}};
+
+  /* ===== Ultra-Effekte: Partikel-Spur, Code-Regen, Sternschnuppen, Glühwürmchen, Glitch, Neon ===== */
+  FXL.push(['trail','Partikel-Spur','Leuchtende Funken folgen deinem Finger'],['matrix','Code-Regen','Leuchtender Zeichen-Regen im Hintergrund'],['meteor','Sternschnuppen','Sternschnuppen ziehen über den Homescreen'],['fireflies','Glühwürmchen','Leuchtende Punkte schweben herum'],['glitch','Glitch-Öffnen','Apps öffnen mit kurzem RGB-Glitch'],['neon','Neon-Rahmen','Rotierender Neon-Rand um das Handy']);
+  {const ph=$('#phone'),mk=(id,z)=>{const c=document.createElement('canvas');c.id=id;c.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;z-index:'+z;return c};
+   const cb=mk('fxb',0),ct=mk('fxt',60);try{ph.insertBefore(cb,$('#home'))}catch(e){ph.appendChild(cb)}ph.appendChild(ct);
+   const xb=cb.getContext('2d'),xt=ct.getContext('2d');let W=0,H=0,raf=0,last=0,slow=0,low=false;
+   const on=k=>!!(SET.fx&&SET.fx[k])&&!SET.reduce;
+   const size2=()=>{const r=ph.getBoundingClientRect();W=cb.width=ct.width=Math.max(1,r.width|0);H=cb.height=ct.height=Math.max(1,r.height|0);cols=Math.ceil(W/18);drops=Array.from({length:cols},()=>Math.random()*-40)};
+   let cols=0,drops=[],mets=[],flies=Array.from({length:16},()=>({x:Math.random(),y:Math.random(),a:Math.random()*6,s:.0004+Math.random()*.0007,r:2+Math.random()*3})),trail=[],mt=0,metT=0,CH='01アイウエオカキクケコサシスセソ<>/+=*'.split('');
+   const acc=()=>SET.accent||'#4cc9ff';
+   const rgb=hx=>{const n=parseInt((hx||'#4cc9ff').slice(1),16);return [n>>16&255,n>>8&255,n&255]};
+   const anyOn=()=>on('matrix')||on('meteor')||on('fireflies')||on('trail');
+   const addT=(e)=>{if(!on('trail'))return;if(e.pointerType=='mouse'&&!e.buttons&&e.type!='pointerdown')return;const r=ph.getBoundingClientRect();for(let i=0;i<3;i++)trail.push({x:e.clientX-r.left,y:e.clientY-r.top,vx:(Math.random()-.5)*2.4,vy:(Math.random()-.5)*2.4-.6,l:1,h:(Date.now()/6+i*30)%360});if(trail.length>160)trail.splice(0,trail.length-160);start()};
+   addEventListener('pointermove',addT,true);addEventListener('pointerdown',addT,true);
+   function frame(t){raf=requestAnimationFrame(frame);if(document.hidden)return;const dt=t-last;last=t;if(dt>38){slow++}else slow=Math.max(0,slow-1);low=slow>50;
+     const home=!ph.classList.contains('inapp');xb.clearRect(0,0,W,H);xt.clearRect(0,0,W,H);
+     if(home){const c=rgb(acc());
+       if(on('matrix')&&!low){xb.font='14px monospace';xb.textAlign='center';for(let i=0;i<cols;i++){drops[i]+=.35+(i%5)*.08;if(drops[i]*18>H+200&&Math.random()>.97)drops[i]=Math.random()*-30;const y=drops[i];for(let k=0;k<9;k++){const yy=(y-k)*18;if(yy<-10||yy>H+10)continue;xb.fillStyle='rgba('+(k?c.join(','):'255,255,255')+','+(k?(.34-k*.035):.55)+')';xb.fillText(CH[(i*7+k+(y|0))%CH.length],i*18+9,yy)}}}
+       if(on('fireflies')){flies.forEach(f=>{f.a+=.02;f.x+=Math.cos(f.a)*f.s;f.y+=Math.sin(f.a*.8)*f.s*1.4-.0001;if(f.y<-.05)f.y=1.05;if(f.x<-.05)f.x=1.05;if(f.x>1.05)f.x=-.05;const al=.35+.4*Math.sin(f.a*2),g=xb.createRadialGradient(f.x*W,f.y*H,0,f.x*W,f.y*H,f.r*5);g.addColorStop(0,'rgba(255,240,150,'+al+')');g.addColorStop(1,'rgba(255,240,150,0)');xb.fillStyle=g;xb.beginPath();xb.arc(f.x*W,f.y*H,f.r*5,0,7);xb.fill()})}
+       if(on('meteor')){if(t>metT){metT=t+1800+Math.random()*3500;mets.push({x:Math.random()*W*.8+W*.2,y:Math.random()*H*.35,l:1})}
+         mets.forEach(m=>{m.x-=7;m.y+=3.6;m.l-=.018;const g=xb.createLinearGradient(m.x,m.y,m.x+70,m.y-36);g.addColorStop(0,'rgba(255,255,255,'+m.l+')');g.addColorStop(1,'rgba(255,255,255,0)');xb.strokeStyle=g;xb.lineWidth=2;xb.beginPath();xb.moveTo(m.x,m.y);xb.lineTo(m.x+70,m.y-36);xb.stroke()});mets=mets.filter(m=>m.l>0)}}
+     if(trail.length){xt.globalCompositeOperation='lighter';trail.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.03;p.l-=.028;if(p.l>0){const r=2+p.l*5;const g=xt.createRadialGradient(p.x,p.y,0,p.x,p.y,r*2);g.addColorStop(0,'hsla('+p.h+',100%,70%,'+p.l+')');g.addColorStop(1,'hsla('+p.h+',100%,50%,0)');xt.fillStyle=g;xt.beginPath();xt.arc(p.x,p.y,r*2,0,7);xt.fill()}});trail=trail.filter(p=>p.l>0);xt.globalCompositeOperation='source-over'}
+     if(!anyOn()&&!trail.length){cancelAnimationFrame(raf);raf=0;xb.clearRect(0,0,W,H);xt.clearRect(0,0,W,H)}}
+   function start(){if(!raf&&anyOn()||(!raf&&trail.length)){if(!W)size2();last=performance.now();raf=requestAnimationFrame(frame)}}
+   try{new ResizeObserver(()=>{size2()}).observe(ph)}catch(e){addEventListener('resize',size2)}
+   size2();
+   const _as=applySet;applySet=function(){const r=_as.apply(this,arguments);try{ph.classList.toggle('fx-neon-on',on('neon'));ph.classList.toggle('fx-glitch-on',on('glitch'));start()}catch(e){}return r};
+   try{applySet()}catch(e){}
+   const _oa2=openApp;openApp=function(){const r=_oa2.apply(this,arguments);try{if(on('glitch')){ph.classList.remove('glitching');void ph.offsetWidth;ph.classList.add('glitching');setTimeout(()=>ph.classList.remove('glitching'),560)}}catch(e){}return r};
+   const _cc=closeApp;closeApp=function(){const r=_cc.apply(this,arguments);try{start()}catch(e){}return r};
+  }
 
   try{renderHome();loDots()}catch(e){}
 })();
