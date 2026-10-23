@@ -594,7 +594,8 @@ select.f{appearance:auto}
 <body>
 <div id="oldb"><div><h2>Dein Browser ist zu alt</h2><p>LucarioNet braucht einen aktuellen Browser. Öffne den Link in <b>Chrome</b>, <b>Safari</b> (iPhone: iOS 14 oder neuer), <b>Firefox</b> oder <b>Edge</b>. Wenn du den Link in WhatsApp, Instagram oder einer KI-App geöffnet hast: tippe auf „In Browser öffnen“.</p></div></div>
 <noscript><div style="position:fixed;inset:0;z-index:99999;background:#0b1020;color:#fff;padding:30px;font-family:system-ui,sans-serif"><h2>JavaScript ist aus</h2><p>LucarioNet braucht JavaScript. Bitte schalte es in den Browser-Einstellungen ein.</p></div></noscript>
-<script>window.__ok=0;setTimeout(function(){if(!window.__ok){var o=document.getElementById('oldb');if(o)o.style.display='flex'}},9000);addEventListener('error',function(e){if(!window.__ok&&e&&e.message&&/Syntax|Unexpected/i.test(e.message)){var o=document.getElementById('oldb');if(o)o.style.display='flex'}});</script>
+<script>window.__ok=0;setTimeout(function(){if(!window.__ok){var o=document.getElementById('oldb');if(o)o.style.display='flex'}},9000);window.__errs=[];function __showErr(m){try{window.__errs.push(m);var b=document.getElementById('errb');if(!b){b=document.createElement('div');b.id='errb';b.style.cssText='position:fixed;left:6px;right:6px;bottom:6px;z-index:99998;background:#5a0f1a;color:#fff;font:12px/1.4 system-ui,sans-serif;padding:8px 10px;border-radius:10px;max-height:40%;overflow:auto;-webkit-user-select:text;user-select:text';b.onclick=function(){b.style.display='none'};(document.body||document.documentElement).appendChild(b)}b.style.display='block';b.textContent='⚠ Fehler (antippen zum Schließen): '+window.__errs.slice(-3).join(' | ')}catch(_){}}
+addEventListener('error',function(e){if(!e)return;__showErr((e.message||'Fehler')+(e.lineno?' [Zeile '+e.lineno+']':''))});addEventListener('unhandledrejection',function(e){__showErr('Promise: '+(e&&e.reason&&(e.reason.message||e.reason)))});</script>
 <div id="phone">
   <div id="boot">
     <div class="bflash"></div>
@@ -4583,8 +4584,9 @@ A.putz=el=>{
 
 /* ===ARENA-END=== */
 
-Core.init();window.__ok=1;
+try{Core.init()}catch(e){__showErr('Start: '+(e&&e.message))}window.__ok=1;
 setTimeout(()=>{$('#boot').style.opacity=0;setTimeout(()=>$('#boot').remove(),600)},3200);
 </script>
+<script>setTimeout(function(){try{if(!window.__ok&&typeof Core!='undefined'){Core.init();window.__ok=1}}catch(e){__showErr('Notstart: '+(e&&e.message))}},1800);</script>
 </body>
 </html>
