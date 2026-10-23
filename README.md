@@ -28,6 +28,7 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 Öffne einmal `update.html` (z. B. `https://lucario109-hub.github.io/Claude-My-Phone-OS/update.html`). Die Seite entfernt nur den alten Zwischenspeicher und startet LucarioNet neu. Spielstände bleiben erhalten.
 
 ## Neu in 6.4
+- Saison-Skins (App „Skins“): Halloween 🎃 und Silvester 🎆 mit animierter Szene (Geister, Fledermäuse, Kürbisse, Feuerwerk, Konfetti, Skyline).
 - Leistungs-Wächter: senkt Effekte automatisch bei niedriger Bildrate; Schalter ⚡ Leistung (Auto/Voll/Sparsam/Minimal) im Schnellpanel.
 - Ultra-Modus: 6 neue Effekte (Partikel-Spur, Code-Regen, Sternschnuppen, Glühwürmchen, Glitch-Öffnen, Neon-Rahmen) und 🚀-Schalter im Schnellpanel.
 - Breakout 2.0 (Leben, Level, Power-Ups, Combo), Snake 2.0 (Portal-Modus, Goldapfel, Hindernisse, Tempo-Stufen), Putz Simulator: neue Mopps und Schwamm, mehr Quests, Hochglanz-Prestige.
