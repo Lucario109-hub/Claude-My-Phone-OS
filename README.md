@@ -28,6 +28,7 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 Öffne einmal `update.html` (z. B. `https://lucario109-hub.github.io/Claude-My-Phone-OS/update.html`). Die Seite entfernt nur den alten Zwischenspeicher und startet LucarioNet neu. Spielstände bleiben erhalten.
 
 ## Neu in 6.4
+- Skins maximal: Blitz und Spinne (Halloween), Polarlicht und Schlitten (Weihnachten), Suchscheinwerfer (Silvester), pulsierende Leuchtringe, Tipp-Effekte, Kacheln passen sich der Bildschirmhöhe an.
 - Skin-Bild-Modus: Der Homescreen sieht exakt aus wie deine Bilder (Halloween, Weihnachten, Silvester) mit echter Uhr, Datum und Akku; Wischen nach oben zeigt alle Apps, "Skin-Home" bringt dich zurück.
 - Skins: Effekte einstellbar (Partikel, Tempo, Leuchten, Bildschärfe, Helligkeit, Spiele-Deko), Skin-Look mit farbiger Uhr, Logo und Mützen, Animationen laufen auch im Sparmodus.
 - Skins aus deinen Originalbildern: Halloween, Weihnachten und Silvester nutzen deine Bilder als Hintergrund mit Animationen; in jedem Spiel gibt es passende Deko (Kürbisse, Geister, Schnee, Geschenke, Feuerwerk) und Snake-Futter im Skin-Look.

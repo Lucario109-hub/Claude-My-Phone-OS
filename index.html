@@ -610,7 +610,7 @@ select.f{appearance:auto}
 
 
 .sksc{min-height:0}.sksc>*{flex-shrink:0}
-.skh .xup{position:absolute;left:0;right:0;top:1440px;text-align:center;font-size:30px;font-weight:700;color:#fff;opacity:.75;text-shadow:0 0 12px #000;pointer-events:none;animation:skbob 1.6s ease-in-out infinite alternate}
+.skh .xup{position:absolute;left:0;right:0;top:1462px;text-align:center;font-size:30px;font-weight:700;color:#fff;opacity:.75;text-shadow:0 0 12px #000;pointer-events:none;animation:skbob 1.6s ease-in-out infinite alternate}
 
 .skh .s1{position:relative;height:100%;overflow:hidden;scroll-snap-align:start}
 .skh .s2{min-height:100%;box-sizing:border-box;scroll-snap-align:start;padding:46px 14px 40px;background:linear-gradient(rgba(4,2,10,.55),rgba(4,2,10,.82)),var(--skbg) center/cover}
@@ -627,6 +627,28 @@ select.f{appearance:auto}
 .skh .xgap .gp{position:relative;pointer-events:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-radius:44px;border:3px solid var(--gc,#ff8a1f);background:rgba(8,5,16,.72);box-shadow:0 0 30px var(--gc,#ff8a1f)55,inset 0 0 30px var(--gc,#ff8a1f)22;color:#fff;font-style:normal}
 .skh .gp em{font-style:normal;font-size:84px;line-height:1}.skh .gp span{font-size:32px;font-weight:600}
 .skh.hw{--gc:#ff8a1f}.skh.xm{--gc:#ff4d4d}.skh.sv{--gc:#ffc83d}
+
+/* DOM-Animationen auf dem Bild */
+.skh .xlg{position:absolute;border-radius:50%;pointer-events:none;mix-blend-mode:screen;opacity:0}
+.skh .xsr{position:absolute;border-radius:60px;overflow:hidden;pointer-events:none}.skh .xsr i{position:absolute;top:0;bottom:0;width:26%;left:-30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent);opacity:0}
+.skh .hs.ap::after{content:'';position:absolute;left:12px;right:12px;top:6px;height:136px;border-radius:40px;opacity:0;pointer-events:none}
+.skh .xlr{position:absolute;display:none}
+.sk-fxa .skh .xlg{opacity:1;animation:skgl 3.4s ease-in-out infinite alternate}
+.sk-fxa .skh.hw .xlg{background:radial-gradient(circle,rgba(255,140,30,.55),rgba(255,90,0,0) 65%);animation:skfl 1.9s steps(1,end) infinite}
+.sk-fxa .skh.xm .xlg{background:radial-gradient(circle,rgba(255,60,60,.45),rgba(255,60,60,0) 65%)}
+.sk-fxa .skh.sv .xlg{background:radial-gradient(circle,rgba(255,210,70,.5),rgba(255,210,70,0) 65%)}
+@keyframes skgl{from{transform:scale(.85);opacity:.5}to{transform:scale(1.12);opacity:1}}
+@keyframes skfl{0%{opacity:.9;transform:scale(1)}18%{opacity:.45;transform:scale(.93)}32%{opacity:1;transform:scale(1.06)}55%{opacity:.6}70%{opacity:1;transform:scale(1.02)}85%{opacity:.5}}
+.sk-fxa .skh .xsr i{animation:sksh 5.5s ease-in-out infinite}
+@keyframes sksh{0%{left:-30%;opacity:0}10%{opacity:1}45%{left:110%;opacity:1}46%,100%{left:110%;opacity:0}}
+.sk-fxa .skh .hs.ap::after{animation:skring 3.2s ease-in-out infinite;box-shadow:0 0 26px 2px var(--gc),inset 0 0 22px var(--gc)}
+.sk-fxa .skh .hs.ap:nth-child(3n)::after{animation-delay:-.8s}.sk-fxa .skh .hs.ap:nth-child(3n+1)::after{animation-delay:-1.6s}.sk-fxa .skh .hs.ap:nth-child(4n)::after{animation-delay:-2.4s}
+@keyframes skring{0%,100%{opacity:0}50%{opacity:.5}}
+.sk-fxa .skh .xclk span{animation:skcg 2.6s ease-in-out infinite alternate}.sk-fxa .skh .xclk .xm{animation-delay:-1.3s}
+@keyframes skcg{from{filter:drop-shadow(0 0 10px currentColor)}to{filter:drop-shadow(0 0 34px currentColor)}}
+.sk-fxa .skh .xg{animation:skbob 3s ease-in-out infinite alternate}
+.sk-fxa .skh .xp{animation:skgl 4s ease-in-out infinite alternate}
+#phone.perf3 .skh *{animation:none!important}
 /* ================= 6.2: Lucario Arena (grafisch) ================= */
 .ag{position:relative;width:100%;height:100%;min-height:520px;background:#0b0f1e;color:#eaf0ff;font-family:system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .ag *{box-sizing:border-box}
@@ -4859,7 +4881,7 @@ A.putz=el=>{
   try{ph.insertBefore(cv,$('#fxb')||$('#home'))}catch(e){ph.appendChild(cv)}
   const g=cv.getContext('2d');let W=0,H=0,bg=null,raf=0,last=0,skin='',T=0;
   const R=(a,b)=>a+Math.random()*(b-a),perf=()=>{const c=ph.classList;return c.contains('perf3')?3:c.contains('perf2')?2:c.contains('perf1')?1:0};
-  const DEF={ex:1,dens:100,spd:100,glow:100,sharp:0,dim:100,games:1,gdens:100,anim:1,look:1,force:0},K=()=>Object.assign({},DEF,SET.skfx||{});let DN=1,drawn=false,exShown=false;
+  const DEF={extra:1,ex:1,dens:100,spd:100,glow:100,sharp:0,dim:100,games:1,gdens:100,anim:1,look:1,force:0},K=()=>Object.assign({},DEF,SET.skfx||{});let DN=1,drawn=false,exShown=false;
   const lvl=()=>K().force?0:perf();
   /* ---------- Zustand je Skin ---------- */
   let flares=[],fog,bats,ghosts,embers,pumps,rockets,sparks,conf,wins,ripples,shineT;
@@ -4947,11 +4969,26 @@ A.putz=el=>{
     lights.forEach(l=>{const y=12+Math.sin(l.x/W*Math.PI*3)*7,a=.55+.45*Math.sin(t*3+l.p);g.fillStyle=l.c;g.globalAlpha=a;g.shadowColor=l.c;g.shadowBlur=14;g.beginPath();g.arc(l.x,y,4.2,0,7);g.fill();g.shadowBlur=0});g.globalAlpha=1;
     if(!shoot&&Math.random()<dt*DN*.15)shoot={x:R(W*.3,W),y:R(0,H*.25),l:1};if(shoot){shoot.x-=dt*420;shoot.y+=dt*170;shoot.l-=dt*1.1;g.strokeStyle='rgba(255,255,255,'+Math.max(0,shoot.l)+')';g.lineWidth=2;g.beginPath();g.moveTo(shoot.x,shoot.y);g.lineTo(shoot.x+50,shoot.y-20);g.stroke();if(shoot.l<=0)shoot=null}}
   function scale(a,f){if(!a||f===1)return a;if(f<1){a.length=Math.floor(a.length*f)}else{const n=a.length;for(let i=0;i<Math.round(n*(f-1));i++){const c=Object.assign({},a[i%n]);c.x=R(0,W);c.y=R(0,H);a.push(c)}}return a}
+  /* ---------- Extra-Animationen (Blitz, Spinne, Schlitten, Aurora, Strahler, Tipp-Effekte) ---------- */
+  let tp=[],ltm=4,lfl=0,spd=null,slg=null,slT=12;
+  function burst(x,y){if(!skin)return;const n=lvl()?8:18;
+    if(skin=='sv'){try{boom(x,y)}catch(e){}return}
+    for(let i=0;i<n;i++){const a=R(0,6.28),v=R(40,170);tp.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-(skin=='hw'?60:0),g:skin=='hw'?-40:60,l:R(.6,1.3),s:R(1.5,3.5),c:skin=='hw'?['#ff8a1f','#ffd24a','#a56bff'][i%3]:['#ffffff','#ff5a5a','#ffd24a','#7dffb0'][i%4]})}
+    tp.push({x:x,y:y,vx:R(-30,30),vy:skin=='hw'?-90:50,g:0,l:1.6,s:26,e:skin=='hw'?'🦇':'🎁'});if(tp.length>150)tp.splice(0,tp.length-150)}
+  function extra(dt,t){const q=K();if(!q.extra)return;const lo=lvl();
+    for(let i=tp.length-1;i>=0;i--){const p=tp[i];p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=p.g*dt;p.l-=dt;if(p.l<=0){tp.splice(i,1);continue}g.globalAlpha=Math.min(1,p.l*2);if(p.e){g.font=p.s+'px serif';g.textAlign='center';g.fillText(p.e,p.x,p.y)}else{g.fillStyle=p.c;g.beginPath();g.arc(p.x,p.y,p.s,0,7);g.fill()}}g.globalAlpha=1;
+    if(skin=='hw'){ltm-=dt;if(ltm<=0){lfl=.55;ltm=R(7,15)}if(lfl>0){g.fillStyle='rgba(190,160,255,'+(lfl*(Math.random()>.4?1:.35))+')';g.fillRect(0,0,W,H*.55);lfl-=dt*1.7}
+      if(!spd&&!lo&&Math.random()<dt*.06)spd={x:R(W*.08,W*.92),y:-6,ty:R(H*.12,H*.4),ph:0,w:0};
+      if(spd){if(spd.ph==0){spd.y+=dt*60;if(spd.y>=spd.ty){spd.ph=1}}else if(spd.ph==1){spd.w+=dt;if(spd.w>2)spd.ph=2}else{spd.y-=dt*80;if(spd.y<-12)spd=null}
+        if(spd){g.strokeStyle='rgba(255,255,255,.5)';g.lineWidth=1;g.beginPath();g.moveTo(spd.x,0);g.lineTo(spd.x,spd.y);g.stroke();g.font=Math.round(W*.06)+'px serif';g.textAlign='center';g.fillText('🕷️',spd.x,spd.y+W*.04)}}}
+    else if(skin=='xm'){g.globalCompositeOperation='lighter';[['rgba(60,255,160,','.07',.18],['rgba(160,90,255,','.06',.26],['rgba(60,200,255,','.05',.12]].forEach((a,i)=>{const yy=H*(a[2])+Math.sin(t*.4+i*2)*H*.03,gr=g.createLinearGradient(0,yy-H*.12,0,yy+H*.12);gr.addColorStop(0,a[0]+'0)');gr.addColorStop(.5,a[0]+(.08+.05*Math.sin(t*.7+i))+')');gr.addColorStop(1,a[0]+'0)');g.fillStyle=gr;g.fillRect(0,yy-H*.12,W,H*.24)});g.globalCompositeOperation='source-over';
+      slT-=dt;if(!slg&&slT<=0&&!lo){slg={x:-W*.3,y:R(H*.05,H*.14)};slT=R(20,40)}if(slg){slg.x+=dt*W*.16;slg.y+=Math.sin(t*2)*.3;g.font=Math.round(W*.07)+'px serif';g.textAlign='left';g.fillText('🦌🦌🛷',slg.x,slg.y);if(Math.random()<.5)tp.push({x:slg.x,y:slg.y+6,vx:R(-25,0),vy:R(5,30),g:20,l:R(.5,1),s:R(1,2.2),c:'#ffe9a0'});if(slg.x>W)slg=null}}
+    else if(skin=='sv'){g.globalCompositeOperation='lighter';[[.15,1],[.85,-1]].forEach((b,i)=>{const a=Math.sin(t*.55+i*2)*.4*b[1],x0=W*b[0],y0=H,len=H*1.1,gr=g.createLinearGradient(x0,y0,x0+Math.sin(a)*len,y0-Math.cos(a)*len);gr.addColorStop(0,'rgba(255,230,160,.22)');gr.addColorStop(1,'rgba(255,230,160,0)');g.fillStyle=gr;g.beginPath();g.moveTo(x0-8,y0);g.lineTo(x0+8,y0);g.lineTo(x0+Math.sin(a)*len+W*.12,y0-Math.cos(a)*len);g.lineTo(x0+Math.sin(a)*len-W*.12,y0-Math.cos(a)*len);g.fill()});g.globalCompositeOperation='source-over'}}
   function build(){if(!skin)return;DN=K().dens/100;if(skin=='hw'){bg=imgBg('hw',hwBg);hwInit();embers=scale(embers,DN)}else if(skin=='sv'){bg=imgBg('sv',svBg);svInit();conf=scale(conf,DN)}else{bg=imgBg('xm',xmBg);xmInit();snow=scale(snow,DN)}drawn=false}
   function frame(t){raf=requestAnimationFrame(frame);if(document.hidden||ph.classList.contains('inapp')){last=t;return}
     const q=K(),dt0=Math.min(.1,(t-last)/1000),L=lvl();if(!q.anim&&drawn){last=t;return}if(L>=2){if(dt0<.05)return}else if(dt0<.032)return;last=t;const dt=dt0*q.spd/100;drawn=true;
-    const tt=t/1000;try{skin=='hw'?hwFrame(dt||.033,tt):skin=='xm'?xmFrame(dt||.033,tt):svFrame(dt||.033,tt)}catch(e){}}
-  function sync(){try{const q=K();ph.style.setProperty('--skg',q.glow/100);ph.classList.toggle('sk-look',!!q.look)}catch(_){}const s=(SET.skin==='hw'||SET.skin==='sv'||SET.skin==='xm')&&SET.style=='lucario'&&!SET.reduce?SET.skin:'';
+    const tt=t/1000;try{skin=='hw'?hwFrame(dt||.033,tt):skin=='xm'?xmFrame(dt||.033,tt):svFrame(dt||.033,tt);extra(dt||.033,tt)}catch(e){}}
+  function sync(){try{const q=K();ph.style.setProperty('--skg',q.glow/100);ph.classList.toggle('sk-look',!!q.look);ph.classList.toggle('sk-fxa',!!q.extra&&!!q.anim)}catch(_){}const s=(SET.skin==='hw'||SET.skin==='sv'||SET.skin==='xm')&&SET.style=='lucario'&&!SET.reduce?SET.skin:'';
     ph.classList.toggle('sk-hw',s=='hw');ph.classList.toggle('sk-sv',s=='sv');ph.classList.toggle('sk-xm',s=='xm');window.SKFOOD=s?SK[s].food:'';
     if(s!==skin){skin=s;if(s)try{build()}catch(e){}if(!s){cv.style.display='none';cancelAnimationFrame(raf);raf=0;try{exSync()}catch(_){};return}cv.style.display='block';size();last=performance.now();if(!raf)raf=requestAnimationFrame(frame)}else if(s&&!raf){cv.style.display='block';raf=requestAnimationFrame(frame)}try{exSync()}catch(_){}}
   /* Akzentfarbe des Skins in das LucarioOS-Design einspeisen */
@@ -4969,7 +5006,7 @@ A.putz=el=>{
   const IDS1=['ai','terminal','gallery','tube'],IDS2=['arena','camera','music','support'],IDS3=['messenger','browser','mail','phone'];
   let exRoot=null,exHidden=false,batt=null,exIv=0;
   try{navigator.getBattery&&navigator.getBattery().then(b=>{batt=b})}catch(e){}
-  function exLayout(){if(!exRoot)return;const r=ph.getBoundingClientRect(),G0=geo(r.width,r.height);const i=exRoot.querySelector('.skhi');i.style.transform='translate('+G0.ox+'px,'+G0.oy+'px) scale('+G0.s+')';const b=exRoot.querySelector('.skb');if(b)b.style.transform='translateY('+(G0.gap/G0.s)+'px)';const gp=exRoot.querySelector('.xgap');if(gp){const hh=G0.gap/G0.s-20;gp.style.height=hh+'px';gp.style.display=hh>150?'grid':'none'}}
+  function exLayout(){if(!exRoot)return;const r=ph.getBoundingClientRect(),G0=geo(r.width,r.height);const i=exRoot.querySelector('.skhi');i.style.transform='translate('+G0.ox+'px,'+G0.oy+'px) scale('+G0.s+')';const b=exRoot.querySelector('.skb');if(b)b.style.transform='translateY('+(G0.gap/G0.s)+'px)';const gp=exRoot.querySelector('.xgap');if(gp){const hh=G0.gap/G0.s-20;gp.style.height=hh+'px';const rows=hh>=340?2:hh>=175?1:0;gp.style.display=rows?'grid':'none';gp.style.gridTemplateRows='repeat('+rows+',1fr)';[...gp.children].forEach((c,i)=>c.style.display=i<rows*3?'flex':'none')}}
   function exTxt(){if(!exRoot)return;const n=new Date(),hh=String(n.getHours()).padStart(2,'0'),mm=String(n.getMinutes()).padStart(2,'0'),L=LY[skin],c=CO[skin];
     const q=(a)=>exRoot.querySelector(a);q('.xh').textContent=hh;q('.xm').textContent=mm;
     const days=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],mo=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
@@ -4978,19 +5015,23 @@ A.putz=el=>{
     const h=n.getHours();q('.xg').textContent=skin=='xm'?'Frohe Weihnachten, '+nm+'. ❤️':skin=='sv'?'Frohes neues Jahr, '+nm+'! 🎉':(h<11?'Guten Morgen, ':h<18?'Guten Tag, ':'Guten Abend, ')+nm+'.';
     q('.xa').textContent=batt?Math.round(batt.level*100)+' %':'100 %';q('.xn').textContent=navigator.onLine===false?'Offline':'Verbunden'}
   function exBuild(){exDestroy();const L=LY[skin],c=CO[skin];exRoot=document.createElement('div');exRoot.id='skh';exRoot.className='skh '+skin;
-    const hs=(x,y,w,h,fn,l)=>'<i class="hs" data-a="'+fn+'" style="left:'+x+'px;top:'+y+'px;width:'+w+'px;height:'+h+'px" aria-label="'+l+'"></i>';
+    const hs=(x,y,w,h,fn,l)=>'<i class="hs'+(fn[0]=='#'?'':' ap')+'" data-a="'+fn+'" style="left:'+x+'px;top:'+y+'px;width:'+w+'px;height:'+h+'px" aria-label="'+l+'"></i>';
     let h='<section class="s1"><div class="skhi" style="width:940px;height:1494px">';
     h+='<u class="xp" style="left:'+(L.d[0]+8)+'px;top:'+(L.d[1]-178+8)+'px;width:'+(L.d[2]-L.d[0]-16)+'px;height:'+(L.d[3]-L.d[1]-16)+'px"></u>';
     h+='<div class="xc" style="left:'+(L.d[0]+26)+'px;top:'+(L.d[1]-178+24)+'px"><b>1</b></div><div class="xw" style="left:'+(L.d[0]+118)+'px;top:'+(L.d[1]-178+20)+'px;color:#fff"></div><div class="xd" style="left:'+(L.d[0]+118)+'px;top:'+(L.d[1]-178+60)+'px;color:'+c[3]+'"></div>';
+    const HX={hw:[712,384,330],xm:[725,424,260],sv:[697,397,260]},hx=HX[skin];
+    h+='<div class="xlg" style="left:'+(hx[0]-hx[2]/2)+'px;top:'+(hx[1]-hx[2]/2)+'px;width:'+hx[2]+'px;height:'+hx[2]+'px"></div>';
+    h+='<div class="xsr" style="left:'+L.se[0]+'px;top:'+(L.se[1]-178)+'px;width:'+L.se[2]+'px;height:'+L.se[3]+'px"><i></i></div>';
     h+='<div class="xclk" style="left:48px;top:'+(240)+'px"><span class="xh" style="color:'+c[0]+'"></span><span class="xcl">:</span><span class="xm" style="color:'+c[1]+'"></span></div>';
     h+='<div class="xg" style="left:48px;top:'+(436)+'px;color:'+c[2]+'"></div>';
     h+='<div class="xgap" style="top:'+(SEAM[skin]+30)+'px">'+[['🎁','Belohnung','gamecenter'],['🐍','Snake','snake'],['🎨','Skins','skins'],['⚙️','Einstellungen','settings'],['📝','Notizen','notes'],['🎵','Musik','music']].map(g=>'<i class="hs gp" data-a="'+g[2]+'"><em>'+g[0]+'</em><span>'+g[1]+'</span></i>').join('')+'</div><div class="skb" style="position:absolute;left:0;top:0;width:940px;height:1494px;pointer-events:none"><div class="xv xa" style="left:'+L.ak[0]+'px;top:'+(L.ak[1]-178)+'px"></div><div class="xv xn" style="left:'+L.wl[0]+'px;top:'+(L.wl[1]-178)+'px;color:'+c[3]+'"></div>';
     const lb=['LucarioBot','Terminal','Galerie','LucarioTube','Lucario Arena','Kamera','Musik','Support','Nachrichten','Browser','Mail','Telefon'];
     IDS1.forEach((a,i)=>h+=hs(L.cx[i]-80,L.r1-178,160,180,a,lb[i]));IDS2.forEach((a,i)=>h+=hs(L.cx[i]-80,L.r2-178,160,180,a,lb[4+i]));IDS3.forEach((a,i)=>h+=hs(L.dx[i]-80,L.dk-178,160,150,a,lb[8+i]));
-    h+=hs(300,1405,340,89,'#all','Alle Apps')+'<div class="xup">▲ Alle Apps</div></div>'+hs(L.se[0],L.se[1]-178,L.se[2],L.se[3],'#search','Suche')+'</div></section><section class="s2" style="--skbg:url('+((window.__SKI&&window.__SKI['skin-'+skin+'.jpg'])||'skin-'+skin+'.jpg')+')"><div class="s2h"><b>Alle Apps</b><button class="s2b">▲ Skin-Home</button></div><div class="skg"></div></section>';
+    h+=hs(300,1405,340,89,'#all','Alle Apps')+'<div class="xup">▲ Alle Apps</div><u class="xlr"></u></div>'+hs(L.se[0],L.se[1]-178,L.se[2],L.se[3],'#search','Suche')+'</div></section><section class="s2" style="--skbg:url('+((window.__SKI&&window.__SKI['skin-'+skin+'.jpg'])||'skin-'+skin+'.jpg')+')"><div class="s2h"><b>Alle Apps</b><button class="s2b">▲ Skin-Home</button></div><div class="skg"></div></section>';
     exRoot.innerHTML=h;ph.appendChild(exRoot);
     const gr=exRoot.querySelector('.skg');try{const skip=[...IDS1,...IDS2,...IDS3];allApps().filter(a=>!skip.includes(a.id)).sort((x,y)=>{const i=ORDER.indexOf(x.id),j=ORDER.indexOf(y.id);return (i<0?99:i)-(j<0?99:j)}).forEach(a=>gr.appendChild(tile(a)))}catch(e){}
     const s1=exRoot.querySelector('.s1');
+    exRoot.addEventListener('pointerdown',e=>{try{const r=ph.getBoundingClientRect();burst((e.clientX-r.left)*SC,(e.clientY-r.top)*SC)}catch(_){}});
     exRoot.querySelector('.s2b').onclick=()=>exRoot.scrollTo({top:0,behavior:'smooth'});
     exRoot.addEventListener('click',e=>{const t=e.target.closest&&e.target.closest('.hs');if(!t)return;const a=t.dataset.a;t.classList.add('tap');setTimeout(()=>t.classList.remove('tap'),250);
       if(a=='#all')exRoot.scrollTo({top:s1.clientHeight,behavior:'smooth'});else if(a=='#search'){exHide();setTimeout(()=>{try{$('#search').focus()}catch(_){}},60)}else{if(a=='daily'){try{claimLogin()}catch(_){try{openApp('calendar')}catch(__){}}}else try{openApp(a)}catch(_){}}});
@@ -5011,7 +5052,7 @@ A.putz=el=>{
   const _ca2=closeApp;closeApp=function(){try{const d=$('#skgx');if(d)d.remove();ph.classList.remove('sk-game')}catch(e){}return _ca2.apply(this,arguments)};
   /* App „Skins“ */
   apps.push({id:'skins',name:'Skins',bg:G('#ff8a1f','#7b2ff7'),svg:ic('<path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2 8 12.7 4 8.8 9.5 8z"/>')});
-  const SL=[['dens','Partikel-Menge','0','200','%'],['spd','Animations-Tempo','20','250','%'],['glow','Leuchten der Icons','0','200','%'],['sharp','Bildschärfe (Original)','0','100','%'],['dim','Helligkeit Hintergrund','30','100','%'],['gdens','Deko in Spielen','0','200','%']],TG=[['anim','Animationen laufen'],['ex','Bild-Modus: Home exakt wie dein Bild'],['look','Skin-Look (Uhr, Logo, Mützen)'],['games','Deko in Spielen'],['force','Volle Effekte (Leistungsmodus ignorieren)']];
+  const SL=[['dens','Partikel-Menge','0','200','%'],['spd','Animations-Tempo','20','250','%'],['glow','Leuchten der Icons','0','200','%'],['sharp','Bildschärfe (Original)','0','100','%'],['dim','Helligkeit Hintergrund','30','100','%'],['gdens','Deko in Spielen','0','200','%']],TG=[['anim','Animationen laufen'],['ex','Bild-Modus: Home exakt wie dein Bild'],['extra','Extra-Animationen (Blitz, Spinne, Schlitten, Strahler, Tipp-Effekte)'],['look','Skin-Look (Uhr, Logo, Mützen)'],['games','Deko in Spielen'],['force','Volle Effekte (Leistungsmodus ignorieren)']];
   function fxUI(){const q=K();return '<div class="skfx"><b>⚙️ Effekte einstellen</b>'+SL.map(a=>'<label>'+a[1]+' <em id="v_'+a[0]+'">'+q[a[0]]+a[4]+'</em><input type="range" data-s="'+a[0]+'" min="'+a[2]+'" max="'+a[3]+'" value="'+q[a[0]]+'"></label>').join('')+TG.map(a=>'<label class="skt"><input type="checkbox" data-t="'+a[0]+'"'+(q[a[0]]?' checked':'')+'> '+a[1]+'</label>').join('')+'<button class="skrs" id="skrs">Zurücksetzen</button></div>'}
   function fxSet(k,v,rb){SET.skfx=Object.assign({},SET.skfx||{});SET.skfx[k]=v;saveSet();sync();if(rb&&skin)build()}
   A.skins=el=>{
