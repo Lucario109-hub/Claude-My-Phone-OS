@@ -546,11 +546,11 @@ select.f{appearance:auto}
 #phone.sk-hw.lo.cico .app .ic{background:radial-gradient(circle at 30% 20%,rgba(166,77,255,.4),rgba(18,6,30,.9) 70%)!important;border-color:rgba(255,138,31,.6)!important;animation:skhw 2.6s ease-in-out infinite alternate}
 #phone.sk-hw.lo.cico .app .ic svg{stroke:#ffae4d!important;filter:drop-shadow(0 0 5px #ff8a1f)!important}
 #phone.sk-hw.lo.cico .app:nth-child(2n) .ic svg{stroke:#c996ff!important;filter:drop-shadow(0 0 5px #a64dff)!important}
-@keyframes skhw{from{box-shadow:0 0 8px rgba(255,138,31,.5),inset 0 0 10px rgba(166,77,255,.3)}to{box-shadow:0 0 20px rgba(166,77,255,.8),inset 0 0 14px rgba(255,138,31,.4)}}
+@keyframes skhw{from{box-shadow:0 0 calc(8px*var(--skg,1)) rgba(255,138,31,.5),inset 0 0 calc(10px*var(--skg,1)) rgba(166,77,255,.3)}to{box-shadow:0 0 calc(20px*var(--skg,1)) rgba(166,77,255,.8),inset 0 0 calc(14px*var(--skg,1)) rgba(255,138,31,.4)}}
 #phone.sk-sv.lo.cico .app .ic{background:radial-gradient(circle at 30% 20%,rgba(255,200,61,.3),rgba(6,10,40,.92) 70%)!important;border-color:rgba(255,200,61,.65)!important;animation:sksv 3s ease-in-out infinite alternate}
 #phone.sk-sv.lo.cico .app .ic svg{stroke:#ffd36b!important;filter:drop-shadow(0 0 5px #ffb21f)!important}
 #phone.sk-sv.lo.cico .app:nth-child(3n) .ic svg{stroke:#8ec5ff!important;filter:drop-shadow(0 0 5px #4c8dff)!important}
-@keyframes sksv{from{box-shadow:0 0 8px rgba(255,200,61,.5),inset 0 0 10px rgba(76,141,255,.25)}to{box-shadow:0 0 20px rgba(255,200,61,.85),inset 0 0 14px rgba(255,255,255,.2)}}
+@keyframes sksv{from{box-shadow:0 0 calc(8px*var(--skg,1)) rgba(255,200,61,.5),inset 0 0 calc(10px*var(--skg,1)) rgba(76,141,255,.25)}to{box-shadow:0 0 calc(20px*var(--skg,1)) rgba(255,200,61,.85),inset 0 0 calc(14px*var(--skg,1)) rgba(255,255,255,.2)}}
 #phone.sk-hw .lodate,#phone.sk-hw #search,#phone.sk-hw .lowd{border-color:rgba(255,138,31,.55)!important}
 #phone.sk-sv .lodate,#phone.sk-sv #search,#phone.sk-sv .lowd{border-color:rgba(255,200,61,.55)!important}
 .skc2{display:flex;align-items:center;gap:12px;padding:14px;border-radius:18px;margin-bottom:10px;color:#fff;border:2px solid transparent;cursor:pointer}.skc2.on{border-color:#ffd93d;box-shadow:0 0 18px #ffd93d66}.skem{font-size:34px}.skc2 div{flex:1}.skc2 b{display:block;font-size:16px}.skc2 small{opacity:.85;font-size:12px}.skc2 i{font-style:normal;font-weight:800;font-size:12px;background:#0006;padding:6px 10px;border-radius:12px}
@@ -558,7 +558,7 @@ select.f{appearance:auto}
 #phone.sk-xm.lo.cico .app .ic{background:radial-gradient(circle at 30% 20%,rgba(255,59,59,.32),rgba(12,6,20,.92) 70%)!important;border-color:rgba(255,90,90,.65)!important;animation:skxm 2.8s ease-in-out infinite alternate}
 #phone.sk-xm.lo.cico .app .ic svg{stroke:#ffe9e9!important;filter:drop-shadow(0 0 5px #ff3b3b)!important}
 #phone.sk-xm.lo.cico .app:nth-child(3n) .ic svg{stroke:#9dffb8!important;filter:drop-shadow(0 0 5px #2ecc71)!important}
-@keyframes skxm{from{box-shadow:0 0 8px rgba(255,59,59,.5),inset 0 0 10px rgba(46,204,113,.2)}to{box-shadow:0 0 20px rgba(255,59,59,.85),inset 0 0 14px rgba(255,255,255,.18)}}
+@keyframes skxm{from{box-shadow:0 0 calc(8px*var(--skg,1)) rgba(255,59,59,.5),inset 0 0 calc(10px*var(--skg,1)) rgba(46,204,113,.2)}to{box-shadow:0 0 calc(20px*var(--skg,1)) rgba(255,59,59,.85),inset 0 0 calc(14px*var(--skg,1)) rgba(255,255,255,.18)}}
 #phone.sk-xm .lodate,#phone.sk-xm #search,#phone.sk-xm .lowd{border-color:rgba(255,90,90,.55)!important}
 .skgx{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:5}
 .skgx span{position:absolute;top:-8%;opacity:.5;animation:skfall linear infinite}
@@ -573,6 +573,25 @@ select.f{appearance:auto}
 #phone.sk-sv.sk-game #body canvas{background:#080c3a!important;border:2px solid #ffc83d;box-shadow:0 0 18px rgba(255,200,61,.5)}
 #phone.sk-xm.sk-game #body canvas{background:#0a1838!important;border:2px solid #ff4d4d;box-shadow:0 0 18px rgba(255,77,77,.5)}
 #phone.sk-hw.sk-game #title{color:#ffae4d}#phone.sk-sv.sk-game #title{color:#ffd36b}#phone.sk-xm.sk-game #title{color:#ff8a8a}
+
+.skfx{margin-top:12px;padding:12px;border-radius:16px;background:#0006;color:#fff;font-size:13px}.skfx b{display:block;margin-bottom:8px;font-size:14px}
+.skfx label{display:block;margin:8px 0}.skfx em{float:right;font-style:normal;opacity:.8}.skfx input[type=range]{width:100%;accent-color:#ff8a1f}
+.skfx .skt{display:flex;align-items:center;gap:8px;margin:10px 0}.skfx .skt input{width:20px;height:20px}
+.skrs{margin-top:8px;padding:8px 14px;border-radius:12px;border:0;background:#ffffff22;color:#fff;font-weight:700}
+/* Skin-Look wie im Bild */
+#phone.sk-look.sk-hw #clock .t{color:#ffa31f;text-shadow:0 0 18px rgba(255,138,31,.7)}#phone.sk-look.sk-hw #clock .cy{color:#a56bff;text-shadow:0 0 18px rgba(140,80,255,.8)}
+#phone.sk-look.sk-sv #clock .t{color:#e6eeff;text-shadow:0 0 16px rgba(120,160,255,.6)}#phone.sk-look.sk-sv #clock .cy{text-shadow:0 0 18px rgba(255,200,61,.8)}
+#phone.sk-look.sk-xm #clock .t{color:#fff;text-shadow:0 0 14px rgba(255,255,255,.5)}#phone.sk-look.sk-xm #clock .cy{text-shadow:0 0 18px rgba(255,59,59,.9)}
+#phone.sk-look.sk-hw .lologo svg path{opacity:0}
+#phone.sk-look.sk-hw .lologo::after{content:'🎃';position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);font-size:64px;filter:drop-shadow(0 0 14px #ff8a1f);animation:skbob 2.4s ease-in-out infinite alternate}
+#phone.sk-look.sk-sv .lologo::before{content:'👑';position:absolute;left:50%;top:-4px;transform:translateX(-50%);font-size:26px}
+#phone.sk-look.sk-xm .lologo::before{content:'';position:absolute;left:14%;right:14%;top:8%;height:12px;border-radius:8px;background:linear-gradient(#fff,#cfe3ff);box-shadow:0 0 10px #fff9}
+#phone.sk-look.sk-xm.lo.cico .app .ic,#phone.sk-look.sk-hw.lo.cico .app .ic,#phone.sk-look.sk-sv.lo.cico .app .ic{position:relative;overflow:visible}
+#phone.sk-look.sk-xm.lo.cico .app .ic::before{content:'';position:absolute;left:8%;right:8%;top:1px;height:7px;border-radius:8px;background:linear-gradient(#fff,#dbe9ff);box-shadow:0 0 6px #fff8;z-index:2}
+#phone.sk-look.sk-xm.lo.cico .app:nth-child(3n+1) .ic::after{content:'';position:absolute;right:-3px;top:-11px;width:22px;height:20px;background:radial-gradient(circle at 85% 88%,#fff 0 3.5px,transparent 4px),linear-gradient(#e0262b,#b31217);clip-path:polygon(0 100%,35% 8%,70% 0,100% 100%);z-index:3;transform:rotate(14deg)}
+#phone.sk-look.sk-hw.lo.cico .app:nth-child(4n+2) .ic::after{content:'🕸️';position:absolute;right:-4px;top:-6px;font-size:15px;opacity:.85}
+#phone.sk-look.sk-sv.lo.cico .app:nth-child(4n+1) .ic::after{content:'✨';position:absolute;right:-4px;top:-8px;font-size:15px}
+#phone.sk-look.sk-xm .lodate,#phone.sk-look.sk-xm #search{box-shadow:0 -4px 0 -1px #fff9,0 0 14px rgba(255,59,59,.45)!important}
 /* ================= 6.2: Lucario Arena (grafisch) ================= */
 .ag{position:relative;width:100%;height:100%;min-height:520px;background:#0b0f1e;color:#eaf0ff;font-family:system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .ag *{box-sizing:border-box}
@@ -4805,7 +4824,8 @@ A.putz=el=>{
   try{ph.insertBefore(cv,$('#fxb')||$('#home'))}catch(e){ph.appendChild(cv)}
   const g=cv.getContext('2d');let W=0,H=0,bg=null,raf=0,last=0,skin='',T=0;
   const R=(a,b)=>a+Math.random()*(b-a),perf=()=>{const c=ph.classList;return c.contains('perf3')?3:c.contains('perf2')?2:c.contains('perf1')?1:0};
-  const lvl=()=>perf();
+  const DEF={dens:100,spd:100,glow:100,sharp:0,dim:100,games:1,gdens:100,anim:1,look:1,force:0},K=()=>Object.assign({},DEF,SET.skfx||{});let DN=1,drawn=false;
+  const lvl=()=>K().force?0:perf();
   /* ---------- Zustand je Skin ---------- */
   let flares=[],fog,bats,ghosts,embers,pumps,rockets,sparks,conf,wins,ripples,shineT;
   const SC=.8;
@@ -4843,9 +4863,9 @@ A.putz=el=>{
     g.drawImage(bg,0,0);
     fog.forEach(f=>{f.x+=f.v*dt*30;if(f.x>W+f.r)f.x=-f.r;if(f.x<-f.r)f.x=W+f.r;const gr=g.createRadialGradient(f.x,f.y,0,f.x,f.y,f.r);gr.addColorStop(0,'rgba(150,90,210,'+f.a+')');gr.addColorStop(1,'rgba(150,90,210,0)');g.fillStyle=gr;g.fillRect(f.x-f.r,f.y-f.r,f.r*2,f.r*2)});
     pumps.forEach(p=>pumpkin(p,t));
-    if(Math.random()<dt*.5&&bats.length<(lvl()?2:4))bats.push({x:Math.random()<.5?-30:W+30,y:R(H*.08,H*.5),vx:0,s:W*R(.07,.12),p:R(0,6),d:1,sp:R(70,130)});
+    if(Math.random()<dt*DN*.5&&bats.length<(lvl()?2:4))bats.push({x:Math.random()<.5?-30:W+30,y:R(H*.08,H*.5),vx:0,s:W*R(.07,.12),p:R(0,6),d:1,sp:R(70,130)});
     bats.forEach(b=>{if(!b.vx){b.vx=b.x<0?b.sp:-b.sp;b.d=b.vx>0?1:-1}b.x+=b.vx*dt;b.y+=Math.sin(t*3+b.p)*30*dt;bat(b,t)});bats=bats.filter(b=>b.x>-60&&b.x<W+60);
-    if(!lvl()){if(Math.random()<dt*.28&&ghosts.length<3)ghosts.push({x:R(W*.1,W*.9),y:R(H*.2,H*.6),s:W*R(.07,.11),p:R(0,6),l:0,max:R(5,8),vx:R(-12,12)});ghosts.forEach(o=>{o.l+=dt;o.x+=o.vx*dt;ghost(o,t)});ghosts=ghosts.filter(o=>o.l<o.max)}
+    if(!lvl()){if(Math.random()<dt*DN*.28&&ghosts.length<3)ghosts.push({x:R(W*.1,W*.9),y:R(H*.2,H*.6),s:W*R(.07,.11),p:R(0,6),l:0,max:R(5,8),vx:R(-12,12)});ghosts.forEach(o=>{o.l+=dt;o.x+=o.vx*dt;ghost(o,t)});ghosts=ghosts.filter(o=>o.l<o.max)}
     embers.forEach(e=>{e.y-=e.v*dt*40;e.x+=Math.sin(t*2+e.p)*.3;if(e.y<-5){e.y=H+5;e.x=R(0,W)}g.fillStyle='rgba(255,'+(120+Math.sin(t*5+e.p)*60|0)+',30,'+(.35+.35*Math.sin(t*4+e.p))+')';g.fillRect(e.x,e.y,e.s,e.s)})}
   /* ---------- SILVESTER ---------- */
   function svBg(x){
@@ -4862,7 +4882,7 @@ A.putz=el=>{
     g.drawImage(bg,0,0);
     wins.forEach(w=>{const a=.25+.6*Math.max(0,Math.sin(t*w.f+w.p));if(a>.4){g.fillStyle='rgba(255,214,120,'+a+')';g.fillRect(w.x,w.y,3,4)}});
     const tw=g.createLinearGradient(0,H*.8,0,H);tw.addColorStop(0,'rgba(255,200,90,.14)');tw.addColorStop(1,'rgba(255,200,90,0)');g.fillStyle=tw;for(let i=0;i<7;i++){g.fillRect(((i*97+t*14*(i%2?1:-1))%W+W)%W,H*.8+i*H*.025,W*.22,2)}
-    if(Math.random()<dt*(lvl()?.7:1.4)&&rockets.length<3)rockets.push({x:R(W*.12,W*.88),y:H*.8,ty:R(H*.12,H*.42),vy:-R(4,6)});
+    if(Math.random()<dt*DN*(lvl()?.7:1.4)&&rockets.length<3)rockets.push({x:R(W*.12,W*.88),y:H*.8,ty:R(H*.12,H*.42),vy:-R(4,6)});
     rockets.forEach(r=>{r.y+=r.vy;g.fillStyle='rgba(255,230,160,.9)';g.fillRect(r.x,r.y,2,6);g.fillStyle='rgba(255,200,100,.35)';g.fillRect(r.x,r.y+6,2,14);if(r.y<=r.ty){r.dead=1;boom(r.x,r.y)}});rockets=rockets.filter(r=>!r.dead);
     g.globalCompositeOperation='lighter';
     sparks.forEach(s=>{s.vy+=.06;s.vx*=.982;s.vy*=.982;const px=s.x,py=s.y;s.x+=s.vx;s.y+=s.vy;s.l-=s.d;g.strokeStyle=s.c;g.globalAlpha=Math.max(0,s.l);g.lineWidth=2.6;g.beginPath();g.moveTo(px-s.vx*1.5,py-s.vy*1.5);g.lineTo(s.x,s.y);g.stroke();g.fillStyle='#fff';g.fillRect(s.x-1,s.y-1,2,2)});g.globalAlpha=1;
@@ -4872,8 +4892,9 @@ A.putz=el=>{
     conf.forEach(c=>{c.y+=c.v*dt*55;c.x+=Math.sin(t*1.5+c.p)*.6;c.r+=.08;if(c.y>H+8){c.y=-8;c.x=R(0,W)}g.save();g.translate(c.x,c.y);g.rotate(c.r);g.globalAlpha=.55+.4*Math.abs(Math.sin(c.r*2));g.fillStyle=c.c;g.fillRect(-c.s/2,-c.s/4,c.s,c.s/2);g.restore()});g.globalAlpha=1;
     shineT+=dt;const ph2=(shineT%7)/7;if(ph2<.5){const sx=-W*.3+ph2*2*(W*1.6),sg=g.createLinearGradient(sx,0,sx+W*.25,H*.4);sg.addColorStop(0,'rgba(255,255,255,0)');sg.addColorStop(.5,'rgba(255,240,200,.1)');sg.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=sg;g.fillRect(0,0,W,H)}}
   /* ---------- Steuerung ---------- */
-  const IM={};function img(k){if(!IM[k]){const i=new Image();IM[k]={i,ok:false};i.onload=()=>{IM[k].ok=true;if(skin==k)try{build()}catch(e){}};i.src='skin-'+k+'.jpg'}return IM[k]}
-  function imgBg(k,fb){const m=img(k);return mkBg(x=>{if(m.ok){const w=m.i.width,h=m.i.height,sc=Math.max(W/w,H/h);x.drawImage(m.i,(W-w*sc)/2,(H-h*sc)/2,w*sc,h*sc)}else fb(x)})}
+  const IM={};function img(k,sfx){const n=k+(sfx||'');if(!IM[n]){const i=new Image();IM[n]={i,ok:false};i.onload=()=>{IM[n].ok=true;if(skin==k)try{build();drawn=false}catch(e){}};i.src='skin-'+n+(sfx?'':'')+'.jpg'}return IM[n]}
+  function cover(x,m){const w=m.i.width,h=m.i.height,sc=Math.max(W/w,H/h);x.drawImage(m.i,(W-w*sc)/2,(H-h*sc)/2,w*sc,h*sc)}
+  function imgBg(k,fb){const m=img(k);const q=K(),ms=img(k,'-s');return mkBg(x=>{if(m.ok){cover(x,m);if(q.sharp>0&&ms.ok){x.globalAlpha=q.sharp/100;cover(x,ms);x.globalAlpha=1}if(q.dim<100){x.fillStyle='rgba(0,0,0,'+(1-q.dim/100)+')';x.fillRect(0,0,W,H)}}else fb(x)})}
   /* ---------- WEIHNACHTEN ---------- */
   function xmBg(x){const sg=x.createLinearGradient(0,0,0,H);sg.addColorStop(0,'#070b24');sg.addColorStop(.6,'#13244f');sg.addColorStop(1,'#1d2f5c');x.fillStyle=sg;x.fillRect(0,0,W,H)}
   let snow,lights,shoot;
@@ -4882,14 +4903,15 @@ A.putz=el=>{
     g.fillStyle='rgba(255,255,255,.85)';snow.forEach(f=>{f.y+=f.v*dt*45;f.x+=Math.sin(t*.8+f.p)*.4;if(f.y>H+4){f.y=-4;f.x=R(0,W)}g.globalAlpha=.45+f.s/6;g.beginPath();g.arc(f.x,f.y,f.s*SC,0,7);g.fill()});g.globalAlpha=1;
     g.strokeStyle='rgba(20,60,30,.9)';g.lineWidth=2;g.beginPath();g.moveTo(0,4);lights.forEach(l=>g.lineTo(l.x,4+Math.sin(l.x/W*Math.PI*3)*7+8));g.lineTo(W,6);g.stroke();
     lights.forEach(l=>{const y=12+Math.sin(l.x/W*Math.PI*3)*7,a=.55+.45*Math.sin(t*3+l.p);g.fillStyle=l.c;g.globalAlpha=a;g.shadowColor=l.c;g.shadowBlur=14;g.beginPath();g.arc(l.x,y,4.2,0,7);g.fill();g.shadowBlur=0});g.globalAlpha=1;
-    if(!shoot&&Math.random()<dt*.15)shoot={x:R(W*.3,W),y:R(0,H*.25),l:1};if(shoot){shoot.x-=dt*420;shoot.y+=dt*170;shoot.l-=dt*1.1;g.strokeStyle='rgba(255,255,255,'+Math.max(0,shoot.l)+')';g.lineWidth=2;g.beginPath();g.moveTo(shoot.x,shoot.y);g.lineTo(shoot.x+50,shoot.y-20);g.stroke();if(shoot.l<=0)shoot=null}}
-  function build(){if(!skin)return;if(skin=='hw'){bg=imgBg('hw',hwBg);hwInit()}else if(skin=='sv'){bg=imgBg('sv',svBg);svInit()}else{bg=imgBg('xm',xmBg);xmInit()}}
+    if(!shoot&&Math.random()<dt*DN*.15)shoot={x:R(W*.3,W),y:R(0,H*.25),l:1};if(shoot){shoot.x-=dt*420;shoot.y+=dt*170;shoot.l-=dt*1.1;g.strokeStyle='rgba(255,255,255,'+Math.max(0,shoot.l)+')';g.lineWidth=2;g.beginPath();g.moveTo(shoot.x,shoot.y);g.lineTo(shoot.x+50,shoot.y-20);g.stroke();if(shoot.l<=0)shoot=null}}
+  function scale(a,f){if(!a||f===1)return a;if(f<1){a.length=Math.floor(a.length*f)}else{const n=a.length;for(let i=0;i<Math.round(n*(f-1));i++){const c=Object.assign({},a[i%n]);c.x=R(0,W);c.y=R(0,H);a.push(c)}}return a}
+  function build(){if(!skin)return;DN=K().dens/100;if(skin=='hw'){bg=imgBg('hw',hwBg);hwInit();embers=scale(embers,DN)}else if(skin=='sv'){bg=imgBg('sv',svBg);svInit();conf=scale(conf,DN)}else{bg=imgBg('xm',xmBg);xmInit();snow=scale(snow,DN)}drawn=false}
   function frame(t){raf=requestAnimationFrame(frame);if(document.hidden||ph.classList.contains('inapp')){last=t;return}
-    const dt=Math.min(.1,(t-last)/1000),L=lvl();if(L>=2){if(T++%90)return}else if(dt<.032)return;last=t;
+    const q=K(),dt0=Math.min(.1,(t-last)/1000),L=lvl();if(!q.anim&&drawn){last=t;return}if(L>=2){if(dt0<.05)return}else if(dt0<.032)return;last=t;const dt=dt0*q.spd/100;drawn=true;
     const tt=t/1000;try{skin=='hw'?hwFrame(dt||.033,tt):skin=='xm'?xmFrame(dt||.033,tt):svFrame(dt||.033,tt)}catch(e){}}
-  function sync(){const s=(SET.skin==='hw'||SET.skin==='sv'||SET.skin==='xm')&&SET.style=='lucario'&&!SET.reduce?SET.skin:'';
+  function sync(){try{const q=K();ph.style.setProperty('--skg',q.glow/100);ph.classList.toggle('sk-look',!!q.look)}catch(_){}const s=(SET.skin==='hw'||SET.skin==='sv'||SET.skin==='xm')&&SET.style=='lucario'&&!SET.reduce?SET.skin:'';
     ph.classList.toggle('sk-hw',s=='hw');ph.classList.toggle('sk-sv',s=='sv');ph.classList.toggle('sk-xm',s=='xm');window.SKFOOD=s?SK[s].food:'';
-    if(s!==skin){skin=s;if(!s){cv.style.display='none';cancelAnimationFrame(raf);raf=0;return}cv.style.display='block';size();last=performance.now();if(!raf)raf=requestAnimationFrame(frame)}else if(s&&!raf){cv.style.display='block';raf=requestAnimationFrame(frame)}}
+    if(s!==skin){skin=s;if(s)try{build()}catch(e){}if(!s){cv.style.display='none';cancelAnimationFrame(raf);raf=0;return}cv.style.display='block';size();last=performance.now();if(!raf)raf=requestAnimationFrame(frame)}else if(s&&!raf){cv.style.display='block';raf=requestAnimationFrame(frame)}}
   /* Akzentfarbe des Skins in das LucarioOS-Design einspeisen */
   const _lt=loTheme;loTheme=function(){const s=SK[SET.skin];if(s&&SET.style=='lucario'){const o=SET.accent;SET.accent=s.acc;try{return _lt.apply(this,arguments)}finally{SET.accent=o}}return _lt.apply(this,arguments)};
   const _as=applySet;applySet=function(){const r=_as.apply(this,arguments);try{sync()}catch(e){}return r};
@@ -4900,13 +4922,16 @@ A.putz=el=>{
   /* ---------- Spiele-Theme: Deko-Ebene in jeder App ---------- */
   const GM=['snake','g2048','memory','pong','flappy','simon','whack','tetris','breakout','fabrik','fussknabber','putz','arena','ttt','gamecenter','sudoku','minesweeper','slide','wordle','game'];
   function deco(id){const w=$('#win');if(!w)return;let d=$('#skgx');if(d)d.remove();const s=SET.skin,k=SK[s];if(!k||SET.style!='lucario'||SET.reduce)return;
-    d=document.createElement('div');d.id='skgx';d.className='skgx';const n=lvl()?6:12;let h='';
+    d=document.createElement('div');d.id='skgx';d.className='skgx';const q=K();if(!q.games)return;const n=Math.round((lvl()?6:12)*q.gdens/100);let h='';
     for(let i=0;i<n;i++)h+='<span style="left:'+((i*83+11)%96)+'%;animation-duration:'+(9+(i*7)%9)+'s;animation-delay:-'+((i*5)%14)+'s;font-size:'+(16+(i*5)%16)+'px">'+k.deco[i%k.deco.length]+'</span>';
     h+='<b class="c1">'+k.deco[0]+'</b><b class="c2">'+k.deco[1]+'</b><b class="c3">'+k.deco[2]+'</b><b class="c4">'+k.deco[3]+'</b>';d.innerHTML=h;w.appendChild(d)}
   const _oa2=openApp;openApp=function(id){const r=_oa2.apply(this,arguments);try{ph.classList.toggle('sk-game',GM.includes(id));deco(id)}catch(e){}return r};
   const _ca2=closeApp;closeApp=function(){try{const d=$('#skgx');if(d)d.remove();ph.classList.remove('sk-game')}catch(e){}return _ca2.apply(this,arguments)};
   /* App „Skins“ */
   apps.push({id:'skins',name:'Skins',bg:G('#ff8a1f','#7b2ff7'),svg:ic('<path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2 8 12.7 4 8.8 9.5 8z"/>')});
+  const SL=[['dens','Partikel-Menge','0','200','%'],['spd','Animations-Tempo','20','250','%'],['glow','Leuchten der Icons','0','200','%'],['sharp','Bildschärfe (Original)','0','100','%'],['dim','Helligkeit Hintergrund','30','100','%'],['gdens','Deko in Spielen','0','200','%']],TG=[['anim','Animationen laufen'],['look','Skin-Look (Uhr, Logo, Mützen)'],['games','Deko in Spielen'],['force','Volle Effekte (Leistungsmodus ignorieren)']];
+  function fxUI(){const q=K();return '<div class="skfx"><b>⚙️ Effekte einstellen</b>'+SL.map(a=>'<label>'+a[1]+' <em id="v_'+a[0]+'">'+q[a[0]]+a[4]+'</em><input type="range" data-s="'+a[0]+'" min="'+a[2]+'" max="'+a[3]+'" value="'+q[a[0]]+'"></label>').join('')+TG.map(a=>'<label class="skt"><input type="checkbox" data-t="'+a[0]+'"'+(q[a[0]]?' checked':'')+'> '+a[1]+'</label>').join('')+'<button class="skrs" id="skrs">Zurücksetzen</button></div>'}
+  function fxSet(k,v,rb){SET.skfx=Object.assign({},SET.skfx||{});SET.skfx[k]=v;saveSet();sync();if(rb&&skin)build()}
   A.skins=el=>{
     const draw=()=>{el.style.alignItems='stretch';el.style.padding='12px';
       const card=(k,n,em,desc,css)=>'<div class="skc2'+(SET.skin==k?' on':'')+'" data-k="'+k+'" style="background:'+css+'"><span class="skem">'+em+'</span><div><b>'+n+'</b><small>'+desc+'</small></div><i>'+(SET.skin==k?'Aktiv ✓':'Aktivieren')+'</i></div>';
@@ -4915,8 +4940,11 @@ A.putz=el=>{
         +card('hw','Halloween','🎃',SK.hw.desc,'linear-gradient(135deg,#1a0833,#a64d00)')
         +card('xm','Weihnachten','🎄',SK.xm.desc,'linear-gradient(135deg,#0b1a3a,#a01818)')
         +card('sv','Silvester','🎆',SK.sv.desc,'linear-gradient(135deg,#0a0d3a,#8a5a00)')
-        +'<p style="opacity:.6;font-size:12px;margin-top:12px">Tipp: Bei Rucklern unter ⚡ Leistung im Schnellpanel auf „Sparsam“ stellen.</p>';
-      el.querySelectorAll('[data-k]').forEach(c=>c.onclick=()=>{SET.skin=c.dataset.k;if(SET.skin&&SET.style!='lucario'){SET.style='lucario'}saveSet();applySet();try{renderHome()}catch(_){}Sys.toast(SET.skin?SK[SET.skin].em+' '+SK[SET.skin].n+'-Skin aktiv':'Standard-Design');draw()})};
+        +fxUI()+'<p style="opacity:.6;font-size:12px;margin-top:12px">Tipp: Bei Rucklern unter ⚡ Leistung im Schnellpanel auf „Sparsam“ stellen.</p>';
+      el.querySelectorAll('[data-k]').forEach(c=>c.onclick=()=>{SET.skin=c.dataset.k;if(SET.skin&&SET.style!='lucario'){SET.style='lucario'}saveSet();applySet();try{renderHome()}catch(_){}Sys.toast(SET.skin?SK[SET.skin].em+' '+SK[SET.skin].n+'-Skin aktiv':'Standard-Design');draw()});
+      el.querySelectorAll('[data-s]').forEach(r=>{r.oninput=()=>{const e=$('#v_'+r.dataset.s);if(e)e.textContent=r.value+'%';fxSet(r.dataset.s,+r.value,0)};r.onchange=()=>fxSet(r.dataset.s,+r.value,1)});
+      el.querySelectorAll('[data-t]').forEach(c=>c.onchange=()=>{fxSet(c.dataset.t,c.checked?1:0,1)});
+      const rs=$('#skrs');if(rs)rs.onclick=()=>{SET.skfx={};saveSet();sync();if(skin)build();draw()}};
     draw();return()=>{}};
   try{renderHome();loDots()}catch(e){}
   try{applySet()}catch(e){}
