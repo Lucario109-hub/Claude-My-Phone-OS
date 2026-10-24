@@ -605,7 +605,7 @@ select.f{appearance:auto}
 .skh .xw,.skh .xd{position:absolute;font-size:34px;font-weight:600;white-space:nowrap}
 .skh .xc{position:absolute;width:62px;height:62px;border-radius:10px;background:#fff;color:#111;text-align:center;font-weight:800;font-size:30px;line-height:80px;overflow:hidden}
 .skh .xc::before{content:'';position:absolute;left:0;right:0;top:0;height:16px;background:#e0262b}
-.skh .xv{position:absolute;font-size:44px;font-weight:700;color:#fff;white-space:nowrap}.skh .xn{font-size:36px}
+.skh .xv{font-size:44px;font-weight:700;color:#fff;white-space:nowrap}.skh .xn{font-size:36px}
 #skhb{position:absolute;right:12px;bottom:40px;z-index:31;padding:9px 14px;border-radius:20px;border:1px solid #ffffff66;background:#000a;color:#fff;font-weight:700;display:none;backdrop-filter:blur(8px)}
 
 
@@ -649,6 +649,29 @@ select.f{appearance:auto}
 .sk-fxa .skh .xg{animation:skbob 3s ease-in-out infinite alternate}
 .sk-fxa .skh .xp{animation:skgl 4s ease-in-out infinite alternate}
 #phone.perf3 .skh *{animation:none!important}
+
+/* Live-Ebene: echte Icons, Suche, Widget, Dock */
+.skh{--bg1:#0b0714;--ic:#ffb050}.skh.xm{--ic:#fff}.skh.sv{--ic:#ffcf5a}.skh.hw{--ic:#ffb050}
+.skh .xt{position:absolute;font-size:80px;font-weight:500;color:#fff;line-height:1;white-space:nowrap}.skh .xt b{font-weight:500}.skh .xt small{display:block;font-size:35px;font-weight:400;margin-top:10px;color:#cfc8ee}
+.skh.xm .xt small{color:#fff}.skh.sv .xt small{color:#c8d4ff}
+.skh .xs{position:absolute;display:flex;align-items:center;gap:30px;padding:0 36px;border-radius:70px;background:rgba(8,5,16,.92);border:3px solid var(--gc);box-shadow:0 0 26px var(--gc)66,inset 0 0 24px var(--gc)22;color:var(--gc);box-sizing:border-box;cursor:text}
+.skh .xs span{flex:1;font-size:38px;color:#bbb2dd}.skh.xm .xs span{color:#ffe0e0}.skh.sv .xs span{color:#9db6ff}
+.skh .tl{position:absolute;width:148px;height:138px;border-radius:42px;display:flex;align-items:center;justify-content:center;pointer-events:auto;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.14),rgba(10,6,18,.97) 65%);border:3.5px solid var(--gc);box-shadow:0 0 28px var(--gc)77,inset 0 0 26px var(--gc)33;box-sizing:border-box}
+.skh .tl svg{width:84px;height:84px;stroke:var(--ic);stroke-width:1.9;fill:none;filter:drop-shadow(0 0 8px var(--gc))}
+.skh .tl.dk{height:138px}
+.skh .tlb{position:absolute;left:-30px;right:-30px;top:150px;text-align:center;font-size:33px;color:#fff;text-shadow:0 2px 6px #000;white-space:nowrap;pointer-events:none}
+.skh .xcard{position:absolute;border-radius:56px;background:rgba(8,5,16,.9);border:3px solid var(--gc);box-shadow:0 0 26px var(--gc)55,inset 0 0 26px var(--gc)22;box-sizing:border-box;display:flex;align-items:center;justify-content:space-around;padding:0 40px;pointer-events:none}
+.skh .xcl2{display:flex;align-items:center;gap:22px;color:#fff}.skh .xcl2 small{display:block;font-size:30px;opacity:.85}.skh .xcard u{width:3px;height:70%;background:var(--gc);opacity:.5}
+.skh .xdock{z-index:0}.skh .tl.dk{z-index:2}
+.skh.xm .tl::before{content:'';position:absolute;left:10px;right:10px;top:-8px;height:26px;border-radius:16px;background:linear-gradient(#fff,#cfe3ff);box-shadow:0 0 10px #fff9}
+.skh.xm .tl.hat::after{content:'';position:absolute;right:-16px;top:-58px;width:86px;height:70px;z-index:3;background:radial-gradient(circle at 88% 90%,#fff 0 9px,transparent 10px),linear-gradient(#e0262b,#b31217);clip-path:polygon(0 100%,35% 8%,72% 0,100% 100%);transform:rotate(12deg)}
+.skh.sv .tl.hat::after{content:'';position:absolute;right:-6px;top:-44px;width:60px;height:66px;background:repeating-linear-gradient(135deg,#ffd24a 0 10px,#fff3c0 10px 20px);clip-path:polygon(50% 0,100% 100%,0 100%);transform:rotate(14deg)}
+.skh.sv .tl:not(.hat)::after{content:'✨';position:absolute;right:-8px;top:-22px;font-size:44px}
+.skh.hw .tl.hat::after{content:'🕸️';position:absolute;right:-8px;top:-18px;font-size:46px;opacity:.9}
+.sk-fxa .skh .tl{animation:sktl 3.4s ease-in-out infinite alternate}.sk-fxa .skh .tl:nth-child(odd){animation-delay:-1.7s}
+@keyframes sktl{from{box-shadow:0 0 18px var(--gc)55,inset 0 0 18px var(--gc)22}to{box-shadow:0 0 40px var(--gc)aa,inset 0 0 30px var(--gc)44}}
+.skh .tl.tap{transform:scale(.94)}
+.skh .hs.ap::after{display:none}.skh .tl.hat::after,.skh.sv .tl:not(.hat)::after{display:block}
 /* ================= 6.2: Lucario Arena (grafisch) ================= */
 .ag{position:relative;width:100%;height:100%;min-height:520px;background:#0b0f1e;color:#eaf0ff;font-family:system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .ag *{box-sizing:border-box}
@@ -5002,6 +5025,10 @@ A.putz=el=>{
   const LY={hw:{d:[580,275,870,378],r1:850,r2:1065,dk:1430,cx:[145,355,568,787],dx:[143,358,577,793],se:[45,695,890,100],ak:[147,1352],wl:[563,1368]},
     xm:{d:[590,270,890,378],r1:885,r2:1105,dk:1438,cx:[150,364,570,783],dx:[150,363,574,785],se:[50,735,885,100],ak:[150,1368],wl:[565,1366]},
     sv:{d:[592,277,897,372],r1:895,r2:1095,dk:1415,cx:[150,362,575,790],dx:[160,365,575,780],se:[50,765,750,85],ak:[160,1342],wl:[568,1342]}};
+  const CD={hw:{wd:[40,1308,900,1412],dc:[40,1412,900,1598],tt:432},xm:{wd:[45,1322,895,1420],dc:[45,1422,895,1592],tt:432},sv:{wd:[68,1300,872,1395],dc:[50,1398,890,1560],tt:432}};
+  const SV={bat:'<svg viewBox="0 0 24 24" width="64" height="64"><rect x="7" y="3" width="10" height="18" rx="2.5" fill="#35d36b"/><rect x="10" y="1.5" width="4" height="2.5" rx="1" fill="#35d36b"/><path d="M12.5 7l-3 5h2.5l-1 4.5 3.5-5.5h-2.5z" fill="#fff"/></svg>',wifi:'<svg viewBox="0 0 24 24" width="64" height="64"><rect x="3" y="14" width="3.5" height="6" rx="1" fill="#ffb02e"/><rect x="8.5" y="10" width="3.5" height="10" rx="1" fill="#ffb02e"/><rect x="14" y="6" width="3.5" height="14" rx="1" fill="#ffb02e"/><rect x="19.5" y="2" width="2.5" height="18" rx="1" fill="#ffb02e" opacity=".5"/></svg>',
+    se:'<svg viewBox="0 0 24 24" width="62" height="62" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>',mic:'<svg viewBox="0 0 24 24" width="62" height="62" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>'};
+  const HAT={xm:['ai','terminal','tube','camera','support','messenger','mail','phone'],sv:['ai','tube','support','messenger','mail'],hw:['gallery','music','browser','messenger']};
   const CO={hw:['#ffb12e','#a56bff','#d9c8ff','#ffae4d'],xm:['#ffffff','#ff3b3b','#ffffff','#ff5a5a'],sv:['#e6eeff','#ffc22e','#ffffff','#ffc83d']};
   const IDS1=['ai','terminal','gallery','tube'],IDS2=['arena','camera','music','support'],IDS3=['messenger','browser','mail','phone'];
   let exRoot=null,exHidden=false,batt=null,exIv=0;
@@ -5014,6 +5041,9 @@ A.putz=el=>{
     let nm='Luca';try{const m=$('#hgr').textContent.match(/,\s*([^\s!.]+)/);if(m)nm=m[1]}catch(e){}
     const h=n.getHours();q('.xg').textContent=skin=='xm'?'Frohe Weihnachten, '+nm+'. ❤️':skin=='sv'?'Frohes neues Jahr, '+nm+'! 🎉':(h<11?'Guten Morgen, ':h<18?'Guten Tag, ':'Guten Abend, ')+nm+'.';
     q('.xa').textContent=batt?Math.round(batt.level*100)+' %':'100 %';q('.xn').textContent=navigator.onLine===false?'Offline':'Verbunden'}
+  function cardsHTML(L,c){const D=CD[skin],w=D.wd,d=D.dc;
+    return '<div class="xcard" style="left:'+w[0]+'px;top:'+(w[1]-178)+'px;width:'+(w[2]-w[0])+'px;height:'+(w[3]-w[1])+'px"><div class="xcl2">'+SV.bat+'<div><small>Akku</small><div class="xv xa"></div></div></div><u></u><div class="xcl2">'+SV.wifi+'<div><small>WLAN</small><div class="xv xn" style="color:'+c[3]+'"></div></div></div></div>'
+      +'<div class="xcard xdock" style="left:'+d[0]+'px;top:'+(d[1]-178)+'px;width:'+(d[2]-d[0])+'px;height:'+(d[3]-d[1])+'px"></div>'}
   function exBuild(){exDestroy();const L=LY[skin],c=CO[skin];exRoot=document.createElement('div');exRoot.id='skh';exRoot.className='skh '+skin;
     const hs=(x,y,w,h,fn,l)=>'<i class="hs'+(fn[0]=='#'?'':' ap')+'" data-a="'+fn+'" style="left:'+x+'px;top:'+y+'px;width:'+w+'px;height:'+h+'px" aria-label="'+l+'"></i>';
     let h='<section class="s1"><div class="skhi" style="width:940px;height:1494px">';
@@ -5022,12 +5052,15 @@ A.putz=el=>{
     const HX={hw:[712,384,330],xm:[725,424,260],sv:[697,397,260]},hx=HX[skin];
     h+='<div class="xlg" style="left:'+(hx[0]-hx[2]/2)+'px;top:'+(hx[1]-hx[2]/2)+'px;width:'+hx[2]+'px;height:'+hx[2]+'px"></div>';
     h+='<div class="xsr" style="left:'+L.se[0]+'px;top:'+(L.se[1]-178)+'px;width:'+L.se[2]+'px;height:'+L.se[3]+'px"><i></i></div>';
+    h+='<div class="xt" style="left:78px;top:'+(272-178+2)+'px">Lucario<b style="color:'+c[3]+'">OS</b><small>Smarter. Schneller. Deins.</small></div>';
+    h+='<div class="hs xs" data-a="#search" style="left:'+L.se[0]+'px;top:'+(L.se[1]-178)+'px;width:'+L.se[2]+'px;height:'+L.se[3]+'px">'+SV.se+'<span>LucarioOS durchsuchen...</span>'+SV.mic+'</div>';
     h+='<div class="xclk" style="left:48px;top:'+(240)+'px"><span class="xh" style="color:'+c[0]+'"></span><span class="xcl">:</span><span class="xm" style="color:'+c[1]+'"></span></div>';
     h+='<div class="xg" style="left:48px;top:'+(436)+'px;color:'+c[2]+'"></div>';
-    h+='<div class="xgap" style="top:'+(SEAM[skin]+30)+'px">'+[['🎁','Belohnung','gamecenter'],['🐍','Snake','snake'],['🎨','Skins','skins'],['⚙️','Einstellungen','settings'],['📝','Notizen','notes'],['🎵','Musik','music']].map(g=>'<i class="hs gp" data-a="'+g[2]+'"><em>'+g[0]+'</em><span>'+g[1]+'</span></i>').join('')+'</div><div class="skb" style="position:absolute;left:0;top:0;width:940px;height:1494px;pointer-events:none"><div class="xv xa" style="left:'+L.ak[0]+'px;top:'+(L.ak[1]-178)+'px"></div><div class="xv xn" style="left:'+L.wl[0]+'px;top:'+(L.wl[1]-178)+'px;color:'+c[3]+'"></div>';
+    h+='<div class="xgap" style="top:'+(SEAM[skin]+30)+'px">'+[['🎁','Belohnung','gamecenter'],['🐍','Snake','snake'],['🎨','Skins','skins'],['⚙️','Einstellungen','settings'],['📝','Notizen','notes'],['🎵','Musik','music']].map(g=>'<i class="hs gp" data-a="'+g[2]+'"><em>'+g[0]+'</em><span>'+g[1]+'</span></i>').join('')+'</div><div class="skb" style="position:absolute;left:0;top:0;width:940px;height:1494px;pointer-events:none">'+cardsHTML(L,c)+'';
     const lb=['LucarioBot','Terminal','Galerie','LucarioTube','Lucario Arena','Kamera','Musik','Support','Nachrichten','Browser','Mail','Telefon'];
-    IDS1.forEach((a,i)=>h+=hs(L.cx[i]-80,L.r1-178,160,180,a,lb[i]));IDS2.forEach((a,i)=>h+=hs(L.cx[i]-80,L.r2-178,160,180,a,lb[4+i]));IDS3.forEach((a,i)=>h+=hs(L.dx[i]-80,L.dk-178,160,150,a,lb[8+i]));
-    h+=hs(300,1405,340,89,'#all','Alle Apps')+'<div class="xup">▲ Alle Apps</div><u class="xlr"></u></div>'+hs(L.se[0],L.se[1]-178,L.se[2],L.se[3],'#search','Suche')+'</div></section><section class="s2" style="--skbg:url('+((window.__SKI&&window.__SKI['skin-'+skin+'.jpg'])||'skin-'+skin+'.jpg')+')"><div class="s2h"><b>Alle Apps</b><button class="s2b">▲ Skin-Home</button></div><div class="skg"></div></section>';
+    const tl=(id,x,y,lab,dock)=>{const a=apps.find(q=>q.id==id),hat=(HAT[skin]||[]).includes(id)?' hat':'';return '<div class="hs ap tl'+hat+(dock?' dk':'')+'" data-a="'+id+'" style="left:'+(x-74)+'px;top:'+(y-178)+'px" aria-label="'+lab+'">'+(a?a.svg:'')+(dock?'':'<span class="tlb">'+lab+'</span>')+'</div>'};
+    IDS1.forEach((a,i)=>h+=tl(a,L.cx[i],L.r1,lb[i]));IDS2.forEach((a,i)=>h+=tl(a,L.cx[i],L.r2,lb[4+i]));IDS3.forEach((a,i)=>h+=tl(a,L.dx[i],L.dk,lb[8+i],1));
+    h+=hs(300,1405,340,89,'#all','Alle Apps')+'<div class="xup">▲ Alle Apps</div><u class="xlr"></u></div>'+'</div></section><section class="s2" style="--skbg:url('+((window.__SKI&&window.__SKI['skin-'+skin+'.jpg'])||'skin-'+skin+'.jpg')+')"><div class="s2h"><b>Alle Apps</b><button class="s2b">▲ Skin-Home</button></div><div class="skg"></div></section>';
     exRoot.innerHTML=h;ph.appendChild(exRoot);
     const gr=exRoot.querySelector('.skg');try{const skip=[...IDS1,...IDS2,...IDS3];allApps().filter(a=>!skip.includes(a.id)).sort((x,y)=>{const i=ORDER.indexOf(x.id),j=ORDER.indexOf(y.id);return (i<0?99:i)-(j<0?99:j)}).forEach(a=>gr.appendChild(tile(a)))}catch(e){}
     const s1=exRoot.querySelector('.s1');
