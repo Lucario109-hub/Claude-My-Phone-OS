@@ -1,6 +1,6 @@
 // LucarioNet Service Worker – macht die App offline-fähig und installierbar.
 // Bei Updates die Version unten erhöhen (z. B. v3), damit der Cache erneuert wird.
-const V = 'lucarionet-v46';
+const V = 'lucarionet-v47';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'skin-hw.jpg', 'skin-xm.jpg', 'skin-sv.jpg', 'skin-hw-s.jpg', 'skin-xm-s.jpg', 'skin-sv-s.jpg', 'skh-hw.jpg', 'skh-xm.jpg', 'skh-sv.jpg'];
 
 self.addEventListener('install', e => {

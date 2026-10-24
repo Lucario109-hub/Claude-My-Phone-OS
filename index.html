@@ -594,7 +594,7 @@ select.f{appearance:auto}
 #phone.sk-look.sk-xm .lodate,#phone.sk-look.sk-xm #search{box-shadow:0 -4px 0 -1px #fff9,0 0 14px rgba(255,59,59,.45)!important}
 
 #phone.sk-ex #home,#phone.sk-ex #dock{visibility:hidden}
-.skh{position:absolute;inset:0;z-index:30;overflow:hidden;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+.skh{position:absolute;inset:0;z-index:30;overflow-x:hidden;overflow-y:auto;scroll-snap-type:y proximity;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
 .skhi{position:absolute;left:0;top:0;transform-origin:0 0}
 .skh .hs{position:absolute;display:block;border-radius:40px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .skh .hs.tap{background:rgba(255,255,255,.18)}
@@ -608,9 +608,19 @@ select.f{appearance:auto}
 .skh .xv{position:absolute;font-size:44px;font-weight:700;color:#fff;white-space:nowrap}.skh .xn{font-size:36px}
 #skhb{position:absolute;right:12px;bottom:40px;z-index:31;padding:9px 14px;border-radius:20px;border:1px solid #ffffff66;background:#000a;color:#fff;font-weight:700;display:none;backdrop-filter:blur(8px)}
 
-.skh,.skh .skhi{touch-action:none}
+
 .sksc{min-height:0}.sksc>*{flex-shrink:0}
 .skh .xup{position:absolute;left:0;right:0;top:1440px;text-align:center;font-size:30px;font-weight:700;color:#fff;opacity:.75;text-shadow:0 0 12px #000;pointer-events:none;animation:skbob 1.6s ease-in-out infinite alternate}
+
+.skh .s1{position:relative;height:100%;overflow:hidden;scroll-snap-align:start}
+.skh .s2{min-height:100%;box-sizing:border-box;scroll-snap-align:start;padding:46px 14px 40px;background:linear-gradient(rgba(4,2,10,.55),rgba(4,2,10,.82)),var(--skbg) center/cover}
+.skh .s2h{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;color:#fff}.skh .s2h b{font-size:26px;font-weight:600}
+.skh .s2b{border:1px solid #ffffff55;background:#0008;color:#fff;border-radius:16px;padding:8px 12px;font-weight:700}
+.skg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 6px}
+.skg .app{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;color:#fff;cursor:pointer;min-width:0}
+.skg .app .ic{width:60px;height:60px;border-radius:20px;display:flex;align-items:center;justify-content:center;border:1.5px solid}
+.skg .app .ic svg{width:30px;height:30px;fill:none;stroke-width:1.8}
+.skg .app span{text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 /* ================= 6.2: Lucario Arena (grafisch) ================= */
 .ag{position:relative;width:100%;height:100%;min-height:520px;background:#0b0f1e;color:#eaf0ff;font-family:system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .ag *{box-sizing:border-box}
@@ -4913,7 +4923,7 @@ A.putz=el=>{
   /* ---------- Steuerung ---------- */
   const IM={};function img(k,sfx){const n=k+(sfx||'');if(!IM[n]){const i=new Image();IM[n]={i,ok:false};i.onload=()=>{IM[n].ok=true;if(skin==k)try{build();drawn=false}catch(e){}};i.src=sfx=='@h'?'skh-'+k+'.jpg':'skin-'+n+'.jpg'}return IM[n]}
   function cover(x,m){const w=m.i.width,h=m.i.height,sc=Math.max(W/w,H/h);x.drawImage(m.i,(W-w*sc)/2,(H-h*sc)/2,w*sc,h*sc)}
-  function imgBg(k,fb){const m=img(k);const q=K(),ms=img(k,'-s');if(exShown){const mh=img(k,'@h');return mkBg(x=>{if(m.ok)cover(x,m);x.fillStyle='rgba(0,0,0,.35)';x.fillRect(0,0,W,H);if(mh.ok){const s0=Math.min(W/940,H/1494);x.drawImage(mh.i,(W-940*s0)/2,(H-1494*s0)/2,940*s0,1494*s0)}})}
+  function imgBg(k,fb){const m=img(k);const q=K(),ms=img(k,'-s');if(exShown){const mh=img(k,'@h');return mkBg(x=>{if(m.ok)cover(x,m);x.fillStyle='rgba(0,0,0,.35)';x.fillRect(0,0,W,H);if(mh.ok){const s0=Math.min(W/940,H/1494),w0=940*s0,h0=1494*s0,t=document.createElement('canvas');t.width=Math.ceil(w0);t.height=Math.ceil(h0);const y=t.getContext('2d');y.drawImage(mh.i,0,0,t.width,t.height);y.globalCompositeOperation='destination-in';const gr=y.createLinearGradient(0,0,0,t.height),fd=Math.min(.12,60/t.height);gr.addColorStop(0,'rgba(0,0,0,0)');gr.addColorStop(fd,'#000');gr.addColorStop(1-fd,'#000');gr.addColorStop(1,'rgba(0,0,0,0)');y.fillStyle=gr;y.fillRect(0,0,t.width,t.height);x.drawImage(t,(W-w0)/2,(H-h0)/2)}})}
     return mkBg(x=>{if(m.ok){cover(x,m);if(q.sharp>0&&ms.ok){x.globalAlpha=q.sharp/100;cover(x,ms);x.globalAlpha=1}if(q.dim<100){x.fillStyle='rgba(0,0,0,'+(1-q.dim/100)+')';x.fillRect(0,0,W,H)}}else fb(x)})}
   /* ---------- WEIHNACHTEN ---------- */
   function xmBg(x){const sg=x.createLinearGradient(0,0,0,H);sg.addColorStop(0,'#070b24');sg.addColorStop(.6,'#13244f');sg.addColorStop(1,'#1d2f5c');x.fillStyle=sg;x.fillRect(0,0,W,H)}
@@ -4947,7 +4957,7 @@ A.putz=el=>{
   const IDS1=['ai','terminal','gallery','tube'],IDS2=['arena','camera','music','support'],IDS3=['messenger','browser','mail','phone'];
   let exRoot=null,exHidden=false,batt=null,exIv=0;
   try{navigator.getBattery&&navigator.getBattery().then(b=>{batt=b})}catch(e){}
-  function exLayout(){if(!exRoot)return;const r=ph.getBoundingClientRect(),s0=Math.min(r.width/940,r.height/1494);const i=exRoot.firstChild;i.style.transform='translate('+((r.width-940*s0)/2)+'px,'+((r.height-1494*s0)/2)+'px) scale('+s0+')'}
+  function exLayout(){if(!exRoot)return;const r=ph.getBoundingClientRect(),s0=Math.min(r.width/940,r.height/1494);const i=exRoot.querySelector('.skhi');i.style.transform='translate('+((r.width-940*s0)/2)+'px,'+((r.height-1494*s0)/2)+'px) scale('+s0+')'}
   function exTxt(){if(!exRoot)return;const n=new Date(),hh=String(n.getHours()).padStart(2,'0'),mm=String(n.getMinutes()).padStart(2,'0'),L=LY[skin],c=CO[skin];
     const q=(a)=>exRoot.querySelector(a);q('.xh').textContent=hh;q('.xm').textContent=mm;
     const days=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],mo=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
@@ -4957,7 +4967,7 @@ A.putz=el=>{
     q('.xa').textContent=batt?Math.round(batt.level*100)+' %':'100 %';q('.xn').textContent=navigator.onLine===false?'Offline':'Verbunden'}
   function exBuild(){exDestroy();const L=LY[skin],c=CO[skin];exRoot=document.createElement('div');exRoot.id='skh';exRoot.className='skh '+skin;
     const hs=(x,y,w,h,fn,l)=>'<i class="hs" data-a="'+fn+'" style="left:'+x+'px;top:'+y+'px;width:'+w+'px;height:'+h+'px" aria-label="'+l+'"></i>';
-    let h='<div class="skhi" style="width:940px;height:1494px">';
+    let h='<section class="s1"><div class="skhi" style="width:940px;height:1494px">';
     h+='<u class="xp" style="left:'+(L.d[0]+8)+'px;top:'+(L.d[1]-178+8)+'px;width:'+(L.d[2]-L.d[0]-16)+'px;height:'+(L.d[3]-L.d[1]-16)+'px"></u>';
     h+='<div class="xc" style="left:'+(L.d[0]+26)+'px;top:'+(L.d[1]-178+24)+'px"><b>1</b></div><div class="xw" style="left:'+(L.d[0]+118)+'px;top:'+(L.d[1]-178+20)+'px;color:#fff"></div><div class="xd" style="left:'+(L.d[0]+118)+'px;top:'+(L.d[1]-178+60)+'px;color:'+c[3]+'"></div>';
     h+='<div class="xclk" style="left:48px;top:'+(240)+'px"><span class="xh" style="color:'+c[0]+'"></span><span class="xcl">:</span><span class="xm" style="color:'+c[1]+'"></span></div>';
@@ -4965,12 +4975,13 @@ A.putz=el=>{
     h+='<div class="xv xa" style="left:'+L.ak[0]+'px;top:'+(L.ak[1]-178)+'px"></div><div class="xv xn" style="left:'+L.wl[0]+'px;top:'+(L.wl[1]-178)+'px;color:'+c[3]+'"></div>';
     const lb=['LucarioBot','Terminal','Galerie','LucarioTube','Lucario Arena','Kamera','Musik','Support','Nachrichten','Browser','Mail','Telefon'];
     IDS1.forEach((a,i)=>h+=hs(L.cx[i]-80,L.r1-178,160,180,a,lb[i]));IDS2.forEach((a,i)=>h+=hs(L.cx[i]-80,L.r2-178,160,180,a,lb[4+i]));IDS3.forEach((a,i)=>h+=hs(L.dx[i]-80,L.dk-178,160,150,a,lb[8+i]));
-    h+=hs(L.se[0],L.se[1]-178,L.se[2],L.se[3],'#search','Suche');h+=hs(300,1405,340,89,'#all','Alle Apps')+'<div class="xup">▲ Alle Apps</div></div>';
+    h+=hs(L.se[0],L.se[1]-178,L.se[2],L.se[3],'#search','Suche');h+=hs(300,1405,340,89,'#all','Alle Apps')+'<div class="xup">▲ Alle Apps</div></div></section><section class="s2" style="--skbg:url(skin-'+skin+'.jpg)"><div class="s2h"><b>Alle Apps</b><button class="s2b">▲ Skin-Home</button></div><div class="skg"></div></section>';
     exRoot.innerHTML=h;ph.appendChild(exRoot);
-    let sy=0,moved=0;let ty=0;exRoot.addEventListener('touchstart',e=>{ty=e.touches[0].clientY},{passive:true});exRoot.addEventListener('touchmove',e=>{if(ty&&ty-e.touches[0].clientY>25){ty=0;sy=0;exHide()}},{passive:true});exRoot.addEventListener('wheel',e=>{if(e.deltaY>5)exHide()},{passive:true});
-    exRoot.addEventListener('pointercancel',()=>{if(sy){sy=0;exHide()}});exRoot.addEventListener('pointerdown',e=>{sy=e.clientY;moved=0});exRoot.addEventListener('pointermove',e=>{if(sy&&sy-e.clientY>25)moved=1});
-    exRoot.addEventListener('pointerup',e=>{const up=sy-e.clientY>60||moved;sy=0;if(up){exHide();return}const t=e.target.closest&&e.target.closest('.hs');if(!t)return;const a=t.dataset.a;t.classList.add('tap');setTimeout(()=>t.classList.remove('tap'),250);
-      if(a=='#all')exHide();else if(a=='#search'){exHide();setTimeout(()=>{try{$('#search').focus()}catch(_){}},60)}else{try{openApp(a)}catch(_){}}});
+    const gr=exRoot.querySelector('.skg');try{const skip=[...IDS1,...IDS2,...IDS3];allApps().filter(a=>!skip.includes(a.id)).sort((x,y)=>{const i=ORDER.indexOf(x.id),j=ORDER.indexOf(y.id);return (i<0?99:i)-(j<0?99:j)}).forEach(a=>gr.appendChild(tile(a)))}catch(e){}
+    const s1=exRoot.querySelector('.s1');
+    exRoot.querySelector('.s2b').onclick=()=>exRoot.scrollTo({top:0,behavior:'smooth'});
+    exRoot.addEventListener('click',e=>{const t=e.target.closest&&e.target.closest('.hs');if(!t)return;const a=t.dataset.a;t.classList.add('tap');setTimeout(()=>t.classList.remove('tap'),250);
+      if(a=='#all')exRoot.scrollTo({top:s1.clientHeight,behavior:'smooth'});else if(a=='#search'){exHide();setTimeout(()=>{try{$('#search').focus()}catch(_){}},60)}else{try{openApp(a)}catch(_){}}});
     exLayout();exTxt();exIv=setInterval(exTxt,5000)}
   function exDestroy(){if(exRoot){exRoot.remove();exRoot=null}clearInterval(exIv)}
   function exHide(){exHidden=true;exSync();let b=$('#skhb');if(!b){b=document.createElement('button');b.id='skhb';b.textContent='🖼 Skin-Home';b.onclick=()=>{exHidden=false;exSync()};ph.appendChild(b)}b.style.display='block'}
