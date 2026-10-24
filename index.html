@@ -610,6 +610,7 @@ select.f{appearance:auto}
 
 .skh,.skh .skhi{touch-action:none}
 .sksc{min-height:0}.sksc>*{flex-shrink:0}
+.skh .xup{position:absolute;left:0;right:0;top:1440px;text-align:center;font-size:30px;font-weight:700;color:#fff;opacity:.75;text-shadow:0 0 12px #000;pointer-events:none;animation:skbob 1.6s ease-in-out infinite alternate}
 /* ================= 6.2: Lucario Arena (grafisch) ================= */
 .ag{position:relative;width:100%;height:100%;min-height:520px;background:#0b0f1e;color:#eaf0ff;font-family:system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .ag *{box-sizing:border-box}
@@ -4964,9 +4965,10 @@ A.putz=el=>{
     h+='<div class="xv xa" style="left:'+L.ak[0]+'px;top:'+(L.ak[1]-178)+'px"></div><div class="xv xn" style="left:'+L.wl[0]+'px;top:'+(L.wl[1]-178)+'px;color:'+c[3]+'"></div>';
     const lb=['LucarioBot','Terminal','Galerie','LucarioTube','Lucario Arena','Kamera','Musik','Support','Nachrichten','Browser','Mail','Telefon'];
     IDS1.forEach((a,i)=>h+=hs(L.cx[i]-80,L.r1-178,160,180,a,lb[i]));IDS2.forEach((a,i)=>h+=hs(L.cx[i]-80,L.r2-178,160,180,a,lb[4+i]));IDS3.forEach((a,i)=>h+=hs(L.dx[i]-80,L.dk-178,160,150,a,lb[8+i]));
-    h+=hs(L.se[0],L.se[1]-178,L.se[2],L.se[3],'#search','Suche');h+=hs(330,1405,280,89,'#all','Alle Apps')+'</div>';
+    h+=hs(L.se[0],L.se[1]-178,L.se[2],L.se[3],'#search','Suche');h+=hs(300,1405,340,89,'#all','Alle Apps')+'<div class="xup">▲ Alle Apps</div></div>';
     exRoot.innerHTML=h;ph.appendChild(exRoot);
-    let sy=0,moved=0;exRoot.addEventListener('pointercancel',()=>{if(sy){sy=0;exHide()}});exRoot.addEventListener('pointerdown',e=>{sy=e.clientY;moved=0});exRoot.addEventListener('pointermove',e=>{if(sy&&sy-e.clientY>40)moved=1});
+    let sy=0,moved=0;let ty=0;exRoot.addEventListener('touchstart',e=>{ty=e.touches[0].clientY},{passive:true});exRoot.addEventListener('touchmove',e=>{if(ty&&ty-e.touches[0].clientY>25){ty=0;sy=0;exHide()}},{passive:true});exRoot.addEventListener('wheel',e=>{if(e.deltaY>5)exHide()},{passive:true});
+    exRoot.addEventListener('pointercancel',()=>{if(sy){sy=0;exHide()}});exRoot.addEventListener('pointerdown',e=>{sy=e.clientY;moved=0});exRoot.addEventListener('pointermove',e=>{if(sy&&sy-e.clientY>25)moved=1});
     exRoot.addEventListener('pointerup',e=>{const up=sy-e.clientY>60||moved;sy=0;if(up){exHide();return}const t=e.target.closest&&e.target.closest('.hs');if(!t)return;const a=t.dataset.a;t.classList.add('tap');setTimeout(()=>t.classList.remove('tap'),250);
       if(a=='#all')exHide();else if(a=='#search'){exHide();setTimeout(()=>{try{$('#search').focus()}catch(_){}},60)}else{try{openApp(a)}catch(_){}}});
     exLayout();exTxt();exIv=setInterval(exTxt,5000)}
