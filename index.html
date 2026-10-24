@@ -607,6 +607,9 @@ select.f{appearance:auto}
 .skh .xc::before{content:'';position:absolute;left:0;right:0;top:0;height:16px;background:#e0262b}
 .skh .xv{position:absolute;font-size:44px;font-weight:700;color:#fff;white-space:nowrap}.skh .xn{font-size:36px}
 #skhb{position:absolute;right:12px;bottom:40px;z-index:31;padding:9px 14px;border-radius:20px;border:1px solid #ffffff66;background:#000a;color:#fff;font-weight:700;display:none;backdrop-filter:blur(8px)}
+
+.skh,.skh .skhi{touch-action:none}
+.sksc{min-height:0}.sksc>*{flex-shrink:0}
 /* ================= 6.2: Lucario Arena (grafisch) ================= */
 .ag{position:relative;width:100%;height:100%;min-height:520px;background:#0b0f1e;color:#eaf0ff;font-family:system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .ag *{box-sizing:border-box}
@@ -4963,7 +4966,7 @@ A.putz=el=>{
     IDS1.forEach((a,i)=>h+=hs(L.cx[i]-80,L.r1-178,160,180,a,lb[i]));IDS2.forEach((a,i)=>h+=hs(L.cx[i]-80,L.r2-178,160,180,a,lb[4+i]));IDS3.forEach((a,i)=>h+=hs(L.dx[i]-80,L.dk-178,160,150,a,lb[8+i]));
     h+=hs(L.se[0],L.se[1]-178,L.se[2],L.se[3],'#search','Suche');h+=hs(330,1405,280,89,'#all','Alle Apps')+'</div>';
     exRoot.innerHTML=h;ph.appendChild(exRoot);
-    let sy=0,moved=0;exRoot.addEventListener('pointerdown',e=>{sy=e.clientY;moved=0});exRoot.addEventListener('pointermove',e=>{if(sy&&sy-e.clientY>40)moved=1});
+    let sy=0,moved=0;exRoot.addEventListener('pointercancel',()=>{if(sy){sy=0;exHide()}});exRoot.addEventListener('pointerdown',e=>{sy=e.clientY;moved=0});exRoot.addEventListener('pointermove',e=>{if(sy&&sy-e.clientY>40)moved=1});
     exRoot.addEventListener('pointerup',e=>{const up=sy-e.clientY>60||moved;sy=0;if(up){exHide();return}const t=e.target.closest&&e.target.closest('.hs');if(!t)return;const a=t.dataset.a;t.classList.add('tap');setTimeout(()=>t.classList.remove('tap'),250);
       if(a=='#all')exHide();else if(a=='#search'){exHide();setTimeout(()=>{try{$('#search').focus()}catch(_){}},60)}else{try{openApp(a)}catch(_){}}});
     exLayout();exTxt();exIv=setInterval(exTxt,5000)}
@@ -4987,7 +4990,7 @@ A.putz=el=>{
   function fxUI(){const q=K();return '<div class="skfx"><b>⚙️ Effekte einstellen</b>'+SL.map(a=>'<label>'+a[1]+' <em id="v_'+a[0]+'">'+q[a[0]]+a[4]+'</em><input type="range" data-s="'+a[0]+'" min="'+a[2]+'" max="'+a[3]+'" value="'+q[a[0]]+'"></label>').join('')+TG.map(a=>'<label class="skt"><input type="checkbox" data-t="'+a[0]+'"'+(q[a[0]]?' checked':'')+'> '+a[1]+'</label>').join('')+'<button class="skrs" id="skrs">Zurücksetzen</button></div>'}
   function fxSet(k,v,rb){SET.skfx=Object.assign({},SET.skfx||{});SET.skfx[k]=v;saveSet();sync();if(rb&&skin)build()}
   A.skins=el=>{
-    const draw=()=>{el.style.alignItems='stretch';el.style.padding='12px';
+    const draw=()=>{el.style.alignItems='stretch';el.style.padding='12px';el.style.overflowY='auto';el.style.justifyContent='flex-start';el.style.webkitOverflowScrolling='touch';el.classList.add('sksc');
       const card=(k,n,em,desc,css)=>'<div class="skc2'+(SET.skin==k?' on':'')+'" data-k="'+k+'" style="background:'+css+'"><span class="skem">'+em+'</span><div><b>'+n+'</b><small>'+desc+'</small></div><i>'+(SET.skin==k?'Aktiv ✓':'Aktivieren')+'</i></div>';
       el.innerHTML='<p style="opacity:.8;font-size:13px;margin:0 0 10px">Saison-Skins färben das ganze LucarioOS um, zeigen dein Bild mit Animationen hinter dem Homescreen und verzieren auch alle Spiele (z. B. Halloween: Kürbisse, Geister, Fledermäuse). Benötigt das LucarioOS-Design.</p>'
         +card('','Standard','🌌','Dein normales LucarioOS-Design','linear-gradient(135deg,#0b1020,#1b2a6b)')
