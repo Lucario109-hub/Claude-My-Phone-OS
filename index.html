@@ -2600,7 +2600,7 @@ A.react=el=>{
 
 /* ---------- PWA ---------- */
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();window.dp=e});
-if('serviceWorker' in navigator&&location.protocol!='file:'){const had=!!navigator.serviceWorker.controller;let rl=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had&&!rl){rl=true;try{LS.justUpd='1'}catch(e){}location.reload()}});navigator.serviceWorker.register('sw.js').then(r=>{r.update();r.addEventListener('updatefound',()=>{try{Sys.toast('⬇️ Update wird geladen…')}catch(e){}});setInterval(()=>r.update().catch(()=>{}),600000)}).catch(()=>{})}
+try{if('serviceWorker' in navigator&&location.protocol!='file:'){const had=!!navigator.serviceWorker.controller;let rl=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had&&!rl){rl=true;try{LS.justUpd='1'}catch(e){}location.reload()}});navigator.serviceWorker.register('sw.js').then(r=>{r.update();r.addEventListener('updatefound',()=>{try{Sys.toast('⬇️ Update wird geladen…')}catch(e){}});setInterval(()=>r.update().catch(()=>{}),600000)}).catch(()=>{})}}catch(e){}
 
 /* ---------- Boot ---------- */
 /* ================= 5.0: Konto-Sicherheit, LucarioBot (KI), Support ================= */
@@ -4987,14 +4987,14 @@ A.putz=el=>{
   /* ---------- Steuerung ---------- */
   const SEAM={hw:645,xm:682,sv:692};
   function geo(w,h){let s0=w/940,gap=h-1494*s0;if(gap<0){s0=h/1494;gap=0}return{s:s0,gap:gap,ox:(w-940*s0)/2,oy:gap>0?0:(h-1494*s0)/2}}
-  const IM={};function img(k,sfx){const n=k+(sfx||'');if(!IM[n]){const i=new Image();IM[n]={i,ok:false};i.onload=()=>{IM[n].ok=true;if(skin==k)try{build();drawn=false}catch(e){}};const u=sfx=='@h'?'skh-'+k+'.jpg':'skin-'+n+'.jpg';i.src=(window.__SKI&&window.__SKI[u])||u}return IM[n]}
+  const IM={};function img(k,sfx){const n=k+(sfx||'');if(!IM[n]){const i=new Image();IM[n]={i,ok:false};i.onload=()=>{IM[n].ok=true;if(skin==k)try{build();drawn=false}catch(e){}};const u=sfx=='@h'?'skh-'+k+'.jpg':sfx=='@w'?'skl-'+k+'.jpg':'skin-'+n+'.jpg';i.src=(window.__SKI&&window.__SKI[u])||u}return IM[n]}
   function cover(x,m){const w=m.i.width,h=m.i.height,sc=Math.max(W/w,H/h);x.drawImage(m.i,(W-w*sc)/2,(H-h*sc)/2,w*sc,h*sc)}
-  function imgBg(k,fb,bl){const m=img(k);const q=K(),ms=img(k,'-s');if(exShown&&!bl){const mh=img(k,'@h');return mkBg(x=>{if(m.ok)cover(x,m);x.fillStyle='rgba(0,0,0,.35)';x.fillRect(0,0,W,H);if(mh.ok){const G0=geo(W,H),s0=G0.s,k=mh.i.width/940,sm=SEAM[skin];
+  function imgBg(k,fb,bl){const m=img(k,'@w');const q=K(),ms=img(k,'-s');if(exShown&&!bl){const mh=img(k,'@h');return mkBg(x=>{if(m.ok)cover(x,m);x.fillStyle='rgba(0,0,0,.35)';x.fillRect(0,0,W,H);if(mh.ok){const G0=geo(W,H),s0=G0.s,k=mh.i.width/940,sm=SEAM[skin];
       if(G0.gap<=0){const w0=940*s0,h0=1494*s0,t=document.createElement('canvas');t.width=Math.ceil(w0);t.height=Math.ceil(h0);const y=t.getContext('2d');y.drawImage(mh.i,0,0,t.width,t.height);y.globalCompositeOperation='destination-in';const gr=y.createLinearGradient(0,0,0,t.height),fd=Math.min(.12,60/t.height);gr.addColorStop(0,'rgba(0,0,0,0)');gr.addColorStop(fd,'#000');gr.addColorStop(1-fd,'#000');gr.addColorStop(1,'rgba(0,0,0,0)');y.fillStyle=gr;y.fillRect(0,0,t.width,t.height);x.drawImage(t,G0.ox,G0.oy)}
       else{const gp=G0.gap,tmp=document.createElement('canvas');tmp.width=60;tmp.height=30;tmp.getContext('2d').drawImage(mh.i,0,(sm-70)*k,mh.i.width,140*k,0,0,60,30);
         const band=(a,b,dy,f0,f1)=>{const hh=(b-a)*s0,t=document.createElement('canvas');t.width=Math.ceil(W);t.height=Math.ceil(hh);const y=t.getContext('2d');y.drawImage(mh.i,0,a*k,mh.i.width,(b-a)*k,0,0,t.width,t.height);y.globalCompositeOperation='destination-in';const gr=y.createLinearGradient(0,0,0,t.height);gr.addColorStop(0,f0?'rgba(0,0,0,0)':'#000');gr.addColorStop(f0?Math.min(.5,24*s0/t.height):0,'#000');gr.addColorStop(f1?1-Math.min(.5,24*s0/t.height):1,'#000');gr.addColorStop(1,f1?'rgba(0,0,0,0)':'#000');y.fillStyle=gr;y.fillRect(0,0,t.width,t.height);x.drawImage(t,0,dy)};
         band(0,sm,0,0,1);band(sm,1494,sm*s0+gp,1,0)}}})}
-    return mkBg(x=>{if(m.ok){cover(x,m);if(bl){x.globalCompositeOperation='lighter';x.globalAlpha=.45;cover(x,m);x.globalAlpha=1;x.globalCompositeOperation='source-over'}if(q.sharp>0&&ms.ok){x.globalAlpha=q.sharp/100;cover(x,ms);x.globalAlpha=1}if(q.dim<100){x.fillStyle='rgba(0,0,0,'+(1-q.dim/100)+')';x.fillRect(0,0,W,H)}}else fb(x)})}
+    return mkBg(x=>{if(m.ok){cover(x,m);if(q.sharp>0&&ms.ok){x.globalAlpha=q.sharp/100;cover(x,ms);x.globalAlpha=1}if(q.dim<100){x.fillStyle='rgba(0,0,0,'+(1-q.dim/100)+')';x.fillRect(0,0,W,H)}}else fb(x)})}
   /* ---------- WEIHNACHTEN ---------- */
   function xmBg(x){const sg=x.createLinearGradient(0,0,0,H);sg.addColorStop(0,'#070b24');sg.addColorStop(.6,'#13244f');sg.addColorStop(1,'#1d2f5c');x.fillStyle=sg;x.fillRect(0,0,W,H)}
   let snow,lights,shoot;
@@ -5011,7 +5011,7 @@ A.putz=el=>{
   const BK={hw:['255,140,40','170,100,255','255,200,80'],xm:['255,255,255','255,210,120','255,90,90'],sv:['255,205,90','110,160,255','255,120,200']};
   function art(X,Y){const G0=geo(W,H);return[G0.ox+X*G0.s,G0.oy+(Y-178)*G0.s,G0.s]}
   try{ph.addEventListener('pointermove',e=>{const r=ph.getBoundingClientRect();ptX=((e.clientX-r.left)/r.width-.5)*2;ptY=((e.clientY-r.top)/r.height-.5)*2},{passive:true});ph.addEventListener('pointerleave',()=>{ptX=0;ptY=0});
-    addEventListener('deviceorientation',e=>{if(e.gamma==null)return;orX=Math.max(-1,Math.min(1,e.gamma/22));orY=Math.max(-1,Math.min(1,((e.beta||0)-55)/22))},{passive:true});
+    if((()=>{try{const fp=document.permissionsPolicy||document.featurePolicy;return !fp||fp.allowsFeature('accelerometer')}catch(e){return true}})())addEventListener('deviceorientation',e=>{if(e.gamma==null)return;orX=Math.max(-1,Math.min(1,e.gamma/22));orY=Math.max(-1,Math.min(1,((e.beta||0)-55)/22))},{passive:true});
     ph.addEventListener('click',()=>{try{if(window.DeviceOrientationEvent&&DeviceOrientationEvent.requestPermission&&!window.__doReq){window.__doReq=1;DeviceOrientationEvent.requestPermission().catch(()=>{})}}catch(_){}})}catch(e){}
   function findPts(){pts=[];if(!bg)return;try{const d=bg.getContext('2d').getImageData(0,0,W,H).data,st=3,c=[];const Lm=i=>d[i]*.3+d[i+1]*.59+d[i+2]*.11;
       for(let y=6;y<H-6;y+=st)for(let x=6;x<W-6;x+=st){const i=(y*W+x)*4,l=Lm(i);if(l<175)continue;let ok=true;for(let dy=-6;dy<=6&&ok;dy+=3)for(let dx=-6;dx<=6;dx+=3){if(!dx&&!dy)continue;if(Lm(((y+dy)*W+x+dx)*4)>l){ok=false;break}}if(ok)c.push([x,y,l,d[i],d[i+1],d[i+2]])}
@@ -5042,7 +5042,7 @@ A.putz=el=>{
     tp.push({x:x,y:y,vx:R(-30,30),vy:skin=='hw'?-90:50,g:0,l:1.6,s:26,e:skin=='hw'?'🦇':'🎁'});if(tp.length>150)tp.splice(0,tp.length-150)}
   function extra(dt,t){const q=K();if(!q.extra)return;const lo=lvl();
     for(let i=tp.length-1;i>=0;i--){const p=tp[i];p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=p.g*dt;p.l-=dt;if(p.l<=0){tp.splice(i,1);continue}g.globalAlpha=Math.min(1,p.l*2);if(p.e){g.font=p.s+'px serif';g.textAlign='center';g.fillText(p.e,p.x,p.y)}else{g.fillStyle=p.c;g.beginPath();g.arc(p.x,p.y,p.s,0,7);g.fill()}}g.globalAlpha=1;
-    if(skin=='hw'){ltm-=dt;if(ltm<=0){lfl=.55;ltm=R(7,15)}if(lfl>0){g.fillStyle='rgba(190,160,255,'+(lfl*(Math.random()>.4?1:.35))+')';g.fillRect(0,0,W,H*.55);lfl-=dt*1.7}
+    if(skin=='hw'){ltm-=dt;if(ltm<=0){lfl=.55;ltm=R(7,15)}if(lfl>0){const fa=lfl*(Math.random()>.4?1:.35)*(1-.45*mix),fg=g.createLinearGradient(0,0,0,H*.8);fg.addColorStop(0,'rgba(190,160,255,'+fa+')');fg.addColorStop(.6,'rgba(190,160,255,'+fa*.45+')');fg.addColorStop(1,'rgba(190,160,255,0)');g.fillStyle=fg;g.fillRect(0,0,W,H*.8);lfl-=dt*1.7}
       if(!spd&&!lo&&Math.random()<dt*.06)spd={x:R(W*.08,W*.92),y:-6,ty:R(H*.12,H*.4),ph:0,w:0};
       if(spd){if(spd.ph==0){spd.y+=dt*60;if(spd.y>=spd.ty){spd.ph=1}}else if(spd.ph==1){spd.w+=dt;if(spd.w>2)spd.ph=2}else{spd.y-=dt*80;if(spd.y<-12)spd=null}
         if(spd){g.strokeStyle='rgba(255,255,255,.5)';g.lineWidth=1;g.beginPath();g.moveTo(spd.x,0);g.lineTo(spd.x,spd.y);g.stroke();g.font=Math.round(W*.06)+'px serif';g.textAlign='center';g.fillText('🕷️',spd.x,spd.y+W*.04)}}}
@@ -5054,8 +5054,8 @@ A.putz=el=>{
     const q=K(),dt0=Math.min(.1,(t-last)/1000),L=lvl();if(!q.anim&&drawn){last=t;return}const cap=L>=2||qs==2?.05:(qs==1||L==1?.032:.02);if(dt0<cap)return;last=t;const dt=dt0*q.spd/100;drawn=true;const t0=performance.now();
     const tt=t/1000;try{skin=='hw'?hwFrame(dt||.033,tt):skin=='xm'?xmFrame(dt||.033,tt):svFrame(dt||.033,tt);extra(dt||.033,tt)}catch(e){}
     if(!q.force){fc=fc*.9+(performance.now()-t0)*.1;if(++fn%40==0){const n=fc>24?2:fc>12?1:0;if(n!=qs)qs=n}}else qs=0}
-  function sync(){try{const q=K();ph.style.setProperty('--skg',q.glow/100);ph.classList.toggle('sk-look',!!q.look);ph.classList.toggle('sk-fxa',!!q.extra&&!!q.anim)}catch(_){}const s=(SET.skin==='hw'||SET.skin==='sv'||SET.skin==='xm')&&SET.style=='lucario'&&!SET.reduce?SET.skin:'';
-    ph.classList.toggle('sk-hw',s=='hw');ph.classList.toggle('sk-sv',s=='sv');ph.classList.toggle('sk-xm',s=='xm');window.SKFOOD=s?SK[s].food:'';try{ph.style.setProperty('--sklk',s?'url("'+((window.__SKI&&window.__SKI['skin-'+s+'.jpg'])||('skin-'+s+'.jpg'))+'")':'none')}catch(_){}
+  function sync(){const s=(SET.skin==='hw'||SET.skin==='sv'||SET.skin==='xm')&&SET.style=='lucario'&&!SET.reduce?SET.skin:'';try{const q=K();ph.style.setProperty('--skg',q.glow/100);ph.classList.toggle('sk-look',!!s&&!!q.look);ph.classList.toggle('sk-fxa',!!s&&!!q.extra&&!!q.anim)}catch(_){}
+    ph.classList.toggle('sk-hw',s=='hw');ph.classList.toggle('sk-sv',s=='sv');ph.classList.toggle('sk-xm',s=='xm');window.SKFOOD=s?SK[s].food:'';try{ph.style.setProperty('--sklk',s?'url("'+((window.__SKI&&window.__SKI['skl-'+s+'.jpg'])||('skl-'+s+'.jpg'))+'")':'none')}catch(_){}
     if(s!==skin){skin=s;if(s)try{build()}catch(e){}if(!s){cv.style.display='none';cancelAnimationFrame(raf);raf=0;try{exSync()}catch(_){};return}cv.style.display='block';size();last=performance.now();if(!raf)raf=requestAnimationFrame(frame)}else if(s&&!raf){cv.style.display='block';raf=requestAnimationFrame(frame)}try{exSync()}catch(_){}}
   /* Akzentfarbe des Skins in das LucarioOS-Design einspeisen */
   const _lt=loTheme;loTheme=function(){const s=SK[SET.skin];if(s&&SET.style=='lucario'){const o=SET.accent;SET.accent=s.acc;try{return _lt.apply(this,arguments)}finally{SET.accent=o}}return _lt.apply(this,arguments)};
@@ -5132,12 +5132,13 @@ A.putz=el=>{
   function fxSet(k,v,rb){SET.skfx=Object.assign({},SET.skfx||{});SET.skfx[k]=v;saveSet();sync();if(rb&&skin)build()}
   A.skins=el=>{
     const draw=()=>{el.style.alignItems='stretch';el.style.padding='12px';el.style.overflowY='auto';el.style.justifyContent='flex-start';el.style.webkitOverflowScrolling='touch';el.classList.add('sksc');
+      const th=(k,fb)=>{const u=(window.__SKI&&window.__SKI['skh-'+k+'.jpg'])||('skh-'+k+'.jpg');return 'linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.42) 55%,rgba(0,0,0,.1)),url(&quot;'+u+'&quot;) 72% 16%/230% auto,'+fb};
       const card=(k,n,em,desc,css)=>'<div class="skc2'+(SET.skin==k?' on':'')+'" data-k="'+k+'" style="background:'+css+'"><span class="skem">'+em+'</span><div><b>'+n+'</b><small>'+desc+'</small></div><i>'+(SET.skin==k?'Aktiv ✓':'Aktivieren')+'</i></div>';
       el.innerHTML='<p style="opacity:.8;font-size:13px;margin:0 0 10px">Saison-Skins färben das ganze LucarioOS um, zeigen dein Bild mit Animationen hinter dem Homescreen und verzieren auch alle Spiele (z. B. Halloween: Kürbisse, Geister, Fledermäuse). Benötigt das LucarioOS-Design.</p>'
         +card('','Standard','🌌','Dein normales LucarioOS-Design','linear-gradient(135deg,#0b1020,#1b2a6b)')
-        +card('hw','Halloween','🎃',SK.hw.desc,'linear-gradient(135deg,#1a0833,#a64d00)')
-        +card('xm','Weihnachten','🎄',SK.xm.desc,'linear-gradient(135deg,#0b1a3a,#a01818)')
-        +card('sv','Silvester','🎆',SK.sv.desc,'linear-gradient(135deg,#0a0d3a,#8a5a00)')
+        +card('hw','Halloween','🎃',SK.hw.desc,th('hw','linear-gradient(135deg,#1a0833,#a64d00)'))
+        +card('xm','Weihnachten','🎄',SK.xm.desc,th('xm','linear-gradient(135deg,#0b1a3a,#a01818)'))
+        +card('sv','Silvester','🎆',SK.sv.desc,th('sv','linear-gradient(135deg,#0a0d3a,#8a5a00)'))
         +fxUI()+'<p style="opacity:.6;font-size:12px;margin-top:12px">Tipp: Bei Rucklern unter ⚡ Leistung im Schnellpanel auf „Sparsam“ stellen.</p>';
       el.querySelectorAll('[data-k]').forEach(c=>c.onclick=()=>{SET.skin=c.dataset.k;if(SET.skin&&SET.style!='lucario'){SET.style='lucario'}saveSet();applySet();try{renderHome()}catch(_){}Sys.toast(SET.skin?SK[SET.skin].em+' '+SK[SET.skin].n+'-Skin aktiv':'Standard-Design');draw()});
       el.querySelectorAll('[data-s]').forEach(r=>{r.oninput=()=>{const e=$('#v_'+r.dataset.s);if(e)e.textContent=r.value+'%';fxSet(r.dataset.s,+r.value,0)};r.onchange=()=>fxSet(r.dataset.s,+r.value,1)});

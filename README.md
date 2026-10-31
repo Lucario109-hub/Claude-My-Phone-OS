@@ -28,6 +28,7 @@ Ein komplettes Handy-Betriebssystem als Web-App (eine `index.html`, installierba
 Öffne einmal `update.html` (z. B. `https://lucario109-hub.github.io/Claude-My-Phone-OS/update.html`). Die Seite entfernt nur den alten Zwischenspeicher und startet LucarioNet neu. Spielstände bleiben erhalten.
 
 ## Neu in 6.4
+- Saubere Hintergründe für "Alle Apps" und den Sperrbildschirm (neue Skin-Hintergründe ohne Mockup-Reste); Blitz ohne harte Kante; läuft jetzt auch in abgeschotteten Vorschau-Fenstern (Service-Worker-Fehler blockiert den Start nicht mehr).
 - Bewegter Hintergrund in allen Skins: sanftes Driften und Atmen, Wellen, glitzernde Lichter, Schwebelichter, Neigungs-Parallax per Sensor oder Fingerbewegung; auch auf der Alle-Apps-Seite und dem Sperrbildschirm. Regler "Hintergrund-Bewegung" in der Skins-App.
 - Skin-Home mit zwei Ebenen: Hintergrundbild plus echte, scharfe Icons, Suche, Widget und Dock darüber (mit Mützen, Schnee und Leuchten).
 - Skins maximal: Blitz und Spinne (Halloween), Polarlicht und Schlitten (Weihnachten), Suchscheinwerfer (Silvester), pulsierende Leuchtringe, Tipp-Effekte, Kacheln passen sich der Bildschirmhöhe an.
